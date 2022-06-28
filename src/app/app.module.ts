@@ -13,10 +13,11 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRippleModule } from '@angular/material/core';
-import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
-
-
+import { MatCardModule} from '@angular/material/card';
+import { MatIconModule} from '@angular/material/icon';
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -31,17 +32,17 @@ import {MatSelectModule} from '@angular/material/select';
     LayoutsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule,
     FormsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
-    FormBuilder,
-    FormGroup,
-    Validators,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatIconModule
 
   ],
 

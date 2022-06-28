@@ -11,21 +11,37 @@ export class FrontLayoutComponent   {
 
   constructor( public dialog:MatDialog ) {
   }
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
 
-  confirmDialog(): void {
-    const message = `Are you sure you want to delete?`;
-    const resDialog = new DialogModel("Confirm Action", message);
-    const dialogRef = this.dialog.open(AuthComponent, {
-      maxWidth: "600px",
-      data: resDialog
-    });
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      this.result = dialogResult;
-    });
-    const dialogConfig =new MatDialogConfig();
-    dialogConfig.disableClose=true;
-    dialogConfig.autoFocus =true;
-    this.dialog.open(AuthComponent,dialogConfig);
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
 
-  }
+    dialogConfig.data = {
+        id: 1,
+        title: 'Angular For Beginners'
+    };
+
+    this.dialog.open(AuthComponent, dialogConfig);
+
+    const dialogRef = this.dialog.open(AuthComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+        data => console.log("Dialog output:", data)
+    );
+}
+
+  // confirmDialog(): void {
+  //   const message = `Are you sure you want to delete?`;
+  //   const resDialog = new DialogModel("Confirm Action", message);
+  //   const dialogRef = this.dialog.open(AuthComponent, {
+  //     maxWidth: "auto",
+  //     data: resDialog
+  //   });
+  //   dialogRef.afterClosed().subscribe(dialogResult => {
+  //     this.result = dialogResult;
+  //   });
+
+
+  // }
 }
