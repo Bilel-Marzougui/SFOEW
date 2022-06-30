@@ -12,13 +12,27 @@
   margin: 0;
   padding: 0;
   width: auto;
-  height: 100%;
+  height: auto;
   display: block;
   background-color: #ffffff;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+}
+.register-page {
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: 1200px;
+  display: block;
+  background-color: #ffffff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
 }
 
 mat-card {
@@ -35,6 +49,7 @@ mat-form-field, mat-checkbox {
 }
 mat-card-content {
   margin-top: 20px;
+  width: 400px;
 
 }
 
@@ -47,7 +62,40 @@ mat-card-content {
 }
 
 mat-button-toggle-group {
-  margin-left: 12px;
+  display: flex;
+  margin-left: 120px;
+  margin-right: 50px;
+  border-radius: 30px;
+  width: 190px;
+
+
+
+
+}
+mat-button-toggle .pro {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 30px;
+  width: 50%;
+
+
+
+}
+mat-button-toggle .pat {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 30px;
+  width: 50%;
+
+
+
+}
+
+.mat-button-toggle-checked{
+  background-color:#FF4500;
+  color:#fff;
 }
 mat-dialog-content{
 
@@ -68,3 +116,32 @@ mat-dialog-content{
   margin-right: 20px;
 
 }
+
+
+.mat-dialog-container{
+  height: 400px;
+}
+
+.mat-card-content-reg{
+
+  width: 500px;
+}
+
+
+
+.float-container {
+  border: 3px solid #fff;
+  padding: 20px;
+}
+
+.float-child {
+  width: 50%;
+  float: left;
+}
+
+h1{
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+
+
+
+/* password hide show */

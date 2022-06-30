@@ -2,10 +2,14 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
  import { MustMatch } from '../../helper/MustMatch.validator';
 import {Professionnel} from '../../interfaces/professionnel.interface'
+import {Response} from '../../interfaces/response.interface'
+
+Response
 import{RegisterService} from '../../services/register.service'
+import{LoginService} from '../../services/login.service'
+
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
@@ -21,19 +25,27 @@ export class AuthComponent implements OnInit{
 
   registerFormPro: FormGroup;
   registerFormPat:FormGroup;
+  loginForm:FormGroup;
     submitted = false;
     public selectedVal: string;
     myDate = new Date();
+    datatoken:any
+    dataResponse:any
 
+    hide : boolean = true;
 
+    myFunction() {
+      this.hide = !this.hide;
+    }
 
 
   constructor(private datePipe: DatePipe,public dialogRef: MatDialogRef<AuthComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogModel,private formBuilder: FormBuilder, private regService:RegisterService ,private router:Router)  {
+    @Inject(MAT_DIALOG_DATA) public data: DialogModel,private formBuilder: FormBuilder, private logService:LoginService ,private regService:RegisterService ,private router:Router)  {
     // Update view with given values
 
-  }
 
+
+  }
 
   doctor={
     photo: 'undefined',
@@ -52,8 +64,25 @@ export class AuthComponent implements OnInit{
     rpps: '11111111111',
     role: '2'
   }
-  ngOnInit() {
 
+  patient={
+
+      name: 'hanen',
+      lastname: 'yassin',
+      birthday: '12/12/2015',
+      adresse: 'jj',
+      tel: '+33333333333333',
+      email: 'yassin1@gmail.com',
+      password: 'yyyyyy',
+      ssn: '77',
+      gender: 'homme',
+      photo: '1653558618111.png',
+      account_state: true,
+      archived: false,
+      added_date: '2022-05-26T09:50:18.419+00:00'
+
+  }
+  ngOnInit() {
 
     console.log(this.selectedVal)
     this.registerFormPro = this.formBuilder.group({
@@ -62,17 +91,18 @@ export class AuthComponent implements OnInit{
       lastname: ['', Validators.required],
       birthday: ['', Validators.required],
       tel: ['', Validators.required],
-      fax: ['', Validators.required],
+      fax: ['', Validators.required,Validators.pattern("^[0-9]*$")],
       adresse: ['', Validators.required],
       gender: ['', Validators.required],
       job: ['', Validators.required],
-      adeli: ['', Validators.required],
-      rpps: ['', Validators.required],
+      adeli: ['', Validators.required,Validators.pattern("^[0-9]*$")],
+      rpps: ['', Validators.required,Validators.pattern("^[0-9]*$")],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       role: ['2',Validators.required],
-      acceptTerms: [false, Validators.requiredTrue]
+      acceptTerms: [false, Validators.requiredTrue],
+
   }, {
       validator: MustMatch('password', 'confirmPassword')
   });
@@ -80,10 +110,10 @@ export class AuthComponent implements OnInit{
 
   this.registerFormPat = this.formBuilder.group({
 
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
+    name: ['', Validators.required],
+    lastname: ['', Validators.required],
     birthday: ['', Validators.required],
-    phone: ['', Validators.required],
+    tel: ['', Validators.required],
     adresse: ['', Validators.required],
     ssn: ['', Validators.required],
     gender: ['', Validators.required],
@@ -96,6 +126,13 @@ export class AuthComponent implements OnInit{
 });
 
 
+this.loginForm = this.formBuilder.group({
+
+  email: ['', Validators.required],
+  password: ['', Validators.required],
+},);
+
+
 
 
 
@@ -104,6 +141,8 @@ export class AuthComponent implements OnInit{
 
 get f() { return this.registerFormPro.controls; }
 get fPat() { return this.registerFormPat.controls; }
+get flog() { return this.loginForm.controls; }
+
 
 
 public onValChange(val: any) {
@@ -113,14 +152,14 @@ public onValChange(val: any) {
 }
   onConfirm(): void {
     // Close the dialog, return true
-    this.dialogRef.close(true);
+    this.dialogRef.close(false);
     console.log(this.f.value)
   }
   onDismiss(): void {
     // Close the dialog, return false
     this.dialogRef.close(false);
   }
-login(){}
+
 
 registerPro(info:any) {
   this.doctor.name=info.value.name
@@ -140,8 +179,7 @@ registerPro(info:any) {
 
 
 
-  console.log("rrrr",this.doctor)
-  console.log("info",info.value)
+  console.log("doctor form",this.doctor)
  this.regService.registerProf(this.doctor).subscribe(data=>{
   console.log(data)
 
@@ -166,7 +204,26 @@ let data=info.value
 
 
 
-registerPat() {
+registerPat(infopat:any) {
+  console.log(" form",infopat)
+
+  this.patient.name=infopat.value.name
+  this.patient.lastname=infopat.value.lastname
+  this.patient.email=infopat.value.email
+  this.patient.birthday=this.datePipe.transform(infopat.value.birthday, 'yyyy-MM-dd');
+  this.patient.adresse=infopat.value.adresse
+  this.patient.tel=infopat.value.tel
+  this.patient.password=infopat.value.password
+  this.patient.added_date=this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
+  this.patient.gender=infopat.value.gender
+  this.patient.archived=false
+  this.patient.account_state=true
+  this.patient.ssn=infopat.value.ssn
+
+  console.log("patient form",this.patient)
+  this.regService.registerPatient(this.patient).subscribe(data=>{
+   console.log(data)
+  })
   this.submitted = true;
 
   // stop here if form is invalid
@@ -178,12 +235,31 @@ registerPat() {
   alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerFormPat.value, null, 4));
 }
 
+
+
+
+login(logData:any){
+  this.logService.login(logData).subscribe((response)=>
+
+    {this.dataResponse=response
+      this.logService.saveData=(this.dataResponse.token,this.dataResponse.name,this.dataResponse.role)
+      console.log(this.logService.Prof.role)
+      this.router.navigate(['/professionnel/dashboard'])
+
+
+  },err=>console.log(err))
+}
+
+
 onReset() {
   this.submitted = false;
   this.registerFormPro.reset();
   this.registerFormPat.reset();
 
 }
+
+
+
 
 
 }

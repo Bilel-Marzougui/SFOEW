@@ -23,7 +23,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio'
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-
+import {Ng2TelInputModule} from 'ng2-tel-input';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import { DatePipe } from '@angular/common';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
 
   ],
 
@@ -62,6 +62,7 @@ import { DatePipe } from '@angular/common';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    Ng2TelInputModule
   ],
   entryComponents: [
     AuthComponent
