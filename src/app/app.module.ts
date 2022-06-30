@@ -12,12 +12,18 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatRippleModule } from '@angular/material/core';
+import { DateAdapter, MatNativeDateModule, MatRippleModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import { MatCardModule} from '@angular/material/card';
 import { MatIconModule} from '@angular/material/icon';
 import { MatCheckboxModule} from '@angular/material/checkbox';
 import { MatTabsModule} from '@angular/material/tabs';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatRadioModule} from '@angular/material/radio'
+import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +48,12 @@ import { MatTabsModule} from '@angular/material/tabs';
     MatCardModule,
     MatTabsModule,
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    HttpClientModule
 
   ],
 
@@ -55,7 +66,8 @@ import { MatTabsModule} from '@angular/material/tabs';
   entryComponents: [
     AuthComponent
   ],
-  providers: [],
+  providers: [    MatDatepickerModule,DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,136 +1,346 @@
 <h2 mat-dialog-title></h2>
 
-<mat-dialog-content >
+<mat-dialog-content>
 
   <div class="login-page">
     <mat-card class="mat-elevation-z12">
       <mat-card-title style="text-align:center;">SignIn/SignUp</mat-card-title>
       <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+
+
+        <!-- login form -->
         <mat-tab label="Sign In">
-            <mat-card-content>
-              <form action="">
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="Email"
-                    required
-                    name="email"
-                    ngModel
-                    #email="ngModel">
-                    <mat-error *ngIf="email.invalid">Email is required</mat-error>
-                  <mat-icon matSuffix>email</mat-icon>
-                </mat-form-field>
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="Password"
-                    type="password"
-                    required
-                    minlength="6"
-                    name="password"
-                    ngModel
-                    #password="ngModel">
-                    <mat-error
-                      *ngIf="password.errors && password.errors.required">
-                      Password is required
-                    </mat-error>
-                    <mat-error
-                      *ngIf="password.errors && password.errors.minlength">
-                      Password must be of length 6
-                    </mat-error>
-                  <mat-icon matSuffix>lock</mat-icon>
-                </mat-form-field>
-                <mat-checkbox>Remember Me!</mat-checkbox>
-                <button
-                  mat-raised-button
-                  color="primary"
-                  class="login-button">
-                  Sign In
-                </button>
-
-                <button
-                  mat-raised-button
-                  class="login-button">
-                  Login with Google
-                </button>
-              </form>
-            </mat-card-content>
-        </mat-tab>
-        <mat-tab label="Sign Up">
           <mat-card-content>
-            <form action="">
-              <mat-form-field>
-                <input
-                  matInput
-                  placeholder="User Name"
-                  required
-                  name="username"
-                  ngModel
-                  #username="ngModel">
-                <mat-icon matSuffix>perm_identity</mat-icon>
-                <mat-error
-                  *ngIf="username.invalid">
-                  Username is required
-                </mat-error>
+            <form [formGroup]="" (ngSubmit)="login()">
 
-              </mat-form-field>
               <mat-form-field>
-                <input
-                  matInput
-                  placeholder="Email"
-                  required
-                  name="email"
-                  ngModel
-                  #email="ngModel">
-                  <mat-error *ngIf="email.invalid">Email is required</mat-error>
+                <input matInput placeholder="Email">
+                <!-- <mat-error *ngIf="email.invalid">Email is required</mat-error> -->
                 <mat-icon matSuffix>email</mat-icon>
               </mat-form-field>
-              <mat-form-field>
-                <input
-                  matInput
-                  placeholder="Password"
-                  type="password"
-                  required
-                  minlength="6"
-                  name="password"
-                  ngModel
-                  #password="ngModel">
-                  <mat-error
-                    *ngIf="password.errors && password.errors.required">
-                    Password is required
-                  </mat-error>
-                  <mat-error
-                    *ngIf="password.errors && password.errors.minlength">
-                    Password must be of length 6
-                  </mat-error>
-                <mat-icon matSuffix>lock</mat-icon>
 
-              </mat-form-field>
               <mat-form-field>
-                  <input
-                  matInput
-                  placeholder="Password"
-                  type="password"
-                  required
-                  minlength="6"
-                  name="repassword"
-                  ngModel
-                  #repassword="ngModel">
-                  <mat-error
-                    *ngIf="repassword.errors && repassword.errors.required">
-                    Re-Enter Password is required
-                  </mat-error>
+                <input matInput placeholder="Password" type="password" >
+                <!-- <mat-error *ngIf="password.errors && password.errors.required">
+                  Password is required
+                </mat-error> -->
+                <!-- <mat-error *ngIf="password.errors && password.errors.minlength">
+                  Password must be of length 6
+                </mat-error> -->
                 <mat-icon matSuffix>lock</mat-icon>
               </mat-form-field>
-              <button
-                mat-raised-button
-                color="primary"
-                class="login-button">
-                Sign Up
+
+
+              <mat-checkbox>Remember Me!</mat-checkbox>
+              <button mat-raised-button color="primary" class="login-button">
+                Sign In
+              </button>
+
+              <button mat-raised-button class="login-button">
+                Login with Google
               </button>
             </form>
           </mat-card-content>
         </mat-tab>
+        <!-- /login form -->
+
+
+
+
+        <!-- register form -->
+
+        <mat-tab label="Sign Up">
+          <mat-card-content>
+            <div class="card m-3">
+              <h5 class="card-header"></h5>
+              <div class="card-body">
+                <p>
+                  I'm:
+                  <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)" >
+                    <mat-button-toggle value="Professionnel" (click)="onReset()">Professionnel </mat-button-toggle>
+                    <mat-button-toggle value="Patient" (click)="onReset()">Patient</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </p>
+                <div class="switch"  [ngSwitch]="selectedVal">
+
+
+
+                <div class="proReg" *ngSwitchCase="'Professionnel'" >
+
+                  <form [formGroup]="registerFormPro" (ngSubmit)="registerPro(registerFormPro)">
+                    <div class="form-row">
+                      <h1 >Professionnel</h1>
+
+                      <mat-form-field>
+                            <input  matInput placeholder="name" type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                <div *ngIf="f.name.errors.required"> Name is required</div>
+                            </div>
+                      </mat-form-field>
+                          <mat-form-field>
+                            <input  matInput placeholder="lastname" type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+                            <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                            </div>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="fill">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="basicDatepicker" formControlName="birthday" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.birthday.errors }">
+                            <div *ngIf="submitted && f.birthday.errors" class="invalid-feedback">
+                              <div *ngIf="f.birthday.errors.required">birthday required</div>
+                          </div>
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #basicDatepicker></mat-datepicker>
+                          </mat-form-field>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <mat-form-field>
+                        <input  matInput placeholder="tel" type="text" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" />
+                        <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                            <div *ngIf="f.tel.errors.required">tel required</div>
+                        </div>
+                      </mat-form-field>
+
+
+                      <mat-form-field>
+                        <input  matInput placeholder="adresse" type="text" formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }" />
+                        <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
+                            <div *ngIf="f.adresse.errors.required">adresse required</div>
+                        </div>
+                      </mat-form-field>
+
+
+
+
+
+                      <mat-form-field>
+                      <input matInput placeholder="fax" type="text" formControlName="fax" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fax.errors }" />
+                      <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                          <div *ngIf="f.fax.errors.required">fax required</div>
+                      </div>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                    <input matInput placeholder="gender" type="text" formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" />
+                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                        <div *ngIf="f.gender.errors.required">gender required</div>
+                    </div>
+                  </mat-form-field>
+
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="Male"  formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }"ngDefaultControl >Male</mat-radio-button>
+                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                      <div *ngIf="f.job.errors.required">job required</div>
+                  </div>
+                    <mat-radio-button value="Female"  formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }"ngDefaultControl >Female</mat-radio-button>
+                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                      <div *ngIf="f.job.errors.required">job required</div>
+                  </div>
+                  </mat-radio-group>
+
+                  <mat-form-field>
+                  <input matInput placeholder="job" type="text" formControlName="job" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.job.errors }" />
+                  <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                      <div *ngIf="f.job.errors.required">job required</div>
+                  </div>
+                </mat-form-field>
+
+                <mat-form-field>
+                <input matInput placeholder="adeli" type="text" formControlName="adeli" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adeli.errors }" />
+                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                    <div *ngIf="f.adeli.errors.required">adeli required</div>
+                </div>
+              </mat-form-field>
+
+
+              <mat-form-field>
+              <input  matInput placeholder="rpps" type="text" formControlName="rpps" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rpps.errors }" />
+              <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                  <div *ngIf="f.rpps.errors.required">rpps required</div>
+              </div>
+            </mat-form-field>
+
+                    </div>
+                    <mat-form-field>
+                      <input   matInput placeholder="Email" type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                      </mat-form-field>
+                          <div class="form-row">
+                            <mat-form-field>
+                              <input  matInput placeholder="Password" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                          </mat-form-field>
+                          <mat-form-field>
+                            <input  matInput placeholder="confirmPassword" type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                                <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                            </div>
+                          </mat-form-field>
+                            </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                        <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                        <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary mr-1">Register</button>
+                        <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                    </div>
+                </form>
+                </div>
+
+
+                <div class="patReg"  *ngSwitchCase="'Patient'">
+                  <form [formGroup]="registerFormPat" (ngSubmit)="registerPat()">
+                    <div class="form-row">
+                      <h1 >Patient</h1>
+                          <mat-form-field>
+                            <input  matInput placeholder="firstName" type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.firstName.errors }" />
+                            <div *ngIf="submitted && fPat.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="fPat.firstName.errors.required">First Name is required</div>
+                            </div>
+                          </mat-form-field>
+                          <mat-form-field>
+                            <input  matInput placeholder="lastName" type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.lastName.errors }" />
+                            <div *ngIf="submitted && fPat.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="fPat.lastName.errors.required">Last Name is required</div>
+                            </div>
+                          </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                          <input matInput [matDatepicker]="picker" formControlName="birthday" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.birthday.errors }">
+                          <div *ngIf="submitted && fPat.lastName.errors" class="invalid-feedback">
+                            <div *ngIf="fPat.birthday.errors.required">birthday required</div>
+                        </div>
+                          <mat-hint>MM/DD/YYYY</mat-hint>
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                        <input  matInput placeholder="phone" type="text" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.phone.errors }" />
+                        <div *ngIf="submitted && fPat.lastName.errors" class="invalid-feedback">
+                            <div *ngIf="fPat.phone.errors.required">phone required</div>
+                        </div>
+                      </mat-form-field>
+
+                      <mat-form-field>
+                      <input matInput placeholder="adresse" type="text" formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.adresse.errors }" />
+                      <div *ngIf="submitted && fPat.lastName.errors" class="invalid-feedback">
+                          <div *ngIf="fPat.adresse.errors.required">adresse required</div>
+                      </div>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                    <input matInput placeholder="gender" type="text" formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.gender.errors }" />
+                    <div *ngIf="submitted && fPat.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="fPat.gender.errors.required">gender required</div>
+                    </div>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                  <input  matInput placeholder="ssn"type="text" formControlName="ssn" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.ssn.errors }" />
+                  <div *ngIf="submitted && fPat.lastName.errors" class="invalid-feedback">
+                      <div *ngIf="fPat.ssn.errors.required">ssn required</div>
+                  </div>
+                </mat-form-field>
+
+
+
+                    </div>
+                  <mat-form-field>
+                        <input  matInput placeholder="email" type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.email.errors }" />
+                        <div *ngIf="submitted && fPat.email.errors" class="invalid-feedback">
+                            <div *ngIf="fPat.email.errors.required">Email is required</div>
+                            <div *ngIf="fPat.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                      </mat-form-field>
+
+                    <div class="form-row">
+                      <mat-form-field>
+                        <input matInput placeholder="password" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.password.errors }" />
+                            <div *ngIf="submitted && fPat.password.errors" class="invalid-feedback">
+                                <div *ngIf="fPat.password.errors.required">Password is required</div>
+                                <div *ngIf="fPat.password.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                          </mat-form-field>
+
+                          <mat-form-field>
+                            <input matInput placeholder="confirmPassword" type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.confirmPassword.errors }" />
+                            <div *ngIf="submitted && fPat.confirmPassword.errors" class="invalid-feedback">
+                                <div *ngIf="fPat.confirmPassword.errors.required">Confirm Password is required</div>
+                                <div *ngIf="fPat.confirmPassword.errors.mustMatch">Passwords must match</div>
+                            </div>
+                          </mat-form-field>
+                            </div>
+                    <div class="form-group form-check">
+                        <input  type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && fPat.acceptTerms.errors }" />
+                        <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                        <div *ngIf="submitted && fPat.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary mr-1">Register</button>
+                        <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                    </div>
+                </form>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+              </div>
+
+          </div>
+          </mat-card-content>
+        </mat-tab>
+
+        <!-- register form -->
+
+
+
       </mat-tab-group>
     </mat-card>
   </div>
@@ -138,7 +348,3 @@
 
 </mat-dialog-content>
 
-<!-- <mat-dialog-actions>
-    <button class="mat-raised-button"(click)="onConfirm()">Close</button>
-    <button class="mat-raised-button mat-primary"(click)="onDismiss()">Save</button>
-</mat-dialog-actions> -->
