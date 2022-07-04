@@ -12,12 +12,21 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatRippleModule } from '@angular/material/core';
+import { DateAdapter, MatNativeDateModule, MatRippleModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import { MatCardModule} from '@angular/material/card';
 import { MatIconModule} from '@angular/material/icon';
 import { MatCheckboxModule} from '@angular/material/checkbox';
 import { MatTabsModule} from '@angular/material/tabs';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatRadioModule} from '@angular/material/radio'
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import {Ng2TelInputModule} from 'ng2-tel-input';
+import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +51,17 @@ import { MatTabsModule} from '@angular/material/tabs';
     MatCardModule,
     MatTabsModule,
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    HttpClientModule,
+    MatPasswordStrengthModule,
+    MatToolbarModule,
+
+
+
 
   ],
 
@@ -51,11 +70,16 @@ import { MatTabsModule} from '@angular/material/tabs';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    Ng2TelInputModule
   ],
   entryComponents: [
     AuthComponent
   ],
-  providers: [],
+  providers: [    MatDatepickerModule,DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// export function httpTranslateLoder(http:HttpClient){
+//   return new TranslateHttpLoader(http);
+// }

@@ -12,20 +12,40 @@
   margin: 0;
   padding: 0;
   width: auto;
-  height: 100%;
+  height: auto;
   display: block;
   background-color: #ffffff;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
+}
+.register-page {
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: 1200px;
+  display: block;
+  background-color: #ffffff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 mat-card {
   width:100%;
   margin: 10% auto;
   border-radius: 8px;
+
 }
+mat-card-content {
+  width:100%;
+  margin: 10% auto;
+  border-radius: 8px;
+
+}
+
 mat-form-field, mat-checkbox {
   width: 80%;
   display: block;
@@ -33,6 +53,8 @@ mat-form-field, mat-checkbox {
 }
 mat-card-content {
   margin-top: 20px;
+  width: 400px;
+
 }
 
 .login-button {
@@ -43,3 +65,114 @@ mat-card-content {
   background-color: #FF4500 ;
 }
 
+mat-button-toggle-group {
+  display: flex;
+  margin-left: 120px;
+  margin-right: 120px;
+  border-radius: 30px;
+
+
+
+
+}
+
+
+.mat-button-toggle-checked{
+  background-color:#FF4500;
+  color:#fff;
+}
+mat-dialog-content{
+
+  display: block;
+  overflow: hidden;
+
+
+}
+
+
+
+::-webkit-scrollbar {
+    width: 0;  /*Remove scrollbar space
+    background: transparent;  /*Optional: just make scrollbar invisible*/
+}
+/*Optional: show position indicator in red*/
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+
+
+
+
+.btn{
+  margin-right: 20px;
+
+}
+
+
+
+
+
+
+.mat-dialog-container{
+  height: 50px;
+}
+
+.mat-card-content-reg{
+
+  width: 500px;
+}
+
+
+
+.float-container {
+  border: 3px solid #fff;
+  padding: 20px;
+}
+
+.float-child {
+  width: 50%;
+  float: left;
+}
+
+h1{
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+
+h2{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+
+/* password hide show */
+.mat-progress-bar.mat-warn .mat-progress-bar-buffer
+{
+  width: 50px;
+
+
+}
+
+
+.parent {
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  .child {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  }
+
+
+  .ex1 {
+    width: auto;
+    height: 250px;
+    overflow: scroll;
+  }
+
+
+
+  mat-icon:hover {
+    cursor: pointer;
+  }
+  .mat-radio-button {
+border-radius: 60px;
+}

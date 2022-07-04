@@ -10,26 +10,21 @@ export class FrontLayoutComponent   {
   result: any;
 
   constructor( public dialog:MatDialog ) {
+
   }
+
   openDialog() {
     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-
-    dialogConfig.data = {
-        id: 1,
-        title: 'Angular For Beginners'
-    };
-
     this.dialog.open(AuthComponent, dialogConfig);
 
-    const dialogRef = this.dialog.open(AuthComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(
-        data => console.log("Dialog output:", data)
-    );
 }
+ scrollWin() {
+  window.scrollTo(0, 500);
+}
+
+
 
   // confirmDialog(): void {
   //   const message = `Are you sure you want to delete?`;
