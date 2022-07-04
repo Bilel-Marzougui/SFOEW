@@ -10,7 +10,9 @@ export class FrontLayoutComponent   {
   result: any;
 
   constructor( public dialog:MatDialog ) {
+
   }
+
   openDialog() {
     const dialogConfig = new MatDialogConfig();
 
@@ -18,6 +20,10 @@ export class FrontLayoutComponent   {
 
 
 }
+ scrollWin() {
+  window.scrollTo(0, 500);
+}
+
 
 
   // confirmDialog(): void {

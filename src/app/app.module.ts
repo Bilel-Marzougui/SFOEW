@@ -21,9 +21,12 @@ import { MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import {Ng2TelInputModule} from 'ng2-tel-input';
+import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +57,11 @@ import {Ng2TelInputModule} from 'ng2-tel-input';
     MatNativeDateModule,
     MatRadioModule,
     HttpClientModule,
+    MatPasswordStrengthModule,
+    MatToolbarModule,
+
+
+
 
   ],
 
@@ -72,3 +80,6 @@ import {Ng2TelInputModule} from 'ng2-tel-input';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// export function httpTranslateLoder(http:HttpClient){
+//   return new TranslateHttpLoader(http);
+// }

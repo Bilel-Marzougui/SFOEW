@@ -1,12 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {Validators} from '@angular/forms';
  import { MustMatch } from '../../helper/MustMatch.validator';
-import {Professionnel} from '../../interfaces/professionnel.interface'
-import {Response} from '../../interfaces/response.interface'
-
-Response
 import{RegisterService} from '../../services/register.service'
 import{LoginService} from '../../services/login.service'
 
@@ -27,10 +23,13 @@ export class AuthComponent implements OnInit{
   registerFormPat:FormGroup;
   loginForm:FormGroup;
     submitted = false;
-    public selectedVal: string;
+    public selectedVal="Professionnel";
     myDate = new Date();
     datatoken:any
     dataResponse:any
+    status:any
+    action:any
+    showDetails: boolean;
 
     hide : boolean = true;
 
@@ -85,6 +84,7 @@ export class AuthComponent implements OnInit{
   ngOnInit() {
 
     console.log(this.selectedVal)
+
     this.registerFormPro = this.formBuilder.group({
 
       name: ['', Validators.required],
@@ -139,6 +139,11 @@ this.loginForm = this.formBuilder.group({
 }
 
 
+onStrengthChanged(strength: number) {
+  console.log('password strength = ', strength);
+}
+
+
 get f() { return this.registerFormPro.controls; }
 get fPat() { return this.registerFormPat.controls; }
 get flog() { return this.loginForm.controls; }
@@ -148,6 +153,8 @@ get flog() { return this.loginForm.controls; }
 public onValChange(val: any) {
   this.selectedVal = val;
   console.log(this.selectedVal)
+  this.status=(this.action+this.selectedVal)
+
 
 }
   onConfirm(): void {
@@ -232,7 +239,7 @@ registerPat(infopat:any) {
   }
 
   // display form values on success
-  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerFormPat.value, null, 4));
+  // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerFormPat.value, null, 4));
 }
 
 
@@ -263,6 +270,10 @@ onReset() {
 
 
 }
+
+
+
+
 export class DialogModel {
   constructor(public title: string, public message: string) {
   }
