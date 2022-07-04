@@ -68,34 +68,14 @@ mat-card-content {
 mat-button-toggle-group {
   display: flex;
   margin-left: 120px;
-  margin-right: 50px;
+  margin-right: 120px;
   border-radius: 30px;
-  width: 190px;
 
 
 
 
 }
-mat-button-toggle .pro {
-  display: flex;
-  margin-left: 20px;
-  margin-right: 20px;
-  border-radius: 30px;
-  width: 50%;
 
-
-
-}
-mat-button-toggle .pat {
-  display: flex;
-  margin-left: 20px;
-  margin-right: 20px;
-  border-radius: 30px;
-  width: 50%;
-
-
-
-}
 
 .mat-button-toggle-checked{
   background-color:#FF4500;
@@ -193,3 +173,6 @@ h2{
   mat-icon:hover {
     cursor: pointer;
   }
+  .mat-radio-button {
+border-radius: 60px;
+}
