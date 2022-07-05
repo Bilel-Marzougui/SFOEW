@@ -26,6 +26,7 @@ import { DatePipe } from '@angular/common';
 import {Ng2TelInputModule} from 'ng2-tel-input';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { SideBarComponent } from './views/shared-components/side-bar/side-bar.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AppComponent,
     NotFoundComponent,
     AuthComponent,
+    SideBarComponent,
 
   ],
   imports: [

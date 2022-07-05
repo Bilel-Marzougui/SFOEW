@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -13,21 +14,45 @@ export class LoginService {
   }
   IsLoggedIn:boolean=false
 
+   helper = new JwtHelperService();
+
   constructor(private http:HttpClient,private router:Router) { }
 
-  login(body:any){
-    return this.http.post('http://38.242.195.210:3000/login/',body)
+  loginSPro(body:any){
+    return this.http.post('http://38.242.195.210:3000/doctor/login',body)
 
 
   }
-  saveData(token:any,name:any,role:any){
-    localStorage.setItem('tokenprof',token)
-    localStorage.setItem('role',role)
 
-    this.Prof.name=name
-  this.Prof.role=role
-  this.IsLoggedIn=true
 
-}
+  saveDataPro(token:any ){
+
+   
+
+
+let decodeToken=this.helper.decodeToken(token)
+
+
+localStorage.setItem('token',decodeToken)
+localStorage.setItem('role',decodeToken.subject.role)
+   
+console.log(decodeToken)
+  }
+
+
+  loginSPat(body:any ){
+    return this.http.post('http://38.242.195.210:3000/patient/login',body)
+
+
+  }
+
+  saveDataPat(token:any ){
+    console.log(token)
+    let decodeToken=this.helper.decodeToken(token)
+    localStorage.setItem('token',token)
+localStorage.setItem('name',decodeToken.name)
+    console.log(decodeToken)
+      }
+
 }
 

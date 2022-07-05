@@ -14,26 +14,37 @@
 
         <!-- login form -->
         <mat-tab label="S'identifier">
+           <div class="choix">
+            <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)" >
+              <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro" >Professionnel </mat-button-toggle>
+              <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+
           <mat-card-content>
+            <div class="switch"  [ngSwitch]="selectedVal">
+
+            <div class="proReg" *ngSwitchCase="'Professionnel'" >
 
 
-            <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+            <form [formGroup]="loginFormPro" (ngSubmit)="loginPro(loginFormPro)">
+
 
               <mat-form-field>
-                <input matInput placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && flog.email.errors }">
-                <mat-error *ngIf="flog.email.invalid">Email requis</mat-error>
+                <input matInput placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && flogPro.email.errors }">
+                <mat-error *ngIf="flogPro.email.invalid">Email requis</mat-error>
                 <mat-icon matSuffix>email</mat-icon>
               </mat-form-field>
 
               <mat-form-field>
-                <input matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && flog.password.errors }">
+                <input matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && flogPro.password.errors }">
                 <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                <mat-error *ngIf="flog.password.invalid">Mot de passe requis     </mat-error>
+                <mat-error *ngIf="flogPro.password.invalid">Mot de passe requis     </mat-error>
               </mat-form-field>
 
 
               <mat-checkbox>Remember Me!</mat-checkbox>
-              <button mat-raised-button color="primary" class="login-button">
+              <button mat-raised-button color="primary" class="login-button" type="submit">
                 Sign In
               </button>
 
@@ -41,7 +52,42 @@
                 Login with Google
               </button> -->
             </form>
+            </div>
+
+
+            <div class="proReg" *ngSwitchCase="'Patient'" >
+
+            <form [formGroup]="loginFormPat" (ngSubmit)="loginPat(loginFormPat)">
+
+
+              <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && flogPat.email.errors }">
+                <mat-error *ngIf="flogPat.email.invalid">Email requis</mat-error>
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && flogPat.password.errors }">
+                <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="flogPat.password.invalid">Mot de passe requis     </mat-error>
+              </mat-form-field>
+
+
+              <mat-checkbox>Remember Me!</mat-checkbox>
+              <button mat-raised-button color="primary" type="submit" class="login-button">
+                Sign In
+              </button>
+
+              <!-- <button mat-raised-button class="login-button">
+                Login with Google
+              </button> -->
+            </form>
+            </div>
+
+
+          </div>
           </mat-card-content>
+
         </mat-tab>
         <!-- /login form -->
 
