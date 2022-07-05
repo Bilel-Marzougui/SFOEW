@@ -57,7 +57,7 @@
 
             <div class="proReg" *ngSwitchCase="'Patient'" >
 
-            <form [formGroup]="loginFormPro" (ngSubmit)="(loginFormPro)">
+            <form [formGroup]="loginFormPat" (ngSubmit)="loginPat(loginFormPat)">
 
 
               <mat-form-field>
@@ -74,7 +74,7 @@
 
 
               <mat-checkbox>Remember Me!</mat-checkbox>
-              <button mat-raised-button color="primary" class="login-button">
+              <button mat-raised-button color="primary" type="submit" class="login-button">
                 Sign In
               </button>
 

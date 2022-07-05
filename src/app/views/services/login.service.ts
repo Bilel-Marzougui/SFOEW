@@ -23,30 +23,38 @@ export class LoginService {
 
 
   }
+
+
   saveDataPro(token:any ){
 
+   
+
+    console.log('gbal decode  '+token)
+
 let decodeToken=this.helper.decodeToken(token)
-console.log(decodeToken)
+console.log('baad decoe '+decodeToken)
 
-localStorage.setItem('token',decodeToken)
-localStorage.setItem('role',decodeToken.role)
+localStorage.setItem('token',token)
+localStorage.setItem('token2',decodeToken.values)
 
-
-
+localStorage.setItem('email',decodeToken.email)
+localStorage.setItem("test", JSON.stringify(decodeToken));
+   
 console.log(decodeToken)
   }
 
 
-  loginSPat(email:string, password:string ){
-    return this.http.post('http://38.242.195.210:3000/patient/login',{email, password})
+  loginSPat(body:any ){
+    return this.http.post('http://38.242.195.210:3000/patient/login',body)
 
 
   }
 
   saveDataPat(token:any ){
+    console.log(token)
     let decodeToken=this.helper.decodeToken(token)
     localStorage.setItem('token',token)
-
+localStorage.setItem('name',decodeToken.name)
     console.log(decodeToken)
       }
 

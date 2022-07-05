@@ -157,7 +157,6 @@ this.loginFormPat = this.formBuilder.group({
 
 
 onStrengthChanged(strength: number) {
-  console.log('password strength = ', strength);
 }
 
 
@@ -282,6 +281,7 @@ loginPro(loginFormPro:any){
   let data=loginFormPro.value
   this.logService.loginSPro(data).subscribe(data=>{
     this.datatoken=data
+    console.log('loginpro typescript'+this.datatoken)
     this.logService.saveDataPro(this.datatoken.token)
 
 
@@ -289,17 +289,17 @@ loginPro(loginFormPro:any){
 }
 
 
-// loginPat(loginFormPat:any){
-//   this.logService.loginservice(this.doctorLog.email,this.doctorLog.password).subscribe((response)=>
+loginPat(loginFormPat:any){
+  let data=loginFormPat.value
+  this.logService.loginSPat(data).subscribe(data=>{
+    this.datatoken=data
+    console.log('loginpat typescript'+this.datatoken)
+    this.logService.saveDataPro(this.datatoken.token)
 
-//     {this.dataResponse=response
-//       this.logService.saveData=(this.dataResponse.token,this.dataResponse.name,this.dataResponse.role)
-//       console.log(this.logService.Prof.role)
-//       this.router.navigate(['/professionnel/dashboard'])
 
+  },(err:HttpErrorResponse)=>this.messageError=err.error.error)
+}
 
-//   },err=>console.log(err))
-// }
 
 onReset() {
   this.submitted = false;
