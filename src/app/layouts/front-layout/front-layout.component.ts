@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogModel, AuthComponent } from '../../views/shared-components/auth/auth.component';
 @Component({
@@ -6,7 +6,7 @@ import { DialogModel, AuthComponent } from '../../views/shared-components/auth/a
   templateUrl: './front-layout.component.html',
   styleUrls: ['./front-layout.component.css']
 })
-export class FrontLayoutComponent   {
+export class FrontLayoutComponent implements OnDestroy  {
   result: any;
 
   constructor( public dialog:MatDialog ) {
@@ -39,4 +39,13 @@ export class FrontLayoutComponent   {
 
 
   // }
-}
+  ngOnDestroy() {
+    
+  
+      this.dialog.closeAll();
+
+  
+  }
+    
+  }
+

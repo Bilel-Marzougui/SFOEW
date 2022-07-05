@@ -29,16 +29,12 @@ export class LoginService {
 
    
 
-    console.log('gbal decode  '+token)
 
 let decodeToken=this.helper.decodeToken(token)
-console.log('baad decoe '+decodeToken)
 
-localStorage.setItem('token',token)
-localStorage.setItem('token2',decodeToken.values)
 
-localStorage.setItem('email',decodeToken.email)
-localStorage.setItem("test", JSON.stringify(decodeToken));
+localStorage.setItem('token',decodeToken)
+localStorage.setItem('role',decodeToken.subject.role)
    
 console.log(decodeToken)
   }

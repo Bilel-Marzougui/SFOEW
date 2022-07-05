@@ -283,6 +283,7 @@ loginPro(loginFormPro:any){
     this.datatoken=data
     console.log('loginpro typescript'+this.datatoken)
     this.logService.saveDataPro(this.datatoken.token)
+    this.router.navigate(['/profile'])
 
 
   },(err:HttpErrorResponse)=>this.messageError=err.error.error)
@@ -295,6 +296,8 @@ loginPat(loginFormPat:any){
     this.datatoken=data
     console.log('loginpat typescript'+this.datatoken)
     this.logService.saveDataPro(this.datatoken.token)
+    this.router.navigate(['/profile'])
+
 
 
   },(err:HttpErrorResponse)=>this.messageError=err.error.error)
