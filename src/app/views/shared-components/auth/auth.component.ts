@@ -153,7 +153,6 @@ get flog() { return this.loginForm.controls; }
 public onValChange(val: any) {
   this.selectedVal = val;
   console.log(this.selectedVal)
-  this.status=(this.action+this.selectedVal)
 
 
 }
