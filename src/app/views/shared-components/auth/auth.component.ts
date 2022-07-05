@@ -8,6 +8,7 @@ import{LoginService} from '../../services/login.service'
 
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth',
@@ -18,10 +19,12 @@ import { DatePipe } from '@angular/common';
 export class AuthComponent implements OnInit{
 
 
-
+  messageError:any
   registerFormPro: FormGroup;
   registerFormPat:FormGroup;
-  loginForm:FormGroup;
+  loginFormPro:FormGroup;
+  loginFormPat:FormGroup;
+
     submitted = false;
     public selectedVal="Professionnel";
     myDate = new Date();
@@ -63,7 +66,11 @@ export class AuthComponent implements OnInit{
     rpps: '11111111111',
     role: '2'
   }
+  doctorLog={
+    email: '',
+    password: '',
 
+  }
   patient={
 
       name: 'hanen',
@@ -81,6 +88,10 @@ export class AuthComponent implements OnInit{
       added_date: '2022-05-26T09:50:18.419+00:00'
 
   }
+
+
+
+
   ngOnInit() {
 
     console.log(this.selectedVal)
@@ -126,7 +137,13 @@ export class AuthComponent implements OnInit{
 });
 
 
-this.loginForm = this.formBuilder.group({
+this.loginFormPro = this.formBuilder.group({
+
+  email: ['', Validators.required],
+  password: ['', Validators.required],
+},);
+
+this.loginFormPat = this.formBuilder.group({
 
   email: ['', Validators.required],
   password: ['', Validators.required],
@@ -146,7 +163,8 @@ onStrengthChanged(strength: number) {
 
 get f() { return this.registerFormPro.controls; }
 get fPat() { return this.registerFormPat.controls; }
-get flog() { return this.loginForm.controls; }
+get flogPro() { return this.loginFormPro.controls; }
+get flogPat() { return this.loginFormPat.controls; }
 
 
 
@@ -245,18 +263,43 @@ registerPat(infopat:any) {
 
 
 
-login(logData:any){
-  this.logService.login(logData).subscribe((response)=>
+// loginPro(loginFormPro:any){
 
-    {this.dataResponse=response
-      this.logService.saveData=(this.dataResponse.token,this.dataResponse.name,this.dataResponse.role)
-      console.log(this.logService.Prof.role)
-      this.router.navigate(['/professionnel/dashboard'])
+//   this.doctorLog.email=loginFormPro.value.email
+//   this.doctorLog.password=loginFormPro.value.password
+//   console.log(this.doctorLog)
+
+//   this.logService.loginSPro(this.doctorLog).subscribe((response)=>
+
+//     {this.dataResponse=response
+//       this.logService.saveDataPro=(this.dataResponse)
+//       console.log(this.dataResponse)
 
 
-  },err=>console.log(err))
+//   },err=>console.log(err))
+// }
+loginPro(loginFormPro:any){
+  let data=loginFormPro.value
+  this.logService.loginSPro(data).subscribe(data=>{
+    this.datatoken=data
+    this.logService.saveDataPro(this.datatoken.token)
+
+
+  },(err:HttpErrorResponse)=>this.messageError=err.error.error)
 }
 
+
+// loginPat(loginFormPat:any){
+//   this.logService.loginservice(this.doctorLog.email,this.doctorLog.password).subscribe((response)=>
+
+//     {this.dataResponse=response
+//       this.logService.saveData=(this.dataResponse.token,this.dataResponse.name,this.dataResponse.role)
+//       console.log(this.logService.Prof.role)
+//       this.router.navigate(['/professionnel/dashboard'])
+
+
+//   },err=>console.log(err))
+// }
 
 onReset() {
   this.submitted = false;
