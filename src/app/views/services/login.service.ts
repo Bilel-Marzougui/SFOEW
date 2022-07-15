@@ -8,51 +8,104 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 })
 
 export class LoginService {
-  Prof={
-    name:'',
-    role:''
-  }
-  IsLoggedIn:boolean=false
 
-   helper = new JwtHelperService();
+  helper = new JwtHelperService();
 
-  constructor(private http:HttpClient,private router:Router) { }
-
-  loginSPro(body:any){
-    return this.http.post('http://38.242.195.210:3000/doctor/login',body)
+  constructor(private http: HttpClient, private router: Router) { }
 
 
-  }
 
+  // ***************** start Professionnel Service**************************************//
 
-  saveDataPro(token:any ){
-
-   
-
-
-let decodeToken=this.helper.decodeToken(token)
-
-
-localStorage.setItem('token',decodeToken)
-localStorage.setItem('role',decodeToken.subject.role)
-   
-console.log(decodeToken)
-  }
-
-
-  loginSPat(body:any ){
-    return this.http.post('http://38.242.195.210:3000/patient/login',body)
+  loginSPro(body: any) {
+    return this.http.post('http://38.242.195.210:3000/doctor/login', body)
 
 
   }
 
-  saveDataPat(token:any ){
-    console.log(token)
-    let decodeToken=this.helper.decodeToken(token)
-    localStorage.setItem('token',token)
-localStorage.setItem('name',decodeToken.name)
+  saveDataPro(token: any) {
+
+    let decodeToken = this.helper.decodeToken(token)
+
+    localStorage.setItem('token_Pro', token)
+    localStorage.setItem('role', decodeToken.subject.role)
+    localStorage.setItem('name_Pro', decodeToken.subject.name)
+
     console.log(decodeToken)
-      }
+  }
+
+  getNamePro() {
+    let token: any = localStorage.getItem('token_Pro')
+    let decodeToken = this.helper.decodeToken(token)
+    return decodeToken.subject.name
+  }
+  LoggedInPro(){
+    let token:any=localStorage.getItem('token_Pro')
+    if(!token){
+     return false
+    }
+    let decodeToken=this.helper.decodeToken(token)
+
+
+    if(decodeToken.subject.role!==2){
+      return false
+    }
+
+    if(this.helper.isTokenExpired(token)){
+      return false
+    }
+
+    return true
+ }
+
+
+  // ***************** end Professionnel Service**************************************//
+
+
+
+
+
+  // *****************start Patient Service**************************************//
+
+  loginSPat(body: any) {
+    return this.http.post('http://38.242.195.210:3000/patient/login', body)
+
+
+  }
+
+  saveDataPat(token: any) {
+    console.log(token)
+    let decodeToken = this.helper.decodeToken(token)
+    localStorage.setItem('token_Pat', token)
+    console.log(decodeToken)
+  }
+
+
+  getNamePat() {
+    let token: any = localStorage.getItem('token_Pat')
+    let decodeToken = this.helper.decodeToken(token)
+    return decodeToken.subject.name
+  }
+  LoggedInPat(){
+    let token:any=localStorage.getItem('token_Pat')
+    if(!token){
+     return false
+    }
+
+    if(this.helper.isTokenExpired(token)){
+      return false
+    }
+
+    return true
+ }
+
+  // *****************end Patient Service**************************************//
+
+
+
+
+
+
 
 }
 

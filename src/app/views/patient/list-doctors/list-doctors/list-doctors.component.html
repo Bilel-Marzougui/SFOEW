@@ -1,0 +1,48 @@
+<div class="container rounded mt-5 bg-white p-md-5">
+  <div class="h2 font-weight-bold">Liste des docteurs</div>
+  <div class="table-responsive">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th scope="col">full Name</th>
+                  <th scope="col">phone</th>
+                  <th scope="col">job</th>
+                  <th scope="col">adresse</th>
+                  <th scope="col">status</th>
+              </tr>
+          </thead>
+          <tbody>
+
+              <tr id="spacing-row">
+                  <td></td>
+              </tr>
+              <tr class="bg-blue" *ngFor="let prof of profs;index as i" >
+                  <td class="pt-2"> <img src={{prof.photo}} class="rounded-circle" alt="">
+                      <div class="pl-lg-5 pl-md-3 pl-1 name">{{prof.name}}{{prof.lastname}} </div>
+                  </td>
+                  <td class="pt-3">{{prof.tel}}  </td>
+                  <td class="pt-3">{{prof.job}}</td>
+                  <td class="pt-3">{{prof.adresse}}</td>
+                <div *ngIf="!friend; else notfriend">
+                  <td class="pt-3"><span (click)="addDoctor()" class="fa fa-check pl-3"></span></td>
+
+                </div>
+
+                <ng-template #notfriend>
+                  <td class="pt-3"><span class="fa fa-user-plus pl-3"></span></td>
+                </ng-template>
+
+                  <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
+              </tr>
+              <tr id="spacing-row">
+                  <td></td>
+              </tr>
+
+              <tr id="spacing-row">
+                  <td></td>
+              </tr>
+
+          </tbody>
+      </table>
+  </div>
+</div>

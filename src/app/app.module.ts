@@ -27,6 +27,8 @@ import {Ng2TelInputModule} from 'ng2-tel-input';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SideBarComponent } from './views/shared-components/side-bar/side-bar.component';
+import { EditProfilComponent } from './views/patient/edit-profil/edit-profil.component';
+import { EditProfilProComponent } from './views/professionnel/edit-profil-pro/edit-profil-pro.component';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { SideBarComponent } from './views/shared-components/side-bar/side-bar.co
     NotFoundComponent,
     AuthComponent,
     SideBarComponent,
+    EditProfilComponent,
+    EditProfilProComponent,
 
   ],
   imports: [
@@ -75,7 +79,9 @@ import { SideBarComponent } from './views/shared-components/side-bar/side-bar.co
     Ng2TelInputModule
   ],
   entryComponents: [
-    AuthComponent
+    AuthComponent,
+    EditProfilComponent,
+    EditProfilProComponent
   ],
   providers: [    MatDatepickerModule,DatePipe,
   ],

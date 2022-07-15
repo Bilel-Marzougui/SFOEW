@@ -1,4 +1,3 @@
-
 <div class="parent">
   <!-- <div class="child" id="status" mat-dialog-title>{{status}}</div> -->
 
@@ -14,78 +13,86 @@
 
         <!-- login form -->
         <mat-tab label="S'identifier">
-           <div class="choix">
-            <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)" >
-              <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro" >Professionnel </mat-button-toggle>
+          <div class="choix">
+            <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style"
+              #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
+              <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">Professionnel
+              </mat-button-toggle>
               <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
             </mat-button-toggle-group>
           </div>
 
           <mat-card-content>
-            <div class="switch"  [ngSwitch]="selectedVal">
+            <div class="switch" [ngSwitch]="selectedVal">
 
-            <div class="proReg" *ngSwitchCase="'Professionnel'" >
-
-
-            <form [formGroup]="loginFormPro" (ngSubmit)="loginPro(loginFormPro)">
+              <div class="proReg" *ngSwitchCase="'Professionnel'">
 
 
-              <mat-form-field>
-                <input matInput placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && flogPro.email.errors }">
-                <mat-error *ngIf="flogPro.email.invalid">Email requis</mat-error>
-                <mat-icon matSuffix>email</mat-icon>
-              </mat-form-field>
-
-              <mat-form-field>
-                <input matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && flogPro.password.errors }">
-                <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                <mat-error *ngIf="flogPro.password.invalid">Mot de passe requis     </mat-error>
-              </mat-form-field>
+                <form [formGroup]="loginFormPro" (ngSubmit)="loginPro(loginFormPro)">
 
 
-              <mat-checkbox>Remember Me!</mat-checkbox>
-              <button mat-raised-button color="primary" class="login-button" type="submit">
-                Sign In
-              </button>
+                  <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && flogPro.email.errors }">
+                    <mat-error *ngIf="flogPro.email.invalid">Email requis</mat-error>
+                    <mat-icon matSuffix>email</mat-icon>
+                  </mat-form-field>
 
-              <!-- <button mat-raised-button class="login-button">
+                  <mat-form-field>
+                    <input matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'"
+                      formControlName="password" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && flogPro.password.errors }">
+                    <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="flogPro.password.invalid">Mot de passe requis </mat-error>
+                  </mat-form-field>
+
+
+                  <mat-checkbox>Remember Me!</mat-checkbox>
+                  <button mat-raised-button color="primary" class="login-button" type="submit">
+                    Sign In
+                  </button>
+
+                  <!-- <button mat-raised-button class="login-button">
                 Login with Google
               </button> -->
-            </form>
-            </div>
+                </form>
+              </div>
 
 
-            <div class="proReg" *ngSwitchCase="'Patient'" >
+              <div class="proReg" *ngSwitchCase="'Patient'">
 
-            <form [formGroup]="loginFormPat" (ngSubmit)="loginPat(loginFormPat)">
-
-
-              <mat-form-field>
-                <input matInput placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && flogPat.email.errors }">
-                <mat-error *ngIf="flogPat.email.invalid">Email requis</mat-error>
-                <mat-icon matSuffix>email</mat-icon>
-              </mat-form-field>
-
-              <mat-form-field>
-                <input matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && flogPat.password.errors }">
-                <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                <mat-error *ngIf="flogPat.password.invalid">Mot de passe requis     </mat-error>
-              </mat-form-field>
+                <form [formGroup]="loginFormPat" (ngSubmit)="loginPat(loginFormPat)">
 
 
-              <mat-checkbox>Remember Me!</mat-checkbox>
-              <button mat-raised-button color="primary" type="submit" class="login-button">
-                Sign In
-              </button>
+                  <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && flogPat.email.errors }">
+                    <mat-error *ngIf="flogPat.email.invalid">Email requis</mat-error>
+                    <mat-icon matSuffix>email</mat-icon>
+                  </mat-form-field>
 
-              <!-- <button mat-raised-button class="login-button">
+                  <mat-form-field>
+                    <input matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'"
+                      formControlName="password" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && flogPat.password.errors }">
+                    <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="flogPat.password.invalid">Mot de passe requis </mat-error>
+                  </mat-form-field>
+
+
+                  <mat-checkbox>Remember Me!</mat-checkbox>
+                  <button mat-raised-button color="primary" type="submit" class="login-button">
+                    Sign In
+                  </button>
+
+                  <!-- <button mat-raised-button class="login-button">
                 Login with Google
               </button> -->
-            </form>
+                </form>
+              </div>
+
+
             </div>
-
-
-          </div>
           </mat-card-content>
 
         </mat-tab>
@@ -100,303 +107,339 @@
               <!-- <h5 class="card-header">{{status}}</h5> -->
               <div class="card-body">
                 <div class="choix">
-                          <h4> <label class="im">I'm:</label>
-                          </h4>
-                <p>
-                  <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)" >
-                    <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro" >Professionnel </mat-button-toggle>
+                  <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style"
+                    #group2="matButtonToggleGroup" [value]="selectedVal2" (change)="onValChange2(group2.value)">
+                    <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">Professionnel
+                    </mat-button-toggle>
                     <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
                   </mat-button-toggle-group>
-                </p>
-               </div>
-                <div class="switch"  [ngSwitch]="selectedVal">
+                </div>
+                <div class="switch" [ngSwitch]="selectedVal2">
 
-                <div class="proReg" *ngSwitchCase="'Professionnel'" >
+                  <div class="proReg" *ngSwitchCase="'Professionnel'">
 
-                  <form class="ex1" [formGroup]="registerFormPro" (ngSubmit)="registerPro(registerFormPro)" >
-                    <div class="form-row">
-                      <!-- <h1 >Professionnel</h1> -->
+                    <form class="ex1" [formGroup]="registerFormPro" (ngSubmit)="registerPro(registerFormPro)">
+                      <div class="form-row">
+                        <!-- <h1 >Professionnel</h1> -->
 
-                      <mat-form-field>
-                            <input  matInput placeholder="Nom" type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                                <div *ngIf="f.name.errors.required"> Nom obligatoire</div>
-                            </div>
-                      </mat-form-field>
-                          <mat-form-field>
-                            <input  matInput placeholder="Prénom" type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
-                            <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                                <div *ngIf="f.lastname.errors.required">Prénom est obligatoire</div>
-                            </div>
-                          </mat-form-field>
-
-                          <mat-form-field appearance="fill">
-                            <mat-label>Date de naissance</mat-label>
-                            <input matInput [matDatepicker]="basicDatepicker" formControlName="birthday" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.birthday.errors }">
-                            <div *ngIf="submitted && f.birthday.errors" class="invalid-feedback">
-                              <div *ngIf="f.birthday.errors.required">date de naissance obligatoire</div>
+                        <mat-form-field>
+                          <input matInput placeholder="Nom" type="text" formControlName="name" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required"> Nom obligatoire</div>
                           </div>
-                            <mat-hint>MM/DD/YYYY</mat-hint>
-                            <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
-                            <mat-datepicker #basicDatepicker></mat-datepicker>
-                          </mat-form-field>
+                        </mat-form-field>
+                        <mat-form-field>
+                          <input matInput placeholder="Prénom" type="text" formControlName="lastname"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+                          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastname.errors.required">Prénom est obligatoire</div>
+                          </div>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                          <mat-label>Date de naissance</mat-label>
+                          <input matInput [matDatepicker]="basicDatepicker" formControlName="birthday"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && f.birthday.errors }">
+                          <div *ngIf="submitted && f.birthday.errors" class="invalid-feedback">
+                            <div *ngIf="f.birthday.errors.required">date de naissance obligatoire</div>
+                          </div>
+                          <mat-hint>MM/DD/YYYY</mat-hint>
+                          <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
+                          <mat-datepicker #basicDatepicker></mat-datepicker>
+                        </mat-form-field>
 
 
                         <mat-form-field>
-                        <input  matInput placeholder="Tel" type="number" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" />
-                        <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                          <input matInput placeholder="Tel" type="number" formControlName="tel" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" />
+                          <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
                             <div *ngIf="f.tel.errors.required">tel est obligatoire</div>
-                        </div>
-                      </mat-form-field>
+                          </div>
+                        </mat-form-field>
 
 
 
-                      <mat-form-field>
-                        <input  matInput placeholder="Adresse" type="text" formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }" />
-                        <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
+                        <mat-form-field>
+                          <input matInput placeholder="Adresse" type="text" formControlName="adresse"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }" />
+                          <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
                             <div *ngIf="f.adresse.errors.required">adresse est obligatoire</div>
+                          </div>
+                        </mat-form-field>
+
+
+
+
+
+                        <mat-form-field>
+                          <input matInput placeholder="Fax" type="number" formControlName="fax" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.fax.errors }" />
+                          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="f.fax.errors.required">fax obligatoire</div>
+                            <div *ngIf="f.fax.errors">fax obligatoire</div>
+
+                          </div>
+                        </mat-form-field>
+
+                        <div class="float-container">
+                          <mat-radio-group aria-label="Select an option">
+                            <div class="float-child">
+                              <mat-radio-button value="homme" formControlName="gender" class="form-control  "
+                                [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" ngDefaultControl>Homme
+                              </mat-radio-button>
+                              <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                                <div *ngIf="f.job.errors.required">job obligatoire</div>
+                              </div>
+                            </div>
+                            <div class="float-child">
+                              <mat-radio-button value="femme" formControlName="gender" class="form-control  "
+                                [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" ngDefaultControl>Femme
+                              </mat-radio-button>
+                              <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                                <div *ngIf="f.job.errors.required">job obligatoire</div>
+                              </div>
+                            </div>
+                          </mat-radio-group>
                         </div>
-                      </mat-form-field>
+
+                        <mat-form-field>
+                          <input matInput placeholder="travail" type="text" formControlName="job" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.job.errors }" />
+                          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="f.job.errors.required">travail obligatoire</div>
+                          </div>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                          <input matInput placeholder="ADELI" type="number" formControlName="adeli" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.adeli.errors }" />
+                          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="f.adeli.errors.required">adeli obligatoire</div>
+                          </div>
+                        </mat-form-field>
 
 
-
-
-
-                      <mat-form-field>
-                      <input matInput placeholder="Fax" type="number" formControlName="fax" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fax.errors }" />
-                      <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                          <div *ngIf="f.fax.errors.required">fax obligatoire</div>
-                          <div *ngIf="f.fax.errors">fax obligatoire</div>
+                        <mat-form-field>
+                          <input matInput placeholder="RPPS" type="number" formControlName="rpps" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.rpps.errors }" />
+                          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="f.rpps.errors.required">rpps obligatoire</div>
+                          </div>
+                        </mat-form-field>
 
                       </div>
-                    </mat-form-field>
-
-                    <div class="float-container">
-                  <mat-radio-group aria-label="Select an option">
-                    <div class="float-child">
-                    <mat-radio-button value="homme"  formControlName="gender" class="form-control  " [ngClass]="{ 'is-invalid': submitted && f.gender.errors }"ngDefaultControl >Homme</mat-radio-button>
-                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                      <div *ngIf="f.job.errors.required">job obligatoire</div>
-                  </div>
-                </div>
-                <div class="float-child">
-                    <mat-radio-button value="femme"  formControlName="gender" class="form-control  " [ngClass]="{ 'is-invalid': submitted && f.gender.errors }"ngDefaultControl >Femme</mat-radio-button>
-                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                      <div *ngIf="f.job.errors.required">job obligatoire</div>
-                  </div>
-                </div>
-                  </mat-radio-group>
-                </div>
-
-                  <mat-form-field>
-                  <input matInput placeholder="travail" type="text" formControlName="job" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.job.errors }" />
-                  <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                      <div *ngIf="f.job.errors.required">travail obligatoire</div>
-                  </div>
-                </mat-form-field>
-
-                <mat-form-field>
-                <input matInput placeholder="ADELI" type="number" formControlName="adeli" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adeli.errors }" />
-                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                    <div *ngIf="f.adeli.errors.required">adeli obligatoire</div>
-                </div>
-              </mat-form-field>
-
-
-              <mat-form-field>
-              <input  matInput placeholder="RPPS" type="number" formControlName="rpps" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rpps.errors }" />
-              <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                  <div *ngIf="f.rpps.errors.required">rpps obligatoire</div>
-              </div>
-            </mat-form-field>
-
-                    </div>
-                    <mat-form-field>
-                      <input   matInput placeholder="Email" type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                      <mat-form-field>
+                        <input matInput placeholder="Email" type="text" formControlName="email" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                            <div *ngIf="f.email.errors.required">Email is obligatoire</div>
-                            <div *ngIf="f.email.errors.email">Email invalide</div>
+                          <div *ngIf="f.email.errors.required">Email is obligatoire</div>
+                          <div *ngIf="f.email.errors.email">Email invalide</div>
                         </div>
                       </mat-form-field>
-                          <div class="form-row">
-                            <span class="input-placeholder">
+                      <div class="form-row">
 
-                            <mat-form-field>
-                              <input  #password matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                              <mat-hint align="end" aria-live="polite">
-                                {{password.value.length}} / {{passwordComponent.max}}
-                              </mat-hint>
+                        <mat-form-field>
+                          <input #password matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'"
+                            formControlName="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                          <mat-hint align="end" aria-live="polite">
+                            {{password.value.length}} / {{passwordComponent.max}}
+                          </mat-hint>
+                          <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}
+                          </mat-icon>
 
-                              <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Mot de passe est obligatoire</div>
+                            <div *ngIf="f.password.errors.minlength">
+                              Le mot de passe doit être au moins de 6 caractères</div>
+                          </div>
 
-                              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                <div *ngIf="f.password.errors.required">Mot de passe est obligatoire</div>
-                                <div *ngIf="f.password.errors.minlength">
-                                  Le mot de passe doit être au moins de 6 caractères</div>
-                            </div>
-                            <mat-password-strength #passwordComponent
-                            (onStrengthChanged)="onStrengthChanged($event)"
+                          <mat-password-strength #passwordComponent (onStrengthChanged)="onStrengthChanged($event)"
                             [password]="password.value">
                           </mat-password-strength>
-                          </mat-form-field>
 
-                        </span>
+                        </mat-form-field>
 
-                          <mat-form-field>
-                            <input  matInput placeholder="Confirmer le Mot de passe" [type]="hide ? 'password' : 'text'" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
-                            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                                <div *ngIf="f.confirmPassword.errors.required">Confirmation du Mot de passe est obligatoire</div>
-                                <div *ngIf="f.confirmPassword.errors.mustMatch">Mot de passe incorrect</div>
+                        <mat-form-field>
+                          <input matInput placeholder="Confirmer le Mot de passe" [type]="hide ? 'password' : 'text'"
+                            formControlName="confirmPassword" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                          <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.confirmPassword.errors.required">Confirmation du Mot de passe est obligatoire
                             </div>
-                          </mat-form-field>
-                            </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                            <div *ngIf="f.confirmPassword.errors.mustMatch">Mot de passe incorrect</div>
+                          </div>
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group form-check">
+                        <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
+                          [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
                         <label for="acceptTerms" class="form-check-label">Accepter Terms & Conditions</label>
-                        <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accepter Ts & Cs is obligatoire</div>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-primary mr-1">Register</button>
+                        <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accepter Ts & Cs is
+                          obligatoire</div>
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-primary mr-1" type="submit">Register</button>
                         <button class="btn btn-secondary" type="reset" (click)="onReset()">Annuler</button>
-                    </div>
-                </form>
-                </div>
+                      </div>
+                    </form>
+                  </div>
 
 
-                <div class="patReg"  *ngSwitchCase="'Patient'">
-                  <form class="ex1" [formGroup]="registerFormPat" (ngSubmit)="registerPat(registerFormPat)">
-                    <div class="form-row">
-                      <!-- <h1 >Patient</h1> -->
-                          <mat-form-field>
-                            <input  matInput placeholder="Nom" type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.name.errors }" />
-                            <div *ngIf="submitted && fPat.name.errors" class="invalid-feedback">
-                                <div *ngIf="fPat.name.errors.required">Nom est obligatoire </div>
-                            </div>
-                          </mat-form-field>
-                          <mat-form-field>
-                            <input  matInput placeholder="Prénom" type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.lastname.errors }" />
-                            <div *ngIf="submitted && fPat.lastname.errors" class="invalid-feedback">
-                                <div *ngIf="fPat.lastname.errors.required">Prénom est obligatoire </div>
-                            </div>
-                          </mat-form-field>
+                  <div class="patReg" *ngSwitchCase="'Patient'">
+                    <form class="ex1" [formGroup]="registerFormPat" (ngSubmit)="registerPat(registerFormPat)">
+                      <div class="form-row">
+                        <!-- <h1 >Patient</h1> -->
+                        <mat-form-field>
+                          <input matInput placeholder="Nom" type="text" formControlName="name" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && fPat.name.errors }" />
+                          <div *ngIf="submitted && fPat.name.errors" class="invalid-feedback">
+                            <div *ngIf="fPat.name.errors.required">Nom est obligatoire </div>
+                          </div>
+                        </mat-form-field>
+                        <mat-form-field>
+                          <input matInput placeholder="Prénom" type="text" formControlName="lastname"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.lastname.errors }" />
+                          <div *ngIf="submitted && fPat.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="fPat.lastname.errors.required">Prénom est obligatoire </div>
+                          </div>
+                        </mat-form-field>
 
                         <mat-form-field appearance="fill">
                           <mat-label>date de naissance</mat-label>
-                          <input matInput [matDatepicker]="picker" formControlName="birthday" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.birthday.errors }">
+                          <input matInput [matDatepicker]="picker" formControlName="birthday" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && fPat.birthday.errors }">
                           <div *ngIf="submitted && fPat.birthday.errors" class="invalid-feedback">
                             <div *ngIf="fPat.birthday.errors.required">date de naissance est obligatoire </div>
-                        </div>
+                          </div>
                           <mat-hint>MM/DD/YYYY</mat-hint>
                           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                           <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
 
                         <mat-form-field>
-                        <input  matInput placeholder="Tel" type="number" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.tel.errors }" />
-                        <div *ngIf="submitted && fPat.tel.errors" class="invalid-feedback">
+                          <input matInput placeholder="Tel" type="number" formControlName="tel" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && fPat.tel.errors }" />
+                          <div *ngIf="submitted && fPat.tel.errors" class="invalid-feedback">
                             <div *ngIf="fPat.tel.errors.required">tel est obligatoire</div>
-                        </div>
-                      </mat-form-field>
+                          </div>
+                        </mat-form-field>
 
-                      <mat-form-field>
-                      <input matInput placeholder="Adresse" type="text" formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.adresse.errors }" />
-                      <div *ngIf="submitted && fPat.adresse.errors" class="invalid-feedback">
-                          <div *ngIf="fPat.adresse.errors.required">Adresse  est obligatoire</div>
-                      </div>
-                    </mat-form-field>
-
-
-                  <div class="float-container">
-                  <mat-radio-group aria-label="Select an option">
-                    <div class="float-child">
-                    <mat-radio-button value="homme"   formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.gender.errors }"ngDefaultControl >Homme</mat-radio-button>
-                    <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
-                  </div>
-                    </div>
-                    <div class="float-child">
-
-                    <mat-radio-button value="femme"   formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.gender.errors }"ngDefaultControl >Femme</mat-radio-button>
-                    <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
-                  </div>
-                    </div>
-                  </mat-radio-group>
-                  </div>
+                        <mat-form-field>
+                          <input matInput placeholder="Adresse" type="text" formControlName="adresse"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.adresse.errors }" />
+                          <div *ngIf="submitted && fPat.adresse.errors" class="invalid-feedback">
+                            <div *ngIf="fPat.adresse.errors.required">Adresse est obligatoire</div>
+                          </div>
+                        </mat-form-field>
 
 
-
-                  <mat-form-field>
-                  <input  matInput placeholder="SSN"type="number" formControlName="ssn" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.ssn.errors }" />
-                  <div *ngIf="submitted && fPat.ssn.errors" class="invalid-feedback">
-                      <div *ngIf="fPat.ssn.errors.required">ssn est  obligatoire</div>
-                  </div>
-                </mat-form-field>
-
-
-
-                    </div>
-                  <mat-form-field>
-                        <input  matInput placeholder="Email" type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.email.errors }" />
-                        <div *ngIf="submitted && fPat.email.errors" class="invalid-feedback">
-                            <div *ngIf="fPat.email.errors.required">Email est obligatoire</div>
-                            <div *ngIf="fPat.email.errors.email">Email invalide</div>
-                        </div>
-                      </mat-form-field>
-
-                    <div class="form-row">
-
-                             <span class="input-placeholder">
-
-                            <mat-form-field>
-                              <input  #password matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.password.errors }" />
-                              <mat-hint align="end" aria-live="polite">
-                                {{password.value.length}} / {{passwordComponent.max}}
-                              </mat-hint>
-                              <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-
-                              <div *ngIf="submitted && fPat.password.errors" class="invalid-feedback">
-                                <div *ngIf="fPat.password.errors.required">Mot de passe est obligatoire</div>
-                                <div *ngIf="fPat.password.errors.minlength"> Le mot de passe doit être au moins de 6 caractères</div>
+                        <div class="float-container">
+                          <mat-radio-group aria-label="Select an option">
+                            <div class="float-child">
+                              <mat-radio-button value="homme" formControlName="gender" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fPat.gender.errors }" ngDefaultControl>Homme
+                              </mat-radio-button>
+                              <div *ngIf="submitted && fPat.gender.errors" class="invalid-feedback">
+                              </div>
                             </div>
-                            <mat-password-strength #passwordComponent
-                            (onStrengthChanged)="onStrengthChanged($event)"
+                            <div class="float-child">
+
+                              <mat-radio-button value="femme" formControlName="gender" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fPat.gender.errors }" ngDefaultControl>Femme
+                              </mat-radio-button>
+                              <div *ngIf="submitted && fPat.gender.errors" class="invalid-feedback">
+                              </div>
+                            </div>
+                          </mat-radio-group>
+                        </div>
+
+
+
+                        <mat-form-field>
+                          <input matInput placeholder="SSN" type="number" formControlName="ssn" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && fPat.ssn.errors }" />
+                          <div *ngIf="submitted && fPat.ssn.errors" class="invalid-feedback">
+                            <div *ngIf="fPat.ssn.errors.required">ssn est obligatoire</div>
+                          </div>
+                        </mat-form-field>
+
+
+
+                      </div>
+                      <mat-form-field>
+                        <input matInput placeholder="Email" type="text" formControlName="email" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && fPat.email.errors }" />
+                        <div *ngIf="submitted && fPat.email.errors" class="invalid-feedback">
+                          <div *ngIf="fPat.email.errors.required">Email est obligatoire</div>
+                          <div *ngIf="fPat.email.errors.email">Email invalide</div>
+                        </div>
+                      </mat-form-field>
+
+                      <div class="form-row">
+
+
+                        <mat-form-field>
+                          <input #password matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'"
+                            formControlName="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && fPat.password.errors }" />
+                          <mat-hint align="end" aria-live="polite">
+                            {{password.value.length}} / {{passwordComponent.max}}
+                          </mat-hint>
+                          <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}
+                          </mat-icon>
+
+                          <div *ngIf="submitted && fPat.password.errors" class="invalid-feedback">
+                            <div *ngIf="fPat.password.errors.required">Mot de passe est obligatoire</div>
+                            <div *ngIf="fPat.password.errors.minlength">
+                              Le mot de passe doit être au moins de 6 caractères</div>
+                          </div>
+
+                          <mat-password-strength #passwordComponent (onStrengthChanged)="onStrengthChanged($event)"
                             [password]="password.value">
                           </mat-password-strength>
-                          </mat-form-field>
-                        </span>
 
-                          <mat-form-field>
-                            <input matInput placeholder="Confirmer le Mot de passe" [type]="hide ? 'password' : 'text'" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.confirmPassword.errors }" />
+                        </mat-form-field>
 
-                            <div *ngIf="submitted && fPat.confirmPassword.errors" class="invalid-feedback">
-                                <div *ngIf="fPat.confirmPassword.errors.required">Confirmation du mot de passe obligatoire</div>
-                                <div *ngIf="fPat.confirmPassword.errors.mustMatch">Mot de passe est invalide</div>
+                        <mat-form-field>
+                          <input matInput placeholder="Confirmer le Mot de passe" [type]="hide ? 'password' : 'text'"
+                            formControlName="confirmPassword" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && fPat.confirmPassword.errors }" />
+
+                          <div *ngIf="submitted && fPat.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="fPat.confirmPassword.errors.required">Confirmation du mot de passe obligatoire
                             </div>
-                          </mat-form-field>
-                            </div>
-                    <div class="form-group form-check">
-                        <input  type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && fPat.acceptTerms.errors }" />
+                            <div *ngIf="fPat.confirmPassword.errors.mustMatch">Mot de passe est invalide</div>
+                          </div>
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group form-check">
+                        <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
+                          [ngClass]="{ 'is-invalid': submitted && fPat.acceptTerms.errors }" />
                         <label for="acceptTerms" class="form-check-label">Accepter les Termes & Conditions</label>
-                        <div *ngIf="submitted && fPat.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-primary mr-1">Register</button>
+                        <div *ngIf="submitted && fPat.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is
+                          required</div>
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-primary mr-1" type="submit">Register</button>
                         <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
-                    </div>
-                </form>
+                      </div>
+                    </form>
 
 
+                  </div>
                 </div>
+
+
               </div>
+
+
+
+
 
 
             </div>
-
-
-
-
-
-
-              </div>
 
           </mat-card-content>
         </mat-tab>
@@ -411,4 +454,3 @@
 
 
 </mat-dialog-content>
-

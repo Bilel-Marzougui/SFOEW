@@ -1,0 +1,44 @@
+
+mat-dialog-content{
+  height: auto;
+  }
+
+  mat-card {
+    width:100%;
+    margin: 10% auto;
+    border-radius: 8px;
+
+  }
+
+  mat-card-content {
+    margin-top: 20px;
+    width: 400px;
+    overflow: hidden;
+
+  }
+
+
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent
+     /*Remove scrollbar space
+    background: transparent;  /*Optional: just make scrollbar invisible*/
+  }
+  /*Optional: show position indicator in red*/
+
+
+
+  .container {
+    height: 80px;
+    position: relative;
+    border: 3px
+  }
+
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
