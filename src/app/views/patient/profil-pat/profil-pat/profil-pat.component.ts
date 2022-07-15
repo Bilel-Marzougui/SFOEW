@@ -1,0 +1,69 @@
+import { Component, OnChanges, OnInit } from '@angular/core';
+import{AuthPatientService} from '../../../services/patient/auth-patient.service'
+import{Patient} from '../../../interfaces/patient.interface'
+import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { EditProfilComponent } from '../../edit-profil/edit-profil.component';
+import { UpdProfilPatientService } from 'src/app/views/services/patient/upd-profil-patient.service';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+
+
+}
+@Component({
+  selector: 'app-profil-pat',
+  templateUrl: './profil-pat.component.html',
+  styleUrls: ['./profil-pat.component.css']
+})
+export class ProfilPatComponent implements OnInit {
+name:any
+patient:Patient
+id:any
+test:Patient
+
+  constructor(public  updateservice:UpdProfilPatientService ,public  authPat:AuthPatientService,public dialog: MatDialog) {
+
+      this.id=this.authPat.geid()
+
+    this.updateservice.getPatient(this.id).subscribe(response=>
+      this.test = response
+      )
+      console.log(this.test)
+
+    }
+
+  ngOnInit(): void {
+      // this.patient=this.authPat.getUsername()
+
+
+
+  }
+
+  // getPatients() {
+
+  //   this.updateservice.getPatient(this.id).subscribe(response=>{
+  //     this.test = response;
+  //     console.log('this.response'+response)
+  //     console.log('this.response'+ this.test.name)
+  //   })
+
+
+  //  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    this.dialog.open(EditProfilComponent, dialogConfig);
+}
+
+
+
+
+logout() {
+  const dialogConfig = new MatDialogConfig();
+
+}
+
+
+  }

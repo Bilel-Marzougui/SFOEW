@@ -5,10 +5,12 @@ import { LayoutsRoutingModule } from './layouts-routing.module';
 import { FrontLayoutComponent } from './front-layout/front-layout.component';
 import { RouterModule } from '@angular/router';
 import { MatIconModule} from '@angular/material/icon';
+import { PatientLayoutComponent } from './patient-layout/patient-layout.component';
+import { ProfessionnelLayoutComponent } from './professionnel-layout/professionnel-layout.component';
 
 
 @NgModule({
-  declarations: [FrontLayoutComponent],
+  declarations: [FrontLayoutComponent, PatientLayoutComponent, ProfessionnelLayoutComponent],
   imports: [
     CommonModule,
     LayoutsRoutingModule,

@@ -5,7 +5,8 @@ import {Validators} from '@angular/forms';
  import { MustMatch } from '../../helper/MustMatch.validator';
 import{RegisterService} from '../../services/register.service'
 import{LoginService} from '../../services/login.service'
-
+import{AuthPatientService} from '../../services/patient/auth-patient.service'
+import{AuthProfessionnelService} from '../../services/professionnel/auth-professionnel.service'
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -19,7 +20,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AuthComponent implements OnInit{
 
 
-  messageError:any
+  messageError:any;
   registerFormPro: FormGroup;
   registerFormPat:FormGroup;
   loginFormPro:FormGroup;
@@ -27,11 +28,15 @@ export class AuthComponent implements OnInit{
 
     submitted = false;
     public selectedVal="Professionnel";
+    public selectedVal2="Professionnel";
+
+
+
     myDate = new Date();
-    datatoken:any
-    dataResponse:any
-    status:any
-    action:any
+    datatoken:any;
+    dataResponse:any;
+    status:any;
+    action:any;
     showDetails: boolean;
 
     hide : boolean = true;
@@ -41,13 +46,15 @@ export class AuthComponent implements OnInit{
     }
 
 
-  constructor(private datePipe: DatePipe,public dialogRef: MatDialogRef<AuthComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogModel,private formBuilder: FormBuilder, private logService:LoginService ,private regService:RegisterService ,private router:Router)  {
-    // Update view with given values
-
-
-
-  }
+  constructor(
+    private datePipe: DatePipe,
+    public dialogRef: MatDialogRef<AuthComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogModel,
+    private formBuilder: FormBuilder, private logService:LoginService ,
+    private regService:RegisterService ,
+    private AuthPatient:AuthPatientService ,
+    private AuthProfessionnel:AuthProfessionnelService ,
+    private router:Router)  {}
 
   doctor={
     photo: 'undefined',
@@ -95,6 +102,7 @@ export class AuthComponent implements OnInit{
   ngOnInit() {
 
     console.log(this.selectedVal)
+    console.log(this.selectedVal2)
 
     this.registerFormPro = this.formBuilder.group({
 
@@ -169,11 +177,19 @@ get flogPat() { return this.loginFormPat.controls; }
 
 public onValChange(val: any) {
   this.selectedVal = val;
-  console.log(this.selectedVal)
+  // console.log(this.selectedVal)
   this.status=(this.action+this.selectedVal)
 
 
 }
+public onValChange2(val: any) {
+  this.selectedVal2 = val;
+  // console.log(this.selectedVal2)
+  this.status=(this.action+this.selectedVal2)
+
+
+}
+
   onConfirm(): void {
     // Close the dialog, return true
     this.dialogRef.close(false);
@@ -184,6 +200,7 @@ public onValChange(val: any) {
     this.dialogRef.close(false);
   }
 
+// *********register professionnel****************//
 
 registerPro(info:any) {
   this.doctor.name=info.value.name
@@ -202,9 +219,8 @@ registerPro(info:any) {
   this.doctor.role="2"
 
 
-
   console.log("doctor form",this.doctor)
- this.regService.registerProf(this.doctor).subscribe(data=>{
+ this.AuthProfessionnel.registerProf(this.doctor).subscribe(data=>{
   console.log(data)
 
  })
@@ -214,19 +230,12 @@ registerPro(info:any) {
       return;
   }
   // display form values on success
-  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerFormPro.value, null, 4));
 
 console.log('data is '+this.registerFormPro.value)
 let data=info.value
 
-
-
-
 }
-
-
-
-
+// *********register patient****************//
 
 registerPat(infopat:any) {
   console.log(" form",infopat)
@@ -245,8 +254,10 @@ registerPat(infopat:any) {
   this.patient.ssn=infopat.value.ssn
 
   console.log("patient form",this.patient)
-  this.regService.registerPatient(this.patient).subscribe(data=>{
+  this.AuthPatient.registerPatient(this.patient).subscribe(data=>{
    console.log(data)
+   this.router.navigate(['/'])
+
   })
   this.submitted = true;
 
@@ -255,48 +266,28 @@ registerPat(infopat:any) {
       return;
   }
 
-  // display form values on success
-  // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerFormPat.value, null, 4));
+
 }
+// *********login professionnel****************//
 
-
-
-
-// loginPro(loginFormPro:any){
-
-//   this.doctorLog.email=loginFormPro.value.email
-//   this.doctorLog.password=loginFormPro.value.password
-//   console.log(this.doctorLog)
-
-//   this.logService.loginSPro(this.doctorLog).subscribe((response)=>
-
-//     {this.dataResponse=response
-//       this.logService.saveDataPro=(this.dataResponse)
-//       console.log(this.dataResponse)
-
-
-//   },err=>console.log(err))
-// }
 loginPro(loginFormPro:any){
   let data=loginFormPro.value
-  this.logService.loginSPro(data).subscribe(data=>{
+  this.AuthProfessionnel.loginSPro(data).subscribe(data=>{
     this.datatoken=data
-    console.log('loginpro typescript'+this.datatoken)
-    this.logService.saveDataPro(this.datatoken.token)
-    this.router.navigate(['/profile'])
+    this.AuthProfessionnel.saveDataPro(this.datatoken.token)
+    this.router.navigate(['/professionnel'])
 
 
   },(err:HttpErrorResponse)=>this.messageError=err.error.error)
 }
 
-
+// *********login patient****************//
 loginPat(loginFormPat:any){
   let data=loginFormPat.value
-  this.logService.loginSPat(data).subscribe(data=>{
+  this.AuthPatient.loginSPat(data).subscribe(data=>{
     this.datatoken=data
-    console.log('loginpat typescript'+this.datatoken)
-    this.logService.saveDataPro(this.datatoken.token)
-    this.router.navigate(['/profile'])
+    this.AuthPatient.saveDataPat(this.datatoken.token)
+    this.router.navigate(['/patient'])
 
 
 
@@ -311,14 +302,7 @@ onReset() {
 
 }
 
-
-
-
-
 }
-
-
-
 
 export class DialogModel {
   constructor(public title: string, public message: string) {
