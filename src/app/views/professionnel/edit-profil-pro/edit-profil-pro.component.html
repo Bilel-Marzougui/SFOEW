@@ -22,7 +22,7 @@
                   </div>
                   <div class="modal-body">
                     <!-- form update start here -->
-                    <form #f="ngForm" (ngSubmit)="updatenewstudent(f)">
+                    <form #f="ngForm" (ngSubmit)="updProfil(f)">
                       <!-- firstName validation start here -->
                       <div class="form-group">
 
@@ -122,7 +122,7 @@
                       </div>
                       <div class="container">
                         <div class="center">
-                      <button class="btn btn-primary" type="submit" (click)="exit()"[disabled]="f.invalid">Update profile</button>
+                      <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Update profile</button>
                     </div>
                   </div>
                     </form>

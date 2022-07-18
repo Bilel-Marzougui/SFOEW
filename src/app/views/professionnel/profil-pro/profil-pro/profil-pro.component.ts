@@ -13,8 +13,10 @@ import { EditProfilProComponent } from '../../edit-profil-pro/edit-profil-pro.co
 export class ProfilProComponent implements OnInit {
   name:any
 
+
 id:any
 prof:Professionnel
+fileName = '';
   constructor(private updateservice:UpdProfilProServiceService,private authPro:AuthProfessionnelService,public dialog: MatDialog) {
     this.id=this.authPro.geid()
 
@@ -27,6 +29,23 @@ prof:Professionnel
   ngOnInit(): void {
 
   }
+  onFileSelected(event) {
+
+    const file:File = event.target.files[0];
+
+    if (file) {
+
+        this.fileName = file.name;
+
+        const formData = new FormData();
+
+        formData.append("thumbnail", file);
+
+          this.updateservice.updPhotoPro(this.id,formData).subscribe(response=>
+            console.log('updated photo response'+response.photo)
+            )
+
+    }}
   openDialog() {
     const dialogConfig = new MatDialogConfig();
 
