@@ -22,6 +22,18 @@ export class UpdProfilProServiceService {
        return this.http.put<any>(`${this.URL}`+'doctor/'+id,body,{headers:headers});
 
   }
+  updPhotoPro(id:any,body:any){
+
+    console.log(id,body)
+    console.log(this.token)
+    const token=localStorage.getItem('token_Pro')
+    const headers=new HttpHeaders().set('authorization','Bearer '+token)
+
+
+       return this.http.put<any>(`${this.URL}`+'doctor/updatephoto/'+id,body,{headers:headers});
+
+     }
+
   getProf(id:any){
     const token=localStorage.getItem('token_Pro')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)

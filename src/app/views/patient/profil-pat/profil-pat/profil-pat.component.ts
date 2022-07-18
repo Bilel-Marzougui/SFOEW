@@ -9,7 +9,6 @@ export interface DialogData {
   animal: string;
   name: string;
 
-
 }
 @Component({
   selector: 'app-profil-pat',
@@ -21,7 +20,9 @@ name:any
 patient:Patient
 id:any
 test:Patient
-
+photo:any;
+files: any[];
+fileName = '';
   constructor(public  updateservice:UpdProfilPatientService ,public  authPat:AuthPatientService,public dialog: MatDialog) {
 
       this.id=this.authPat.geid()
@@ -30,27 +31,32 @@ test:Patient
       this.test = response
       )
       console.log(this.test)
+      console.log(this.photo)
+
 
     }
 
   ngOnInit(): void {
-      // this.patient=this.authPat.getUsername()
-
-
 
   }
 
-  // getPatients() {
+  onFileSelected(event) {
 
-  //   this.updateservice.getPatient(this.id).subscribe(response=>{
-  //     this.test = response;
-  //     console.log('this.response'+response)
-  //     console.log('this.response'+ this.test.name)
-  //   })
+    const file:File = event.target.files[0];
 
+    if (file) {
 
-  //  }
+        this.fileName = file.name;
 
+        const formData = new FormData();
+
+        formData.append("thumbnail", file);
+
+        this.updateservice.updPhotoPat( this.id,formData).subscribe(response=>
+          console.log('updated photo response'+response.photo)
+          )
+    }
+}
   openDialog() {
     const dialogConfig = new MatDialogConfig();
 
