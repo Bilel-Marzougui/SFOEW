@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogModel, AuthComponent } from '../../views/shared-components/auth/auth.component';
 @Component({
@@ -6,30 +6,25 @@ import { DialogModel, AuthComponent } from '../../views/shared-components/auth/a
   templateUrl: './front-layout.component.html',
   styleUrls: ['./front-layout.component.css']
 })
-export class FrontLayoutComponent   {
+export class FrontLayoutComponent implements OnDestroy  {
   result: any;
 
   constructor( public dialog:MatDialog ) {
+
   }
+
   openDialog() {
     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-
-    dialogConfig.data = {
-        id: 1,
-        title: 'Angular For Beginners'
-    };
-
     this.dialog.open(AuthComponent, dialogConfig);
 
-    const dialogRef = this.dialog.open(AuthComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(
-        data => console.log("Dialog output:", data)
-    );
 }
+ scrollWin() {
+  window.scrollTo(0, 500);
+}
+
+
 
   // confirmDialog(): void {
   //   const message = `Are you sure you want to delete?`;
@@ -44,4 +39,13 @@ export class FrontLayoutComponent   {
 
 
   // }
-}
+  ngOnDestroy() {
+    
+  
+      this.dialog.closeAll();
+
+  
+  }
+    
+  }
+
