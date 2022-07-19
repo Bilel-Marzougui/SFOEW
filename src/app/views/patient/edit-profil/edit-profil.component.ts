@@ -40,7 +40,7 @@ export class EditProfilComponent implements OnInit, OnDestroy {
   }
   messageSuccess = ''
 
-  constructor(private formBuilder: FormBuilder, public updateservice: UpdProfilPatientService, private datePipe: DatePipe,
+  constructor( public updateservice: UpdProfilPatientService, 
     public dialogRef: MatDialogRef<EditProfilComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogModel, public authPat: AuthPatientService) {
     this.id = this.authPat.geid()
@@ -108,7 +108,6 @@ export class EditProfilComponent implements OnInit, OnDestroy {
 
   updProfil(f: any) {
 
-    console.log(" form", f)
     let data = f.value
     this.obsUpd = this.updateservice.updatePatient(this.id, data).subscribe(response => {
       location.reload();
