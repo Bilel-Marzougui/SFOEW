@@ -29,13 +29,14 @@ export class ListDoctorsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  demande = {patient: "", doctor: ""}
 
   addDoctor(idPro: any,) {
 
-    console.log()
-
-    this.obsAdd= this.DemandeService.AddDoctor(idPro).subscribe(response=>{
-      console.log(response)
+    this.demande.doctor=idPro
+    this.demande.patient=this.idPat
+    this.obsAdd= this.DemandeService.AddDoctor(this.demande).subscribe(response=>{
+      console.log("demande response "+response.value)
 
 
     })
