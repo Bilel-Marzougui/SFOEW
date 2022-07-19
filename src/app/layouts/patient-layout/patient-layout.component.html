@@ -26,9 +26,7 @@
           <hr class="sidebar-divider">
 
           <!-- Heading -->
-          <div class="sidebar-heading">
-              Interface
-          </div>
+       
 
           <!-- Nav Item - Pages Collapse Menu -->
           <li class="nav-item">
@@ -63,9 +61,7 @@
           <hr class="sidebar-divider">
 
           <!-- Heading -->
-          <div class="sidebar-heading">
-              Addons
-          </div>
+       
 
           <!-- Nav Item - Pages Collapse Menu -->
           <li class="nav-item">
@@ -106,16 +102,16 @@
           <hr class="sidebar-divider d-none d-md-block">
 
           <!-- Sidebar Toggler (Sidebar) -->
-          <div class="text-center d-none d-md-inline">
+          <!-- <div class="text-center d-none d-md-inline">
               <button class="rounded-circle border-0" id="sidebarToggle"></button>
-          </div>
+          </div> -->
 
           <!-- Sidebar Message -->
-          <div class="sidebar-card d-none d-lg-flex">
+          <!-- <div class="sidebar-card d-none d-lg-flex">
               <img class="sidebar-card-illustration mb-2" src="" alt="...">
               <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
               <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-          </div>
+          </div> -->
 
       </ul>
       <!-- End of Sidebar -->
@@ -130,9 +126,9 @@
               <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                   <!-- Sidebar Toggle (Topbar) -->
-                  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                  <!-- <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                       <i class="fa fa-bars"></i>
-                  </button>
+                  </button> -->
 
                   <!-- Topbar Search -->
                   <form
@@ -242,7 +238,7 @@
                               </h6>
                               <a class="dropdown-item d-flex align-items-center" href="#">
                                   <div class="dropdown-list-image mr-3">
-                                      <img class="rounded-circle" src=""
+                                      <img class="rounded-circle" src="../../../app/../assets/img/avatar.jpg"
                                           alt="...">
                                       <div class="status-indicator bg-success"></div>
                                   </div>
@@ -278,7 +274,7 @@
                               </a>
                               <a class="dropdown-item d-flex align-items-center" href="#">
                                   <div class="dropdown-list-image mr-3">
-                                      <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                      <img class="rounded-circle" src="../../../assets/img/avatar.jpg"
                                           alt="...">
                                       <div class="status-indicator bg-success"></div>
                                   </div>
@@ -296,12 +292,16 @@
 
                       <!-- Nav Item - User Information -->
                       <li class="nav-item dropdown no-arrow">
-                          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <pre> {{dataPatient.name}} {{dataPatient.lastname}}</pre></span>
-                              <img class="img-profile rounded-circle"
-                                  src="">
-                          </a>
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{dataPatient.name}} {{dataPatient.lastname}}</span>
+                        <div class="rotation">
+                          <img class="img-profile rounded-circle"
+                          src="../../../assets/img/avatar.jpg">
+
+                        </div>
+                        
+                    </a>
                           <!-- Dropdown - User Information -->
                           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                               aria-labelledby="userDropdown">

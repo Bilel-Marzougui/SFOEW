@@ -2,3 +2,6 @@ img{
     height: 50px;
     width: 50px;
     transform: rotate(15deg);}
+.rotation{
+    transform: rotate(350deg);
+}
