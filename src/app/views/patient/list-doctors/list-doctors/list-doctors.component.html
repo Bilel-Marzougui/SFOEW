@@ -17,7 +17,9 @@
                   <td></td>
               </tr>
               <tr class="bg-blue" *ngFor="let prof of profs;index as i"  >
-                  <td class="pt-2"> <img src={{prof.photo}} class="rounded-circle" alt="">
+                  <td class="pt-2"> 
+                    <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
+                    <img class="img-profile rounded-circle" src="../../../assets/img/avat.jpg">
                       <div class="pl-lg-5 pl-md-3 pl-1 name"  >{{prof.name}} {{prof.lastname}} </div>
                   </td>
                   <td class="pt-3">{{prof.adresse}}</td>
