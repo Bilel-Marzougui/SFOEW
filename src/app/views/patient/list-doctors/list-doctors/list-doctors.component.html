@@ -1,50 +1,91 @@
 <div class="container rounded mt-5 bg-white p-md-5">
-  <div class="h2 font-weight-bold">Liste des docteurs</div>
+
+  <div class="container" style="width: 50%">
+    <div class="h2 font-weight-bold">Liste des docteurs</div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchDoctor"  />
+    </div>
+  </div>
   <div class="table-responsive">
-      <table class="table">
-          <thead>
-              <tr>
-                  <th scope="col" >full Name</th>
-                  <th scope="col">phone</th>
-                  <th scope="col">job</th>
-                  <th scope="col">adresse</th>
-                  <th scope="col">status</th>
-              </tr>
-          </thead>
-          <tbody>
 
-              <tr id="spacing-row">
-                  <td></td>
-              </tr>
-              <tr class="bg-blue" *ngFor="let prof of profs;index as i"  >
-                  <td class="pt-2"> <img src={{prof.photo}} class="rounded-circle" alt="">
-                      <div class="pl-lg-5 pl-md-3 pl-1 name"  >{{prof.name}}{{prof.lastname}} </div>
-                  </td>
-                  <td class="pt-3">{{prof.tel}}  </td>
-                  <td class="pt-3">{{prof.job}}</td>
-                  <td class="pt-3">{{prof.adresse}}</td>
-                <div *ngIf="friend; else notfriend" >
-                  <td class="pt-3">
-                    <span (click)="addDoctor(prof._id)" class="fa fa-user-plus pl-3" ></span>
-                  </td>
+    <table class="table">
 
-                </div>
+      <thead>
+        <tr>
+          <th scope="col">Nom et prénom </th>
+          <th scope="col">Adresse</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Télèphone</th>
+          <th scope="col">Invitation</th>
+        </tr>
+      </thead>
+      <tbody>
 
-                <ng-template #notfriend>
-                  <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
-                </ng-template>
+        <tr id="spacing-row">
+          <td></td>
+        </tr>
+        <tr class="bg-blue" *ngFor="let prof of profs | filter:searchDoctor">
+          <td class="pt-2">
+            <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
+            <img class="img-profile rounded-circle" src="../../../assets/img/avat.jpg">
+            <div class="pl-lg-5 pl-md-3 pl-1 name" data-toggle="modal" data-target="#exampleModal"
+              (click)="getId(prof)">{{prof.name}} {{prof.lastname}} </div>
+          </td>
+          <td class="pt-3">{{prof.adresse}}</td>
+          <td class="pt-3">{{prof.email}}</td>
+          <td class="pt-3">{{prof.tel}} </td>
+          <div *ngIf="friend; else notfriend">
+            <td class="pt-3">
+              <span (click)="addDoctor(prof._id)" class="fa fa-user-plus pl-3">
+              </span>
 
-                  <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
-              </tr>
-              <tr id="spacing-row">
-                  <td></td>
-              </tr>
+            </td>
 
-              <tr id="spacing-row">
-                  <td></td>
-              </tr>
+          </div>
 
-          </tbody>
-      </table>
+          <ng-template #notfriend>
+            <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
+          </ng-template>
+
+          <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
+        </tr>
+        <tr id="spacing-row">
+          <td></td>
+        </tr>
+
+        <tr id="spacing-row">
+          <td></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="added">
+  <div class="alert alert-primary" role="alert">
+    A simple primary alert—check it out!
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>

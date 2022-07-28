@@ -1,0 +1,80 @@
+<div class="container">
+
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titre</th>
+                <th scope="col">date de création</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody *ngFor=" let form of forms ; let i =index">
+            <tr>
+                <th scope="row">{{i+1}}</th>
+                <td>{{form.title}}</td>
+                <td> {{form.created_date}}</td>
+                <td><i class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"  (click)="getFormId(form._id)"></i>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container rounded mt-5 bg-white p-md-5">
+                    <div class="h2 font-weight-bold">liste des contacts</div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nom et prénom </th>
+                                    <th scope="col">Adresse</th>
+                                    <th scope="col">send</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr class="bg-blue" *ngFor="let contact of contacts;index as i"
+                                   >
+                                    <td class="pt-2" >
+                                        <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
+                                        <!-- <img class="img-profile rounded-circle" src="../../../assets/img/avat.jpg"> -->
+                                        {{contact.patients.name}} {{contact.patients.lastname}}
+                                    </td>
+                                    <td class="pt-3">{{contact.patients.email}}</td>
+                                    <td><i class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal"
+                                            data-target="#exampleModal"   (click)="affectForm(contact.patients._id)"></i></td>
+
+                                </tr>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">send to all <i class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal"
+                    data-target="#exampleModal"></i></button>
+                <button type="button" class="btn btn-secondary" >Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

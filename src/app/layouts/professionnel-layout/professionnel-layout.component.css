@@ -1,0 +1,10 @@
+img{
+    height: 50px;
+    width: 50px;
+    transform: rotate(15deg);}
+.rotation{
+    transform: rotate(350deg);
+}
+.rotation2{
+        transform: rotate(360deg);
+    }

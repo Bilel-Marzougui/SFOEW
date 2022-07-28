@@ -9,6 +9,7 @@ import { UpdProfilPatientService } from '../../services/patient/upd-profil-patie
 import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-profil',
@@ -40,7 +41,7 @@ export class EditProfilComponent implements OnInit, OnDestroy {
   }
   messageSuccess = ''
 
-  constructor(private formBuilder: FormBuilder, public updateservice: UpdProfilPatientService, private datePipe: DatePipe,
+  constructor( private snackBar:MatSnackBar,public updateservice: UpdProfilPatientService, 
     public dialogRef: MatDialogRef<EditProfilComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogModel, public authPat: AuthPatientService) {
     this.id = this.authPat.geid()
@@ -108,12 +109,30 @@ export class EditProfilComponent implements OnInit, OnDestroy {
 
   updProfil(f: any) {
 
-    console.log(" form", f)
     let data = f.value
     this.obsUpd = this.updateservice.updatePatient(this.id, data).subscribe(response => {
       location.reload();
+      this.snackBar.open(" profile updated successfully " ,"×", {
 
-    })
+        duration: 5000,
+
+        // here specify the position
+
+        verticalPosition: 'top',
+        panelClass:'success'
+
+      });
+
+    },error=> this.snackBar.open(" profile not updated " ,"×", {
+
+      duration: 5000,
+
+      // here specify the position
+
+      verticalPosition: 'top',
+      panelClass:'error'
+
+    }))
 
   }
   exit() {

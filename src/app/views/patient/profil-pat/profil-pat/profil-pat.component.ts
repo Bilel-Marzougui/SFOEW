@@ -4,6 +4,7 @@ import{Patient} from '../../../interfaces/patient.interface'
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EditProfilComponent } from '../../edit-profil/edit-profil.component';
 import { UpdProfilPatientService } from 'src/app/views/services/patient/upd-profil-patient.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface DialogData {
   animal: string;
@@ -23,15 +24,13 @@ test:Patient
 photo:any;
 files: any[];
 fileName = '';
-  constructor(public  updateservice:UpdProfilPatientService ,public  authPat:AuthPatientService,public dialog: MatDialog) {
+  constructor(private snackBar:MatSnackBar,public  updateservice:UpdProfilPatientService ,public  authPat:AuthPatientService,public dialog: MatDialog) {
 
       this.id=this.authPat.geid()
 
     this.updateservice.getPatient(this.id).subscribe(response=>
       this.test = response
       )
-      console.log(this.test)
-      console.log(this.photo)
 
 
     }
@@ -52,8 +51,27 @@ fileName = '';
 
         formData.append("thumbnail", file);
 
-        this.updateservice.updPhotoPat( this.id,formData).subscribe(response=>
-          console.log('updated photo response'+response.photo)
+        this.updateservice.updPhotoPat( this.id,formData).subscribe(response=>{
+          this.snackBar.open(" photo updated successfully " ,"×", {
+
+            duration: 5000,
+    
+            // here specify the position
+    
+            verticalPosition: 'top',
+            panelClass:'success'
+    
+          });
+        },error=> this.snackBar.open(" photo not updated" ,"×", {
+
+          duration: 5000,
+    
+          // here specify the position
+    
+          verticalPosition: 'top',
+          panelClass:'error'
+    
+        })
           )
     }
 }

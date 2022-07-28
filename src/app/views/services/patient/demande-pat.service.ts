@@ -18,7 +18,7 @@ export class DemandePatService {
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
 
-       return this.http.post<any>(`${this.URL}`+'',body,{headers:headers});
+       return this.http.post<any>(`${this.URL}`+'demande/adddemande',body,{headers:headers});
 
      }
 

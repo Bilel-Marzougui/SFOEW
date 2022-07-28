@@ -8,6 +8,7 @@ import { UpdProfilProServiceService } from '../../services/professionnel/upd-pro
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -40,7 +41,7 @@ export class EditProfilProComponent implements OnInit, OnDestroy {
 
 
   }
-  constructor(private formBuilder: FormBuilder, public updateservice: UpdProfilProServiceService, private router: Router,
+  constructor(private snackBar:MatSnackBar,private formBuilder: FormBuilder, public updateservice: UpdProfilProServiceService, private router: Router,
     public dialogRef: MatDialogRef<EditProfilProComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogModel, public authPro: AuthProfessionnelService) {
 
@@ -125,6 +126,16 @@ export class EditProfilProComponent implements OnInit, OnDestroy {
     let data = f.value
     this.updateservice.updateprof(this.id, data).subscribe(response => {
       location.reload();
+      this.snackBar.open(" profile updated " ,"×", {
+
+        duration: 5000,
+
+        // here specify the position
+
+        verticalPosition: 'top',
+        panelClass:'success'
+
+      });
 
     })
 
@@ -134,7 +145,6 @@ export class EditProfilProComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.obsGet.unsubscribe
-    this.obsUpd.unsubscribe
 
 
   }

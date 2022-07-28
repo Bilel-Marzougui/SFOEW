@@ -81,3 +81,29 @@ img {
 .container{
   width: 100%;
 }
+.pl-lg-5 {
+    color: black; 
+  }
+.pt-3{ 
+      color: black; 
+  }
+.fa { 
+    color: orangered; 
+}
+img.details{
+    width: 30%;
+    height: 30%;
+ 
+}
+div.cont{
+    display: flex;
+    justify-content: center;
+}
+/* .fa:hover {
+    color: darkblue;
+  } */
+  .alert {
+   
+   
+
+}
