@@ -29,6 +29,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { SideBarComponent } from './views/shared-components/side-bar/side-bar.component';
 import { EditProfilComponent } from './views/patient/edit-profil/edit-profil.component';
 import { EditProfilProComponent } from './views/professionnel/edit-profil-pro/edit-profil-pro.component';
+import { InvitationsComponent } from './views/professionnel/invitations/invitations/invitations.component';
+import { InvitationsModule } from './views/professionnel/invitations/invitations.module';
+import { ContactModule } from './views/front/contact/contact.module';
+import { MatTableModule } from '@angular/material/table'  
+import { MatSortModule } from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 @NgModule({
@@ -39,6 +47,7 @@ import { EditProfilProComponent } from './views/professionnel/edit-profil-pro/ed
     SideBarComponent,
     EditProfilComponent,
     EditProfilProComponent,
+  
 
   ],
   imports: [
@@ -65,6 +74,12 @@ import { EditProfilProComponent } from './views/professionnel/edit-profil-pro/ed
     HttpClientModule,
     MatPasswordStrengthModule,
     MatToolbarModule,
+    InvitationsModule,
+    MatTableModule,
+    MatSortModule,
+    MatTableModule,
+    MatSnackBarModule,
+    Ng2SearchPipeModule
 
 
 

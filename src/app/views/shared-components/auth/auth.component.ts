@@ -10,6 +10,7 @@ import{AuthProfessionnelService} from '../../services/professionnel/auth-profess
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-auth',
@@ -47,6 +48,7 @@ export class AuthComponent implements OnInit{
 
 
   constructor(
+    private snackBar:MatSnackBar,
     private datePipe: DatePipe,
     public dialogRef: MatDialogRef<AuthComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogModel,
@@ -222,6 +224,16 @@ registerPro(info:any) {
   console.log("doctor form",this.doctor)
  this.AuthProfessionnel.registerProf(this.doctor).subscribe(data=>{
   console.log(data)
+  this.snackBar.open(" register successfully " ,"×", {
+
+    duration: 5000,
+
+    // here specify the position
+
+    verticalPosition: 'top',
+    panelClass:'success'
+
+  });
 
  })
   this.submitted = true;
@@ -256,6 +268,16 @@ registerPat(infopat:any) {
   console.log("patient form",this.patient)
   this.AuthPatient.registerPatient(this.patient).subscribe(data=>{
    console.log(data)
+   this.snackBar.open(" register successfully " ,"×", {
+
+    duration: 5000,
+
+    // here specify the position
+
+    verticalPosition: 'top',
+    panelClass:'success'
+
+  });
    this.router.navigate(['/'])
 
   })

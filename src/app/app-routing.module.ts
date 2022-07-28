@@ -25,9 +25,12 @@ const routes: Routes = [
 
   {path:'professionnel',component:ProfessionnelLayoutComponent,canActivate:[GuardProfessionnelGuard],children:[
     {path:'profil',loadChildren:()=>import('./views/professionnel/profil-pro/profil-pro.module').then(m=>m.ProfilProModule)},
+    {path:'Invitations',loadChildren:()=>import('./views/professionnel/invitations/invitations.module').then(m=>m.InvitationsModule)},
+    {path:'contact',loadChildren:()=>import('./views/professionnel/contact/contact.module').then(m=>m.ContactModule)},
+    {path:'formulaires',loadChildren:()=>import('./views/professionnel/monformulaire/monformulaire.module').then(m=>m.MonformulaireModule)},
 
   ]},
-
+  
   //******************* patient-paths****************************//
 
   {path:'patient',component:PatientLayoutComponent,canActivate:[GuardPatientGuard],children:[
@@ -35,6 +38,8 @@ const routes: Routes = [
     {path:'',loadChildren:()=>import('./views/patient/home/home.module').then(m=>m.HomeModule)},
     {path:'profil',loadChildren:()=>import('./views/patient/profil-pat/profil-pat.module').then(m=>m.ProfilPatModule)},
     {path:'listDoctors',loadChildren:()=>import('./views/patient/list-doctors/list-doctors.module').then(m=>m.ListDoctorsModule)},
+    {path:'patient-forms',loadChildren:()=>import('./views/patient/patient-forms/patient-forms.module').then(m=>m.PatientFormsModule)},
+    {path:'doctor-details',loadChildren:()=>import('./views/patient/doctor-details/doctor-details.module').then(m=>m.DoctorDetailsModule)},
 
 
   ]},

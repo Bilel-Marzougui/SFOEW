@@ -45,7 +45,7 @@ dataPatient={
 
   logout(){
     localStorage.removeItem('token_Pat')
-    this.router.navigate(['/contact'])
+    this.router.navigate(['/'])
   }
 
 

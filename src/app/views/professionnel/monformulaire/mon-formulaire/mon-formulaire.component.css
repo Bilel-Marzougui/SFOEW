@@ -1,0 +1,21 @@
+i{
+    cursor: pointer;
+}
+table.table>tbody>tr:hover td,
+table.table>tbody>tr:hover th {
+  background-color: #bacfe5 !important;
+}
+table{
+    color: rgb(88, 85, 85);
+}
+.dropdown {
+    margin: 20px;
+  }
+  
+  .dropdown-menu {
+    max-height: 20rem;
+    overflow-y: auto;
+  }
+  .table tbody tr.highlight td {
+    background-color: #ddd;
+  }

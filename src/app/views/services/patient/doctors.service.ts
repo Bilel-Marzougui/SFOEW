@@ -22,4 +22,9 @@ export class DoctorsService {
     return this.http.get<any>(`${this.URL}`+'doctor/',{headers:headers})
 
   }
+  myContacts(id:any){
+    const token=localStorage.getItem('token_Pat')
+    const headers=new HttpHeaders().set('authorization','Bearer '+token)
+
+    return this.http.get<any>(`${this.URL}`+'demande/getmydoctor/'+id,{headers: headers})   }
 }

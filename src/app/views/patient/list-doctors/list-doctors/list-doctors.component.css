@@ -90,3 +90,20 @@ img {
 .fa { 
     color: orangered; 
 }
+img.details{
+    width: 30%;
+    height: 30%;
+ 
+}
+div.cont{
+    display: flex;
+    justify-content: center;
+}
+/* .fa:hover {
+    color: darkblue;
+  } */
+  .alert {
+   
+   
+
+}
