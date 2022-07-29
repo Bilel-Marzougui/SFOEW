@@ -42,7 +42,7 @@ export class ListDoctorsComponent implements OnInit {
     this.demande.patient=this.idPat
     this.obsAdd= this.DemandeService.AddDoctor(this.demande).subscribe(response=>{
       console.log("demande response "+response.value)
-      this.snackBar.open(" invite sended " ,"×", {
+      this.snackBar.open(" invitation envoyée " ,"×", {
 
         duration: 5000,
 
@@ -54,7 +54,7 @@ export class ListDoctorsComponent implements OnInit {
       });
 
 
-    },error=> this.snackBar.open(" invite already sended " ,"×", {
+    },error=> this.snackBar.open(" invitation déjà envoyée " ,"×", {
 
       duration: 5000,
 
