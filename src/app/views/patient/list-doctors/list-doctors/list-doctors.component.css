@@ -33,7 +33,7 @@ img {
 }
 
 .bg-blue {
-    background-color: #EBF5FB;
+    background-color: #ffffff;
     border-radius: 8px
 }
 
@@ -43,7 +43,7 @@ img {
 }
 
 .bg-blue:hover {
-    background-color: #3e64ff;
+    background-color: #ffffff;
     color: #eee;
     cursor: pointer
 }

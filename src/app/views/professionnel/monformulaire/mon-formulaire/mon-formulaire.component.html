@@ -1,26 +1,49 @@
-<div class="container">
+<!-- <div class="page-container">
+    <div class="chains">
+     
+    </div>
+  </div> -->
 
-    <table class="table ">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Titre</th>
-                <th scope="col">date de création</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody *ngFor=" let form of forms ; let i =index">
-            <tr>
-                <th scope="row">{{i+1}}</th>
-                <td>{{form.title}}</td>
-                <td> {{form.created_date}}</td>
-                <td><i class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"  (click)="getFormId(form._id)"></i>
-                </td>
-            </tr>
 
-        </tbody>
-    </table>
+<div class="row" style=" margin-right: 3px; margin-left: 3px;">
+
+
+
+
+  <div *ngFor="let form of forms " class="col-lg-3" style="margin-bottom: 20px">
+
+    <div class="card" style="height: 100%; ">
+      <div class="card-header" matTooltip="{{form.title}}" matTooltipPosition="above">
+        <h3 class="card-title mb-0">{{form.title}}</h3>
+        <i class='fa fa-file-medical fa-4x ' style="width: 80px;   margin-left: 40%; float:left;"></i>
+      </div>
+      <div class="card-content">
+        <div class="yass" >
+  
+        </div>
+        <div class="row mt-1" style="margin-left: 1px;padding-bottom: 5px; float:left;">
+
+          <span> show form   <i class="fa fa-eye fa-2x"  (click)="showForm(form._id)"></i></span>
+        
+          <br>
+          <hr style="width: 50%;">
+         
+          <span> affect form   <i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"  (click)="getFormId(form._id)" ></i></span>
+
+        </div>
+      </div>
+      <div class="card-footer">
+        <i class="fa fa-clock"></i>
+        <span> {{form.created_date}} </span>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
+
+
 
 
 <!-- Modal -->

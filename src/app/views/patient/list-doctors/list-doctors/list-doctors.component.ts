@@ -14,7 +14,7 @@ export class ListDoctorsComponent implements OnInit {
   profs: Professionnel;
   profD:any ;
   timelines = [];
-  searchDoctor:any
+  searchDoctor:string
   added=false;
   friend = true;
   idPat: string;

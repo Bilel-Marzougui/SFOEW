@@ -49,3 +49,12 @@ h4 {
     line-height: 22px;
     font-size: 18px;
 }
+button{
+    background-color: #153d77;
+    border-color: #153d77;
+}
+.card-box:hover{
+
+    transform: scale(1.02); 
+
+}

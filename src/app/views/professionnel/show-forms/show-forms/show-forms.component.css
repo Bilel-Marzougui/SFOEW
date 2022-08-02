@@ -1,0 +1,29 @@
+@import '../../../../../assets//css/flexlayout.css';
+@import '../../../../../assets//css/flex.css';
+@import '../../../../../assets//css/mat-card-design.css';
+
+
+  mat-slider {
+    width: 300px;
+  }  
+  .card-section {
+    border-radius: 8px;
+    border-bottom: 8px solid #FF4500;
+  }
+  .card {
+    border-radius: 8px;
+    border-top: 8px solid #FF4500;
+    margin-bottom: 10px;
+  }
+  .question-card {
+    border-radius: 8px;
+    /* border-bottom: 8px solid #093b84; */
+    border-top: 8px solid #FF4500;
+
+  }
+  .simple-slider{
+   padding-bottom: 20px;width: 89%;padding-left: 4%;
+  }
+  img.douleur{
+   width: 100%;height: 100%;
+  }

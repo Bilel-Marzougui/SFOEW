@@ -2,7 +2,9 @@
                 
               
 <div class="container">
-
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchDoctor"  />
+      </div>
     <table class="table ">
         <thead>
             <tr>
@@ -14,7 +16,7 @@
 
             </tr>
         </thead>
-        <tbody *ngFor="let prof of profs;index as i">
+        <tbody *ngFor="let prof of profs| filter:searchDoctor ;index as i">
             <tr>
                 <td class="pt-3">{{prof.doctors.name}} {{prof.doctors.lastname}}</td>
                 <td class="pt-3">{{prof.doctors.adresse}}</td>
@@ -48,7 +50,7 @@
                             </thead>
                             <tbody *ngFor="let form of forms ;index as i">
                                 <tr>
-                                    <td class="pt-3">{{form.form.title}}</td>
+                                    <td  data-dismiss="modal" (click)="openFormDetails(form.form._id)" class="pt-3">{{form.form.title}}</td>
                                     <td class="pt-3">{{form.form.description}}</td>
 
                                    
