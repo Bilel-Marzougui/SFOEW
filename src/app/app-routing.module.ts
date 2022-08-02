@@ -28,6 +28,8 @@ const routes: Routes = [
     {path:'Invitations',loadChildren:()=>import('./views/professionnel/invitations/invitations.module').then(m=>m.InvitationsModule)},
     {path:'contact',loadChildren:()=>import('./views/professionnel/contact/contact.module').then(m=>m.ContactModule)},
     {path:'formulaires',loadChildren:()=>import('./views/professionnel/monformulaire/monformulaire.module').then(m=>m.MonformulaireModule)},
+    {path:'show-forms',loadChildren:()=>import('./views/professionnel/show-forms/show-forms.module').then(m=>m.ShowFormsModule)},
+
 
   ]},
   
@@ -38,8 +40,9 @@ const routes: Routes = [
     {path:'',loadChildren:()=>import('./views/patient/home/home.module').then(m=>m.HomeModule)},
     {path:'profil',loadChildren:()=>import('./views/patient/profil-pat/profil-pat.module').then(m=>m.ProfilPatModule)},
     {path:'listDoctors',loadChildren:()=>import('./views/patient/list-doctors/list-doctors.module').then(m=>m.ListDoctorsModule)},
-    {path:'patient-forms',loadChildren:()=>import('./views/patient/patient-forms/patient-forms.module').then(m=>m.PatientFormsModule)},
+    {path:'contacts',loadChildren:()=>import('./views/patient/patient-forms/patient-forms.module').then(m=>m.PatientFormsModule)},
     {path:'doctor-details',loadChildren:()=>import('./views/patient/doctor-details/doctor-details.module').then(m=>m.DoctorDetailsModule)},
+    {path:'forms-details',loadChildren:()=>import('./views/patient/forms-details/forms-details.module').then(m=>m.FormsDetailsModule)},
 
 
   ]},

@@ -8,3 +8,9 @@ img{
 .rotation2{
         transform: rotate(360deg);
     }
+    .fa-check-circle:hover {
+        color: #FF4500;
+      }
+i{
+    cursor: pointer;
+}

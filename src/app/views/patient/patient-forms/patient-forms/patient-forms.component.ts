@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import{PatientFormsService} from '../../../services/patient/patient-forms.service'
 import{AuthPatientService} from '../../../services/patient/auth-patient.service'
 import { DoctorsService } from 'src/app/views/services/patient/doctors.service';
+import { FormDataService } from '../../../services/shared-data/form-data.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-patient-forms',
@@ -13,12 +15,19 @@ export class PatientFormsComponent implements OnInit {
   forms:any
   profs: any;
   id:any
-  constructor(public doctorsService: DoctorsService, private authPat:AuthPatientService,private PatForms:PatientFormsService ) {
+  idForm:any;
+  searchDoctor:string
+  index:any
+
+  constructor( private router:Router, private data:FormDataService,public doctorsService: DoctorsService, private authPat:AuthPatientService,private PatForms:PatientFormsService ) {
     this.id = this.authPat.geid()
 
    this.doctorsService.myContacts(this.id).subscribe(response =>{
     console.log(response)      
     this.profs = response
+
+
+ 
 
    }
 
@@ -27,8 +36,14 @@ export class PatientFormsComponent implements OnInit {
 
    }
 
+
+  //  sending forms with index 
   ngOnInit(): void {
+    this.data.currentMessage.subscribe(idForm=>this.idForm =idForm)
+    this.data.currentindex.subscribe(index=>this.index =index)
+
   }
+
   DoctorId(DocId:any){
     this.ProfId=DocId
 
@@ -39,8 +54,19 @@ export class PatientFormsComponent implements OnInit {
     this.PatForms.getForms(this.id,DocID).subscribe(response=>{
       console.log(response.incompleted)
     this.forms=response.incompleted
-    console.log(JSON.stringify(this.forms))
+    console.log(JSON.stringify(this.forms[1]))
+
+
 
   })
   }
+
+  openFormDetails(idF:any,){
+    console.log(idF)
+    this.idForm=idF
+    this.router.navigate(['patient/forms-details'])
+    this.data.GetId(idF)
+    
+  }
+ 
 }

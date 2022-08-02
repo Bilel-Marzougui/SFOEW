@@ -9,12 +9,37 @@ export class PatientFormsService {
   token:any=localStorage.getItem('token_Pat')
   constructor(private http:HttpClient) { }
 
-
+// all forms
   getForms(id:any,body){
     const token=localStorage.getItem('token_Pat')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
   
     return this.http.get<any>(`${this.URL}`+'affect/getallform/'+id+'/'+body,{headers: headers})  
+  
+  }
+  // by doctor
+
+    // for doctors
+
+  getFormssended(idForm:any){
+    console.log(idForm)
+    const token=localStorage.getItem('token_Pat')
+    const headers=new HttpHeaders().set('authorization','Bearer '+token)
+  
+
+
+    return this.http.get<any>(`${this.URL}`+''+idForm,{headers: headers})  
+  
+  }
+
+  getFormsById(idForm:any){
+    console.log('here sis service')
+    console.log(idForm)
+    const token=localStorage.getItem('token_Pat')
+    const headers=new HttpHeaders().set('authorization','Bearer '+token)
+
+
+    return this.http.get<any>(`${this.URL}`+'forms/getformsbyid/'+idForm,{headers: headers})  
   
   }
   
