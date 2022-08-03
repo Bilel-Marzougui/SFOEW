@@ -18,12 +18,28 @@ export interface DialogData {
 })
 export class ProfilPatComponent implements OnInit {
 name:any
-patient:Patient
 id:any
-test:Patient
 photo:any;
 files: any[];
 fileName = '';
+test={
+
+  name: 'hanen',
+  lastname: 'yassin',
+  birthday: '12/12/2015',
+  adresse: 'jj',
+  tel: '+33333333333333',
+  email: 'yassin1@gmail.com',
+  password: 'yyyyyy',
+  ssn: '77',
+  gender: 'homme',
+  photo: '1653558618111.png',
+  account_state: true,
+  archived: false,
+  added_date: '2022-05-26T09:50:18.419+00:00',
+  _id:""
+
+}
   constructor(private snackBar:MatSnackBar,public  updateservice:UpdProfilPatientService ,public  authPat:AuthPatientService,public dialog: MatDialog) {
 
       this.id=this.authPat.geid()

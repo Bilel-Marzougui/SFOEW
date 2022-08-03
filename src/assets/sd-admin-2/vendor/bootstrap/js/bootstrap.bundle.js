@@ -91,25 +91,25 @@
     };
   }
 
-  function transitionEndEmulator(duration) {
-    var _this = this;
+  // function transitionEndEmulator(duration) {
+  //   var _this = this;
 
-    var called = false;
-    $__default['default'](this).one(Util.TRANSITION_END, function () {
-      called = true;
-    });
-    setTimeout(function () {
-      if (!called) {
-        Util.triggerTransitionEnd(_this);
-      }
-    }, duration);
-    return this;
-  }
+  //   var called = false;
+  //   $__default['default'](this).one(Util.TRANSITION_END, function () {
+  //     called = true;
+  //   });
+  //   setTimeout(function () {
+  //     if (!called) {
+  //       Util.triggerTransitionEnd(_this);
+  //     }
+  //   }, duration);
+  //   return this;
+  // }
 
-  function setTransitionEndSupport() {
-    $__default['default'].fn.emulateTransitionEnd = transitionEndEmulator;
-    $__default['default'].event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
-  }
+  // function setTransitionEndSupport() {
+  //   $__default['default'].fn.emulateTransitionEnd = transitionEndEmulator;
+  //   $__default['default'].event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+  // }
   /**
    * --------------------------------------------------------------------------
    * Public Util Api
@@ -7039,7 +7039,7 @@
   exports.Tooltip = Tooltip;
   exports.Util = Util;
 
-  Object.defineProperty(exports, '__esModule', { value: true });
+  // Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=bootstrap.bundle.js.map
