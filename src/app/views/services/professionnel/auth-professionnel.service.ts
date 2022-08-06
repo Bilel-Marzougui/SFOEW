@@ -62,22 +62,29 @@ export class AuthProfessionnelService {
    }
 
   LoggedInPro(){
+   let loggedStatus={
+    status:false,
+    whois:true
+
+    }
     let token:any=localStorage.getItem('token_Pro')
-    if(!token){
-     return false
+    let tokenPat:any=localStorage.getItem('token_Pat')
+
+    if(!token ){
+      loggedStatus.status= false
     }
-    let decodeToken=this.helper.decodeToken(token)
-
-
-    if(decodeToken.subject.role!==2){
-      return false
-    }
-
-    if(this.helper.isTokenExpired(token)){
-      return false
+    if(this.helper.isTokenExpired(token)) {
+      loggedStatus.status= false
     }
 
-    return true
+    if(this.helper.isTokenExpired(tokenPat)){
+      loggedStatus.status= false
+    }
+    if(tokenPat=""){
+      loggedStatus.whois= false
+    }
+
+return loggedStatus
  }
 
 

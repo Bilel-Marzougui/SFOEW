@@ -40,6 +40,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng5SliderModule } from 'ng5-slider';
 import { MatGridListModule } from '@angular/material/grid-list';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     Ng2SearchPipeModule,
     Ng5SliderModule,
     MatGridListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    
 
 
 
@@ -104,20 +106,20 @@ import { MatGridListModule } from '@angular/material/grid-list';
   ],
   providers: [MatDatepickerModule, DatePipe,
 
-    // {
-    //   provide: 'SocialAuthServiceConfig',
-    //   useValue: {
-    //     autoLogin: false,
-    //     providers: [
-    //       {
-    //         id: GoogleLoginProvider.PROVIDER_ID,
-    //         provider: new GoogleLoginProvider(
-    //          '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com'
-    //         )
-    //       }
-    //     ]
-    //   } as SocialAuthServiceConfig
-    // }
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+             '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -13,15 +13,26 @@ export class ShowFormsComponent implements OnInit {
 form:any
 
   constructor(private PatForms:PatientFormsService,private data:FormDataService) {
-    this.data.currentMessage.subscribe(idForm=>this.idForm =idForm)
+    this.data.currentMessage.subscribe(idForm=>{
+      this.form =idForm
+      // this.PatForms.getFormsById(this.idForm).subscribe(response=>{
+      //   console.log("here aaaaaa")
+      //   console.log(response)
+  
+      //   this.form=response
+      //   console.log(this.form)
 
-    this.PatForms.getFormsById(this.idForm).subscribe(response=>{
-    
-      this.form=response
-    })
+  
+      // })
+
+    }
+      )
+
+   
    }
 
   ngOnInit(): void {
+
   }
 
 }

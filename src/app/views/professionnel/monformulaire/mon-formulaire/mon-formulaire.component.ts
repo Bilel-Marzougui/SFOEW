@@ -76,7 +76,7 @@ console.log('this is add'+this.affect.form)
 
     }
 
-    showForm(formId){
+    showForm(formId,form){
       this.formId=formId
       console.log('show')
       this.data.GetId(formId)

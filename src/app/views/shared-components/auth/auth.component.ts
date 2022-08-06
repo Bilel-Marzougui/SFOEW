@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import{GoogleSigninService} from '../../services/google-api/google-signin.service'
 
 @Component({
   selector: 'app-auth',
@@ -162,6 +163,10 @@ this.loginFormPat = this.formBuilder.group({
 
 
 
+
+}
+
+signWithGoogle():any{
 
 }
 
