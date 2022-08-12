@@ -19,13 +19,15 @@ export class ListDoctorsComponent implements OnInit {
   friend = true;
   idPat: string;
   dataArray:any=[];
+  filtredprofs:any
   obsGet: Subscription;
   obsAdd: Subscription;
+  i:1;
   constructor(private snackBar:MatSnackBar,public doctorsService: DoctorsService, private authPat: AuthPatientService, private DemandeService: DemandePatService) {
     this.idPat = this.authPat.geid()
- this.obsGet=   this.doctorsService.getDoctors().subscribe(response =>
+ this.obsGet=   this.doctorsService.getDoctors().subscribe(response =>{
       this.profs = response
-
+      this.filtredprofs= response}
 
 
     )
@@ -34,6 +36,16 @@ export class ListDoctorsComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
+  filterItem(value) {
+    this.profs = this.filtredprofs.filter(i => {
+      return (
+        i.name.toLowerCase().includes(value.toLowerCase()) ||
+        i.lastname.toLowerCase().includes(value.toLowerCase()) 
+
+      )
+    })
+ }
   demande = {patient: "", doctor: ""}
 
   addDoctor(idPro: any,) {
@@ -67,6 +79,7 @@ export class ListDoctorsComponent implements OnInit {
 
 
   }
+  
 
   getId(profDetails:any){
     console.log(profDetails)

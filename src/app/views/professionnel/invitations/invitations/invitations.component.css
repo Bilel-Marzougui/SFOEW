@@ -27,6 +27,7 @@ body{
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1rem;
+    
   }
   
   .gutters-sm {
@@ -71,3 +72,16 @@ body{
     width: 100%;
     height: 100%;
   }
+
+  .column {
+    border: 1px solid chocolate;
+    display: flex;
+  }
+  
+li .test {
+    flex: 1; /* This make p take the full width of column*/
+  }
+i:hover{
+
+color: #FF4500;
+}

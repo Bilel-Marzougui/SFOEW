@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class UpdProfilPatientService {
 URL=environment.urlBackend
+_uploadImage:any
 
 token:any=localStorage.getItem('token_Pat')
 
@@ -49,7 +50,24 @@ header=new HttpHeaders().set('authorization',this.token)
       return this.http.get<any>(`${this.URL}`+'patient/'+id,{headers: headers})   }
 
 
+      uploadImage(image){
 
+        /*   console.log("iiii",image) */
+      
+          return this.http.post("http://38.242.195.210:3000/uploadApi/", {image :image} );
+      
+        }
+          
+  
+  
+        updateDoctorPhoto(id:any, photo:any){
+          console.log('serviceee update')
+  
+        console.log(id,photo)
+        
+            return this.http.put('http://38.242.195.210:3000/patient/updatephoto/' +id , photo);
+        
+          }
 
 }
 

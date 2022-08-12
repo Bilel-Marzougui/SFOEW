@@ -3,7 +3,6 @@
 
       <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
           <!-- Sidebar - Brand -->
           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
               <div class="sidebar-brand-icon rotate-n-15">
@@ -81,6 +80,14 @@
             </a>
          
         </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" routerLink="Abonnement" data-toggle="collapse" data-target="#collapseUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fa fa-fw fa-credit-card" aria-hidden="true"></i>
+                <span>Abonnement</span>
+            </a>
+         
+        </li>
 
           <!-- Divider -->
           <hr class="sidebar-divider">
@@ -129,7 +136,9 @@
 
                   <!-- Topbar Navbar -->
                   <ul class="navbar-nav ml-auto">
-
+                    <!-- <div class="loader-container">
+                        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </div> -->
                       <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                       <li class="nav-item dropdown no-arrow d-sm-none">
                           <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -166,7 +175,7 @@
                           <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                               aria-labelledby="alertsDropdown" >
                               <h6 class="dropdown-header" >
-                                  Alerts Center
+                                  Invitations
                               </h6>
                               <div *ngFor="let invt of invts ;let i = index"  >
 
@@ -183,7 +192,7 @@
                               </a>
                             </div>
 
-                              <a class="dropdown-item text-center small text-gray-500" routerLink="Invitations">Show All Alerts</a>
+                              <a class="dropdown-item text-center small text-gray-500" routerLink="Invitations">Liste des Invitations</a>
                           </div>
                       </li>
 
@@ -262,7 +271,8 @@
                               <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{dataProf.name}} {{dataProf.lastname}}</span>
                               <div class="rotation">
                                 <img class="img-profile rounded-circle"
-                                src="../../../assets/img/avatar.jpg">
+                             
+                                [src]="dataProf.photo">
 
                               </div>
                               

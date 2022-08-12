@@ -5,7 +5,15 @@
     <div class="form-group">
         <div class="h2 font-weight-bold" style="color: #153d77;">liste des contacts</div>
 
-        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchDoctor"  />
+      </div>
+      <div class="container" >
+          
+        <div class="container" >
+          
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search..." (input)="filterItem($event.target.value)"  />
+            </div>
+          </div>
       </div>
     <table class="table ">
         <thead>
@@ -18,7 +26,7 @@
 
             </tr>
         </thead>
-        <tbody *ngFor="let prof of profs| filter:searchDoctor ;index as i">
+        <tbody *ngFor="let prof of profs ;index as i">
             <tr>
                 <td class="pt-3">{{prof.doctors.name}} {{prof.doctors.lastname}}</td>
                 <td class="pt-3">{{prof.doctors.adresse}}</td>

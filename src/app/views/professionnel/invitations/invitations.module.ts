@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { InvitationsRoutingModule } from './invitations-routing.module';
 import { InvitationsComponent } from './invitations/invitations.component';
-import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     InvitationsRoutingModule,
-    
+    FormsModule
   ]
 })
 export class InvitationsModule { }

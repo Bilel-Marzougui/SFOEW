@@ -16,10 +16,14 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
-              <div class="profile-img"> <img
-                  src="../../../../../assets/img/avatar.jpg"
+              <div class="profile-img"> <img style="height: 300px; width: 300px;"
+                  [src]="prof.photo"
                   alt="" />
-                  <div class="file btn btn-lg btn-primary"> Changer Photo <input type="file" name="file" (change)="onFileSelected($event)" #fileUpload/> </div>
+                  <div class="file btn btn-lg btn-primary"> Changer Photo <input type="file" name="file" (change)="handleFileInput($event.target.files)" #fileUpload/> </div>
+                 
+                  <!-- <div class="file btn btn-lg btn-primary"> Changer   <input #fileInput (change)="handleFileInput($event.target.files)"  style="display: none;" type="file" id="upt"> </div> -->
+
+
                 </div>
               <div class="mt-3">
                 <h4>{{prof.name}} {{prof.lastname}}</h4>

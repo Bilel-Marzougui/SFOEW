@@ -14,79 +14,105 @@
 
 <!-- ======= Counts Section ======= -->
 <section id="counts" class="counts">
-  
 
 
-      <div class="row">
 
-        <div class="cont" style="   display: flex;
-justify-content: center;">
-
-          <!-- Carousel wrapper -->
-          <div id="carouselVideoExample" class="carousel slide carousel-fade" data-mdb-ride="carousel"
-            style="height: 50% ;width:60% ;">
-            <!-- Indicators -->
+  <div class="row">
+    <div class="container">
+      <div class="itemss">
 
 
-            <!-- Inner -->
-            <div class="carousel-inner rounded-5 shadow-4-strong">
-              <!-- Single item -->
-              <div class="carousel-item active">
-                <video class="img-fluid" autoplay loop muted>
-                  <source src="https://mdbcdn.b-cdn.net/img/video/Tropical.mp4" type="video/mp4" />
-                </video>
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>First slide label</h5>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
+        <mat-tab-group dynamicHeight mat-align-tabs="center">
+          <mat-tab label="Professionnel">
+            <div class="example-small-box mat-elevation-z4">
+              <div class="container">
+
+                <div class="row">
+
+                  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" id="{{i}}" *ngFor=" let videoDoc of dataUrlD; let i = index" [ngClass]="{'active': i == 0 }">
+                        <!-- <video class="img-fluid" autoplay loop muted>
+                          <source src="https://www.youtube.com/embed/NKX-dg3eIYY" />
+                        </video> -->
+                        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/EFrjlPcQMq8" frameborder="0" allowfullscreen></iframe>
+
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>{{videoDoc.title}}</h5>
+                          <p>{{videoDoc.desc}}</p>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                      </div>
+           
+                    </div>
+               
+                  </div>
+
                 </div>
-              </div>
 
-              <!-- Single item -->
-              <div class="carousel-item">
-                <video class="img-fluid" autoplay loop muted>
-                  <source src="https://mdbcdn.b-cdn.net/img/video/forest.mp4" type="video/mp4" />
-                </video>
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Second slide label</h5>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Single item -->
-              <div class="carousel-item">
-                <video class="img-fluid" autoplay loop muted>
-                  <source src="https://mdbcdn.b-cdn.net/img/video/Agua-natural.mp4" type="video/mp4" />
-                </video>
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Third slide label</h5>
-                  <p>
-                    Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                  </p>
-                </div>
               </div>
             </div>
-            <!-- Inner -->
+          </mat-tab>
+          <mat-tab label="Patient">
+            <div class="example-small-box mat-elevation-z4">
+              <div class="container">
 
-            <!-- Controls -->
-            <button class="carousel-control-prev" type="button" data-mdb-target="#carouselVideoExample"
-              data-mdb-slide="prev">
+                <div class="row">
 
-            </button>
-            <button class="carousel-control-next" type="button" data-mdb-target="#carouselVideoExample"
-              data-mdb-slide="next">
+                  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
-            </button>
-          </div>
-        </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" id="{{i}}" *ngFor=" let videoPat of dataUrlP; let i = index" [ngClass]="{'active': i == 0 }">
+                        <!-- <video class="img-fluid" autoplay loop muted>
+                          <source src="https://www.youtube.com/embed/NKX-dg3eIYY" />
+                        </video> -->
+                        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/EFrjlPcQMq8" frameborder="0" allowfullscreen></iframe>
 
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>{{videoPat.title}}</h5>
+                          <p>{{videoPat.desc}}</p>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                      </div>
+           
+                    </div>
+               
+                  </div>
+
+                </div>
+
+              </div>
+            </div>           
+          </mat-tab>
+        </mat-tab-group>
       </div>
+    </div>
 
 
-  
+
+  </div>
+
+
+
 </section><!-- End Counts Section -->
 <div class="container">
   <div class="itemss">

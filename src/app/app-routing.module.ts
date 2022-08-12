@@ -29,6 +29,7 @@ const routes: Routes = [
     {path:'contact',loadChildren:()=>import('./views/professionnel/contact/contact.module').then(m=>m.ContactModule)},
     {path:'formulaires',loadChildren:()=>import('./views/professionnel/monformulaire/monformulaire.module').then(m=>m.MonformulaireModule)},
     {path:'show-forms',loadChildren:()=>import('./views/professionnel/show-forms/show-forms.module').then(m=>m.ShowFormsModule)},
+    {path:'Abonnement',loadChildren:()=>import('./views/professionnel/abonnement-paypal/abonnement-paypal.module').then(m=>m.AbonnementPaypalModule)},
 
 
   ]},

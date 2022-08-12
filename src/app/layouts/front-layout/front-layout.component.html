@@ -44,6 +44,7 @@
     <div class="login-button" *ngIf="!status ;else Unlog">
       <a (click)="openDialog()" class="appointment-btn scrollto">S'identifier / S'inscrire</a>
     </div>
+    
     <ng-template #Unlog>
       <div class="login-button" *ngIf="whois ;else PtientUer">
         <a routerLink="./professionnel" class="appointment-btn scrollto">espace professionnel</a>

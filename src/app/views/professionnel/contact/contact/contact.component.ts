@@ -10,12 +10,15 @@ import { AuthProfessionnelService } from '../../../services/professionnel/auth-p
 export class ContactComponent implements OnInit {
   id: any;
   contacts:any
+  p:number;
+  filtredContacts:any
   constructor(private invservice:InvitaionsService,private authPro: AuthProfessionnelService) { 
     this.id = this.authPro.geid()
 
     this.invservice.myContacts(this.id).subscribe(response =>{
       console.log(response)
       this.contacts=response
+      this.filtredContacts=response
     }
      
       )
@@ -23,5 +26,13 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  filterItem(value) {
+    this.contacts = this.filtredContacts.filter(i => {
+      return (
+        i.patient.name.toLowerCase().includes(value.toLowerCase()) ||
+        i.patient.lastname.toLowerCase().includes(value.toLowerCase()) 
 
+      )
+    })
+ }
 }

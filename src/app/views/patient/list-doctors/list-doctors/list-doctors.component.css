@@ -102,3 +102,7 @@ div.cont{
 /* .fa:hover {
     color: darkblue;
   } */
+  .table tr:hover {
+    
+    background-color:#f3bca8 ;
+}

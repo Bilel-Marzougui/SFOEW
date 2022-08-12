@@ -3,8 +3,11 @@
   <div class="container" style="width: 50%">
     <div class="h2 font-weight-bold">Liste des docteurs</div>
 
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchDoctor"  />
+    <div class="container" >
+          
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search..." (input)="filterItem($event.target.value)"  />
+      </div>
     </div>
   </div>
   <div class="table-responsive">
@@ -24,8 +27,8 @@
 
         <tr id="spacing-row">
           <td></td>
-        </tr>
-        <tr class="bg-blue" *ngFor="let prof of profs | filter:searchDoctor">
+        </tr>  
+        <tr class="bg-blue" *ngFor="let prof of profs ">
           <td class="pt-2">
             <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
             <img class="img-profile rounded-circle" src="../../../assets/img/avat.jpg">

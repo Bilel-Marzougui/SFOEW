@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import {GoogleLoginProvider, SocialAuthService, SocialUser} from 'angularx-social-login'
+// import {GoogleLoginProvider, SocialAuthService, SocialUser} from 'angularx-social-login'
 
 declare const gapi : any;
 
@@ -7,14 +7,14 @@ declare const gapi : any;
   providedIn: 'root'
 })
 export class GoogleSigninService implements OnInit {
-user!:SocialUser;
+// user!:SocialUser;
 
 ngOnInit(): void {
-  this.SocialAuth.authState.subscribe((user)=>{
-    this.user=user;
-  })
+  // this.SocialAuth.authState.subscribe((user)=>{
+  //   this.user=user;
+  // })
 }
-  constructor(    private SocialAuth:SocialAuthService,
+  constructor(    
     ) { 
   gapi.load('auth2',()=>{
     gapi.auth2.init({
@@ -23,11 +23,26 @@ ngOnInit(): void {
   })
 }
 
+googleLoginOptions = {
+  scope: 'profile email'
+}; // https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig
 
-signWithGoogle():any{
-  this.SocialAuth.signIn(GoogleLoginProvider.PROVIDER_ID)
+  
+
+
+// signWithGoogle():any{
+//   this.SocialAuth.signIn(GoogleLoginProvider.PROVIDER_ID);
+
+// }
+// signOut():any{
+// this.SocialAuth.signOut();
+// }
+// signInWithGoogle(): void {
+//   this.SocialAuth.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
+//     console.log(data);
+//   }).catch(data => {
+//     this.SocialAuth.signOut();
+//   });
+
+// }
 }
-signOut():any
-{
-  this.SocialAuth.signOut();
-}}

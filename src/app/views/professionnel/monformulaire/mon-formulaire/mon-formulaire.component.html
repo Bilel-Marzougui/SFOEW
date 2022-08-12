@@ -1,11 +1,19 @@
+<!-- <button type="button" class="btn btn-primary launch" data-toggle="modal" data-target="#staticBackdrop"> <i class="fa fa-rocket"></i> Pay Now
+</button> -->
+<!-- Modal -->
+<div class="container" >
+          
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search..." (input)="filterItem($event.target.value)"  />
+  </div>
+</div>
+
+<!-- holaaaaa -->
+<div class="row" style=" margin-right: 3px; margin-left: 3px;" data-toggle="modal" data-target="#staticBackdrop">
 
 
-<div class="row" style=" margin-right: 3px; margin-left: 3px;">
-
-
-
-
-  <div *ngFor="let form of forms " class="col-lg-3" style="margin-bottom: 20px">
+  <div *ngFor="let form of forms | paginate: { itemsPerPage: 12, currentPage: p } " class="col-lg-2"
+    style="margin-bottom: 20px">
 
     <div class="card" style="height: 100%; ">
       <div class="card-header" matTooltip="{{form.title}}" matTooltipPosition="above">
@@ -13,19 +21,30 @@
         <i class='fa fa-file-medical fa-4x ' style="width: 80px;   margin-left: 40%; float:left;"></i>
       </div>
       <div class="card-content">
-        <div class="yass" >
-  
-        </div>
-        <div class="row mt-1" style="margin-left: 1px;padding-bottom: 5px; float:left;">
+        <div class="yass">
 
-          <span> show form   <i class="fa fa-eye fa-2x"  (click)="showForm(form)"></i></span>
-        
+        </div>
+        <div class="row mt-1" style="margin-left: 1px;padding-bottom: 5px; float:left;" *ngIf="nb=='1'; else notchecked">
+
+          <span> show form <i class="fa fa-eye fa-2x" (click)="showForm(form)"></i></span>
+
           <br>
           <hr style="width: 50%;">
-         
-          <span> affect form   <i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"  (click)="getFormId(form._id)" ></i></span>
 
+          <span> affect form <i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"
+              (click)="getFormId(form._id)"></i></span>
+
+              <ng-template notchecked>
+                <span> show form <i class="fa fa-eye fa-2x" ></i></span>
+      
+                <br>
+                <hr style="width: 50%;">
+      
+                <span> affect form <i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"
+                   ></i></span>
+            </ng-template>
         </div>
+       
       </div>
       <div class="card-footer">
         <i class="fa fa-clock"></i>
@@ -33,6 +52,11 @@
       </div>
 
     </div>
+
+  </div>
+  <div class="parent">
+
+    <pagination-controls class="child" (pageChange)="p = $event"></pagination-controls>
 
   </div>
 
@@ -43,56 +67,62 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container rounded mt-5 bg-white p-md-5">
-                    <div class="h2 font-weight-bold">liste des contacts</div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Nom et prénom </th>
-                                    <th scope="col">Adresse</th>
-                                    <th scope="col">send</th>
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container rounded mt-5 bg-white p-md-5">
+          <div class="h2 font-weight-bold">liste des contacts</div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nom et prénom </th>
+                  <th scope="col">Adresse</th>
+                  <th scope="col">send</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
+                </tr>
+              </thead>
+              <tbody>
 
-                                <tr class="bg-blue" *ngFor="let contact of contacts;index as i"
-                                   >
-                                    <td class="pt-2" >
-                                        <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
-                                        <!-- <img class="img-profile rounded-circle" src="../../../assets/img/avat.jpg"> -->
-                                        {{contact.patients.name}} {{contact.patients.lastname}}
-                                    </td>
-                                    <td class="pt-3">{{contact.patients.email}}</td>
-                                    <td><i class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal"
-                                            data-target="#exampleModal"   (click)="affectForm(contact.patients._id)"></i></td>
+                <tr class="bg-blue"
+                  *ngFor="let contact of contacts | paginate: { itemsPerPage: 5, currentPage: p2 } ;index as i  ">
 
-                                </tr>
+                  <td class="pt-2">
+                    <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
+                    <!-- <img class="img-profile rounded-circle" src="../../../assets/img/avat.jpg"> -->
+                    {{contact.patients.name}} {{contact.patients.lastname}}
+                  </td>
+                  <td class="pt-3">{{contact.patients.email}}</td>
+                  <td><i class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"
+                      (click)="affectForm(contact.patients._id)"></i></td>
+
+                </tr>
 
 
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">send to all <i class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal"
-                    data-target="#exampleModal"></i></button>
-                <button type="button" class="btn btn-secondary" >Cancel</button>
-            </div>
+              </tbody>
+            </table>
+          </div>
         </div>
+
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" data-dismiss="modal">send to all <i class="fa fa-paper-plane"
+            aria-hidden="true" data-toggle="modal" data-target="#exampleModal"></i></button>
+        <button type="button" class="btn btn-secondary">Cancel</button>
+        <pagination-controls class="child" (pageChange)="p2 = $event"></pagination-controls>
+
+      </div>
     </div>
+
+  </div>
+
 </div>

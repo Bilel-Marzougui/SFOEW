@@ -18,13 +18,15 @@ export class PatientFormsComponent implements OnInit {
   idForm:any;
   searchDoctor:string
   index:any
-
+  filtredprofs:any
+  i:1;
   constructor( private router:Router, private data:FormDataService,public doctorsService: DoctorsService, private authPat:AuthPatientService,private PatForms:PatientFormsService ) {
     this.id = this.authPat.geid()
 
    this.doctorsService.myContacts(this.id).subscribe(response =>{
     console.log(response)      
     this.profs = response
+    this.filtredprofs=response
 
 
  
@@ -49,6 +51,16 @@ export class PatientFormsComponent implements OnInit {
 
 
   }
+
+  filterItem(value) {
+    this.profs = this.filtredprofs.filter(i => {
+      return (
+        i.doctors.name.toLowerCase().includes(value.toLowerCase()) ||
+        i.doctors.lastname.toLowerCase().includes(value.toLowerCase()) 
+
+      )
+    })
+ }
 
   GetForms(DocID){
     this.PatForms.getForms(this.id,DocID).subscribe(response=>{
