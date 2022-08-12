@@ -46,7 +46,7 @@ export class UpdProfilProServiceService {
 
       /*   console.log("iiii",image) */
     
-        return this.http.post("http://38.242.195.210:3000/uploadApi/", {image :image} );
+        return this.http.post("http://localhost:3000/uploadApi/", {image :image} );
     
       }
         
@@ -57,7 +57,7 @@ export class UpdProfilProServiceService {
 
       console.log(id,photo)
       
-          return this.http.put('http://38.242.195.210:3000/doctor/updatephoto/' +id , photo);
+          return this.http.put('http://localhost:3000/doctor/updatephoto/' +id , photo);
       
         }
 

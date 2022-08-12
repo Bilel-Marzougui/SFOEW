@@ -245,7 +245,7 @@
                 <div style="width: 100%;" *ngFor="let op of section.questions[q].options; let o = index;">
                   <div class="row">
                     <div class="col">
-                      <mat-radio-button class="m-2 w-100" style="width: 100%;">
+                      <mat-radio-button class="m-2 w-100" style="width: 100%;" (change)="radioChange(section.questions[q].options,$event)">
                         <h1 *ngIf="section.questions[q].options[o].text.length > 0" class="textt">
                           {{section.questions[q].options[o].text}}</h1>
                       </mat-radio-button>
@@ -281,7 +281,7 @@
                     <tr *ngFor="let question of section.questions[q].grille.options">
                       <th scope="row">{{question.title}}</th>
                       <td *ngFor="let question of section.questions[q].grille.scoreS">
-                        <mat-checkbox class=" inp col-md-7 col-lg-7 col-sm-9 col-xs-9 col-9  ">
+                        <mat-checkbox class=" inp col-md-7 col-lg-7 col-sm-9 col-xs-9 col-9  " (change)="radioChecked(section.questions[q].grille.scoreS,$event)">
 
 
                         </mat-checkbox>
