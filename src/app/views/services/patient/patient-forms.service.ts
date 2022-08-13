@@ -17,20 +17,8 @@ export class PatientFormsService {
     return this.http.get<any>(`${this.URL}`+'affect/getallform/'+id+'/'+body,{headers: headers})  
   
   }
-  // by doctor
-
-    // for doctors
-
-  getFormssended(idForm:any){
-    console.log(idForm)
-    const token=localStorage.getItem('token_Pat')
-    const headers=new HttpHeaders().set('authorization','Bearer '+token)
-  
 
 
-    return this.http.get<any>(`${this.URL}`+''+idForm,{headers: headers})  
-  
-  }
 
   getFormsById(idForm:any){
     console.log('here sis service')

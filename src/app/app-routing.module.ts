@@ -29,6 +29,7 @@ const routes: Routes = [
     {path:'contact',loadChildren:()=>import('./views/professionnel/contact/contact.module').then(m=>m.ContactModule)},
     {path:'formulaires',loadChildren:()=>import('./views/professionnel/monformulaire/monformulaire.module').then(m=>m.MonformulaireModule)},
     {path:'show-forms',loadChildren:()=>import('./views/professionnel/show-forms/show-forms.module').then(m=>m.ShowFormsModule)},
+    {path:'Abonnement',loadChildren:()=>import('./views/professionnel/abonnement-paypal/abonnement-paypal.module').then(m=>m.AbonnementPaypalModule)},
 
 
   ]},
@@ -42,7 +43,7 @@ const routes: Routes = [
     {path:'listDoctors',loadChildren:()=>import('./views/patient/list-doctors/list-doctors.module').then(m=>m.ListDoctorsModule)},
     {path:'contacts',loadChildren:()=>import('./views/patient/patient-forms/patient-forms.module').then(m=>m.PatientFormsModule)},
     {path:'doctor-details',loadChildren:()=>import('./views/patient/doctor-details/doctor-details.module').then(m=>m.DoctorDetailsModule)},
-    {path:'forms-details',loadChildren:()=>import('./views/patient/forms-details/forms-details.module').then(m=>m.FormsDetailsModule)},
+    {path:'forms-details/:id',loadChildren:()=>import('./views/patient/forms-details/forms-details.module').then(m=>m.FormsDetailsModule)},
 
 
   ]},

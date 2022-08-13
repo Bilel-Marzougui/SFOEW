@@ -10,6 +10,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [MonFormulaireComponent],
@@ -23,7 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatGridListModule,
     MatToolbarModule,
     MatButtonModule,
-    
+    NgxPaginationModule
     
   ]
 })

@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import {GoogleLoginProvider,FacebookLoginProvider} from 'angularx-social-login';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutsModule } from './layouts/layouts.module';
@@ -39,6 +37,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng5SliderModule } from 'ng5-slider';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {GoogleLoginProvider,FacebookLoginProvider} from 'angularx-social-login';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { DetailsPatientComponent } from './views/shared-components/details-patient/details-patient.component';
+import { DetailsProfessionnelComponent } from './views/shared-components/details-professionnel/details-professionnel.component';
+const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com';
 
 @NgModule({
   declarations: [
@@ -48,6 +53,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     SideBarComponent,
     EditProfilComponent,
     EditProfilProComponent,
+    DetailsPatientComponent,
+    DetailsProfessionnelComponent,
 
 
   ],
@@ -83,8 +90,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
     Ng2SearchPipeModule,
     Ng5SliderModule,
     MatGridListModule,
-    MatCheckboxModule
-
+    MatCheckboxModule,
+    NgxPaginationModule,
+    SocialLoginModule,
+    MatProgressBarModule
 
 
 
@@ -103,21 +112,26 @@ import { MatGridListModule } from '@angular/material/grid-list';
     EditProfilProComponent
   ],
   providers: [MatDatepickerModule, DatePipe,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com'
+            )
+          },
 
-    // {
-    //   provide: 'SocialAuthServiceConfig',
-    //   useValue: {
-    //     autoLogin: false,
-    //     providers: [
-    //       {
-    //         id: GoogleLoginProvider.PROVIDER_ID,
-    //         provider: new GoogleLoginProvider(
-    //          '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com'
-    //         )
-    //       }
-    //     ]
-    //   } as SocialAuthServiceConfig
-    // }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
+
+
   ],
   bootstrap: [AppComponent]
 })

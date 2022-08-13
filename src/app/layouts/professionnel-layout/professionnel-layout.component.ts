@@ -18,7 +18,8 @@ export class ProfessionnelLayoutComponent implements OnInit {
   hide : boolean = true;
   test:Professionnel
   id:any
-  invts:any
+  invts!:any
+
   index=0
   dataProf={
     name:'',
@@ -70,14 +71,14 @@ export class ProfessionnelLayoutComponent implements OnInit {
         verticalPosition: 'top',
         panelClass:'success'
 
-      });},error=> this.snackBar.open(" invite already accepted " ,"×", {
+      });},error=> this.snackBar.open(" invite  accepted" ,"×", {
 
         duration: 5000,
   
         // here specify the position
   
         verticalPosition: 'top',
-        panelClass:'error'
+        panelClass:'success'
   
       })
       )
@@ -88,9 +89,18 @@ this.index=index
     return index;
   }
   numberInvts(){
-    var keys = Object.keys(this.invts);
-var len = keys.length;
-return len
+//    let keys = Object.keys(this.invts);
+// let len = this.keys.length;
+// return len
+
+if (this.invts) {
+  let keys = Object.keys(this.invts);
+  let len = keys.length;
+  return len
+} 
+
+
+
   }
 
 }

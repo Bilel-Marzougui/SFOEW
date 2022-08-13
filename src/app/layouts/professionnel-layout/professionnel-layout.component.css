@@ -1,7 +1,7 @@
 img{
     height: 50px;
     width: 50px;
-    transform: rotate(15deg);}
+    transform: rotate(14deg);}
 .rotation{
     transform: rotate(350deg);
 }
@@ -13,4 +13,9 @@ img{
       }
 i{
     cursor: pointer;
+}
+.loader-container{
+    position: fixed;
+    width: 100%;
+    z-index: 99;
 }

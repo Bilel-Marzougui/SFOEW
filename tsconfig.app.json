@@ -4,7 +4,8 @@
   "compilerOptions": {
     "outDir": "./out-tsc/app",
     "allowJs": true,
-    "types": ["clientId","gapi.auth2"]
+    "types": [],
+  
   },
   "files": [
     "src/main.ts",

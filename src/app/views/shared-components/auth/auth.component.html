@@ -51,10 +51,10 @@
                   <button mat-raised-button color="primary" class="login-button" type="submit">
                     Sign In
                   </button>
+                  <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit">
+                    Login with Google
+                  </button>
 
-                  <!-- <button mat-raised-button class="login-button">
-                Login with Google
-              </button> -->
                 </form>
               </div>
 
@@ -84,7 +84,9 @@
                   <button mat-raised-button color="primary" type="submit" class="login-button">
                     Sign In
                   </button>
-
+                  <button mat-raised-button color="primary" type="submit"  (click)="google()">
+                    Sign In with Google 
+                  </button>
                   <!-- <button mat-raised-button class="login-button">
                 Login with Google
               </button> -->
@@ -454,3 +456,6 @@
 
 
 </mat-dialog-content>
+
+
+

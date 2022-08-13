@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SocialAuthService } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login"
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +21,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 })
 export class AuthComponent implements OnInit{
-
+  // user!:SocialUser;
 
   messageError:any;
   registerFormPro: FormGroup;
@@ -48,7 +50,8 @@ export class AuthComponent implements OnInit{
 
 
   constructor(
-    private snackBar:MatSnackBar,
+    private authService: SocialAuthService,
+ private snackBar:MatSnackBar,
     private datePipe: DatePipe,
     public dialogRef: MatDialogRef<AuthComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogModel,
@@ -103,6 +106,7 @@ export class AuthComponent implements OnInit{
 
   ngOnInit() {
 
+    
     console.log(this.selectedVal)
     console.log(this.selectedVal2)
 
@@ -167,6 +171,7 @@ this.loginFormPat = this.formBuilder.group({
 
 
 onStrengthChanged(strength: number) {
+
 }
 
 
@@ -322,6 +327,15 @@ onReset() {
   this.registerFormPro.reset();
   this.registerFormPat.reset();
 
+}
+signInWithGoogle(): void {
+  this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+}
+
+
+
+signOut(): void {
+  this.authService.signOut();
 }
 
 }

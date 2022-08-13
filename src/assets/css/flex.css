@@ -360,17 +360,17 @@ border-radius: 60px;
   }
   ::ng-deep .simple-slider .ng5-slider .ng5-slider-tick-legend {
     font-size: 10px;
-    background-color: #1762d3d3;
+    background-color: #FF4500;
     color: white;
     width: 9000%;
   }
   ::ng-deep .simple-slider .ng5-slider .ng5-slider-pointer {
     width: 8px;
-    height: 16px;
+    height: 10px;
     top: auto;
     /* to remove the default positioning */
     bottom: 0;
-    background-color: red;
+    background-color: #FF4500;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
   }

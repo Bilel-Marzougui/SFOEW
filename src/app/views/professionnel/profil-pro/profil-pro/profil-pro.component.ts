@@ -14,10 +14,38 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ProfilProComponent implements OnInit {
   name:any
 
+  url : any;
 
+  fileToUpload: any;
+  
+  imageUrl: any;
+  urlPhotp:any
+ 
+  
 id:any
-prof:Professionnel
+// prof:Professionnel
 fileName = '';
+
+prof={
+  id:"",
+  photo:"",
+  name:"",
+  lastname:'',
+  birthday:'',
+  adresse:'',
+  tel:'',
+  email:'',
+  password:'',
+  added_date:'',
+  fax:'',
+  job:'',
+  adeli:'',
+  gender:'',
+  rpps:'',
+  role:'',
+}
+
+
   constructor(private snackBar:MatSnackBar,private updateservice:UpdProfilProServiceService,private authPro:AuthProfessionnelService,public dialog: MatDialog) {
     this.id=this.authPro.geid()
 
@@ -43,6 +71,9 @@ fileName = '';
         formData.append("thumbnail", file);
 
           this.updateservice.updPhotoPro(this.id,formData).subscribe(response=>{
+            console.log(formData)
+            console.log("testtme")
+            console.log(response)
             this.snackBar.open(" photo updated successfully " ,"×", {
 
               duration: 5000,
@@ -75,6 +106,51 @@ fileName = '';
 }
 logout() {
   const dialogConfig = new MatDialogConfig();
+
+}
+
+handleFileInput(file: FileList) {
+
+  this.fileToUpload = file.item(0);
+
+ 
+
+  //Show image preview
+
+  let reader = new FileReader();
+
+  reader.onload = (event: any) => {
+
+    this.imageUrl = event.target.result;
+
+  /*   console.log('hhh', this.imageUrl); */
+
+    this.updateservice.uploadImage(this.imageUrl).subscribe((result)=>{
+
+     
+
+      this.url =result
+      console.log("result",result)
+      const imageBlob = this.url;
+
+  const file = new FormData();
+
+  file.set('image', imageBlob);
+
+
+      this.updateservice.updatePatientPhoto(this.id,file).subscribe((response=>{
+        console.log(response)
+      }))
+console.log(result)
+       this.urlPhotp= result 
+       this.prof.photo=this.urlPhotp
+     /*  console.log("reee", result) */
+
+    })
+
+  };
+
+  reader.readAsDataURL(this.fileToUpload);
 
 }
 

@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  urlBackend:'http://38.242.195.210:3000/',
+
 };

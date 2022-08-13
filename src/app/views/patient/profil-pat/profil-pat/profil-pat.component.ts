@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export interface DialogData {
   animal: string;
   name: string;
-
+  
 }
 @Component({
   selector: 'app-profil-pat',
@@ -18,12 +18,34 @@ export interface DialogData {
 })
 export class ProfilPatComponent implements OnInit {
 name:any
-patient:Patient
 id:any
-test:Patient
 photo:any;
 files: any[];
 fileName = '';
+url : any;
+
+  fileToUpload: any;
+  
+  imageUrl: any;
+  urlPhotp:any
+test={
+
+  name: 'hanen',
+  lastname: 'yassin',
+  birthday: '12/12/2015',
+  adresse: 'jj',
+  tel: '+33333333333333',
+  email: 'yassin1@gmail.com',
+  password: 'yyyyyy',
+  ssn: '77',
+  gender: 'homme',
+  photo: '1653558618111.png',
+  account_state: true,
+  archived: false,
+  added_date: '2022-05-26T09:50:18.419+00:00',
+  _id:""
+
+}
   constructor(private snackBar:MatSnackBar,public  updateservice:UpdProfilPatientService ,public  authPat:AuthPatientService,public dialog: MatDialog) {
 
       this.id=this.authPat.geid()
@@ -38,43 +60,88 @@ fileName = '';
   ngOnInit(): void {
 
   }
+  handleFileInput(file: FileList) {
 
-  onFileSelected(event) {
+    this.fileToUpload = file.item(0);
+  
+   
+  
+    //Show image preview
+  
+    let reader = new FileReader();
+  
+    reader.onload = (event: any) => {
+  
+      this.imageUrl = event.target.result;
+  
+    /*   console.log('hhh', this.imageUrl); */
+  
+      this.updateservice.uploadImage(this.imageUrl).subscribe((result)=>{
+  
+       
+        console.log(result)
 
-    const file:File = event.target.files[0];
+        this.url =result
+        console.log("result",result)
+        const imageBlob = this.url;
+  
+    const file = new FormData();
+  
+    file.set('image', imageBlob);
+  
+  
+        this.updateservice.updateDoctorPhoto(this.id,file).subscribe((response=>{
+          console.log(response)
+        }))
+  console.log(result)
+         this.urlPhotp= result 
+         this.test.photo=this.urlPhotp
+       /*  console.log("reee", result) */
+  
+      })
+  
+    };
+  
+    reader.readAsDataURL(this.fileToUpload);
+  
+  }
 
-    if (file) {
+//   onFileSelected(event) {
 
-        this.fileName = file.name;
+//     const file:File = event.target.files[0];
 
-        const formData = new FormData();
+//     if (file) {
 
-        formData.append("thumbnail", file);
+//         this.fileName = file.name;
 
-        this.updateservice.updPhotoPat( this.id,formData).subscribe(response=>{
-          this.snackBar.open(" photo updated successfully " ,"×", {
+//         const formData = new FormData();
 
-            duration: 5000,
+//         formData.append("thumbnail", file);
+
+//         this.updateservice.updPhotoPat( this.id,formData).subscribe(response=>{
+//           this.snackBar.open(" photo updated successfully " ,"×", {
+
+//             duration: 5000,
     
-            // here specify the position
+//             // here specify the position
     
-            verticalPosition: 'top',
-            panelClass:'success'
+//             verticalPosition: 'top',
+//             panelClass:'success'
     
-          });
-        },error=> this.snackBar.open(" photo not updated" ,"×", {
+//           });
+//         },error=> this.snackBar.open(" photo not updated" ,"×", {
 
-          duration: 5000,
+//           duration: 5000,
     
-          // here specify the position
+//           // here specify the position
     
-          verticalPosition: 'top',
-          panelClass:'error'
+//           verticalPosition: 'top',
+//           panelClass:'error'
     
-        })
-          )
-    }
-}
+//         })
+//           )
+//     }
+// }
   openDialog() {
     const dialogConfig = new MatDialogConfig();
 

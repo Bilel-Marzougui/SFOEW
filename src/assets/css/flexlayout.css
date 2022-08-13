@@ -6,6 +6,8 @@
 
 .card{
     cursor: pointer;
+    box-shadow: 5px 5px 5px #828181;
+
 }
 
 .box{
@@ -23,6 +25,7 @@
 	align-items: center;
 
 	padding: 20px;
+
 
 }
 

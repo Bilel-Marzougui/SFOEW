@@ -5,10 +5,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FormDataService {
 private messageSource=new BehaviorSubject<any>('ttt')
+private detailsPatientSource=new BehaviorSubject<any>('ttt')
 private IndexSource=new BehaviorSubject<any>('ttt')
 
 currentMessage = this.messageSource.asObservable();
 currentindex = this.IndexSource.asObservable();
+currentdetailsPatient = this.detailsPatientSource.asObservable();
 
 constructor() {
   
@@ -22,4 +24,10 @@ GetIndex(index:any){
 GetId(formId:any){
   this.messageSource.next(formId)
 }
+
+GetPatient(PatientID:any){
+  this.detailsPatientSource.next(PatientID)
+}
+
+
 }

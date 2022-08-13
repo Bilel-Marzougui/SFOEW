@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule} from '@angular/material/icon';
 import { PatientLayoutComponent } from './patient-layout/patient-layout.component';
 import { ProfessionnelLayoutComponent } from './professionnel-layout/professionnel-layout.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { ProfessionnelLayoutComponent } from './professionnel-layout/professionn
     LayoutsRoutingModule,
     RouterModule,
     MatIconModule,
-
+    MatProgressBarModule
 
   ]
 })
