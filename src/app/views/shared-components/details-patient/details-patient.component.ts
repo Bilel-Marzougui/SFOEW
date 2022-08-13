@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UpdProfilPatientService } from 'src/app/views/services/patient/upd-profil-patient.service';
+import { FormDataService } from '../../services/shared-data/form-data.service';
 
 @Component({
   selector: 'app-details-patient',
@@ -7,7 +8,7 @@ import { UpdProfilPatientService } from 'src/app/views/services/patient/upd-prof
   styleUrls: ['./details-patient.component.css']
 })
 export class DetailsPatientComponent implements OnInit {
-
+  PatientID:any
   Patient={
 
     name: 'hanen',
@@ -26,9 +27,16 @@ export class DetailsPatientComponent implements OnInit {
     _id:""
   
   }
-  constructor( updateservice:UpdProfilPatientService) { }
+  constructor( private updateservice:UpdProfilPatientService,private data:FormDataService,) {
+    this.data.currentdetailsPatient.subscribe(PatientID=>this.PatientID =PatientID)
+
+   }
 
   ngOnInit(): void {
+
+    this.updateservice.getPatient(this.PatientID).subscribe(response=>
+      this.Patient = response
+      )
   }
 
 }

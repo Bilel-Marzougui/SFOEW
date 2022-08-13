@@ -1,56 +1,206 @@
-
-
 <div class="container">
-    <div class="main-body">
-  
-      <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb" class="main-breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Professionnel</a></li>
-          <li class="breadcrumb-item"><a href="javascript:void(0)">Accueil</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Profile</li>
-        </ol>
-      </nav>
-      <!-- /Breadcrumb -->
-  
-      <div class="row gutters-sm">
-        <div class="col-md-4 mb-3">
-            <div class="container" >
-          
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search..." (input)="filterItem($event.target.value)"  />
-              </div>
-            </div>
-       
+  <div class="main-body">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a >Professionnel</a></li>
+        <li class="breadcrumb-item"><a >Invitations</a></li>
+      </ol>
+    </nav>
+    <!-- /Breadcrumb -->
+
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="container">
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search..." (input)="filterItem($event.target.value)" />
+          </div>
         </div>
-
-        <li class="list-group-item active container"  >Invitations</li>
-
-        <div class="container"  *ngFor="let invt of invts  ">
-            
-            <ul  class="list-group" *ngIf="invt.status == false"  >
-
-             
-              <table>
-                <tr style="width: 100%;" class="list-group-item">
-                  <td  style="width: 100%;"><div class="list-group " style="width: 100%;">
-                    <li   style="width: 100%;"><img [src]="invt.patient.photo" alt="" style="width: 50px; height: 50px;"> <i style="margin-left: 150px;" (click)="ShowPatientDetails(invt.patient._id)">{{invt.patient.name}} {{invt.patient.lastname}}</i>    
-                    </li>
-                  </div></td>
-                  <td >  <i style="margin-left: 150px;" class="fa-solid fa-circle-check"></i>
-                  </td>
-                </tr>
-              </table>
-
-
-
-              </ul>
-     
-        </div>
-        
 
       </div>
-  
+
+      <li class="list-group-item active container">Invitations</li>
+
+      <div class="container" *ngFor="let invt of invts ;let i =index ">
+
+        <ul class="list-group" *ngIf="invt.status == false">
+
+
+          <table>
+            <tr style="width: 100%;" class="list-group-item">
+              <td style="width: 100%;">
+                <div class="list-group " style="width: 100%;">
+                  <li style="width: 100%;">
+                    <img [src]="invt.patient.photo" alt="" style="width: 50px; height: 50px;">
+                    <i style="margin-left: 150px;" (click)="getIdPat(invt.patient._id)">{{invt.patient.name}}
+                      {{invt.patient.lastname}}</i>
+
+                  </li>
+
+                </div>
+              </td>
+              <td>
+                <div class="list-group " style="width: 100%;">
+                  <li class="list-group" style="width: 100%;">
+                    <button type="button" (click)="details(i)" class="btn btn-primary btn-sm" data-toggle="modal"
+                      data-target=".bd-example-modal-lg">
+
+                      détails
+                    </button>
+
+                  </li>
+                </div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">
+                  accepter
+                </button>
+
+              </td>
+            </tr>
+          </table>
+
+
+
+        </ul>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+<!-- tessssssssssst -->
+
+<!-- Button trigger modal -->
+<!-- <div id="parent">
+    Some content
+    <div id="hover-content">
+        Only show this when hovering parent
+    </div>
+</div> -->
+
+<!-- <button (mouseenter)="$event.target.click()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Open modal
+</button> -->
+<!-- Modal -->
+
+<!-- Large modal -->
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container">
+        <div class="main-body">
+
+
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a>Patient</a></li>
+              <li class="breadcrumb-item"><a>Profile
+                </a></li>
+              <li class="breadcrumb-item active" aria-current="page">détails</li>
+            </ol>
+          </nav>
+
+
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <div class="profile-img"> <img style="height: 200px; width:200px;" [src]="pat.photo" alt="" />
+
+
+                    </div>
+                    <div class="mt-3">
+
+                      <h4> {{pat.name}} {{pat.lastname}}</h4>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nom et prénom</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.name}} {{pat.lastname}}
+
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.email}}
+                    </div>
+                  </div>
+                  <hr>
+
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Télèphone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.tel}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Date de naissance</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.birthday}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Ssn</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.ssn}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Adresse</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.adresse}}
+                    </div>
+                  </div>
+                  <hr>
+
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
-  
+</div>
+
+<!-- Small modal -->
