@@ -4,6 +4,7 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 import { Patient } from 'src/app/views/interfaces/patient.interface';
 import { AuthPatientService } from 'src/app/views/services/patient/auth-patient.service';
 import{UpdProfilPatientService} from '../../views/services/patient/upd-profil-patient.service'
+import { LoaderService } from 'src/app/views/services/loader/loader.service';
 
 @Component({
   selector: 'app-patient-layout',
@@ -30,7 +31,7 @@ dataPatient={
   added_date:'',
 
 }
-  constructor(public  updateservice:UpdProfilPatientService,private router:Router,private  authPat:AuthPatientService,) {
+  constructor( public loaderService: LoaderService,public  updateservice:UpdProfilPatientService,private router:Router,private  authPat:AuthPatientService,) {
 
     this.id=this.authPat.geid()
     this.patient=this.authPat.getUsername()

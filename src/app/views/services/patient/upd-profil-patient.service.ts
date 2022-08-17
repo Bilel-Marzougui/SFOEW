@@ -54,7 +54,7 @@ header=new HttpHeaders().set('authorization',this.token)
 
         /*   console.log("iiii",image) */
       
-          return this.http.post("http://localhost:3000/uploadApi/", {image :image} );
+          return this.http.post(`${this.URL}`+"uploadApi/", {image :image} );
       
         }
           
@@ -65,7 +65,7 @@ header=new HttpHeaders().set('authorization',this.token)
   
         console.log(id,photo)
         
-            return this.http.put('http://localhost:3000/patient/updatephoto/' +id , photo);
+            return this.http.put(`${this.URL}`+'patient/updatephoto/' +id , photo);
         
           }
 

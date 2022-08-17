@@ -32,11 +32,11 @@ export class PaymentService {
   
   }
 
-  pay(id:any){
+  pay(id:any,body:any){
     const token=localStorage.getItem('token_Pro')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
-    return this.http.get<any>(`${this.URL}`+'paypal/pay'+id,{headers:headers})  
+    return this.http.post<any>(`${this.URL}`+'paypal/pay',body,{headers:headers})  
   
   }
 }

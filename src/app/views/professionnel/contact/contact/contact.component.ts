@@ -11,6 +11,7 @@ export class ContactComponent implements OnInit {
   id: any;
   contacts:any
   p:number;
+  i=1;
   filtredContacts:any
   constructor(private invservice:InvitaionsService,private authPro: AuthProfessionnelService) { 
     this.id = this.authPro.geid()
@@ -29,8 +30,8 @@ export class ContactComponent implements OnInit {
   filterItem(value) {
     this.contacts = this.filtredContacts.filter(i => {
       return (
-        i.patient.name.toLowerCase().includes(value.toLowerCase()) ||
-        i.patient.lastname.toLowerCase().includes(value.toLowerCase()) 
+        i.patients.name.toLowerCase().includes(value.toLowerCase()) ||
+        i.patients.lastname.toLowerCase().includes(value.toLowerCase()) 
 
       )
     })

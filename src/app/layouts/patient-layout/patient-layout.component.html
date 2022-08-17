@@ -16,11 +16,11 @@
           <hr class="sidebar-divider my-0">
 
           <!-- Nav Item - Dashboard -->
-          <li class="nav-item active">
+          <!-- <li class="nav-item active">
               <a class="nav-link" routerLink="home">
                   <i class="fas fa-fw fa-tachometer-alt"></i>
                   <span>Accueil</span></a>
-          </li>
+          </li> -->
 
           <!-- Divider -->
           <hr class="sidebar-divider">
@@ -132,6 +132,9 @@
           <div id="content">
 
               <!-- Topbar -->
+              <div class="loader-container"  *ngIf="loaderService.isLoading | async">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
               <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                   <!-- Sidebar Toggle (Topbar) -->
@@ -181,14 +184,12 @@
                       </li>
 
                       <!-- Nav Item - Alerts -->
-                      <li class="nav-item dropdown no-arrow mx-1">
+                      <!-- <li class="nav-item dropdown no-arrow mx-1">
                           <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fas fa-bell fa-fw fa-3x" ></i>
-                              <!-- Counter - Alerts -->
                               <span class="badge badge-danger badge-counter">3+</span>
                           </a>
-                          <!-- Dropdown - Alerts -->
                           <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                               aria-labelledby="alertsDropdown">
                               <h6 class="dropdown-header">
@@ -229,17 +230,15 @@
                               </a>
                               <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                           </div>
-                      </li>
+                      </li> -->
 
                       <!-- Nav Item - Messages -->
-                      <li class="nav-item dropdown no-arrow mx-1">
+                      <!-- <li class="nav-item dropdown no-arrow mx-1">
                           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fas fa-envelope fa-fw"></i>
-                              <!-- Counter - Messages -->
                               <span class="badge badge-danger badge-counter">7</span>
                           </a>
-                          <!-- Dropdown - Messages -->
                           <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                               aria-labelledby="messagesDropdown">
                               <h6 class="dropdown-header">
@@ -295,7 +294,7 @@
                               </a>
                               <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                           </div>
-                      </li>
+                      </li> -->
 
                       <div class="topbar-divider d-none d-sm-block"></div>
 
