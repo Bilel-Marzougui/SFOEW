@@ -19,6 +19,9 @@ f:any
   id:any
   value: number = 100;
 idForm2:any;
+FormScore=[
+
+]
   // options: Options = {
   //   showTicksValues: true,
   //   stepsArray: [
@@ -88,9 +91,35 @@ idForm2:any;
   }
 
   radioChange(value,event){
-    console.log("value",value[event.source.id.slice(-1)-1].score)
+    console.log("value",value.score)
+    this.FormScore.push(value.score)
+    console.log("this.FormScore",this.FormScore)
   }
   radioChecked(value,event){
-    console.log("value",value[event.source.id.slice(-1)-1],event,value)
+    let x =0
+  let  index = this.FormScore.findIndex(x => 
+    x.title ===event.title,
+    event.status=!event.status
+  );
+  console.log("this.index",index)
+  
+if(index == -1){
+      event.status=true
+      this.FormScore.push(event)}
+      console.log("this.FormScore",this.FormScore)
+/*     if(this.FormScore.length>0){
+ 
+       }else{
+      event.status=true
+      this.FormScore.push(event)
+    } */
+  /*   console.log("valueee",value,event)
+  
+    console.log("this.FormScore",this.FormScore) */
+  }
+  rangeChange(question,event){
+    console.log("event",question,event)
+    this.FormScore.push(event)
+    console.log("this.FormScore",this.FormScore)
   }
 }
