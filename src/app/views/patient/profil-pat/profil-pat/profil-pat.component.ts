@@ -39,7 +39,7 @@ test={
   password: 'yyyyyy',
   ssn: '77',
   gender: 'homme',
-  photo: '1653558618111.png',
+  photo: '',
   account_state: true,
   archived: false,
   added_date: '2022-05-26T09:50:18.419+00:00',

@@ -20,7 +20,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio'
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { Ng2TelInputModule } from 'ng2-tel-input';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
@@ -43,6 +43,9 @@ import {GoogleLoginProvider,FacebookLoginProvider} from 'angularx-social-login';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DetailsPatientComponent } from './views/shared-components/details-patient/details-patient.component';
 import { DetailsProfessionnelComponent } from './views/shared-components/details-professionnel/details-professionnel.component';
+import { InterceptorService } from '../app/views/services/loader/interceptor.service';
+
+
 const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com';
 
 @NgModule({
@@ -93,7 +96,8 @@ const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleuser
     MatCheckboxModule,
     NgxPaginationModule,
     SocialLoginModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    
 
 
 
@@ -112,6 +116,7 @@ const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleuser
     EditProfilProComponent
   ],
   providers: [MatDatepickerModule, DatePipe,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

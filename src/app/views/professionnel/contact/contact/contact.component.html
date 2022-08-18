@@ -13,7 +13,7 @@
             <div class="col-lg-3" *ngFor="let contact of contacts | paginate: { itemsPerPage: 8, currentPage: p } ">
                 <div class="text-center card-box">
                     <div class="member-card pt-3 pb-3">
-                        <div class="thumb-lg member-thumb mx-auto"><img src="../../../../../assets//img/avatar.jpg"
+                        <div class="thumb-lg member-thumb mx-auto"><img [src]="contact.patients.photo"
                                 class="rounded-circle img-thumbnail" alt="profile-image"></div>
                         <div class="">
                             <h6>{{contact.patients.name}} {{contact.patients.lastname}}</h6>

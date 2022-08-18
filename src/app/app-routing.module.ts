@@ -38,7 +38,7 @@ const routes: Routes = [
 
   {path:'patient',component:PatientLayoutComponent,canActivate:[GuardPatientGuard],children:[
     {path:'home',loadChildren:()=>import('./views/patient/home/home.module').then(m=>m.HomeModule)},
-    {path:'',loadChildren:()=>import('./views/patient/home/home.module').then(m=>m.HomeModule)},
+    // {path:'',loadChildren:()=>import('./views/patient/home/home.module').then(m=>m.HomeModule)},
     {path:'profil',loadChildren:()=>import('./views/patient/profil-pat/profil-pat.module').then(m=>m.ProfilPatModule)},
     {path:'listDoctors',loadChildren:()=>import('./views/patient/list-doctors/list-doctors.module').then(m=>m.ListDoctorsModule)},
     {path:'contacts',loadChildren:()=>import('./views/patient/patient-forms/patient-forms.module').then(m=>m.PatientFormsModule)},

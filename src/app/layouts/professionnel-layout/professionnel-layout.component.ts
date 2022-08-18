@@ -4,6 +4,8 @@ import { Professionnel } from 'src/app/views/interfaces/professionnel.interface'
 import { AuthProfessionnelService } from 'src/app/views/services/professionnel/auth-professionnel.service';
 import { InvitaionsService } from 'src/app/views/services/professionnel/invitaions.service';
 import { UpdProfilProServiceService } from 'src/app/views/services/professionnel/upd-profil-pro-service.service';
+import { LoaderService } from 'src/app/views/services/loader/loader.service';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -39,7 +41,7 @@ export class ProfessionnelLayoutComponent implements OnInit {
 
 
   }
-  constructor(private snackBar:MatSnackBar,private invservice:InvitaionsService,private router:Router,private updateservice:UpdProfilProServiceService, private authPro:AuthProfessionnelService) {
+  constructor( public loaderService: LoaderService,private snackBar:MatSnackBar,private invservice:InvitaionsService,private router:Router,private updateservice:UpdProfilProServiceService, private authPro:AuthProfessionnelService) {
     this.id=this.authPro.geid()
     this.professionnel=this.authPro.getUsername()
 

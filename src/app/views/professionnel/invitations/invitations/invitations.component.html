@@ -44,20 +44,27 @@
               <td>
                 <div class="list-group " style="width: 100%;">
                   <li class="list-group" style="width: 100%;">
-                    <button type="button" (click)="details(i)" class="btn btn-primary btn-sm" data-toggle="modal"
+                    <!-- <button type="button" (click)="details(i)" class="btn btn-primary btn-sm" data-toggle="modal"
                       data-target=".bd-example-modal-lg">
 
                       détails
-                    </button>
+                    </button> -->
+
+                    <button class="button" (click)="details(i)"  data-toggle="modal">
+                      <span class="text">détails</span>
+                      <i class="fa fa-id-card icon"></i>                    </button>
 
                   </li>
                 </div>
               </td>
               <td>
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">
                   accepter
-                </button>
-
+                </button> -->
+<button class="button">
+  <span class="text">accepter</span>
+<i class="ri-check-line icon"></i>
+</button>
               </td>
             </tr>
           </table>
