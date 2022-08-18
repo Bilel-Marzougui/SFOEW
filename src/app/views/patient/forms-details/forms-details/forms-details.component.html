@@ -89,13 +89,13 @@
               <div *ngIf="section.questions[q].type == 'Choix multiples'" style="width: 100%;"
                 class="col-lg-12 col-sm-12 w-100">
                 <!-- boucel for =>enter to checkbox options -->
-
+<button (click)="expression()">bbb</button>
                 <div style="width: 100%;" *ngFor="let op of section.questions[q].optioncm; let o = index;">
                   <div class="row">
                     <div class="col">
                       <!-- => show checkbox input -->
 
-                      <mat-checkbox class="m-2 w-100" style="width: 100%;" (change)="radioChange(section.questions[q].optioncm[o],$event)">
+                      <mat-checkbox class="m-2 w-100" style="width: 100%;" (change)="radioChange(section.questions[q].optioncm[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')">
                         <h1 class="textt">{{section.questions[q].optioncm[o].text}}</h1>
                       </mat-checkbox>
 
@@ -245,7 +245,7 @@
                 <div style="width: 100%;" *ngFor="let op of section.questions[q].options; let o = index;">
                   <div class="row">
                     <div class="col">
-                      <mat-radio-button class="m-2 w-100" style="width: 100%;" (change)="radioChange(section.questions[q].options[o],$event)">
+                      <mat-radio-button class="m-2 w-100" style="width: 100%;" (change)="caseCoher(section.questions[q].options[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')">
                         <h1 *ngIf="section.questions[q].options[o].text.length > 0" class="textt">
                           {{section.questions[q].options[o].text}}</h1>
                       </mat-radio-button>
@@ -281,7 +281,7 @@
                     <tr *ngFor="let question of section.questions[q].grille.options">
                       <th scope="row">{{question.title}}</th>
                       <td *ngFor="let question of section.questions[q].grille.scoreS">
-                        <mat-checkbox class=" inp col-md-7 col-lg-7 col-sm-9 col-xs-9 col-9  " (change)="radioChecked(question.score,question)">
+                        <mat-checkbox class=" inp col-md-7 col-lg-7 col-sm-9 col-xs-9 col-9  " (change)="radioChecked(question.score,question,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')">
                         </mat-checkbox>
                       </td>
 

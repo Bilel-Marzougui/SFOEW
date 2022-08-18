@@ -89,33 +89,91 @@ FormScore=[
   filterItem(value) {
     console.log("value",value)
   }
-
-  radioChange(value,event){
-    console.log("value",value.score)
-    this.FormScore.push(value.score)
-    console.log("this.FormScore",this.FormScore)
+  expression(){
+    console.log("FormScore",this.FormScore)
   }
-  radioChecked(value,event){
-    let x =0
-  let  index = this.FormScore.findIndex(x => 
-    x.title ===event.title,
-    event.status=!event.status
-  );
-  console.log("this.index",index)
-  
-if(index == -1){
-      event.status=true
-      this.FormScore.push(event)}
-      console.log("this.FormScore",this.FormScore)
-/*     if(this.FormScore.length>0){
- 
-       }else{
-      event.status=true
-      this.FormScore.push(event)
-    } */
-  /*   console.log("valueee",value,event)
-  
-    console.log("this.FormScore",this.FormScore) */
+  radioChange(value,event,sections,question,type){
+     let x =0
+    if(this.FormScore.length===1&&this.FormScore[0]==0){
+      this.FormScore= []
+    }
+   
+    let  index = this.FormScore.findIndex(x => 
+      x.text===value.text
+    );
+    let  indexQ = this.FormScore.findIndex(x => 
+      x.indexQuestion===question
+    );
+    if(event.checked&& indexQ == -1){
+      this.FormScore.push({text:value.text,score:value.score,index:x+1,section:sections,indexQuestion:question,type:type})
+    }
+    if(!event.checked){
+  let Table =[]
+      this.FormScore.map((result)=>{
+        if(result.indexQuestion!=question&&result.section==sections){
+          Table.push(result)
+        }
+        if(result.section!=sections){
+          Table.push(result)
+        }
+      })
+      this.FormScore=Table
+    } 
+  }
+  caseCoher(value,event,sections,question,type){
+        let x =0
+        if(this.FormScore.length===1&&this.FormScore[0]==0){
+          this.FormScore= []
+        }
+        let  indexQ = this.FormScore.findIndex(x => 
+          x.type===type
+        );
+        if( indexQ == -1){
+          this.FormScore.push({text:value.text,score:value.score,index:x+1,section:sections,indexQuestion:question,type:type})
+        }else{
+          this.FormScore.map((result)=>{
+          
+            if(result.type==type){
+              result.text=value.text
+              result.score=value.score
+              result.section=value.sections
+              result.indexQuestion=question
+              result.type=type
+            }
+          })
+       
+        
+        }
+      }
+  radioChecked(value,event,hi,sections,question,type){
+ let x =0
+if(this.FormScore.length===1&&this.FormScore[0]==0){
+  this.FormScore= []
+}
+let  indexQ = this.FormScore.findIndex(x => 
+  x.indexChoixm===hi.source.id
+);
+if(hi.checked&& indexQ == -1){
+  this.FormScore.push({text:event.title,score:event.score,index:x+1,section:sections,indexQuestion:question,type:type,indexChoixm:hi.source.id})
+} 
+if(!hi.checked){
+  let Table =[]
+      this.FormScore.map((result)=>{
+        console.log(1) 
+
+        if(result.indexChoixm){
+        if(result.indexChoixm!=hi.source.id&&result.section==sections){
+          Table.push(result)
+        }
+        if(result.section!=sections){
+           Table.push(result) 
+        } }else
+        {
+          Table.push(result) 
+        }
+      })
+       this.FormScore=Table
+    }
   }
   rangeChange(question,event){
     console.log("event",question,event)
