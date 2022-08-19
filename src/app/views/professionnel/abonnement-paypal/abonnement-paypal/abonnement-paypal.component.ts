@@ -203,7 +203,7 @@ pay(){
 
   console.log(this.payment1)
     // this.PaymentService.pay(this.id,this.payment1).subscribe(response=>
-    this.PaymentService.pay(this.id).subscribe(response=>{
+    this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
       console.log(response)
       window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7JU39963KL9803719";
 
@@ -213,9 +213,9 @@ pay(){
  else if(this.status=="mensuel"){
   this.price1 =this.monthly.prix
   // this.PaymentService.pay(this.id,this.payment1).subscribe(response=>
-  this.PaymentService.pay(this.id).subscribe(response=>{
+  this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
     console.log(response)
-    window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7JU39963KL9803719";
+    // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7JU39963KL9803719";
 
   })
 
