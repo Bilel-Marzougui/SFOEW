@@ -24,14 +24,18 @@ id:any
   ngOnInit(): void {
     this.PaymentService.monthlyPrice().subscribe(payment=>{
       this.monthly=payment
+      this.price1 =this.monthly[0].prix
       console.log(this.monthly)
+      console.log(this.price1)
 
     })
     this.PaymentService.yearlyPrice().subscribe(yearly=>{
       console.log(yearly)
 
       this.yearly=yearly
+      this.price2 =this.yearly[0].prix
       console.log(this.yearly)
+      console.log(this.price2)
 
     })
 
@@ -153,20 +157,26 @@ payment1={
 pay(){
   console.log(this.id)
  if(this.status=="annuel"){
-  this.price2 =this.yearly.prix
 
-  console.log(this.payment1)
+  console.log(this.payment2)
     this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
+      console.log(this.price2)
+
       console.log(response)
-      window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7JU39963KL9803719";
+
+      window.location.href=response.url;
 
     })
 
  }
  else if(this.status=="mensuel"){
-  this.price1 =this.monthly.prix
   this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
+    console.log(this.price1)
+
     console.log(response)
+    window.location.href=response.url;
+
+    
   })
 
  }

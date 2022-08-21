@@ -11,7 +11,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./forms-details.component.css']
 })
 export class FormsDetailsComponent implements OnInit {
-
+test1:any
+test2:any
+test3:any
+test4:any
+test5:any
+Nomberdej:any
   idForm:any
   form:any
   index:any
@@ -120,6 +125,10 @@ FormScore=[
       this.FormScore=Table
     } 
   }
+
+
+
+
   caseCoher(value,event,sections,question,type){
         let x =0
         if(this.FormScore.length===1&&this.FormScore[0]==0){
@@ -175,9 +184,216 @@ if(!hi.checked){
        this.FormScore=Table
     }
   }
-  rangeChange(question,event){
-    console.log("event",question,event)
-    this.FormScore.push(event)
-    console.log("this.FormScore",this.FormScore)
+
+
+  Nomberdejours(value,event,sections,question,type){
+   this.test1=value
+   this.test2=event.target.value
+   this.test3=sections
+   this.test4=question
+   this.test5=type
+
+
+
+
+    let x =0
+    if(this.FormScore.length===1&&this.FormScore[0]==0){
+      this.FormScore= []
+    }
+    let  indexQ = this.FormScore.findIndex(x => 
+      x.type===type
+    );
+    if( indexQ == -1){
+      this.FormScore.push({text:event.target.value,score:value,index:x+1,section:sections,indexQuestion:question,type:type})
+    }else{
+      
+      this.FormScore.map((result)=>{
+      
+        if(result.type==type){
+          result.text=event.target.value
+          result.score=this.test1
+          result.section=value.sections
+          result.indexQuestion=question
+          result.type=type
+        }
+        
+      })
+   
+    
+    }
   }
+
+  // Range(value,event,sections,question,type){
+ 
+ 
+ 
+ 
+ 
+  //    let x =0
+  //    if(this.FormScore.length===1&&this.FormScore[0]==0){
+  //      this.FormScore= []
+  //    }
+  //    let  indexQ = this.FormScore.findIndex(x => 
+  //      x.type===type
+  //    );
+  //    if( indexQ == -1){
+  //      this.FormScore.push({text:event,score:value,index:x+1,section:sections,indexQuestion:question,type:type})
+  //    }else{
+  //      this.FormScore.map((result)=>{
+       
+  //        if(result.type==type){
+  //          result.text=value.text
+  //          result.score=value.score
+  //          result.section=value.sections
+  //          result.indexQuestion=question
+  //          result.type=type
+  //        }
+  //      })
+    
+     
+  //    }
+  //  }
+ 
+
+
+
+  
+
+cc(){
+
+
+  console.log("valu"+this.test1)
+  console.log(this.test2)
+  console.log("sect"+this.test3)
+  console.log("ques"+this.test4)
+  console.log("type"+this.test5)
+
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // rangeChange(question,event){
+  //   console.log("event",question,event)
+  //   this.FormScore.push(event)
+  //   console.log("this.FormScore",this.FormScore)
+  // }
+
+
+
+
+
+  // R(legend,score,sections,question,type){
+  
+
+  //   let x =0
+  //   if(this.FormScore.length===1&&this.FormScore[0]==0){
+  //     this.FormScore= []
+  //   }
+  //   let  indexQ = this.FormScore.findIndex(x => 
+  //     x.type===type
+  //   );
+  //   if( indexQ == -1){
+  //     this.FormScore.push({score:score,index:x+1,section:sections,indexQuestion:question})
+  //     }else{
+      
+  //     this.FormScore.map((result)=>{
+      
+  //       if(result.type==type){
+  //         result.score=score
+  //         result.section=sections
+  //         result.indexQuestion=question
+  //         result.type=type
+  //       }
+        
+  //     })
+   
+    
+  //   }
+    
+
+  //   console.log("this.FormScore",this.FormScore)
+  // }
+  Range(value,score,sections,question,type){
+    let x =0
+    if(this.FormScore.length===1&&this.FormScore[0]==0){
+      this.FormScore= []
+    }
+    let  indexQ = this.FormScore.findIndex(x => 
+      x.type===type
+    );
+    if( indexQ == -1){
+      this.FormScore.push({score:score.score,index:x+1,section:sections,indexQuestion:question,type:type})
+    }else{
+      this.FormScore.map((result)=>{
+      
+        if(result.type==type){
+          result.score=score
+          result.section=value.sections
+          result.indexQuestion=question
+          result.type=type
+        }
+      })
+   
+    
+    }
+  }
+
+
+
+  TextCourt(value,event,sections,question,type){
+    this.test1=value
+    this.test2=event.target.value
+    this.test3=sections
+    this.test4=question
+    this.test5=type
+ 
+ 
+ 
+ 
+     let x =0
+     if(this.FormScore.length===1&&this.FormScore[0]==0){
+       this.FormScore= []
+     }
+     let  indexQ = this.FormScore.findIndex(x => 
+       x.type===type
+     );
+     if( indexQ == -1){
+       this.FormScore.push({text:event.target.value,score:value,index:x+1,section:sections,indexQuestion:question,type:type})
+     }else{
+       
+       this.FormScore.map((result)=>{
+       
+         if(result.type==type){
+           result.text=event.target.value
+           result.score=this.test1
+           result.section=value.sections
+           result.indexQuestion=question
+           result.type=type
+         }
+         
+       })
+    
+     
+     }
+   }
+
+  valueChanged(e) {
+    console.log('e', e);
+}
 }

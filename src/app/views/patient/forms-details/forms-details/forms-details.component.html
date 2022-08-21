@@ -75,13 +75,14 @@
               <div *ngIf="section.questions[q].type == 'Text court'" class="col-lg-8 col-sm-12">
                 <!-- => show simple input -->
 
-                <input class="question-short-input-response" [(ngModel)]="textcourt">
+                <input class="question-short-input-response" [(ngModel)]="textcourt" (change)="TextCourt(section.questions[q].score,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')">
               </div>
 
-              <div *ngIf="section.questions[q].type == 'Nomber de jours'" class="col-lg-8 col-sm-12">
+              <div *ngIf="section.questions[q].type == 'Nomber de jours'" class="col-lg-8 col-sm-12" >
                 <!-- => show simple input -->
 
-                <input class="question-short-input-response" [(ngModel)]="Nomberdejours " value="nb jours">
+                <input class="question-short-input-response" [(ngModel)]="Nomberdej" value="nb jours" (change)="Nomberdejours(section.questions[q].score,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')">
+              <button (click)="cc()">test</button>
               </div>
 
               <!-- condition If =>testing about question type -->
@@ -123,7 +124,7 @@
 
                       <div class="simple-slider">
 
-                        <ng5-slider   [options]="sliderMakeOptions(section.questions[q])" (valueChange)="rangeChange(section.questions[q].options,$event)"></ng5-slider> 
+                        <ng5-slider   [options]="sliderMakeOptions(section.questions[q])"   (valueChange)="Range(section.questions[q].dataRange[o].legend,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')"></ng5-slider> 
 
                       </div>
 
