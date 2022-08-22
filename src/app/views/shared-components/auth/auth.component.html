@@ -35,6 +35,8 @@
                     <input matInput placeholder="Email" formControlName="email" class="form-control"
                       [ngClass]="{ 'is-invalid': submitted && flogPro.email.errors }">
                     <mat-error *ngIf="flogPro.email.invalid">Email requis</mat-error>
+                    <mat-error *ngIf="flogPro.email.touched">Email invalid</mat-error>
+
                     <mat-icon matSuffix>email</mat-icon>
                   </mat-form-field>
 
@@ -44,6 +46,8 @@
                       [ngClass]="{ 'is-invalid': submitted && flogPro.password.errors }">
                     <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     <mat-error *ngIf="flogPro.password.invalid">Mot de passe requis </mat-error>
+                    <mat-error *ngIf="flogPro.password.errors?.required">Mot de passe minimum 6 caractères </mat-error>
+
                   </mat-form-field>
 
 

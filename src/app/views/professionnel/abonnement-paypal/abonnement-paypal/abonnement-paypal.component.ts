@@ -58,7 +58,7 @@ yearly:any
 i=1;
 toggle :boolean;
 status = ''; 
-price2=0
+price2=50.33
 price1=0
 id:any
 
@@ -201,11 +201,13 @@ pay(){
  if(this.status=="annuel"){
   this.price2 =this.yearly.prix
 
-  console.log(this.payment1)
+  console.log(this.payment2)
     // this.PaymentService.pay(this.id,this.payment1).subscribe(response=>
-    this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
+    this.PaymentService.pay(this.id,this.payment2).subscribe(response=>{
       console.log(response)
-      window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7JU39963KL9803719";
+      // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7JU39963KL9803719";
+      // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-35N34919P4856832C";
+      window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-6TG7618418837561C"
 
     })
 
@@ -215,8 +217,8 @@ pay(){
   // this.PaymentService.pay(this.id,this.payment1).subscribe(response=>
   this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
     console.log(response)
-    // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7JU39963KL9803719";
-
+    // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-69322232F9908115K";
+  window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-5HF28219X8540301N"
   })
 
  }
