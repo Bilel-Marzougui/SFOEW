@@ -206,7 +206,6 @@ pay(){
     this.PaymentService.pay(this.id,this.payment2).subscribe(response=>{
       console.log(response)
       // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7JU39963KL9803719";
-      // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-35N34919P4856832C";
       window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-6TG7618418837561C"
 
     })
