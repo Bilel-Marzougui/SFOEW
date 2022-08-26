@@ -39,6 +39,12 @@ export class LoginService {
     let decodeToken = this.helper.decodeToken(token)
     return decodeToken.subject.name
   }
+  functionOne(i,tab){
+ 
+    var index = tab.findIndex(s => s.type === i);
+  /*   console.log('ggggggggggggggggg',i,tab[index],index) */
+    return tab[index]
+  }  
   LoggedInPro(){
     let token:any=localStorage.getItem('token_Pro')
     if(!token){

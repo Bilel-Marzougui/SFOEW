@@ -155,11 +155,11 @@
                         <div class='container23'style="width: 600px" >
                         
                         <img  class="img-thumbnail" src="../../../../../assets/Douleurgraph1.png" alt="">
-                        <input type="range" min="1" max="100" [(ngModel)]="pelviennes" value="50" class="slider" name='slider' id="slider">
+                        <input type="range" min="0" max="100" (change)="VISUELLE($event,s ,'Q '+'('+ s +',' + q+')','visuelleanalogique')" value="50" class="slider" name='slider' id="slider">
                         
                         </div>
                         <!-- <img style="width: 10%;height: 10%;" class="img-thumbnail" src="assets/img/placeholder.png" alt=""> -->
-                        </div>
+                      </div>
 
                     </div>
 
@@ -312,7 +312,7 @@
     </div>
 
     <div class="buttonContainer">
-      <button  type="button" class="btn btn-primary vertical-center" style="float: centre;">confirm</button>
+      <button (click)="calcul()"  type="button" class="btn btn-primary vertical-center" style="float: centre;">confirm</button>
     </div>
     <br>
     <br>

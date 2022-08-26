@@ -16,7 +16,13 @@ constructor() {
   
  }
 
-
+ functionOne(i,tab){
+ 
+  var index = tab.findIndex(s => s.type === i);
+/*   console.log('ggggggggggggggggg',i,tab[index],index) */
+  return tab[index]
+ 
+}
 GetIndex(index:any){
   this.IndexSource.next(index)
   

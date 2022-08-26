@@ -51,7 +51,7 @@ export class AuthProfessionnelService {
   }
   getUsername(){
     let token:any=localStorage.getItem('token_Pro')
-    console.log(token)
+ /*    console.log(token) */
 
     let decodeToken= this.helper.decodeToken(token)
 

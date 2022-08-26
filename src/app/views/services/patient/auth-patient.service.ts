@@ -35,13 +35,13 @@ export class AuthPatientService {
       localStorage.setItem('name', decodeToken.subject.name)
       localStorage.setItem('id', decodeToken.subject._id)
 
-      console.log(decodeToken)
+    /*   console.log(decodeToken) */
     }
 
 
     getUsername(){
       let token:any=localStorage.getItem('token_Pat')
-      console.log(token)
+    /*   console.log(token) */
 
       let decodeToken= this.helper.decodeToken(token)
 

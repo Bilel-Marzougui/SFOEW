@@ -21,8 +21,8 @@ export class PatientFormsService {
 
 
   getFormsById(idForm:any){
-    console.log('here sis service')
-    console.log(idForm)
+ /*    console.log('here sis service')
+    console.log(idForm) */
     const token=localStorage.getItem('token_Pat')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 

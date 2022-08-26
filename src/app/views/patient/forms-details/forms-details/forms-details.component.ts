@@ -4,13 +4,14 @@ import{PatientFormsService} from '../../../services/patient/patient-forms.servic
 import { AuthPatientService } from 'src/app/views/services/patient/auth-patient.service';
 import { Options } from 'ng5-slider/options';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/views/services/login.service';
 
 @Component({
   selector: 'app-forms-details',
   templateUrl: './forms-details.component.html',
   styleUrls: ['./forms-details.component.css']
 })
-export class FormsDetailsComponent implements OnInit {
+export class FormsDetailsComponent implements  OnInit {
 test1:any
 test2:any
 test3:any
@@ -26,7 +27,11 @@ f:any
 idForm2:any;
 FormScore=[
 
-]
+];
+valD:any
+tableCalcul=[]
+scoreF=0
+scoreS='';
   // options: Options = {
   //   showTicksValues: true,
   //   stepsArray: [
@@ -56,43 +61,79 @@ FormScore=[
   responses: any= {
    
   };
-  constructor(private data:FormDataService, private authPat:AuthPatientService,private PatForms:PatientFormsService, private router: ActivatedRoute, ) {
+  constructor(private data:FormDataService, private authPat:AuthPatientService,private PatForms:PatientFormsService, private router: ActivatedRoute, private login :LoginService) {
     this.data.currentindex.subscribe(index=>this.index =index)
     this.idForm2 = this.router.snapshot.paramMap.get('id');
-    console.log(" this.idForm2", this.idForm2)
+ /*    console.log(" this.idForm2", this.idForm2) */
     this.data.currentMessage.subscribe(idForm=>this.idForm =idForm)
-       console.log(this.idForm)
+     /*   console.log(this.idForm) */
 
     
 
        this.PatForms.getFormsById(this.idForm2).subscribe(response=>{
-        console.log('heree tessst')
+      /*   console.log('heree tessst')
         console.log((this.idForm))
         console.log((response.sections[0].description))
-        console.log(( response))
+        console.log(( response)) */
 
         this.form=response
+      
       })
-
-
-
-
-
 
   }
 
 
   ngOnInit(): void {
-   
+   this.FormScore=[]
+setTimeout(() => {
+  this.tableCalcul=[]
+  for(let k=0;k<this.form.formMuti[0].indexScoreForm.length;k++){
+    if(this.form.formMuti[0].indexScoreForm[k].type==="index"){
+      this.tableCalcul.push({val:'Q '+'('+ this.form.formMuti[0].indexScoreForm[k].i +',' + this.form.formMuti[0].indexScoreForm[k].j+')'})
+    }
+    if(this.form.formMuti[0].indexScoreForm[k].type==="operation"){
+      this.tableCalcul.push({val:this.form.formMuti[0].indexScoreForm[k].desc})
+    }
+    if(this.form.formMuti[0].indexScoreForm[k].type==="number"){
+      this.tableCalcul.push({val:this.form.formMuti[0].indexScoreForm[k].desc =='' ?this.form.formMuti[0].indexScoreForm[k].k : this.form.formMuti[0].indexScoreForm[k].desc })
+    }
+    if(this.form.formMuti[0].indexScoreForm[k].type==="autre"){
+      this.tableCalcul.push({val:this.form.formMuti[0].indexScoreForm[k].desc})
+    }
+  }
+}, 3000);
+   /* console.log("this.FormScore",this.FormScore) */
     // this.f=this.forms[0].form
     // console.log(this.index)
 
     // console.log(this.forms[this.index].form)
     // console.log(this.index)
   }
-
+  pelviennes:any
   filterItem(value) {
     console.log("value",value)
+  }
+  VISUELLE(e,a,b,visuelleanalogique){
+    let x =0
+    if(this.FormScore.length===1&&this.FormScore[0]==0){
+      this.FormScore= []
+    }
+    let  indexQ = this.FormScore.findIndex(x => 
+      x.type===b
+    );
+   if(indexQ == -1){
+      this.FormScore.push({text:visuelleanalogique,score:e.target.value,index:x+1,section:a,indexQuestion:a,type:b})
+    } 
+    else{
+            this.FormScore.map((result)=>{
+               if(result.type===b){
+                result.score=e.target.value
+              }
+
+            })
+            /* this.FormScore=Table */
+          
+    }
   }
   expression(){
     console.log("FormScore",this.FormScore)
@@ -204,7 +245,7 @@ if(!hi.checked){
       x.type===type
     );
     if( indexQ == -1){
-      this.FormScore.push({text:event.target.value,score:value,index:x+1,section:sections,indexQuestion:question,type:type})
+      this.FormScore.push({text:event.target.value,score:Number(event.target.value),index:x+1,section:sections,indexQuestion:question,type:type})
     }else{
       
       this.FormScore.map((result)=>{
@@ -253,12 +294,6 @@ if(!hi.checked){
      
   //    }
   //  }
- 
-
-
-
-  
-
 cc(){
 
 
@@ -270,65 +305,26 @@ cc(){
 
  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // rangeChange(question,event){
-  //   console.log("event",question,event)
-  //   this.FormScore.push(event)
-  //   console.log("this.FormScore",this.FormScore)
-  // }
-
-
-
-
-
-  // R(legend,score,sections,question,type){
-  
-
-  //   let x =0
-  //   if(this.FormScore.length===1&&this.FormScore[0]==0){
-  //     this.FormScore= []
-  //   }
-  //   let  indexQ = this.FormScore.findIndex(x => 
-  //     x.type===type
-  //   );
-  //   if( indexQ == -1){
-  //     this.FormScore.push({score:score,index:x+1,section:sections,indexQuestion:question})
-  //     }else{
-      
-  //     this.FormScore.map((result)=>{
-      
-  //       if(result.type==type){
-  //         result.score=score
-  //         result.section=sections
-  //         result.indexQuestion=question
-  //         result.type=type
-  //       }
-        
-  //     })
-   
-    
-  //   }
-    
-
-  //   console.log("this.FormScore",this.FormScore)
-  // }
+calcul(){
+this.tableCalcul .map((result)=>{
+  if(result.val[0]=='Q'){
+    var indexC = this.FormScore.findIndex(s => s.type === result.val);
+     this.scoreS=this.scoreS.concat(this.FormScore[indexC].score.toString()) 
+  }
+  else{
+    if(result.val=="×"){
+      this.scoreS=this.scoreS.concat('*')
+    }else{
+      if(result.val==","){
+        this.scoreS=this.scoreS.concat('.')
+      }else
+   { this.scoreS=this.scoreS.concat(result.val.toString())}
+   }
+  }
+})
+console.log(this.scoreS,'rrrr')
+console.log(eval(this.scoreS),'rrrr')
+}
   Range(value,score,sections,question,type){
     let x =0
     if(this.FormScore.length===1&&this.FormScore[0]==0){
@@ -397,3 +393,5 @@ cc(){
     console.log('e', e);
 }
 }
+
+
