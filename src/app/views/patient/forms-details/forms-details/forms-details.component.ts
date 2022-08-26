@@ -86,21 +86,7 @@ scoreS='';
   ngOnInit(): void {
    this.FormScore=[]
 setTimeout(() => {
-  this.tableCalcul=[]
-  for(let k=0;k<this.form.formMuti[0].indexScoreForm.length;k++){
-    if(this.form.formMuti[0].indexScoreForm[k].type==="index"){
-      this.tableCalcul.push({val:'Q '+'('+ this.form.formMuti[0].indexScoreForm[k].i +',' + this.form.formMuti[0].indexScoreForm[k].j+')'})
-    }
-    if(this.form.formMuti[0].indexScoreForm[k].type==="operation"){
-      this.tableCalcul.push({val:this.form.formMuti[0].indexScoreForm[k].desc})
-    }
-    if(this.form.formMuti[0].indexScoreForm[k].type==="number"){
-      this.tableCalcul.push({val:this.form.formMuti[0].indexScoreForm[k].desc =='' ?this.form.formMuti[0].indexScoreForm[k].k : this.form.formMuti[0].indexScoreForm[k].desc })
-    }
-    if(this.form.formMuti[0].indexScoreForm[k].type==="autre"){
-      this.tableCalcul.push({val:this.form.formMuti[0].indexScoreForm[k].desc})
-    }
-  }
+
 }, 3000);
    /* console.log("this.FormScore",this.FormScore) */
     // this.f=this.forms[0].form
@@ -306,6 +292,21 @@ cc(){
  
 }
 calcul(){
+  this.tableCalcul=[]
+  for(let k=0;k<this.form.formMuti[0].indexScoreForm.length;k++){
+    if(this.form.formMuti[0].indexScoreForm[k].type==="index"){
+      this.tableCalcul.push({val:'Q '+'('+ this.form.formMuti[0].indexScoreForm[k].i +',' + this.form.formMuti[0].indexScoreForm[k].j+')'})
+    }
+    if(this.form.formMuti[0].indexScoreForm[k].type==="operation"){
+      this.tableCalcul.push({val:this.form.formMuti[0].indexScoreForm[k].desc})
+    }
+    if(this.form.formMuti[0].indexScoreForm[k].type==="number"){
+      this.tableCalcul.push({val:this.form.formMuti[0].indexScoreForm[k].desc =='' ?this.form.formMuti[0].indexScoreForm[k].k : this.form.formMuti[0].indexScoreForm[k].desc })
+    }
+    if(this.form.formMuti[0].indexScoreForm[k].type==="autre"){
+      this.tableCalcul.push({val:this.form.formMuti[0].indexScoreForm[k].desc})
+    }
+  }
 this.tableCalcul .map((result)=>{
   if(result.val[0]=='Q'){
     var indexC = this.FormScore.findIndex(s => s.type === result.val);
