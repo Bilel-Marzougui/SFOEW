@@ -32,6 +32,17 @@ valD:any
 tableCalcul=[]
 scoreF=0
 scoreS='';
+tableReponse=[];
+tableOptions =[
+  {title: 'Test Final6'},
+  {title: 'Test Final7'},
+  {title: 'Test Final8'}
+];
+tablescoreS =[
+  {title: true, j: true},
+  {title:false, j: true},
+  {title: true, j: true}
+]
   // options: Options = {
   //   showTicksValues: true,
   //   stepsArray: [
@@ -99,6 +110,139 @@ setTimeout(() => {
   filterItem(value) {
     console.log("value",value)
   }
+
+
+  getdataCaseChoix(rep,data,q,o,event,s){
+    /*  console.log(q,"cm",event.checked,o) */
+     let  indexQ = this.tableReponse.findIndex(x => 
+       x.id===s+''+q
+     );  
+     data.optioncm[o].selected=event.checked
+    // console.log(q,"cm","type",event.checked,"indexrep",o,"indexq",indexQ)
+     if(indexQ===-1)
+     this.tableReponse.push({title :data.title,type: data.type,options:data.optioncm,textReponse:'',id:s+''+q});
+     else
+     this.tableReponse[indexQ].options=data.optioncm; 
+   console.log(this.tableReponse,q,o,indexQ) 
+ 
+   }
+   getdataTextCour(rep,data,q,o,event,s){
+   /* console.log('rep,data,q,o',rep,data,q,o,event.target.value); */
+   let  indexQ = this.tableReponse.findIndex(x => 
+     x.id===s+''+q
+   ); 
+   if(indexQ===-1)
+ this.tableReponse.push({title :data.title,type: data.type,options:data.numberJourCmnt,textReponse:event.target.value,id:s+''+q});
+   else
+   this.tableReponse[indexQ].textReponse=event.target.value; 
+ /*  console.log(this.tableReponse,q,o,indexQ) */
+  
+   }
+   getdataCaseCoher(rep,data,q,o,s){
+     /* console.log(q,'cc') */
+     let  indexQ = this.tableReponse.findIndex(x => 
+       x.id===s+''+q
+     );  
+    
+  data.options.map((res)=>{
+       if(res!=rep){
+         res.selected=false
+       }else{
+         res.selected=true
+       }
+     })
+     /* this.tableReponse.push(data) */
+     if(indexQ===-1)
+     this.tableReponse.push({title :data.title,type: data.type,options:data.options,textReponse:'',id:s+''+q});
+     else
+     this.tableReponse[indexQ].options=data.options;
+    /*  console.log(this.tableReponse,q,o,indexQ) */
+   }
+  
+   getdataRangeBar(rep,data,q,o,event,s){
+/* console.log('rep,data,q,o,event,s',rep,data,q,o,event,s) */
+let  indexQ = this.tableReponse.findIndex(x => 
+  x.id===s+''+q
+);  
+if(indexQ===-1)
+   this.tableReponse.push({title :rep.title,type: rep.type,options:rep.dataRange,textReponse:event,id:s+''+q});
+   else
+   this.tableReponse[indexQ].textReponse=event
+   }
+
+   getDataVisuelle(rep,type,q,o,event,s){
+    let  indexQ = this.tableReponse.findIndex(x => 
+      x.id===s+''+q
+    );  
+    if(indexQ===-1)
+    this.tableReponse.push({title :rep.title,type: rep.type,options:rep.dataRange,textReponse:event.target.value,id:s+''+q});
+    else
+    this.tableReponse[indexQ].textReponse=event.target.value 
+  /*   console.log(type,q,o,event.target.value,s) */
+   }
+   getDataTextCourt(rep,event,s,q){
+ /*   console.log(rep,event.target.value,s,q) */
+   let  indexQ = this.tableReponse.findIndex(x => 
+    x.id===s+''+q
+  );  
+  if(indexQ===-1)
+  this.tableReponse.push({title :rep.title,type: rep.type,options:rep,textReponse:event.target.value,id:s+''+q});
+  else
+  this.tableReponse[indexQ].textReponse=event.target.value 
+   }
+/*    cerateTabG(rep,event,q,o,k,s,question){
+    let tabGrille =[];
+    let a =0;
+    let b= 0;
+ 
+    let  indexQ = this.tableReponse.findIndex(x => 
+      x.id===s+''+q
+    );  
+    rep.grille.scoreS.map((result)=>{
+      a = a+1;
+      rep.grille.options.map((resulttow)=>{
+        if(b>=rep.grille.options.length){
+          b=0
+        }
+        b=b+1;
+        tabGrille.push({
+          i:''+o+''+k,
+          j:''+o+''+k
+        })
+      })
+    })
+       console.log("indexselect",o,k,tabGrille)
+   } */
+   getDataGrilledecasescocher(rep,event,q,o,k,s,question){
+    let tabGrille =[];
+    let a =0;
+    let b= 0;
+  
+    let  indexQ = this.tableReponse.findIndex(x => 
+      x.id===s+''+q
+    );  
+    rep.grille.scoreS.map((result)=>{
+      a = a+1;
+      rep.grille.options.map((resulttow)=>{
+        if(b>=rep.grille.options.length){
+          b=0
+        }
+        b=b+1;
+        tabGrille.push({
+          i:''+o+''+k,
+          j:''+o+''+k,
+        })
+      })
+    }) 
+       console.log("indexselect",o,k,tabGrille)
+/*     console.log("rep",rep.grille)
+     console.log("indexQ",indexQ)
+   
+    console.log("rep",rep.grille)
+    console.log("question",question) 
+    console.log("event",event)  */
+
+   }
   VISUELLE(e,a,b,visuelleanalogique){
     let x =0
     if(this.FormScore.length===1&&this.FormScore[0]==0){
@@ -122,7 +266,7 @@ setTimeout(() => {
     }
   }
   expression(){
-    console.log("FormScore",this.FormScore)
+    console.log("FormScore",this.FormScore,this.tableReponse)
   }
   radioChange(value,event,sections,question,type){
      let x =0
@@ -152,9 +296,6 @@ setTimeout(() => {
       this.FormScore=Table
     } 
   }
-
-
-
 
   caseCoher(value,event,sections,question,type){
         let x =0
@@ -292,6 +433,9 @@ cc(){
  
 }
 calcul(){
+  this.FormScore.map((res)=>{
+    console.log("res",res)
+  })
   this.tableCalcul=[]
   for(let k=0;k<this.form.formMuti[0].indexScoreForm.length;k++){
     if(this.form.formMuti[0].indexScoreForm[k].type==="index"){
@@ -326,7 +470,7 @@ this.tableCalcul .map((result)=>{
 console.log(this.scoreS,'rrrr')
 console.log(eval(this.scoreS),'rrrr')
 }
-  Range(value,score,sections,question,type){
+Range(value,score,sections,question,type){
     let x =0
     if(this.FormScore.length===1&&this.FormScore[0]==0){
       this.FormScore= []
@@ -349,7 +493,7 @@ console.log(eval(this.scoreS),'rrrr')
    
     
     }
-  }
+}
 
 
 

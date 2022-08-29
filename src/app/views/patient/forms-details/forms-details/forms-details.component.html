@@ -75,13 +75,13 @@
               <div *ngIf="section.questions[q].type == 'Text court'" class="col-lg-8 col-sm-12">
                 <!-- => show simple input -->
 
-                <input class="question-short-input-response" [(ngModel)]="textcourt" (change)="TextCourt(section.questions[q].score,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')">
+                <input class="question-short-input-response" [(ngModel)]="textcourt" (change)="TextCourt(section.questions[q].score,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getDataTextCourt(section.questions[q],$event,s,q)">
               </div>
 
               <div *ngIf="section.questions[q].type == 'Nomber de jours'" class="col-lg-8 col-sm-12" >
                 <!-- => show simple input -->
 
-                <input class="question-short-input-response" [(ngModel)]="Nomberdej" value="nb jours" (change)="Nomberdejours(section.questions[q].score,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')">
+                <input class="question-short-input-response" [(ngModel)]="Nomberdej" value="nb jours" (change)="Nomberdejours(section.questions[q].score,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataTextCour(section.questions[q].options[o],section.questions[q],q,o,$event,s)">
               <button (click)="cc()">test</button>
               </div>
 
@@ -90,13 +90,13 @@
               <div *ngIf="section.questions[q].type == 'Choix multiples'" style="width: 100%;"
                 class="col-lg-12 col-sm-12 w-100">
                 <!-- boucel for =>enter to checkbox options -->
-<button (click)="expression()">bbb</button>
+                 <button (click)="expression()">bbb</button>
                 <div style="width: 100%;" *ngFor="let op of section.questions[q].optioncm; let o = index;">
                   <div class="row">
                     <div class="col">
                       <!-- => show checkbox input -->
 
-                      <mat-checkbox class="m-2 w-100" style="width: 100%;" (change)="radioChange(section.questions[q].optioncm[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')">
+                      <mat-checkbox class="m-2 w-100" style="width: 100%;" (change)="radioChange(section.questions[q].optioncm[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataCaseChoix(section.questions[q].options[o],section.questions[q],q,o,$event,s)">
                         <h1 class="textt">{{section.questions[q].optioncm[o].text}}</h1>
                       </mat-checkbox>
 
@@ -124,7 +124,7 @@
 
                       <div class="simple-slider">
 
-                        <ng5-slider   [options]="sliderMakeOptions(section.questions[q])"   (valueChange)="Range(section.questions[q].dataRange[o].legend,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')"></ng5-slider> 
+                        <ng5-slider   [options]="sliderMakeOptions(section.questions[q])"   (valueChange)="Range(section.questions[q].dataRange[o].legend,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataRangeBar(section.questions[q],section.questions[q].dataRange,q,o,$event,s)"></ng5-slider> 
 
                       </div>
 
@@ -155,7 +155,7 @@
                         <div class='container23'style="width: 600px" >
                         
                         <img  class="img-thumbnail" src="../../../../../assets/Douleurgraph1.png" alt="">
-                        <input type="range" min="0" max="100" (change)="VISUELLE($event,s ,'Q '+'('+ s +',' + q+')','visuelleanalogique')" value="50" class="slider" name='slider' id="slider">
+                        <input type="range" min="0" max="100" (change)="VISUELLE($event,s ,'Q '+'('+ s +',' + q+')','visuelleanalogique');getDataVisuelle(section.questions[q],'VISUELLE ANALOGIQUE',q,o,$event,s)" value="50" class="slider" name='slider' id="slider">
                         
                         </div>
                         <!-- <img style="width: 10%;height: 10%;" class="img-thumbnail" src="assets/img/placeholder.png" alt=""> -->
@@ -245,7 +245,7 @@
                 <div style="width: 100%;" *ngFor="let op of section.questions[q].options; let o = index;">
                   <div class="row">
                     <div class="col">
-                      <mat-radio-button class="m-2 w-100" style="width: 100%;" (change)="caseCoher(section.questions[q].options[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')">
+                      <mat-radio-button class="m-2 w-100" style="width: 100%;" (change)="caseCoher(section.questions[q].options[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataCaseCoher(section.questions[q].options[o],section.questions[q],q,o,s)">
                         <h1 *ngIf="section.questions[q].options[o].text.length > 0" class="textt">
                           {{section.questions[q].options[o].text}}</h1>
                       </mat-radio-button>
@@ -278,10 +278,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let question of section.questions[q].grille.options">
+                    <tr *ngFor="let question of tablescoreS;let o = index">
                       <th scope="row">{{question.title}}</th>
-                      <td *ngFor="let question of section.questions[q].grille.scoreS">
-                        <mat-checkbox class=" inp col-md-7 col-lg-7 col-sm-9 col-xs-9 col-9  " (change)="radioChecked(question.score,question,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')">
+                      <td *ngFor="let question of section.questions[q].grille.scoreS;let k = index">
+                        {{o}}{{k}}
+                        <mat-checkbox class=" inp col-md-7 col-lg-7 col-sm-9 col-xs-9 col-9  " (change)="radioChecked(question.score,question,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');
+                        getDataGrilledecasescocher(section.questions[q],$event,q,o,k,s,question)">
                         </mat-checkbox>
                       </td>
 
