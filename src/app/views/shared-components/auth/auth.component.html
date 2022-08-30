@@ -239,8 +239,7 @@
                         <input matInput placeholder="Email" type="text" formControlName="email" class="form-control"
                           [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                          <div *ngIf="f.email.errors.required">Email is obligatoire</div>
-                          <div *ngIf="f.email.errors.email">Email invalide</div>
+                          <div *ngIf="f.email.errors.required">Email obligatoire</div>
                         </div>
                       </mat-form-field>
                       <div class="form-row">
@@ -256,9 +255,7 @@
                           </mat-icon>
 
                           <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">Mot de passe est obligatoire</div>
-                            <div *ngIf="f.password.errors.minlength">
-                              Le mot de passe doit être au moins de 6 caractères</div>
+                            <div *ngIf="f.password.errors.required">Mot de passe obligatoire</div>
                           </div>
 
                           <mat-password-strength #passwordComponent (onStrengthChanged)="onStrengthChanged($event)"
@@ -378,8 +375,7 @@
                         <input matInput placeholder="Email" type="text" formControlName="email" class="form-control"
                           [ngClass]="{ 'is-invalid': submitted && fPat.email.errors }" />
                         <div *ngIf="submitted && fPat.email.errors" class="invalid-feedback">
-                          <div *ngIf="fPat.email.errors.required">Email est obligatoire</div>
-                          <div *ngIf="fPat.email.errors.email">Email invalide</div>
+                          <div *ngIf="fPat.email.errors.required">Email obligatoire</div>
                         </div>
                       </mat-form-field>
 
@@ -397,9 +393,7 @@
                           </mat-icon>
 
                           <div *ngIf="submitted && fPat.password.errors" class="invalid-feedback">
-                            <div *ngIf="fPat.password.errors.required">Mot de passe est obligatoire</div>
-                            <div *ngIf="fPat.password.errors.minlength">
-                              Le mot de passe doit être au moins de 6 caractères</div>
+                            <div *ngIf="fPat.password.errors.required">Mot de passe obligatoire</div>
                           </div>
 
                           <mat-password-strength #passwordComponent (onStrengthChanged)="onStrengthChanged($event)"
