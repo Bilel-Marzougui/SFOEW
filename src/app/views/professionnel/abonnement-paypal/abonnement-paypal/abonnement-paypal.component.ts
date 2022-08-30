@@ -84,6 +84,8 @@ id:any
 
   }
 
+  
+
 
   payment2={
 
@@ -150,7 +152,7 @@ payment1={
 
   "redirect_urls": {
 
-      "return_url": `http://localhost:3000/paypal/success/62988cc89705e81dbc08e45b/${23.55}/'USD'/${true}`,
+      "return_url": `http://localhost:3000/paypal/success/62988cc89705e81dbc08e45b/${this.price1}/'USD'/${true}`,
 
       "cancel_url": "http://185.104.172.119:3000/paypal/cancel"
 
@@ -166,7 +168,7 @@ payment1={
 
               "sku": "item",
 
-              "price":23.55,
+              "price":this.price1,
 
               "currency": "USD",
 
@@ -180,7 +182,7 @@ payment1={
 
           "currency": "USD",
 
-          "total": 23.55
+          "total": this.price1
 
       },
 
@@ -205,8 +207,7 @@ pay(){
     this.PaymentService.pay(this.id,this.payment2).subscribe(response=>{
       console.log(response)
       // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7JU39963KL9803719";
-      window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-6TG7618418837561C"
-
+      window.location.href=response.url 
     })
 
  }
@@ -215,8 +216,8 @@ pay(){
   this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
     console.log(response)
     // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-69322232F9908115K";
-  window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-5HF28219X8540301N"
-  })
+    window.location.href=response.url 
+})
 
  }
 
