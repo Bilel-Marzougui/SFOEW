@@ -58,8 +58,8 @@ yearly:any
 i=1;
 toggle :boolean;
 status = ''; 
+price1=23.55
 price2=50.33
-price1=0
 id:any
 
   constructor( public  authPrp:AuthProfessionnelService,private PaymentService:PaymentService) { 
@@ -202,7 +202,6 @@ pay(){
   this.price2 =this.yearly.prix
 
   console.log(this.payment2)
-    // this.PaymentService.pay(this.id,this.payment1).subscribe(response=>
     this.PaymentService.pay(this.id,this.payment2).subscribe(response=>{
       console.log(response)
       // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7JU39963KL9803719";
@@ -213,7 +212,6 @@ pay(){
  }
  else if(this.status=="mensuel"){
   this.price1 =this.monthly.prix
-  // this.PaymentService.pay(this.id,this.payment1).subscribe(response=>
   this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
     console.log(response)
     // window.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-69322232F9908115K";
