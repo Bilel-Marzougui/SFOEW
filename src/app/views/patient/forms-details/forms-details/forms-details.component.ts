@@ -11,7 +11,10 @@ import { LoginService } from 'src/app/views/services/login.service';
   templateUrl: './forms-details.component.html',
   styleUrls: ['./forms-details.component.css']
 })
+
 export class FormsDetailsComponent implements  OnInit {
+ 
+  @Input() item = '';
 test1:any
 test2:any
 test3:any
@@ -33,6 +36,8 @@ tableCalcul=[]
 scoreF=0
 scoreS='';
 tableReponse=[];
+favoriteSeason: string;
+seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
 tableOptions =[
   {title: 'Test Final6'},
   {title: 'Test Final7'},
@@ -43,6 +48,22 @@ tablescoreS =[
   {title:false, j: true},
   {title: true, j: true}
 ]
+displayedColumns = ['selected', 'position', 'name', 'weight', 'symbol'];
+dataSource =  [
+  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
+  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
+  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
+  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
+  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
+  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
+  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+];
+private defaultSelected = 0
+private selection: number
+selectedElement: PeriodicElement;
   // options: Options = {
   //   showTicksValues: true,
   //   stepsArray: [
@@ -95,6 +116,10 @@ tablescoreS =[
 
 
   ngOnInit(): void {
+    for(var i=0;i<1;i++){
+      console.log(i)
+    }
+    console.log(i)
    this.FormScore=[]
 setTimeout(() => {
 
@@ -213,35 +238,27 @@ if(indexQ===-1)
     })
        console.log("indexselect",o,k,tabGrille)
    } */
-   getDataGrilledecasescocher(rep,event,q,o,k,s,question){
-    let tabGrille =[];
-    let a =0;
-    let b= 0;
+   tabGrille2=[];
+   tabGrille23={};
+   tabH:{};
+   tabV=[]
+   getDataGrilledecasescocher(rep:any,event,q,o,k,s,question){
+    var obj = {i: false};
+for(let i=0;i<rep.grille.scoreS.length;i++){
+  let k= rep.grille.scoreS.length
   
-    let  indexQ = this.tableReponse.findIndex(x => 
-      x.id===s+''+q
-    );  
-    rep.grille.scoreS.map((result)=>{
-      a = a+1;
-      rep.grille.options.map((resulttow)=>{
-        if(b>=rep.grille.options.length){
-          b=0
-        }
-        b=b+1;
-        tabGrille.push({
-          i:''+o+''+k,
-          j:''+o+''+k,
-        })
-      })
-    }) 
-       console.log("indexselect",o,k,tabGrille)
-/*     console.log("rep",rep.grille)
-     console.log("indexQ",indexQ)
-   
-    console.log("rep",rep.grille)
-    console.log("question",question) 
-    console.log("event",event)  */
+  
+  var pair = { i: false};
+  obj = {...obj, ...pair};
+  
+}
+console.log("hhh",obj);
+for(let j=0;j<rep.grille.options.length;j++){
+  this.tabV.push(this.tabH);
+}
+console.log(this.tabV);
 
+        console.log(rep.grille,event,q,o,k,s,question)
    }
   VISUELLE(e,a,b,visuelleanalogique){
     let x =0
@@ -296,7 +313,19 @@ if(indexQ===-1)
       this.FormScore=Table
     } 
   }
-
+  radioCheckedButton(value,event,hi,sections,question,type){
+    let x =0
+    if(this.FormScore.length===1&&this.FormScore[0]==0){
+      this.FormScore= []
+    } 
+    let  indexQ = this.FormScore.findIndex(x => 
+      x.type===type
+    );
+    if( indexQ == -1){
+      this.FormScore.push({text:value.text,score:value.score,index:x+1,section:sections,indexQuestion:question,type:type})
+    }
+    console.log(value,event,hi,sections,question,type)
+  }
   caseCoher(value,event,sections,question,type){
         let x =0
         if(this.FormScore.length===1&&this.FormScore[0]==0){
@@ -322,6 +351,7 @@ if(indexQ===-1)
         
         }
       }
+
   radioChecked(value,event,hi,sections,question,type){
  let x =0
 if(this.FormScore.length===1&&this.FormScore[0]==0){
@@ -433,6 +463,7 @@ cc(){
  
 }
 calcul(){
+  
   this.FormScore.map((res)=>{
     console.log("res",res)
   })
@@ -454,6 +485,8 @@ calcul(){
 this.tableCalcul .map((result)=>{
   if(result.val[0]=='Q'){
     var indexC = this.FormScore.findIndex(s => s.type === result.val);
+    console.log("this.FormScore[indexC]",this.FormScore[indexC])
+    if(this.FormScore[indexC])
      this.scoreS=this.scoreS.concat(this.FormScore[indexC].score.toString()) 
   }
   else{
@@ -538,5 +571,24 @@ Range(value,score,sections,question,type){
     console.log('e', e);
 }
 }
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
+  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
+  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
+  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
+  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
+  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
+  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+];
 
 

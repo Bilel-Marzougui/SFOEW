@@ -44,7 +44,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DetailsPatientComponent } from './views/shared-components/details-patient/details-patient.component';
 import { DetailsProfessionnelComponent } from './views/shared-components/details-professionnel/details-professionnel.component';
 import { InterceptorService } from '../app/views/services/loader/interceptor.service';
-
+import {   MatListModule } from '@angular/material/list'
 
 const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com';
 
@@ -80,6 +80,7 @@ const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleuser
     MatIconModule,
     MatButtonToggleModule,
     MatDatepickerModule,
+    MatListModule,
     MatNativeDateModule,
     MatRadioModule,
     HttpClientModule,

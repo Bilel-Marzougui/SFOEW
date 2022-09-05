@@ -240,45 +240,60 @@
 
               </div>
               <div *ngIf="section.questions[q].type == 'Cases à cocher'" style="width: 100%;"
-                class="col-lg-12 col-sm-12 w-100">
-
-                <div style="width: 100%;" *ngFor="let op of section.questions[q].options; let o = index;">
-                  <div class="row">
-                    <div class="col">
-                      <mat-radio-button class="m-2 w-100" style="width: 100%;" (change)="caseCoher(section.questions[q].options[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataCaseCoher(section.questions[q].options[o],section.questions[q],q,o,s)">
-                        <h1 *ngIf="section.questions[q].options[o].text.length > 0" class="textt">
-                          {{section.questions[q].options[o].text}}</h1>
-                      </mat-radio-button>
-
-
+                  class="col-lg-12 col-sm-12 w-100">
+  
+                  <div style="width: 100%;" >
+                    <div class="row">
+                      <div class="col">
+                        <mat-radio-group 
+                        aria-labelledby="example-radio-group-label"
+                        class="example-radio-group"
+                        [(ngModel)]="favoriteSeason">
+                        <mat-radio-button *ngFor="let op of section.questions[q].options; let o = index;" class="m-2 w-100" style="width: 100%;" [value]="op.text" (change)="caseCoher(section.questions[q].options[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataCaseCoher(section.questions[q].options[o],section.questions[q],q,o,s)">
+                          <h1 *ngIf="section.questions[q].options[o].text.length > 0" class="textt">
+                            {{section.questions[q].options[o].text}}</h1>
+                        </mat-radio-button>
+  
+                      </mat-radio-group>
+                      </div>
+                  <!--     <div class="row">
+                        <label id="example-radio-group-label">Pick your favorite season</label>
+                        <mat-radio-group
+                          aria-labelledby="example-radio-group-label"
+                          class="example-radio-group"
+                          [(ngModel)]="favoriteSeason">
+                          <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                            {{season}}
+                          </mat-radio-button>
+                        </mat-radio-group>
+                        <div>Your favorite season is: {{favoriteSeason}}</div>
+    
+                        <div class="col-2">
+    
+                        </div>
+    
+                      </div> -->
+                      <div class="col-2">
+  
+                      </div>
+  
                     </div>
-
-                    <div class="col-2">
-
-                    </div>
-
+  
+  
+  
                   </div>
-
-
-
+  
+  
                 </div>
-
-
-              </div>
 
               <div *ngIf="section.questions[q].type == 'Grille de cases à cocher 2'" style="width: 100%;"
                 class="col-lg-12 col-sm-12 w-100">
                 <table class="table table-borderless">
                   <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th *ngFor="let question of section.questions[q].grille.scoreS" scope="col">{{question.title}} ||
-                        {{question.score}}</th>
-
-                    </tr>
+         
                   </thead>
                   <tbody>
-                    <tr *ngFor="let question of tablescoreS;let o = index">
+                 <!--    <tr *ngFor="let question of section.questions[q].grille.options;let o = index">
                       <th scope="row">{{question.title}}</th>
                       <td *ngFor="let question of section.questions[q].grille.scoreS;let k = index">
                         {{o}}{{k}}
@@ -287,19 +302,28 @@
                         </mat-checkbox>
                       </td>
 
+                    </tr> -->
+                   <tr *ngFor="let questionq of section.questions[q].grille.options;let m = index">
+                    <th scope="row">
+               <br>
+               <br>
+               <br>
+                    {{questionq.title}}s</th>
+                    <mat-radio-group 
+                    aria-label="Select an option"
+                     >
+ 
+                      <td class="col-lg-1" *ngFor="let question of section.questions[q].grille.scoreS;let k = index" style="padding-bottom: 20px;">
+                       <h6 *ngIf="m==0" style="color: rgb(0, 0, 0);font-size:15px"> {{question.title  }}</h6> <br>
+                       <br *ngIf="m!=0" >
+                       <h6 *ngIf="m!=0" style="color: transparent;font-size:15px;height: 0px;"> {{question.title  }}</h6>
+                        <mat-radio-button   [value]="question.title" name="questionq.title" style="padding: 10%;" (click)="radioCheckedButton(question.score,question,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')"> </mat-radio-button>
+                      </td>
+                    </mat-radio-group>
                     </tr>
-
                   </tbody>
                 </table>
               </div>
-
-
-
-
-
-
-
-
 
             </div>
 
@@ -323,3 +347,5 @@
   </div>
 
 </div>
+
+
