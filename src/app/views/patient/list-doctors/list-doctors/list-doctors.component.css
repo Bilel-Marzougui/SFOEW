@@ -1,108 +1,20 @@
-
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&family=Poppins:wght@600&display=swap');
-
-* {
-    box-sizing: border-box
+table{
+    color: rgb(65, 64, 64);
 }
-
-body {
-    background-color: #d9ecf2;
-    font-family: 'Poppins', sans-serif;
-    color: #666
+.modal-dialog {
+    max-width: 900px;
+    height: 500px;
 }
-
-.h2 {
-    color: #444;
-    font-family: 'PT Sans', sans-serif
+table.table>tbody>tr:hover td,
+table.table>tbody>tr:hover th {
+  background-color: #bacfe5 !important;
 }
-
-thead {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bolder;
-    font-size: 20px;
-    color: #666
-}
-
 img {
-    width: 40px;
-    height: 40px
-}
-
-.name {
-    display: inline-block
-}
-
-.bg-blue {
-    background-color: #ffffff;
-    border-radius: 8px
-}
-
-.fa-check,
-.fa-minus {
-    color: blue
-}
-
-.bg-blue:hover {
-    background-color: #ffffff;
-    color: #eee;
-    cursor: pointer
-}
-
-.bg-blue:hover .fa-check,
-.bg-blue:hover .fa-minus {
-    background-color: #3e64ff;
-    color: #eee
-}
-
-.table thead th,
-.table td {
-    border: none
-}
-
-.table tbody td:first-child {
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px
-}
-
-.table tbody td:last-child {
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px
-}
-
-#spacing-row {
-    height: 10px
-}
-
-@media(max-width:900px) {
-    .container {
-        width: 200%;
-    }
-}
-.container{
-  width: 100%;
-}
-.pl-lg-5 {
-    color: black; 
-  }
-.pt-3{ 
-      color: black; 
-  }
-.fa { 
-    color: orangered; 
+  width: 40px;
+  height: 40px
 }
 img.details{
-    width: 30%;
-    height: 30%;
- 
-}
-div.cont{
-    display: flex;
-    justify-content: center;
-}
-/* .fa:hover {
-    color: darkblue;
-  } */
-  .table tr:hover {
-    
-    background-color:#f3bca8 ;
+  width: 30%;
+  height: 30%;
+
 }

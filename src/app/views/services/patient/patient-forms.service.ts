@@ -11,7 +11,7 @@ export class PatientFormsService {
 
 // all forms
   getForms(id:any,body){
-    console.log(1,id,body)
+  /*   console.log(1,id,body) */
     const token=localStorage.getItem('token_Pat')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
   /* console.log(id,body,"headers",token) */
@@ -19,7 +19,7 @@ export class PatientFormsService {
   
   }
   getFormsDoctor(id:any,body){
-    console.log(2)
+   /*  console.log(2) */
     const token=localStorage.getItem('token_Pro')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 /*   console.log(id,body,"headers",token) */
@@ -37,14 +37,14 @@ getRepdoctor(idPatient:any,idDoc:any,idForm:any){
   const token=localStorage.getItem('token_Pro')
   const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
-console.log("eeee",`${this.URL}`+'response/getuserformresponse/'+idPatient+'/'+idDoc+'/'+idForm)
+/* console.log("eeee",`${this.URL}`+'response/getuserformresponse/'+idPatient+'/'+idDoc+'/'+idForm) */
   return this.http.get<any>(`${this.URL}`+'response/getuserformresponse/'+idPatient+'/'+idDoc+'/'+idForm,{headers: headers})  
 }
 getRep(idPatient:any,idDoc:any,idForm:any){
   const token=localStorage.getItem('token_Pat')
   const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
-console.log("eeee",`${this.URL}`+'response/getuserformresponse/'+idPatient+'/'+idDoc+'/'+idForm)
+/* console.log("eeee",`${this.URL}`+'response/getuserformresponse/'+idPatient+'/'+idDoc+'/'+idForm) */
   return this.http.get<any>(`${this.URL}`+'response/getuserformresponse/'+idPatient+'/'+idDoc+'/'+idForm,{headers: headers})  
 }
   getFormsById(idForm:any){

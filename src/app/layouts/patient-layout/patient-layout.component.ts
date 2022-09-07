@@ -33,11 +33,18 @@ dataPatient={
 }
   constructor( public loaderService: LoaderService,public  updateservice:UpdProfilPatientService,private router:Router,private  authPat:AuthPatientService,) {
 
-    this.id=this.authPat.geid()
+    this.id= localStorage.getItem('id')
     this.patient=this.authPat.getUsername()
-
-    this.updateservice.getPatient(this.id).subscribe(response=>
-      this.dataPatient = response)
+   
+    this.updateservice.getPatient(this.id).subscribe((response=>{
+     this.dataPatient.name=response.name;
+     this.dataPatient.lastname=response.lastname;
+     this.dataPatient.email=response.email;
+     this.dataPatient.photo=response.photo;
+     
+      
+      this.dataPatient = response}))
+      
   }
 
   ngOnInit(): void {

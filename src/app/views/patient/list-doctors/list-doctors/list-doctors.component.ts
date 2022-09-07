@@ -90,10 +90,10 @@ export class ListDoctorsComponent implements OnInit {
   
 
   getId(profDetails:any){
-    console.log(profDetails)
+   /*  console.log(profDetails) */
 
     this.profD=profDetails
-    console.log('name'+this.profD.name)
+  /*   console.log('name'+this.profD.name) */
 
 return profDetails
   }
