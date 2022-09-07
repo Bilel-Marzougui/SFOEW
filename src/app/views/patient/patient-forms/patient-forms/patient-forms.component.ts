@@ -84,8 +84,8 @@ export class PatientFormsComponent implements OnInit {
     this.data.GetId(idF) 
     
   }
- previewForm(form:any){
-  this.router.navigate(['patient/preview-details',form.form._id,this.idDocter,this.id])
-  console.log("hhh",form.form._id,this.idDocter,this.id)
+ async previewForm(form:any){
+ await this.router.navigate(['patient/preview-details',form.form._id,this.idDocter,this.id])
+  window.location.reload()
  }
 }

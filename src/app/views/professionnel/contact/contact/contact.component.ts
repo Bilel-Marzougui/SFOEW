@@ -63,8 +63,12 @@ export class ContactComponent implements OnInit {
 
         })
   }
-  previewForm(form:any){
-    this.router.navigate(['professionnel/preview-details',form,this.id,this.idPatient])
+  async previewForm (form:any){
+   
+    await  this.router.navigate(['professionnel/preview-details',form,this.id,this.idPatient])
+    window.location.reload()
+    
+    ;
    /*  console.log("hhh",form.form._id,this.idDocter,this.id) */
    }
 }
