@@ -43,8 +43,7 @@ const routes: Routes = [
     {path:'listDoctors',loadChildren:()=>import('./views/patient/list-doctors/list-doctors.module').then(m=>m.ListDoctorsModule)},
     {path:'contacts',loadChildren:()=>import('./views/patient/patient-forms/patient-forms.module').then(m=>m.PatientFormsModule)},
     {path:'doctor-details',loadChildren:()=>import('./views/patient/doctor-details/doctor-details.module').then(m=>m.DoctorDetailsModule)},
-    {path:'forms-details/:id',loadChildren:()=>import('./views/patient/forms-details/forms-details.module').then(m=>m.FormsDetailsModule)},
-
+    {path:'forms-details/:id/:iddoctor/:idpatient',loadChildren:()=>import('./views/patient/forms-details/forms-details.module').then(m=>m.FormsDetailsModule)},
     {path:'preview-details/:id/:iddoctor/:idpatient',loadChildren:()=>import('./views/patient/preview-form-patient/forms-pr.module').then(m=>m.FormsPrModule)},
   ]},
 

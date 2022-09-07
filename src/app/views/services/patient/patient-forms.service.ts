@@ -31,7 +31,7 @@ addRep(data){
   const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
 
-  return this.http.post<any>(`${this.URL}`+'response/addresponse',data)  
+  return this.http.post<any>(`${this.URL}`+'response/addresponseweb',data)  
 }
 getRepdoctor(idPatient:any,idDoc:any,idForm:any){
   const token=localStorage.getItem('token_Pro')
