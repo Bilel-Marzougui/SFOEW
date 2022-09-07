@@ -1,0 +1,147 @@
+<mat-dialog-content>
+
+  <div class="login-page">
+    <mat-card class="mat-elevation-z12">
+
+      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+
+        <!-- login form -->
+        <mat-tab label="Update profile">
+          <div class="choix">
+
+          </div>
+
+          <mat-card-content>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <button type="button" class="close" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- form update start here -->
+                    <form #f="ngForm" (ngSubmit)="updProfil(f)">
+                      <!-- firstName validation start here -->
+                      <div class="form-group">
+
+                        <label for="exampleFormControlInput1">name</label>
+                        <input type="text" class="form-control" placeholder="name" [(ngModel)]="dataProf.name"
+                          required name="name" #name="ngModel" ngModel minlength="2" maxlength="20">
+                      </div>
+                      <div class="alert alert-danger" *ngIf="name.errors?.required && name.touched">
+                        name is required
+                      </div>
+                      <div class="alert alert-danger" *ngIf="name.errors?.minlength && name.touched">
+                        FirstName must be minimum 2 caractere
+                      </div>
+                      <!-- lastName validation end here -->
+
+                      <!-- lastName validation start here -->
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">lastname</label>
+                        <input type="text" class="form-control" placeholder="lastname"
+                          [(ngModel)]="dataProf.lastname" required name="lastname" #lastname="ngModel" minlength="2"
+                          maxlength="20" ngModel>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="lastname.errors?.required && lastname.touched">
+                        lastname is required
+                      </div>
+                      <div class="alert alert-danger" *ngIf="lastname.errors?.minlength && lastname.touched">
+                        lastname must be minimum 2 caractere
+                      </div>
+                      <!-- lastName validation end here -->
+
+                      <!-- Email validation start here -->
+
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">email</label>
+                        <input type="email" class="form-control" placeholder="email" [(ngModel)]="dataProf.email"
+                          email required name="email" #email="ngModel" ngModel>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="email.errors?.required && email.touched">
+                        email is required
+                      </div>
+
+                      <div class="alert alert-danger" *ngIf="email.errors?.email && email.touched">
+                        the input must be email not string
+                      </div>
+                      <!-- Email validation end here -->
+
+                      <!-- age validation start here -->
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">adeli</label>
+                        <input type="number" class="form-control" placeholder="adeli" [(ngModel)]="dataProf.adeli"
+                          required name="adeli" #adeli="ngModel" ngModel>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="adeli.errors?.required && adeli.touched">
+                        ssn is required
+                      </div>
+                      <!-- age validation end here -->
+
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">rpps</label>
+                        <input type="number" class="form-control" placeholder="rpps" [(ngModel)]="dataProf.rpps"
+                          required name="rpps" #rpps="ngModel" ngModel>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="rpps.errors?.required && rpps.touched">
+                        rpps is required
+                      </div>
+                      <!-- Phone validation start here -->
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">fax</label>
+                        <input type="number" class="form-control" placeholder="fax" [(ngModel)]="dataProf.fax"
+                          required name="ssn" #fax="ngModel" ngModel>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="fax.errors?.required && fax.touched">
+                        rpps is required
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">tel</label>
+                        <input type="number" class="form-control" placeholder="tel" [(ngModel)]="dataProf.tel"
+                          required name="tel" #tel="ngModel" ngModel>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="tel.errors?.required && tel.touched">
+                        tel is required
+                      </div>
+                      <!-- Phone validation end here -->
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">Address</label>
+                        <input type="text" class="form-control" placeholder="adresse" [(ngModel)]="dataProf.adresse"
+                          required name="adresse" #adresse="ngModel" ngModel>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="adresse.errors?.required && adresse.touched">
+                        adresse is required
+                      </div>
+
+                      <div class="alert alert-success" *ngIf="messageSuccess">
+                        {{messageSuccess}}
+                      </div>
+                      <div class="container">
+                        <div class="center">
+                      <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Update profile</button>
+                    </div>
+                  </div>
+                    </form>
+                    <!-- form update end here -->
+                  </div>
+                  <div class="modal-footer">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+
+        </mat-tab>
+
+
+
+      </mat-tab-group>
+    </mat-card>
+  </div>
+
+
+</mat-dialog-content>

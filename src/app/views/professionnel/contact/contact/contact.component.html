@@ -1,0 +1,145 @@
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="container" >
+          
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search..." (input)="filterItem($event.target.value)"  />
+                </div>
+              </div>
+        </div>
+        <!-- end row -->
+        <div class="row">
+            <div *ngIf="!contacts" class="d-flex justify-content-center" >
+                <div class="spinner-border text-secondary" role="status" style="width: 7rem; height: 7rem;">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+            <div class="col-lg-3" *ngFor="let contact of contacts | paginate: { itemsPerPage: 8, currentPage: p } ">
+                <div class="text-center card-box">
+                    <div class="member-card pt-3 pb-3">
+                        <div class="thumb-lg member-thumb mx-auto"><img [src]="contact.patients.photo"
+                                class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                        <div class="">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" style="background-color: rgb(161, 142, 142);" (click)="getpatient(contact)" data-target="#exampleModal">
+                                {{contact.patients.name}} {{contact.patients.lastname}}
+                              </button>
+                            <h6 ></h6>
+                        </div>
+
+
+
+                        <table>
+                            <tr>
+                                <td> <img src="../../../../../assets/img/email.ico" style="height: 30px;width: 30px;"
+                                        alt="">
+                                </td>
+
+                                <td> 
+                                    <a href = "mailto: {{contact.patients.email}}">{{contact.patients.email}}</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="../../../../../assets/img/whatsapp.ico" style="height: 30px;width: 30px;"
+                                        alt="">
+                                </td>
+                                <td>
+                                    <a href="https://api.whatsapp.com/send?phone={{contact.patients.tel}}">   {{contact.patients.tel}}</a>
+
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        <!-- <div class="mt-">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mt-6">
+                                        <p>Télèphone</p>
+                                        <p class="mb-0 text-muted">{{contact.patients.tel}}</p>
+                                    </div>
+                                </div>
+                              
+                                <div class="col-6">
+                                    <div class="mt-6">
+                                        <p>Adresse</p>
+                                        <p class="mb-0 text-muted">{{contact.patients.adresse}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+
+            <!-- end col -->
+
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+
+        <!-- end row -->
+
+        <!-- end row -->
+        <div class="parent">
+    
+            <pagination-controls class="child" (pageChange)="p = $event"></pagination-controls>
+        
+          </div>
+        <!-- end row -->
+    </div>
+    <!-- container -->
+</div>
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date Création</th>
+                    <th scope="col">Etat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <div *ngIf="!formsCompleted&&!formsInCompleted" class="text-center">
+                        <div class="spinner-border text-secondary" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                      </div>
+                  <tr *ngFor="let form of formsCompleted ;index as i">
+                    <th  scope="row">{{i+1}}</th>
+                    <td >{{form.form.title}}</td>
+                    <td>{{form.form.created_date.slice(0,10)}}</td>
+                    <td><button (click)="previewForm(form.form._id)">com</button></td>
+                  </tr>
+                  <tr *ngFor="let form of formsInCompleted ;index as k">
+                    <th  scope="row">{{i+formsCompleted.length}}</th>
+                    <td >{{form.form.title}}</td>
+                    <td>{{form.form.created_date.slice(0,10)}}</td>
+                    <td>InCompleted</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

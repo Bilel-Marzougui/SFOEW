@@ -1,0 +1,206 @@
+/* @import "../../../../../assets/css/flexlayout.css"; */
+/* @import url("../../../../../assets/css/flexlayout.css"); */
+@import url("../../../../../assets/css/flexlayout.css");
+
+/* @import "../../../../../assets/css/flexlayout.css"; */
+/* @import url("../../../../../assets/css/flexlayout.css"); */
+.fa-eye:hover {
+  color: #FF4500;
+}
+
+.fa-paper-plane:hover {
+  color: #FF4500;
+}
+
+.fa-file-medical:hover {
+  color: #FF4500;
+}
+
+.page-container {
+  width: 100%;
+}
+
+.chains {
+  width: 100%;
+  display: block;
+  overflow-x: scroll;
+}
+
+.chains mat-card {
+  display: inline-block;
+}
+
+mat-card {
+  width: 20%;
+  height: 20%;
+  margin: 30px;
+}
+
+.yass {
+  height: 50px;
+}
+
+.table {
+  color: rgb(119, 120, 121);
+}
+
+/* @import "../../../../../assets/css/flexlayout.css"; */
+/* @import url("../../../../../assets/css/flexlayout.css"); */
+.parent {
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.child {
+  width: auto;
+  height: auto;
+  }
+
+/* hola */
+body {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #eee
+}
+
+.launch {
+  height: 50px
+}
+
+.close {
+  font-size: 21px;
+  cursor: pointer
+}
+
+.modal-body {
+  height: 550px
+}
+
+.nav-tabs {
+  border: none !important
+}
+
+.nav-tabs .nav-link.active {
+  color: #495057;
+  background-color: #fff;
+  border-color: #ffffff #ffffff #fff;
+  border-top: 3px solid blue !important
+}
+
+.nav-tabs .nav-link {
+  margin-bottom: -1px;
+  border: 1px solid transparent;
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-top: 3px solid #eee;
+  font-size: 20px
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: #e9ecef #ffffff #ffffff
+}
+
+.nav-tabs {
+  display: table !important;
+  width: 100%
+}
+
+.nav-item {
+  display: table-cell
+}
+
+.form-control {
+  border-bottom: 1px solid #eee !important;
+  border: none;
+  font-weight: 600
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #8bbafe;
+  outline: 0;
+  box-shadow: none
+}
+
+.inputbox {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%
+}
+
+.inputbox span {
+  position: absolute;
+  top: 7px;
+  left: 11px;
+  transition: 0.5s
+}
+
+.inputbox i {
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  transition: 0.5s;
+  color: #3F51B5
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0
+}
+
+.inputbox input:focus~span {
+  transform: translateX(-0px) translateY(-15px);
+  font-size: 12px
+}
+
+.inputbox input:valid~span {
+  transform: translateX(-0px) translateY(-15px);
+  font-size: 12px
+}
+
+.pay button {
+  height: 47px;
+  border-radius: 37px
+}
+
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  -webkit-appearance: none;
+  appearance: none;
+  /* background-image: url("https://cdn.pixabay.com/photo/2020/09/14/18/34/amazed-5571740_1280.png"); */
+  width: 92%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0);
+  outline: none;
+  margin: 0;
+  transition: all .2s;
+  }
+  .slider:hover {
+  background: rgba(255, 255, 255, 0);
+  }
+  .slider::-webkit-slider-thumb{
+  border: none;
+  height: 170px;
+  width: 180px;
+  background-color: transparent;
+  background-image: url("https://res.cloudinary.com/med-in-outlook/image/upload/v1660637198/Douleurgraph2_hevgyr.png");
+  background-position: 0 0;
+  background-size: cover;
+  transform: scale(0.55) rotateZ(var(--thumb-rotate, 0deg));
+  cursor: pointer;
+  margin-top: -184px;
+  /* margin-left: 20px;
+  margin-right: 20px; */
+  -webkit-appearance: none;
+  }

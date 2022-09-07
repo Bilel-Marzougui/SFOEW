@@ -1,0 +1,30 @@
+img{
+    height: 50px;
+    width: 50px;
+    transform: rotate(15deg);}
+    .rotation{
+        transform: rotate(350deg);
+    }
+    i{
+        color: #153d77;
+     }
+     /* .sidebar {
+        height: 100%;
+        width: 160px; 
+        position: fixed; 
+        z-index: 1; 
+        top: 0; 
+        left: 0;
+        background-color: #111; 
+        overflow-x: hidden; 
+        padding-top: 20px;
+      } */
+
+
+     
+      .loader-container{
+        position: fixed;
+        width: 100%;
+        
+        z-index: 99;
+    }

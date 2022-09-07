@@ -1,0 +1,245 @@
+ 
+ body{
+    background:#DCDCDC;
+    margin-top:20px;
+}
+.card-box {
+    padding: 20px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    box-shadow: 5px 5px 5px #828181;
+}
+
+.social-links li a {
+    border-radius: 50%;
+    color: rgba(121, 121, 121, .8);
+    display: inline-block;
+    height: 30px;
+    line-height: 27px;
+    border: 2px solid rgba(121, 121, 121, .5);
+    text-align: center;
+    width: 30px
+}
+
+.social-links li a:hover {
+    color: #797979;
+    border: 2px solid #797979
+}
+.thumb-lg {
+    height: 88px;
+    width: 88px;
+}
+.img-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+.text-pink {
+    color: #ff679b!important;
+}
+.btn-rounded {
+    border-radius: 2em;
+}
+.text-muted {
+    color: #98a6ad!important;
+}
+h4 {
+    line-height: 22px;
+    font-size: 18px;
+}
+ 
+.card-box:hover{
+
+    transform: scale(1.02); 
+
+}
+.modal-dialog {
+    max-width: 50%;
+    height: 50%;
+}
+.parent {
+  
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    .child {
+    width: auto;
+    height: auto;
+    }
+    /* @import "../../../../../assets/css/flexlayout.css"; */
+/* @import url("../../../../../assets/css/flexlayout.css"); */
+@import url("../../../../../assets/css/flexlayout.css");
+
+/* @import "../../../../../assets/css/flexlayout.css"; */
+/* @import url("../../../../../assets/css/flexlayout.css"); */
+.fa-eye:hover {
+  color: #FF4500;
+}
+
+.fa-paper-plane:hover {
+  color: #FF4500;
+}
+
+.fa-file-medical:hover {
+  color: #FF4500;
+}
+
+.page-container {
+  width: 100%;
+}
+
+.chains {
+  width: 100%;
+  display: block;
+  overflow-x: scroll;
+}
+
+.chains mat-card {
+  display: inline-block;
+}
+
+mat-card {
+  width: 20%;
+  height: 20%;
+  margin: 30px;
+}
+
+.yass {
+  height: 50px;
+}
+
+.table {
+  color: rgb(119, 120, 121);
+}
+
+/* @import "../../../../../assets/css/flexlayout.css"; */
+/* @import url("../../../../../assets/css/flexlayout.css"); */
+.parent {
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.child {
+  width: auto;
+  height: auto;
+}
+
+/* hola */
+body {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #eee
+}
+
+.launch {
+  height: 50px
+}
+
+.close {
+  font-size: 21px;
+  cursor: pointer
+}
+
+.modal-body {
+  height: 550px
+}
+
+.nav-tabs {
+  border: none !important
+}
+
+.nav-tabs .nav-link.active {
+  color: #495057;
+  background-color: #fff;
+  border-color: #ffffff #ffffff #fff;
+  border-top: 3px solid blue !important
+}
+
+.nav-tabs .nav-link {
+  margin-bottom: -1px;
+  border: 1px solid transparent;
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-top: 3px solid #eee;
+  font-size: 20px
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: #e9ecef #ffffff #ffffff
+}
+
+.nav-tabs {
+  display: table !important;
+  width: 100%
+}
+
+.nav-item {
+  display: table-cell
+}
+
+.form-control {
+  border-bottom: 1px solid #eee !important;
+  border: none;
+  font-weight: 600
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #8bbafe;
+  outline: 0;
+  box-shadow: none
+}
+
+.inputbox {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%
+}
+
+.inputbox span {
+  position: absolute;
+  top: 7px;
+  left: 11px;
+  transition: 0.5s
+}
+
+.inputbox i {
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  transition: 0.5s;
+  color: #3F51B5
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0
+}
+
+.inputbox input:focus~span {
+  transform: translateX(-0px) translateY(-15px);
+  font-size: 12px
+}
+
+.inputbox input:valid~span {
+  transform: translateX(-0px) translateY(-15px);
+  font-size: 12px
+}
+
+.pay button {
+  height: 47px;
+  border-radius: 37px
+}

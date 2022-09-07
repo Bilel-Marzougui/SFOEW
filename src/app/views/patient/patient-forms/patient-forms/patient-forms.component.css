@@ -1,0 +1,11 @@
+table{
+    color: rgb(65, 64, 64);
+}
+.modal-dialog {
+    max-width: 900px;
+    height: 500px;
+}
+table.table>tbody>tr:hover td,
+table.table>tbody>tr:hover th {
+  background-color: #bacfe5 !important;
+}

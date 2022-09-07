@@ -1,0 +1,200 @@
+<!-- <button type="button" class="btn btn-primary launch" data-toggle="modal" data-target="#staticBackdrop"> <i class="fa fa-rocket"></i> Pay Now
+</button> -->
+<!-- Modal -->
+
+<div class="check" *ngIf="checked">
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true"*ngIf="nb=='0'" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-body">
+        <!-- <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div> -->
+        <div class="tabs mt-3">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab" data-toggle="tab"
+                href="#visa" role="tab" aria-controls="visa" aria-selected="true"> <img
+                  src="https://i.imgur.com/sB4jftM.png" width="80"> </a> </li>
+            <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab"
+                href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img
+                  src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+              <div class="mt-4 mx-4">
+                <div class="text-center">
+                  <h5>votre abonnement a expiré</h5>
+                </div>
+                <div class="form mt-3">
+                  <span>datedebut</span>
+                  <div class="inputbox"> <input type="text"  value="2022-08-04T15:25:10.683Z" name="name" class="form-control" disabled> 
+                    
+                  </div>
+                  <span>datedefin</span>
+                  <div  class="inputbox"> <input type="text" value="2022-09-03T15:25:10.683Z" name="name" min="1" max="999" class="form-control"
+                    disabled>   </div>
+                  <div class="d-flex flex-row">
+                    <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control"
+                        required="required" disabled> <span></span> </div>
+                    <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control"
+                        required="required" disabled> <span></span> </div>
+                  </div>
+                  <div class="px-5 pay"> <button class="btn btn-success btn-block">Add card</button> </div> <br>
+                  <div class="px-5 pay"> <button class="btn btn-secondary btn-block" (click)="retour()">retour au
+                      profil</button> </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+              <div class="px-5 mt-5">
+                <div class="inputbox"> <input type="text" name="name" class="form-control" required="required">
+                  <span>Paypal Email Address</span>
+                </div>
+                <div class="pay px-5"> <button class="btn btn-primary btn-block">Add paypal</button> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="container" >
+          
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search..." (input)="filterItem($event.target.value)"  />
+  </div>
+</div>
+
+<!-- holaaaaa -->
+<div class="row" style=" margin-right: 3px; margin-left: 3px;" data-toggle="modal" data-target="#staticBackdrop">
+
+  <div *ngIf="!forms" class="d-flex justify-content-center" >
+    <div class="spinner-border text-secondary" role="status" style="width: 7rem; height: 7rem;">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div *ngFor="let form of forms | paginate: { itemsPerPage: 12, currentPage: p } " class="col-lg-2"
+    style="margin-bottom: 20px">
+
+    <div class="card" style="height: 100%; ">
+      <div class="card-header" matTooltip="{{form.title}}" matTooltipPosition="above">
+        <h3 class="card-title mb-0">{{form.title}}</h3>
+        <i class='fa fa-file-medical fa-4x ' style="width: 80px;   margin-left: 40%; float:left;"></i>
+      </div>
+      <div class="card-content">
+        <div class="yass">
+
+        </div>
+        <div class="row mt-1" style="margin-left: 1px;padding-bottom: 5px; float:left;" *ngIf="nb=='1'; else notchecked">
+
+          <span> show form <i class="fa fa-eye fa-2x" (click)="showForm(form)"></i></span>
+
+          <br>
+          <hr style="width: 50%;">
+
+          <span> affect form <i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"
+              (click)="getFormId(form._id)"></i></span>
+
+              <ng-template notchecked>
+                <span> show form <i class="fa fa-eye fa-2x" ></i></span>
+      
+                <br>
+                <hr style="width: 50%;">
+      
+                <span> affect form <i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"
+                   ></i></span>
+            </ng-template>
+        </div>
+       
+      </div>
+      <div class="card-footer">
+        <i class="fa fa-clock"></i>
+        <span> {{form.created_date}} </span>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="parent">
+
+    <pagination-controls class="child" (pageChange)="p = $event"></pagination-controls>
+
+  </div>
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">liste des contact</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    
+      <div class="modal-body">
+        
+        <div class="container rounded mt-5 bg-white p-md-5">
+       
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nom et prénom </th>
+                  <th scope="col">Adresse</th>
+                  <th scope="col">send</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <div  class="d-flex justify-content-center" >
+                  <div *ngIf="!contacts" class="spinner-border text-secondary" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <tr class="bg-blue"
+                  *ngFor="let contact of contacts | paginate: { itemsPerPage: 4, currentPage: p2 } ;index as i  ">
+                 
+                  <td class="pt-2">
+                    <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
+                    <!-- <img class="img-profile rounded-circle" src="../../../assets/img/avat.jpg"> -->
+                    {{contact.patients.name}} {{contact.patients.lastname}}
+                  </td>
+                  <td class="pt-3">{{contact.patients.email}}</td>
+                  <td><i class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"
+                      (click)="affectForm(contact.patients._id)"></i></td>
+
+                </tr>
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <pagination-controls class="child" (pageChange)="p2 = $event"></pagination-controls>
+
+      </div>
+      <!-- <pagination-controls class="child" (pageChange)="p2 = $event"></pagination-controls> -->
+
+      <!-- <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" data-dismiss="modal">send to all <i class="fa fa-paper-plane"
+            aria-hidden="true" data-toggle="modal" data-target="#exampleModal"></i></button>
+        <button type="button" class="btn btn-secondary">Cancel</button>
+        <pagination-controls class="child" (pageChange)="p2 = $event"></pagination-controls>
+
+      </div> -->
+    </div>
+
+  </div>
+
+</div>

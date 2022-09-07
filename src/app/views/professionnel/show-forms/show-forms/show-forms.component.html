@@ -1,0 +1,335 @@
+
+  <div *ngIf="form" class="container">
+
+
+    <div class="col-12 col-md-12 col-lg-11 mx-auto">
+      <div class="card">
+        <div *ngIf="form" class="card-header">
+          <h1 class="form-title">{{form.title}}</h1>
+          <p class="fdescr">{{form.description}}</p>
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- boucel for =>enter to section items -->
+    <div *ngFor="let section of form.sections;let s = index">
+      <div>
+        <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title}} {{s}}
+        </h3>
+      </div>
+      <!-- boucel for =>enter to questions items -->
+
+      <div *ngFor="let question of section.questions; let q = index;" class="col-sm-12 col-md-12 col-lg-11 mx-auto">
+        <div class="card quesiton-look">
+
+
+          <div class="row card-body col-12">
+
+            <div class="row w-100">
+
+              <div class="col-lg-12 ">
+
+
+
+                <h2 class="question-title">
+                  {{section.questions[q].title}}
+                </h2>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="row w-100 mt-1">
+              <!-- condition If =>testing about question type -->
+
+              <div *ngIf="section.questions[q].type == 'Text court'" class="col-lg-8 col-sm-12">
+                <!-- => show simple input -->
+
+                <input class="question-short-input-response" [(ngModel)]="textcourt" disabled>
+              </div>
+
+              <div *ngIf="section.questions[q].type == 'Nomber de jours'" class="col-lg-8 col-sm-12">
+                <!-- => show simple input -->
+
+                <input class="question-short-input-response" [(ngModel)]="Nomberdejours " value="nb jours" disabled>
+              </div>
+
+              <!-- condition If =>testing about question type -->
+
+              <div *ngIf="section.questions[q].type == 'Choix multiples'" style="width: 100%;"
+                class="col-lg-12 col-sm-12 w-100">
+                <!-- boucel for =>enter to checkbox options -->
+
+                <div style="width: 100%;" *ngFor="let op of section.questions[q].optioncm; let o = index;">
+                  <div class="row">
+                    <div class="col">
+                      <!-- => show checkbox input -->
+
+                      <mat-checkbox class="m-2 w-100" style="width: 100%;" disabled>
+                        <h1 class="textt">{{section.questions[q].optioncm[o].text}}</h1>
+                      </mat-checkbox>
+
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+
+
+
+              </div>
+              <!-- condition If =>testing about question type -->
+
+          
+              <div *ngIf="section.questions[q].type == 'Range Bar'" style="width: 100%;"
+              class="col-lg-12 col-sm-12 w-100">
+             
+              <!-- boucel for =>enter to Range options -->
+
+              <div *ngFor="let op of section.questions[q].options; let o = index;">
+                <div class="row  m-2">
+                  <div class="col-lg-8 col-sm-12" style="padding-left: 3%;">
+                    <!--  =>show range bar slider -->
+
+                    <div class="simple-slider">
+
+                      <ng5-slider   [options]="sliderMakeOptions(section.questions[q])"    ></ng5-slider> 
+
+                    </div>
+
+
+                  </div>
+
+
+
+                </div>
+
+
+              </div>
+
+
+
+            </div>
+              <!-- condition If =>testing about question type -->
+
+              <div *ngIf="section.questions[q].type == 'VISUELLE ANALOGIQUE'" style="width: 100%;"
+              class="col-lg-12 col-sm-12 w-100">
+
+              <div class="row  m-2">
+                <div class="col-lg-8 col-sm-12" style="padding-left: 3%;">
+                  <div class="simple-slider">
+
+                    <div class="row">
+                      <!-- <img style="width: 10%;height: 10%;" class="img-thumbnail" src="assets/img/placeholder.png" alt=""> -->
+                      <div class='container23'style="width: 600px" >
+                      
+                      <img  class="img-thumbnail" src="../../../../../assets/Douleurgraph1.png" alt="">
+                      <input type="range" min="0" max="10"    value="5" class="slider" name='slider' id="slider">
+                      
+                      </div>
+                      <!-- <img style="width: 10%;height: 10%;" class="img-thumbnail" src="assets/img/placeholder.png" alt=""> -->
+                    </div>
+
+                  </div>
+
+
+                </div>
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+
+            </div>
+              <!-- condition If =>testing about question type -->
+
+              <div *ngIf="section.questions[q].type == 'Grille de cases à cocher'" style="width: 100%;"
+                class="col-lg-12 col-sm-12 w-100">
+                <!-- boucel for =>enter to questions options -->
+
+                <div *ngFor="let op of section.questions[q].optionsSaint; let o = index;">
+                  <div class="row  m-2">
+
+
+                    <div class="container">
+                      <div class="row">
+
+
+                        <!-- show question e -->
+
+                        {{op.text}}:
+                        <div class="col">
+                          <!-- show options for every question -->
+
+                          <div class="form-check">
+
+                            <div class="form-check form-check-inline">
+                              <input input class="form-check-input" type="radio" ngmodel="check1" disabled>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                              <input input class="form-check-input" type="radio" ngmodel="check2" disabled>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input input class="form-check-input" type="radio" ngmodel="check3" disabled>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input input class="form-check-input" type="radio" ngmodel="check4" disabled>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input input class="form-check-input" type="radio" ngmodel="check5">
+                            </div>
+                          </div>
+
+
+                        </div>
+
+                      </div>
+                    </div>
+
+
+
+
+
+
+                  </div>
+                  <!-- condition If =>testing about question type -->
+
+
+                </div>
+
+
+
+              </div>
+              <div *ngIf="section.questions[q].type == 'Cases à cocher'" style="width: 100%;"
+              class="col-lg-12 col-sm-12 w-100">
+
+              <div style="width: 100%;" >
+                <div class="row">
+                  <div class="col">
+                    <mat-radio-group 
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    [(ngModel)]="favoriteSeason">
+                    <mat-radio-button *ngFor="let op of section.questions[q].options; let o = index;" class="m-2 w-100" style="width: 100%;" [value]="op.text" (change)="caseCoher(section.questions[q].options[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataCaseCoher(section.questions[q].options[o],section.questions[q],q,o,s)">
+                      <h1 *ngIf="section.questions[q].options[o].text.length > 0" class="textt">
+                        {{section.questions[q].options[o].text}}</h1>
+                        <div   style="width: 100%; margin-left: 44px;margin-top: -16px;">
+                          <img style="width: 250px;" class="img-thumbnail" [src]="section.questions[q].options[o].image" alt="">
+                  
+                      </div>
+                    </mat-radio-button>
+                    
+                     
+                  </mat-radio-group>
+                  </div>
+              <!--     <div class="row">
+                    <label id="example-radio-group-label">Pick your favorite season</label>
+                    <mat-radio-group
+                      aria-labelledby="example-radio-group-label"
+                      class="example-radio-group"
+                      [(ngModel)]="favoriteSeason">
+                      <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                        {{season}}
+                      </mat-radio-button>
+                    </mat-radio-group>
+                    <div>Your favorite season is: {{favoriteSeason}}</div>
+
+                    <div class="col-2">
+
+                    </div>
+
+                  </div> -->
+                  <div class="col-2">
+
+                  </div>
+
+                </div>
+
+
+
+              </div>
+
+
+            </div>
+
+              <div *ngIf="section.questions[q].type == 'Grille de cases à cocher 2'" style="width: 100%;"
+                class="col-lg-12 col-sm-12 w-100">
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th *ngFor="let question of section.questions[q].grille.scoreS" scope="col">{{question.title}} ||
+                        {{question.score}}</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let question of section.questions[q].grille.options">
+                      <th scope="row">{{question.title}}</th>
+                      <td *ngFor="let question of section.questions[q].grille.scoreS">
+                        <mat-checkbox class=" inp col-md-7 col-lg-7 col-sm-9 col-xs-9 col-9  " disabled>
+
+
+                        </mat-checkbox>
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
