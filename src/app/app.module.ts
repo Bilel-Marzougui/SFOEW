@@ -44,7 +44,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DetailsPatientComponent } from './views/shared-components/details-patient/details-patient.component';
 import { DetailsProfessionnelComponent } from './views/shared-components/details-professionnel/details-professionnel.component';
 import { InterceptorService } from '../app/views/services/loader/interceptor.service';
-import {   MatListModule } from '@angular/material/list'
+import {   MatListModule } from '@angular/material/list';
+import { FormdPrRoutingModule } from './views/professionnel/preview-form-doctor/formd-pr-routing.module';
+import { FormdPrModule } from './views/professionnel/preview-form-doctor/formd-pr.module';
+ 
+ 
 
 const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com';
 
@@ -58,6 +62,9 @@ const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleuser
     EditProfilProComponent,
     DetailsPatientComponent,
     DetailsProfessionnelComponent,
+  
+ 
+ 
 
 
   ],
@@ -98,6 +105,10 @@ const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleuser
     NgxPaginationModule,
     SocialLoginModule,
     MatProgressBarModule,
+    FormdPrRoutingModule,
+    FormdPrModule,
+
+ 
     
 
 

@@ -9,7 +9,7 @@ import { SideBarComponent } from './views/shared-components/side-bar/side-bar.co
 import {GuardProfessionnelGuard} from './views/guards/guard-professionnel.guard'
 import {GuardPatientGuard} from './views/guards/guard-patient.guard'
 import { EditProfilComponent } from './views/patient/edit-profil/edit-profil.component';
-
+ 
 const routes: Routes = [
 
 //******************* front-paths****************************//
@@ -28,9 +28,9 @@ const routes: Routes = [
     {path:'Invitations',loadChildren:()=>import('./views/professionnel/invitations/invitations.module').then(m=>m.InvitationsModule)},
     {path:'contact',loadChildren:()=>import('./views/professionnel/contact/contact.module').then(m=>m.ContactModule)},
     {path:'formulaires',loadChildren:()=>import('./views/professionnel/monformulaire/monformulaire.module').then(m=>m.MonformulaireModule)},
-    {path:'show-forms',loadChildren:()=>import('./views/professionnel/show-forms/show-forms.module').then(m=>m.ShowFormsModule)},
+    {path:'show-forms/:id',loadChildren:()=>import('./views/professionnel/show-forms/show-forms.module').then(m=>m.ShowFormsModule)},
     {path:'Abonnement',loadChildren:()=>import('./views/professionnel/abonnement-paypal/abonnement-paypal.module').then(m=>m.AbonnementPaypalModule)},
-
+    {path:'preview-details/:id/:iddoctor/:idpatient',loadChildren:()=>import('./views/professionnel/preview-form-doctor/formd-pr.module').then(m=>m.FormdPrModule)},
 
   ]},
   
@@ -45,7 +45,7 @@ const routes: Routes = [
     {path:'doctor-details',loadChildren:()=>import('./views/patient/doctor-details/doctor-details.module').then(m=>m.DoctorDetailsModule)},
     {path:'forms-details/:id',loadChildren:()=>import('./views/patient/forms-details/forms-details.module').then(m=>m.FormsDetailsModule)},
 
-
+    {path:'preview-details/:id/:iddoctor/:idpatient',loadChildren:()=>import('./views/patient/preview-form-patient/forms-pr.module').then(m=>m.FormsPrModule)},
   ]},
 
   //******************* shared-paths****************************//

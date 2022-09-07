@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ShowFormsRoutingModule } from './show-forms-routing.module';
-import { ShowFormsComponent } from './show-forms/show-forms.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { Ng5SliderModule } from 'ng5-slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { PriviewFormDoctorComponent } from './priview-form-doctor/priview-form-doctor.component';
+import { FormdPrRoutingModule } from './formd-pr-routing.module';
 
 @NgModule({
-  declarations: [ShowFormsComponent],
+  declarations: [PriviewFormDoctorComponent],
   imports: [
     CommonModule,
-    ShowFormsRoutingModule,
     MatRadioModule,
     MatSelectModule,
     Ng5SliderModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FormdPrRoutingModule
   ]
 })
-export class ShowFormsModule { }
+export class FormdPrModule { }

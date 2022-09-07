@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsDetailsComponent } from './forms-details/forms-details.component';
+import { PriviewFormDoctorComponent } from './priview-form-doctor/priview-form-doctor.component';
 const routes: Routes = [
-  {path:'',component:FormsDetailsComponent},
+  {path:'',component:PriviewFormDoctorComponent},
 
 ];
 
@@ -10,4 +10,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FormsDetailsRoutingModule { }
+export class FormdPrRoutingModule { }

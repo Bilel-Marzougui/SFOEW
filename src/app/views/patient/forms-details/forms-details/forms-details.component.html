@@ -42,7 +42,7 @@
     <!-- boucel for =>enter to section items -->
     <div *ngFor="let section of form.sections;let s = index">
       <div>
-        <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title}}
+        <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title}} {{s}}
         </h3>
       </div>
       <!-- boucel for =>enter to questions items -->
@@ -155,7 +155,7 @@
                         <div class='container23'style="width: 600px" >
                         
                         <img  class="img-thumbnail" src="../../../../../assets/Douleurgraph1.png" alt="">
-                        <input type="range" min="0" max="100" (change)="VISUELLE($event,s ,'Q '+'('+ s +',' + q+')','visuelleanalogique');getDataVisuelle(section.questions[q],'VISUELLE ANALOGIQUE',q,o,$event,s)" value="50" class="slider" name='slider' id="slider">
+                        <input type="range" min="0" max="10" (change)="VISUELLE($event,s ,'Q '+'('+ s +',' + q+')','visuelleanalogique');getDataVisuelle(section.questions[q],'VISUELLE ANALOGIQUE',q,o,$event,s)" value="50" class="slider" name='slider' id="slider">
                         
                         </div>
                         <!-- <img style="width: 10%;height: 10%;" class="img-thumbnail" src="assets/img/placeholder.png" alt=""> -->
@@ -252,6 +252,10 @@
                         <mat-radio-button *ngFor="let op of section.questions[q].options; let o = index;" class="m-2 w-100" style="width: 100%;" [value]="op.text" (change)="caseCoher(section.questions[q].options[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataCaseCoher(section.questions[q].options[o],section.questions[q],q,o,s)">
                           <h1 *ngIf="section.questions[q].options[o].text.length > 0" class="textt">
                             {{section.questions[q].options[o].text}}</h1>
+                            <div   style="width: 100%; margin-left: 44px;margin-top: -16px;">
+                              <img style="width: 250px;" class="img-thumbnail" [src]="section.questions[q].options[o].image" alt="">
+                      
+                          </div>
                         </mat-radio-button>
   
                       </mat-radio-group>

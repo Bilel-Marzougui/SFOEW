@@ -16,6 +16,11 @@
           </div>
       </div>
     <table class="table ">
+        <div *ngIf="!profs" class="text-center">
+            <div class="spinner-border text-secondary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
         <thead>
             <tr>
                 <th scope="col" >Nom et prénom </th>
@@ -26,13 +31,15 @@
 
             </tr>
         </thead>
+    
         <tbody *ngFor="let prof of profs ;index as i">
             <tr>
                 <td class="pt-3">{{prof.doctors.name}} {{prof.doctors.lastname}}</td>
                 <td class="pt-3">{{prof.doctors.adresse}}</td>
                 <td class="pt-3">{{prof.doctors.email}}</td>
                 <td class="pt-3" >{{prof.doctors.tel}}  </td>
-                <td><i  class='fas fa-file-medical' (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"></i>
+                <td><i  class='fas fa-file-medical' (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" style="padding-right: 10px;" data-target="#exampleModal"></i>
+                    <i  class='fas fa-file-medical' (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" data-target="#exampleModalCompleted"></i>
                 </td>
             </tr>
 
@@ -79,7 +86,49 @@
         </div>
     </div>
 </div>
+<!-- Modal Completed-->
+<div class="modal fade" id="exampleModalCompleted" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+               
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-title" id="exampleModalLabel">Forms Completed by {{prof.doctors.lastname}}</h5>
 
+                <div class="container rounded mt-2 bg-white p-md-2">
+                    <div class="table-responsive">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">TitleFF</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Action</th>
+                    
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let form of formsCompleted ;index as i">
+                                <tr>
+                                    <td  data-dismiss="modal"  class="pt-3">{{form.form.title}}</td>
+                                    <td class="pt-3">{{form.form.description}}</td>
+                                    <td class="pt-3"><i  class='fas fa-file-medical' (click)="previewForm(form)"  aria-hidden="true"  ></i></td>
+                                   
+                                </tr>
+                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+         
+                <button type="button" class="btn btn-secondary" >Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
         </tbody>
     </table>
 </div>

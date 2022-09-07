@@ -17,7 +17,13 @@ export class FormsService {
     return this.http.get<any>(`${this.URL}`+'affectation/getmyform/'+id,{headers: headers})  
   
   }
+  getAffectation(idUser:any){
+    const token=localStorage.getItem('token_Pro')
+    const headers=new HttpHeaders().set('authorization','Bearer '+token)
+
+    return this.http.get<any>(`${this.URL}`+'affectation/getaffectation/'+idUser,{headers: headers})  
   
+  }
   affectForm(id:any,body:any){
     const token=localStorage.getItem('token_Pro')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)

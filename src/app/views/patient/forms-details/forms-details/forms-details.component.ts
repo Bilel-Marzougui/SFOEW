@@ -3,9 +3,9 @@ import { FormDataService } from '../../../services/shared-data/form-data.service
 import{PatientFormsService} from '../../../services/patient/patient-forms.service'
 import { AuthPatientService } from 'src/app/views/services/patient/auth-patient.service';
 import { Options } from 'ng5-slider/options';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/views/services/login.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-forms-details',
   templateUrl: './forms-details.component.html',
@@ -80,6 +80,7 @@ selectedElement: PeriodicElement;
   // };
 
   sliderMakeOptions(slider): Options {
+/*     console.log(slider.dataRange) */
     return {
       floor: 10,
       ceil: 100,
@@ -93,7 +94,7 @@ selectedElement: PeriodicElement;
   responses: any= {
    
   };
-  constructor(private data:FormDataService, private authPat:AuthPatientService,private PatForms:PatientFormsService, private router: ActivatedRoute, private login :LoginService) {
+  constructor(private data:FormDataService, private authPat:AuthPatientService,private snackBar:MatSnackBar,private PatForms:PatientFormsService, private router: ActivatedRoute, private login :LoginService,private route:Router) {
     this.data.currentindex.subscribe(index=>this.index =index)
     this.idForm2 = this.router.snapshot.paramMap.get('id');
  /*    console.log(" this.idForm2", this.idForm2) */
@@ -107,7 +108,7 @@ selectedElement: PeriodicElement;
         console.log((this.idForm))
         console.log((response.sections[0].description))
         console.log(( response)) */
-
+        console.log(( response))
         this.form=response
       
       })
@@ -138,21 +139,22 @@ setTimeout(() => {
 
 
   getdataCaseChoix(rep,data,q,o,event,s){
-    /*  console.log(q,"cm",event.checked,o) */
+      console.log(q,"cm",data) 
      let  indexQ = this.tableReponse.findIndex(x => 
        x.id===s+''+q
      );  
      data.optioncm[o].selected=event.checked
     // console.log(q,"cm","type",event.checked,"indexrep",o,"indexq",indexQ)
      if(indexQ===-1)
-     this.tableReponse.push({title :data.title,type: data.type,options:data.optioncm,textReponse:'',id:s+''+q});
+     this.tableReponse.push({title :data.title,type: data.type,options:data.optioncs,textReponse:'',id:s+''+q,optioncm:data.optioncm,score:0,scoreOptionRangeBarQuestion:data.dataRange,
+     scoreOptionRangeBar:0,scoreOptioncm2:data.grille,minRange:"0", optionsSaint:null});
      else
      this.tableReponse[indexQ].options=data.optioncm; 
    console.log(this.tableReponse,q,o,indexQ) 
  
    }
    getdataTextCour(rep,data,q,o,event,s){
-   /* console.log('rep,data,q,o',rep,data,q,o,event.target.value); */
+   console.log('rep,data,q,o',rep,data,q,o,event.target.value);  
    let  indexQ = this.tableReponse.findIndex(x => 
      x.id===s+''+q
    ); 
@@ -164,7 +166,7 @@ setTimeout(() => {
   
    }
    getdataCaseCoher(rep,data,q,o,s){
-     /* console.log(q,'cc') */
+      console.log(q,'cc',data) 
      let  indexQ = this.tableReponse.findIndex(x => 
        x.id===s+''+q
      );  
@@ -178,40 +180,44 @@ setTimeout(() => {
      })
      /* this.tableReponse.push(data) */
      if(indexQ===-1)
-     this.tableReponse.push({title :data.title,type: data.type,options:data.options,textReponse:'',id:s+''+q});
+     this.tableReponse.push({title :data.title,type: data.type,options:data.options,textReponse:'',id:s+''+q,optioncm:data.optioncm,score:0,scoreOptionRangeBarQuestion:data.dataRange,
+     scoreOptionRangeBar:0,scoreOptioncm2:data.grille,minRange:"0", optionsSaint:null});
      else
      this.tableReponse[indexQ].options=data.options;
     /*  console.log(this.tableReponse,q,o,indexQ) */
    }
   
    getdataRangeBar(rep,data,q,o,event,s){
-/* console.log('rep,data,q,o,event,s',rep,data,q,o,event,s) */
+console.log('rep,data,q,o,event,s',rep,data,q,o,event,s) 
 let  indexQ = this.tableReponse.findIndex(x => 
   x.id===s+''+q
 );  
 if(indexQ===-1)
-   this.tableReponse.push({title :rep.title,type: rep.type,options:rep.dataRange,textReponse:event,id:s+''+q});
+   this.tableReponse.push({title :rep.title,type: rep.type,options:rep.options,textReponse:"event",id:s+''+q,optioncm:rep.optioncm,score:event,scoreOptionRangeBarQuestion:rep.dataRange,
+   scoreOptionRangeBar:0,scoreOptioncm2:rep.grille,minRange:"0", optionsSaint:null});
    else
-   this.tableReponse[indexQ].textReponse=event
+   this.tableReponse[indexQ].score=event
    }
 
    getDataVisuelle(rep,type,q,o,event,s){
+    console.log(rep)
     let  indexQ = this.tableReponse.findIndex(x => 
       x.id===s+''+q
     );  
     if(indexQ===-1)
-    this.tableReponse.push({title :rep.title,type: rep.type,options:rep.dataRange,textReponse:event.target.value,id:s+''+q});
+    this.tableReponse.push({title :rep.title,type: rep.type,options:rep.options,textReponse:'event.target.value',id:s+''+q,optioncm:rep.optioncm,score:Number(event.target.value),scoreOptionRangeBarQuestion:rep.dataRange,
+    scoreOptionRangeBar:0,scoreOptioncm2:rep.grille,minRange:"0", optionsSaint:null});
     else
     this.tableReponse[indexQ].textReponse=event.target.value 
   /*   console.log(type,q,o,event.target.value,s) */
    }
    getDataTextCourt(rep,event,s,q){
- /*   console.log(rep,event.target.value,s,q) */
+  console.log(rep,event.target.value,s,q) 
    let  indexQ = this.tableReponse.findIndex(x => 
     x.id===s+''+q
   );  
   if(indexQ===-1)
-  this.tableReponse.push({title :rep.title,type: rep.type,options:rep,textReponse:event.target.value,id:s+''+q});
+  this.tableReponse.push({title :rep.title,type: rep.type,optioncm:rep.optioncm,options:rep.options,textReponse:event.target.value,id:s+''+q,score:0,scoreOptionRangeBarQuestion:rep.dataRange, minRange:"0", optionsSaint:null});
   else
   this.tableReponse[indexQ].textReponse=event.target.value 
    }
@@ -463,11 +469,34 @@ cc(){
  
 }
 calcul(){
-  
-  this.FormScore.map((res)=>{
-    console.log("res",res)
+ /*  this.route.navigate(['/patient/contacts'])
+  this.snackBar.open("Form calcule" ,"×", {
+
+    duration: 5000,
+
+ 
+
+    verticalPosition: 'top',
+    panelClass:'success'
+
+  }) */
+  console.log(( this.idForm2))
+/*     this.PatForms.addRep(  {form: this.idForm2,
+  user: '63168ea6127d1b483c49e642',
+  doctor: '63168cd2a1bdba2db0ebbdd9',
+  responses: this.tableReponse
+}).subscribe((res)=>{
+    console.log("ressdddddddddddddddddds",res)
+    if(res){
+ 
+    }
+  })  */ 
+   console.log("FormScore",this.FormScore,"tableReponse",this.tableReponse)
+    this.FormScore.map((res)=>{
+   // console.log("res",res)
   })
-  this.tableCalcul=[]
+    this.tableCalcul=[]
+  console.log("this.form.formMuti[0]",this.form.formMuti[0])
   for(let k=0;k<this.form.formMuti[0].indexScoreForm.length;k++){
     if(this.form.formMuti[0].indexScoreForm[k].type==="index"){
       this.tableCalcul.push({val:'Q '+'('+ this.form.formMuti[0].indexScoreForm[k].i +',' + this.form.formMuti[0].indexScoreForm[k].j+')'})
@@ -483,11 +512,14 @@ calcul(){
     }
   }
 this.tableCalcul .map((result)=>{
+  console.log("result.val",result.val)
   if(result.val[0]=='Q'){
     var indexC = this.FormScore.findIndex(s => s.type === result.val);
     console.log("this.FormScore[indexC]",this.FormScore[indexC])
     if(this.FormScore[indexC])
      this.scoreS=this.scoreS.concat(this.FormScore[indexC].score.toString()) 
+     console.log(" this.scoreS", this.scoreS,this.FormScore[indexC].score)
+
   }
   else{
     if(result.val=="×"){
@@ -501,7 +533,7 @@ this.tableCalcul .map((result)=>{
   }
 })
 console.log(this.scoreS,'rrrr')
-console.log(eval(this.scoreS),'rrrr')
+console.log(eval(this.scoreS),'rrrr')    
 }
 Range(value,score,sections,question,type){
     let x =0

@@ -12,10 +12,12 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class PatientFormsComponent implements OnInit {
   ProfId="";
-  forms:any
+  forms:any;
+  formsCompleted:any;
   profs: any;
   id:any
   idForm:any;
+  idDocter:any;
   searchDoctor:string
   index:any
   filtredprofs:any
@@ -63,10 +65,12 @@ export class PatientFormsComponent implements OnInit {
  }
 
   GetForms(DocID){
+    this.idDocter=DocID;
     this.PatForms.getForms(this.id,DocID).subscribe(response=>{
-      console.log(response.incompleted)
-    this.forms=response.incompleted
-    console.log(JSON.stringify(this.forms[1]))
+     /*  console.log(response) */
+    this.forms=response.incompleted;
+    this.formsCompleted=response.completed
+  /*   console.log(JSON.stringify(this.forms[1])) */
 
 
 
@@ -80,5 +84,8 @@ export class PatientFormsComponent implements OnInit {
     this.data.GetId(idF)
     
   }
- 
+ previewForm(form:any){
+  this.router.navigate(['patient/preview-details',form.form._id,this.idDocter,this.id])
+  console.log("hhh",form.form._id,this.idDocter,this.id)
+ }
 }

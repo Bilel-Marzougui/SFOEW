@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { InvitaionsService } from '../../../services/professionnel/invitaions.service';
 import { AuthProfessionnelService } from '../../../services/professionnel/auth-professionnel.service';
+import { PatientFormsService } from 'src/app/views/services/patient/patient-forms.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -12,8 +14,11 @@ export class ContactComponent implements OnInit {
   contacts:any
   p:number;
   i=1;
-  filtredContacts:any
-  constructor(private invservice:InvitaionsService,private authPro: AuthProfessionnelService) { 
+  formsCompleted:any;
+  formsInCompleted:any;
+  filtredContacts:any;
+  idPatient:any;
+  constructor(private invservice:InvitaionsService,private authPro: AuthProfessionnelService,private PatForms:PatientFormsService,private router:Router,) { 
     this.id = this.authPro.geid()
 
     this.invservice.myContacts(this.id).subscribe(response =>{
@@ -36,4 +41,30 @@ export class ContactComponent implements OnInit {
       )
     })
  }
+/*    GetForms(DocID){
+    this.idDocter=DocID;
+    this.PatForms.getForms(this.id,this.id).subscribe(response=>{
+
+    this.forms=response.incompleted;
+    this.formsCompleted=response.completed
+
+
+
+
+  })
+  } */
+  getpatient(patient:any){
+        console.log(patient.patients._id)
+        this.idPatient=patient.patients._id;
+        this.PatForms.getFormsDoctor(patient.patients._id,this.id).subscribe(response=>{
+        console.log(response)
+        this.formsInCompleted=response.incompleted;
+        this.formsCompleted=response.completed
+
+        })
+  }
+  previewForm(form:any){
+    this.router.navigate(['professionnel/preview-details',form,this.id,this.idPatient])
+   /*  console.log("hhh",form.form._id,this.idDocter,this.id) */
+   }
 }

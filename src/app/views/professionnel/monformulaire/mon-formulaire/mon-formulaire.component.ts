@@ -33,7 +33,7 @@ export class MonFormulaireComponent implements OnInit {
 
     })
  this.invservice.myContacts(this.id).subscribe(response =>{
-  // console.log(response)
+   console.log("response",response)
   this.contacts=response
 })
   }
@@ -57,7 +57,9 @@ this.affect.form=this.formId
 // console.log('this is add'+this.affect.user)
 // console.log('this is add'+this.affect.doctor)
 // console.log('this is add'+this.affect.form)
-
+this.formsService.getAffectation(this.id).subscribe((res)=>{
+  console.log('resss',res)
+})
     this.formsService.affectForm(this.id,this.affect).subscribe(response=>{
       // console.log('this is add'+response)
       this.snackBar.open(" form affected successfully " ,"×", {
@@ -94,8 +96,8 @@ this.affect.form=this.formId
       // console.log('show')
       this.data.GetId(formId)
 
-      // console.log(formId)
-    this.router.navigate(['/professionnel/show-forms'])
+      console.log(formId)
+    this.router.navigate(['/professionnel/show-forms',formId._id])
 
 
 
