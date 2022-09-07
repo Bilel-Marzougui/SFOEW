@@ -38,7 +38,7 @@
                 <td class="pt-3">{{prof.doctors.adresse}}</td>
                 <td class="pt-3">{{prof.doctors.email}}</td>
                 <td class="pt-3" >{{prof.doctors.tel}}  </td>
-                <td><i  class='fas fa-file-medical' (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" style="padding-right: 10px;" data-target="#exampleModal"></i>
+                <td><i  class='fas fa-file-medical' class="fa-sharp fa-solid fa-check-to-slot" (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" style="padding-right: 10px;" data-target="#exampleModal"></i>
                     <i  class='fas fa-file-medical' (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" data-target="#exampleModalCompleted"></i>
                 </td>
             </tr>
@@ -134,8 +134,11 @@
     </table>
 </div>
 
-
-
+<div  *ngIf="profs==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
+    <h1 class="header-title" style="color: transparent;padding-bottom: 15%;font-size: 0px;">A</h1>
+    <h1 class="header-title" style="color: red;padding-bottom: 15%;">AUCUN CONTACT  </h1>
+  
+  </div>
 
 
 

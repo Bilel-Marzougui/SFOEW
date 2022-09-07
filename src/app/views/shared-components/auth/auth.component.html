@@ -3,13 +3,12 @@
 
 
 </div>
-<mat-dialog-content>
+<mat-dialog-content style="height:auto ;"> 
 
   <div class="login-page">
-    <mat-card class="mat-elevation-z12">
       <!-- <mat-card-title style="text-align:center;">SignIn/SignUp</mat-card-title> -->
 
-      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs" >
 
         <!-- login form -->
         <mat-tab label="S'identifier">
@@ -18,11 +17,12 @@
               #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
               <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">Professionnel
               </mat-button-toggle>
+              
               <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
             </mat-button-toggle-group>
           </div>
 
-          <mat-card-content>
+          <mat-card-content >
             <div class="switch" [ngSwitch]="selectedVal">
 
               <div class="proReg" *ngSwitchCase="'Professionnel'">
@@ -46,14 +46,21 @@
                     <mat-error *ngIf="flogPro.password.invalid">Mot de passe requis </mat-error>
                   </mat-form-field>
 
+                  
+                  <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                  
+                    <button mat-raised-button color="primary" class="login-button" type="submit" style="width:40% ;">
+                      Sign In
+                    </button> <br>
+                    <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
+                      Login with Google
+                    </button>
+               </div>
+               <mat-checkbox>Remember Me!</mat-checkbox>
 
-                  <mat-checkbox>Remember Me!</mat-checkbox>
-                  <button mat-raised-button color="primary" class="login-button" type="submit">
-                    Sign In
-                  </button>
-                  <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit">
-                    Login with Google
-                  </button>
+              
+              
+                 
 
                 </form>
               </div>
@@ -80,13 +87,17 @@
                   </mat-form-field>
 
 
-                  <mat-checkbox>Remember Me!</mat-checkbox>
-                  <button mat-raised-button color="primary" type="submit" class="login-button">
-                    Sign In
-                  </button>
-                  <button mat-raised-button color="primary" type="submit"  (click)="google()">
-                    Sign In with Google 
-                  </button>
+                  <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                  
+                    <button mat-raised-button color="primary" class="login-button" type="submit" style="width:40% ;">
+                      Sign In
+                    </button> <br>
+                    <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
+                      Login with Google
+                    </button>
+               </div>
+               <mat-checkbox>Remember Me!</mat-checkbox>
+
                   <!-- <button mat-raised-button class="login-button">
                 Login with Google
               </button> -->
@@ -103,25 +114,27 @@
         <!-- register form -->
         <!-- <div class="register-page"> -->
 
-        <mat-tab label="S'inscrire">
-          <mat-card-content class="mat-card-content-reg">
-            <div class="card m-3">
+        <mat-tab label="S'inscrire"  style=" height:900px;" >
+          <mat-card-content class="mat-card-content-reg"  style=" height: 900px;"   >
               <!-- <h5 class="card-header">{{status}}</h5> -->
-              <div class="card-body">
-                <div class="choix">
+              <div class="card-body"  style="width: 600px; height:1000px;" >
+                <div class="choix" >
                   <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style"
                     #group2="matButtonToggleGroup" [value]="selectedVal2" (change)="onValChange2(group2.value)">
                     <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">Professionnel
                     </mat-button-toggle>
+                  
                     <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
                   </mat-button-toggle-group>
+
+
                 </div>
-                <div class="switch" [ngSwitch]="selectedVal2">
+                <div class="switch" [ngSwitch]="selectedVal2"   style=" height: 1700px;" >
 
-                  <div class="proReg" *ngSwitchCase="'Professionnel'">
+                  <div class="proReg" *ngSwitchCase="'Professionnel'" style=" height: 1200px;">
 
-                    <form class="ex1" [formGroup]="registerFormPro" (ngSubmit)="registerPro(registerFormPro)">
-                      <div class="form-row">
+                    <form class="ex1" [formGroup]="registerFormPro" (ngSubmit)="registerPro(registerFormPro)" style=" height: 1200px;">
+                      <div class="form-row" style=" height: auto;">
                         <!-- <h1 >Professionnel</h1> -->
 
                         <mat-form-field>
@@ -289,8 +302,8 @@
                   </div>
 
 
-                  <div class="patReg" *ngSwitchCase="'Patient'">
-                    <form class="ex1" [formGroup]="registerFormPat" (ngSubmit)="registerPat(registerFormPat)">
+                  <div class="patReg" *ngSwitchCase="'Patient'" style=" height: 1200px;">
+                    <form class="ex1" [formGroup]="registerFormPat" (ngSubmit)="registerPat(registerFormPat)" style=" height: 1200px;">
                       <div class="form-row">
                         <!-- <h1 >Patient</h1> -->
                         <mat-form-field>
@@ -441,7 +454,7 @@
 
 
 
-            </div>
+            
 
           </mat-card-content>
         </mat-tab>
@@ -451,7 +464,6 @@
 
 
       </mat-tab-group>
-    </mat-card>
   </div>
 
 

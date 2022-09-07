@@ -33,16 +33,10 @@
 
 }
 
-mat-card {
-  width:100%;
-  margin: 10% auto;
-  border-radius: 8px;
 
-}
 mat-card-content {
   width:100%;
-  margin: 10% auto;
-  border-radius: 8px;
+ 
 
 }
 
@@ -53,7 +47,6 @@ mat-form-field, mat-checkbox {
 }
 mat-card-content {
   margin-top: 20px;
-  width: 400px;
 
 }
 
@@ -85,12 +78,22 @@ mat-dialog-content{
 
   display: block;
   overflow: hidden;
+  background-color: transparent;
 
 
 }
 
+mat-dialog-container{
+  background-color: transparent;
+  width: 60%;
 
+}
+.mat-card {
 
+    transition: none
+   
+
+}
 ::-webkit-scrollbar {
     width: 0;  /*Remove scrollbar space
     background: transparent;  /*Optional: just make scrollbar invisible*/
@@ -118,7 +121,6 @@ mat-dialog-content{
 
 .mat-card-content-reg{
 
-  width: 500px;
 }
 
 
