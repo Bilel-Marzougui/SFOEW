@@ -125,14 +125,14 @@
                     <th  scope="row">{{i+1}}</th>
                     <td >{{form.form.title}}</td>
                     <td>{{form.form.created_date.slice(0,10)}}</td>
-                    <td><button (click)="previewForm(form.form._id)">com</button></td>
+                    <td><i class="fa fa-circle-check icon" style="cursor: pointer;" (click)="previewForm(form.form._id)"></i></td>
                   </tr>
                   <tr *ngFor="let form of formsInCompleted | paginate: { itemsPerPage: 9, currentPage: y }  ;index as k">
                     <th  scope="row">{{i+formsCompleted.length}}</th>
                     <td >{{form.form.title}}</td>
                     <td>{{form.form.created_date.slice(0,10)}}</td>
-                    <td><i class="fa fa-circle-check icon" (onlick)="navigate()"></i></td>
-                                    </tr>
+                    <td> <i class="fa fa-clock" style="color: red;"></i></td>
+                  </tr>
                 </tbody>
               </table>
         </div>
