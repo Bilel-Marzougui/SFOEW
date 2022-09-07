@@ -18,13 +18,18 @@ export class ContactComponent implements OnInit {
   formsInCompleted:any;
   filtredContacts:any;
   idPatient:any;
+  mesgEmpty: boolean=false;
   constructor(private invservice:InvitaionsService,private authPro: AuthProfessionnelService,private PatForms:PatientFormsService,private router:Router,) { 
     this.id = this.authPro.geid()
 
     this.invservice.myContacts(this.id).subscribe(response =>{
+      this.mesgEmpty=false;
+
       console.log(response)
       this.contacts=response
       this.filtredContacts=response
+      this.mesgEmpty=true;
+
     }
      
       )

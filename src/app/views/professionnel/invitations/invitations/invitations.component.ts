@@ -21,6 +21,8 @@ export class InvitationsComponent implements OnInit,OnChanges {
   filtredInvts:any
   PatientID:any
   index:any
+  mesgEmpty: boolean=false;
+
   pat={
 
     name: 'hanen',
@@ -51,8 +53,12 @@ export class InvitationsComponent implements OnInit,OnChanges {
 
   ngOnInit(): void {
     this.invservice.getInvts(this.id).subscribe(response =>{
+      this.mesgEmpty=false;
+
       this.invts = response
       this.filtredInvts=response
+      this.mesgEmpty=true;
+
       console.log( this.invts) 
 
     })

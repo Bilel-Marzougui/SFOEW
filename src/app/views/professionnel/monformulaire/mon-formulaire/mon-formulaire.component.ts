@@ -23,13 +23,19 @@ export class MonFormulaireComponent implements OnInit {
   nb=1
   i=1;
   item:"test"
+  mesgEmpty: boolean=false;
+
   constructor( private PaymentService:PaymentService,private data:FormDataService,private router:Router,private snackBar:MatSnackBar,private invservice:InvitaionsService,private formsService:FormsService,private authPro: AuthProfessionnelService) { 
+    this.mesgEmpty=false;
+ 
     this.id = this.authPro.geid()
     this.formsService.getForms(this.id).subscribe(response=>{
         // console.log(JSON.stringify(response))
       this.forms=response
       this.filtredForms=response
          console.log((response))
+         this.mesgEmpty=true;
+
 
     })
  this.invservice.myContacts(this.id).subscribe(response =>{
