@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./list-doctors.component.css']
 })
 export class ListDoctorsComponent implements OnInit {
-  profs: Professionnel;
+  profs: any;
   profD:any ;
   timelines = [];
   searchDoctor:string
@@ -23,11 +23,19 @@ export class ListDoctorsComponent implements OnInit {
   obsGet: Subscription;
   obsAdd: Subscription;
   i:1;
+
+
+  mesgEmpty: boolean=false;
   constructor(private snackBar:MatSnackBar,public doctorsService: DoctorsService, private authPat: AuthPatientService, private DemandeService: DemandePatService) {
     this.idPat = this.authPat.geid()
  this.obsGet=   this.doctorsService.getDoctors().subscribe(response =>{
+  this.mesgEmpty=false;
+
+  
       this.profs = response
-      this.filtredprofs= response}
+      this.filtredprofs= response
+      this.mesgEmpty=true;
+    }
 
 
     )
@@ -82,10 +90,10 @@ export class ListDoctorsComponent implements OnInit {
   
 
   getId(profDetails:any){
-    console.log(profDetails)
+   /*  console.log(profDetails) */
 
     this.profD=profDetails
-    console.log('name'+this.profD.name)
+  /*   console.log('name'+this.profD.name) */
 
 return profDetails
   }

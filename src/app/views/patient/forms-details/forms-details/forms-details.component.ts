@@ -101,7 +101,7 @@ selectedElement: PeriodicElement;
     this.idForm2 = this.router.snapshot.paramMap.get('id');
     this.iddoctor= this.router.snapshot.paramMap.get('iddoctor');
     this.idpatient= this.router.snapshot.paramMap.get('idpatient');
-     console.log(" this.idForm2", this.idForm2,"this.iddoctor",this.iddoctor,"this.idpatient",this.idpatient) 
+    /*  console.log(" this.idForm2", this.idForm2,"this.iddoctor",this.iddoctor,"this.idpatient",this.idpatient)  */
     this.data.currentMessage.subscribe(idForm=>this.idForm =idForm)
      /*   console.log(this.idForm) */
 
@@ -112,7 +112,7 @@ selectedElement: PeriodicElement;
         console.log((this.idForm))
         console.log((response.sections[0].description))
         console.log(( response)) */
-        console.log(( response))
+      /*   console.log(( response)) */
         this.form=response
       
       })
@@ -122,9 +122,9 @@ selectedElement: PeriodicElement;
 
   ngOnInit(): void {
     for(var i=0;i<1;i++){
-      console.log(i)
+ /*      console.log(i) */
     }
-    console.log(i)
+  /*   console.log(i) */
    this.FormScore=[]
 setTimeout(() => {
 
@@ -138,12 +138,12 @@ setTimeout(() => {
   }
   pelviennes:any
   filterItem(value) {
-    console.log("value",value)
+ /*    console.log("value",value) */
   }
 
 
   getdataCaseChoix(rep,data,q,o,event,s){
-      console.log(q,"cm",data) 
+/*       console.log(q,"cm",data)  */
      let  indexQ = this.tableReponse.findIndex(x => 
        x.id===s+''+q
      );  
@@ -154,11 +154,11 @@ setTimeout(() => {
      scoreOptionRangeBar:0,scoreOptioncm2:data.grille,minRange:"0", optionsSaint:null});
      else
      this.tableReponse[indexQ].options=data.optioncm; 
-   console.log(this.tableReponse,q,o,indexQ) 
+  /*  console.log(this.tableReponse,q,o,indexQ)  */
  
    }
    getdataTextCour(rep,data,q,o,event,s){
-   console.log('rep,data,q,o',rep,data,q,o,event.target.value);  
+/*    console.log('rep,data,q,o',rep,data,q,o,event.target.value);   */
    let  indexQ = this.tableReponse.findIndex(x => 
      x.id===s+''+q
    ); 
@@ -170,7 +170,7 @@ setTimeout(() => {
   
    }
    getdataCaseCoher(rep,data,q,o,s){
-      console.log(q,'cc',data) 
+/*       console.log(q,'cc',data)  */
      let  indexQ = this.tableReponse.findIndex(x => 
        x.id===s+''+q
      );  
@@ -192,7 +192,7 @@ setTimeout(() => {
    }
   
    getdataRangeBar(rep,data,q,o,event,s){
-console.log('rep,data,q,o,event,s',rep,data,q,o,event,s) 
+/* console.log('rep,data,q,o,event,s',rep,data,q,o,event,s)  */
 let  indexQ = this.tableReponse.findIndex(x => 
   x.id===s+''+q
 );  
@@ -204,7 +204,7 @@ if(indexQ===-1)
    }
 
    getDataVisuelle(rep,type,q,o,event,s){
-    console.log(rep)
+  /*   console.log(rep) */
     let  indexQ = this.tableReponse.findIndex(x => 
       x.id===s+''+q
     );  
@@ -216,7 +216,7 @@ if(indexQ===-1)
   /*   console.log(type,q,o,event.target.value,s) */
    }
    getDataTextCourt(rep,event,s,q){
-  console.log(rep,event.target.value,s,q) 
+/*   console.log(rep,event.target.value,s,q)  */
    let  indexQ = this.tableReponse.findIndex(x => 
     x.id===s+''+q
   );  
@@ -262,13 +262,13 @@ for(let i=0;i<rep.grille.scoreS.length;i++){
   obj = {...obj, ...pair};
   
 }
-console.log("hhh",obj);
+/* console.log("hhh",obj); */
 for(let j=0;j<rep.grille.options.length;j++){
   this.tabV.push(this.tabH);
 }
-console.log(this.tabV);
+/* console.log(this.tabV); */
 
-        console.log(rep.grille,event,q,o,k,s,question)
+    /*     console.log(rep.grille,event,q,o,k,s,question) */
    }
   VISUELLE(e,a,b,visuelleanalogique){
     let x =0
@@ -293,7 +293,7 @@ console.log(this.tabV);
     }
   }
   expression(){
-    console.log("FormScore",this.FormScore,this.tableReponse)
+  /*   console.log("FormScore",this.FormScore,this.tableReponse) */
   }
   radioChange(value,event,sections,question,type){
      let x =0
@@ -334,7 +334,7 @@ console.log(this.tabV);
     if( indexQ == -1){
       this.FormScore.push({text:value.text,score:value.score,index:x+1,section:sections,indexQuestion:question,type:type})
     }
-    console.log(value,event,hi,sections,question,type)
+  /*   console.log(value,event,hi,sections,question,type) */
   }
   caseCoher(value,event,sections,question,type){
         let x =0
@@ -376,7 +376,7 @@ if(hi.checked&& indexQ == -1){
 if(!hi.checked){
   let Table =[]
       this.FormScore.map((result)=>{
-        console.log(1) 
+      /*   console.log(1)  */
 
         if(result.indexChoixm){
         if(result.indexChoixm!=hi.source.id&&result.section==sections){
@@ -464,11 +464,11 @@ if(!hi.checked){
 cc(){
 
 
-  console.log("valu"+this.test1)
+ /*  console.log("valu"+this.test1)
   console.log(this.test2)
   console.log("sect"+this.test3)
   console.log("ques"+this.test4)
-  console.log("type"+this.test5)
+  console.log("type"+this.test5) */
 
  
 }
@@ -553,7 +553,7 @@ setTimeout(() => {
       console.log("yesssss",res)
       if(res){
         this.route.navigate(['/patient/contacts'])
-        this.snackBar.open("Form calcule" ,"×", {
+        this.snackBar.open("Formulaire calculer " ,"×", {
       
           duration: 5000,
       
@@ -632,7 +632,7 @@ Range(value,score,sections,question,type){
    }
 
   valueChanged(e) {
-    console.log('e', e);
+   /*  console.log('e', e); */
 }
 }
 export interface PeriodicElement {

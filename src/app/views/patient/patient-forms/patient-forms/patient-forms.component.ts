@@ -22,13 +22,20 @@ export class PatientFormsComponent implements OnInit {
   index:any
   filtredprofs:any
   i:1;
+  mesgEmpty: boolean=false;
+
   constructor( private router:Router, private data:FormDataService,public doctorsService: DoctorsService, private authPat:AuthPatientService,private PatForms:PatientFormsService ) {
+    this.mesgEmpty=false;
+
     this.id = this.authPat.geid()
 
    this.doctorsService.myContacts(this.id).subscribe(response =>{
-    console.log(response)      
+
+    /* console.log(response)  */     
     this.profs = response
     this.filtredprofs=response
+    this.mesgEmpty=true;
+
 
 
  
@@ -70,7 +77,7 @@ export class PatientFormsComponent implements OnInit {
      /*  console.log(response) */
     this.forms=response.incompleted;
     this.formsCompleted=response.completed
-  /*   console.log(JSON.stringify(this.forms[1])) */
+   /*  console.log(response) */
 
 
 
