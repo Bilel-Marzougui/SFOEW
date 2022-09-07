@@ -34,7 +34,7 @@ export class PriviewFormDoctorComponent implements OnInit {
     this.PatForms.getRepdoctor(this.idPatient,this.idDoctor,this.idForm).subscribe((res)=>{
      
       this.tabRep=res
-       console.log('resss',this.tabRep.responses) 
+       console.log('resss',this.tabRep.score[0]) 
     })
   }
 

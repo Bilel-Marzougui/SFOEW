@@ -30,6 +30,7 @@ export class PrFormComponent implements OnInit {
 }
    }
   ngOnInit(): void {
+   
    /*  console.log('hhh',this.idForm,this.idDoctor,this.idPatient) */
     this.PatForms.getRep(this.idPatient,this.idDoctor,this.idForm).subscribe((res)=>{
      

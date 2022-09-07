@@ -65,6 +65,7 @@
                     
                                 </tr>
                             </thead>
+                            
                             <tbody *ngFor="let form of forms ;index as i">
                                 <tr>
                                     <td  data-dismiss="modal" (click)="openFormDetails(form.form._id,prof.doctors._id)" class="pt-3">{{form.form.title}}</td>
