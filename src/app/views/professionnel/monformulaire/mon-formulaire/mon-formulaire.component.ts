@@ -33,11 +33,22 @@ export class MonFormulaireComponent implements OnInit {
         // console.log(JSON.stringify(response))
       this.forms=response
       this.filtredForms=response
-         console.log((response))
+        /*  console.log((response)) */
          this.mesgEmpty=true;
 
 
     })
+    this.formsService.getAllForm().subscribe(response=>{
+      // console.log(JSON.stringify(response))
+
+      this.forms=response
+      this.filtredForms=response
+        /*  console.log((response)) */
+         this.mesgEmpty=true;
+    
+
+
+  })
  this.invservice.myContacts(this.id).subscribe(response =>{
    console.log("response",response)
   this.contacts=response

@@ -15,6 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class FormsDetailsComponent implements  OnInit {
  
   @Input() item = '';
+  disabledConfirme=false;
 test1:any
 test2:any
 test3:any
@@ -474,6 +475,7 @@ cc(){
 }
 scorSend=[];
 calcul(){
+  this.disabledConfirme=true
  /*  this.route.navigate(['/patient/contacts'])
   this.snackBar.open("Form calcule" ,"×", {
 
