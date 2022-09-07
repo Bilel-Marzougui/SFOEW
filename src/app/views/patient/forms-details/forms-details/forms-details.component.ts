@@ -28,6 +28,8 @@ f:any
   id:any
   value: number = 100;
 idForm2:any;
+iddoctor:any;
+idpatient:any;
 FormScore=[
 
 ];
@@ -97,7 +99,9 @@ selectedElement: PeriodicElement;
   constructor(private data:FormDataService, private authPat:AuthPatientService,private snackBar:MatSnackBar,private PatForms:PatientFormsService, private router: ActivatedRoute, private login :LoginService,private route:Router) {
     this.data.currentindex.subscribe(index=>this.index =index)
     this.idForm2 = this.router.snapshot.paramMap.get('id');
- /*    console.log(" this.idForm2", this.idForm2) */
+    this.iddoctor= this.router.snapshot.paramMap.get('iddoctor');
+    this.idpatient= this.router.snapshot.paramMap.get('idpatient');
+     console.log(" this.idForm2", this.idForm2,"this.iddoctor",this.iddoctor,"this.idpatient",this.idpatient) 
     this.data.currentMessage.subscribe(idForm=>this.idForm =idForm)
      /*   console.log(this.idForm) */
 
@@ -468,6 +472,7 @@ cc(){
 
  
 }
+scorSend=[];
 calcul(){
  /*  this.route.navigate(['/patient/contacts'])
   this.snackBar.open("Form calcule" ,"×", {
@@ -480,10 +485,10 @@ calcul(){
     panelClass:'success'
 
   }) */
-  console.log(( this.idForm2))
-/*     this.PatForms.addRep(  {form: this.idForm2,
-  user: '63168ea6127d1b483c49e642',
-  doctor: '63168cd2a1bdba2db0ebbdd9',
+/*   console.log(( this.idForm2)) */
+  /*    this.PatForms.addRep(  {form: this.idForm2,
+  user: this.idpatient,
+  doctor: this.iddoctor,
   responses: this.tableReponse
 }).subscribe((res)=>{
     console.log("ressdddddddddddddddddds",res)
@@ -491,12 +496,12 @@ calcul(){
  
     }
   })  */ 
-   console.log("FormScore",this.FormScore,"tableReponse",this.tableReponse)
+/*    console.log("FormScore",this.FormScore,"tableReponse",this.tableReponse)
     this.FormScore.map((res)=>{
-   // console.log("res",res)
-  })
+  
+  }) */
     this.tableCalcul=[]
-  console.log("this.form.formMuti[0]",this.form.formMuti[0])
+ /*   console.log("this.form.formMuti[0]",this.form.formMuti[0]) */
   for(let k=0;k<this.form.formMuti[0].indexScoreForm.length;k++){
     if(this.form.formMuti[0].indexScoreForm[k].type==="index"){
       this.tableCalcul.push({val:'Q '+'('+ this.form.formMuti[0].indexScoreForm[k].i +',' + this.form.formMuti[0].indexScoreForm[k].j+')'})
@@ -512,13 +517,13 @@ calcul(){
     }
   }
 this.tableCalcul .map((result)=>{
-  console.log("result.val",result.val)
+ /*  console.log("result.val",result.val) */
   if(result.val[0]=='Q'){
     var indexC = this.FormScore.findIndex(s => s.type === result.val);
-    console.log("this.FormScore[indexC]",this.FormScore[indexC])
+   /*  console.log("this.FormScore[indexC]",this.FormScore[indexC]) */
     if(this.FormScore[indexC])
      this.scoreS=this.scoreS.concat(this.FormScore[indexC].score.toString()) 
-     console.log(" this.scoreS", this.scoreS,this.FormScore[indexC].score)
+    /*  console.log(" this.scoreS", this.scoreS,this.FormScore[indexC].score) */
 
   }
   else{
@@ -532,8 +537,35 @@ this.tableCalcul .map((result)=>{
    }
   }
 })
-console.log(this.scoreS,'rrrr')
-console.log(eval(this.scoreS),'rrrr')    
+
+let scoreCalcul =  eval(this.scoreS) 
+/* console.log(this.scoreS,'rrrr')
+console.log(scoreCalcul ,'rrrr')  */
+this.scorSend.push(scoreCalcul)
+/* console.log(this.scorSend ,'this.scorSend')  */
+setTimeout(() => {
+  this.PatForms.addRep(  {form: this.idForm2,
+    user: this.idpatient,
+    doctor: this.iddoctor,
+    responses: this.tableReponse,
+    score:this.scorSend
+  }).subscribe((res)=>{
+      console.log("yesssss",res)
+      if(res){
+        this.route.navigate(['/patient/contacts'])
+        this.snackBar.open("Form calcule" ,"×", {
+      
+          duration: 5000,
+      
+       
+      
+          verticalPosition: 'top',
+          panelClass:'success'
+      
+        })
+      }
+    })
+}, 3000);
 }
 Range(value,score,sections,question,type){
     let x =0

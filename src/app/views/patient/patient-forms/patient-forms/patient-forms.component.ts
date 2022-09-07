@@ -77,11 +77,11 @@ export class PatientFormsComponent implements OnInit {
   })
   }
 
-  openFormDetails(idF:any,){
-    console.log(idF)
-    this.idForm=idF
-    this.router.navigate(['patient/forms-details',idF])
-    this.data.GetId(idF)
+  openFormDetails(idF:any,idd){
+    console.log(idF,idd,this.id)
+  this.idForm=idF
+    this.router.navigate(['patient/forms-details',idF,idd,this.id])
+    this.data.GetId(idF) 
     
   }
  previewForm(form:any){
