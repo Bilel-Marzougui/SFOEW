@@ -59,13 +59,10 @@ mat-card-content {
 }
 
 mat-button-toggle-group {
-  display: flex;
+  /* display: flex;
   margin-left: 120px;
-  margin-right: 120px;
+  margin-right: 120px; */
   border-radius: 30px;
-
-
-
 
 }
 
