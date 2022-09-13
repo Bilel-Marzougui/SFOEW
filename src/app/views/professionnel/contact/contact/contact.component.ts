@@ -13,6 +13,7 @@ export class ContactComponent implements OnInit {
   id: any;
   contacts:any
   p:number;
+  y:number;
   i=1;
   formsCompleted:any;
   formsInCompleted:any;

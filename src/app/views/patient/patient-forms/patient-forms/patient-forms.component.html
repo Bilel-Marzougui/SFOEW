@@ -3,7 +3,7 @@
               
 <div class="container">
     <div class="form-group">
-        <div class="h2 font-weight-bold" style="color: #153d77;">liste des contacts</div>
+        <div class="h2 font-weight-bold" style="color: #153d77;">Liste des contacts</div>
 
       </div>
       <div class="container" >
@@ -11,7 +11,7 @@
         <div class="container" >
           
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search..." (input)="filterItem($event.target.value)"  />
+              <input type="text" class="form-control" placeholder="Chercher..." (input)="filterItem($event.target.value)"  />
             </div>
           </div>
       </div>
@@ -27,7 +27,7 @@
                 <th scope="col">Adresse</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Télèphone</th>
-                <th scope="col">forms</th>
+                <th scope="col">Etat Formulaire</th>
 
             </tr>
         </thead>
@@ -38,8 +38,8 @@
                 <td class="pt-3">{{prof.doctors.adresse}}</td>
                 <td class="pt-3">{{prof.doctors.email}}</td>
                 <td class="pt-3" >{{prof.doctors.tel}}  </td>
-                <td><i  class='fas fa-file-medical' class="fa-sharp fa-solid fa-check-to-slot" (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" style="padding-right: 10px;" data-target="#exampleModal"></i>
-                    <i  class='fas fa-file-medical' (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" data-target="#exampleModalCompleted"></i>
+                <td><i  class='fas fa-file-medical' class="fa-sharp fa-solid fa-check-to-slot" (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal"   style="padding-right: 10px;cursor: pointer;" data-target="#exampleModal"></i>
+                    <i  class='fas fa-file-medical' (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" style="cursor: pointer;" data-target="#exampleModalCompleted"></i>
                 </td>
             </tr>
 
@@ -48,11 +48,13 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-               
-            </div>
+           
             <div class="modal-body">
-                <h5 class="modal-title" id="exampleModalLabel">Forms Affected by {{prof.doctors.lastname}}</h5>
+                
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+                <h5 class="modal-title" id="exampleModalLabel">Formulaires affecter par {{prof.doctors.lastname}}</h5>
 
                 <div class="container rounded mt-2 bg-white p-md-2">
                     <div class="table-responsive">
@@ -66,7 +68,7 @@
                                 </tr>
                             </thead>
                             
-                            <tbody *ngFor="let form of forms ;index as i">
+                            <tbody *ngFor="let form of forms ;index as i" style="cursor: pointer;">
                                 <tr>
                                     <td  data-dismiss="modal" (click)="openFormDetails(form.form._id,prof.doctors._id)" class="pt-3">{{form.form.title}}</td>
                                     <td class="pt-3">{{form.form.description}}</td>
@@ -80,10 +82,7 @@
                 </div>
 
             </div>
-            <div class="modal-footer">
          
-                <button type="button" class="btn btn-secondary" >Cancel</button>
-            </div>
         </div>
     </div>
 </div>
@@ -92,28 +91,29 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-               
-            </div>
+            
             <div class="modal-body">
-                <h5 class="modal-title" id="exampleModalLabel">Forms Completed by {{prof.doctors.lastname}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                <h5 class="modal-title" id="exampleModalLabel">Formulaires remplis par {{prof.doctors.lastname}}</h5>
 
                 <div class="container rounded mt-2 bg-white p-md-2">
                     <div class="table-responsive">
                         <table class="table ">
                             <thead>
                                 <tr>
-                                    <th scope="col">TitleFF</th>
+                                    <th scope="col">Title</th>
                                     <th scope="col">Description</th>
-                                    <th scope="col">Action</th>
+                              
                     
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let form of formsCompleted ;index as i">
+                            <tbody (click)="previewForm(form)"  *ngFor="let form of formsCompleted ;index as i" style="cursor: pointer;">
                                 <tr>
                                     <td  data-dismiss="modal"  class="pt-3">{{form.form.title}}</td>
                                     <td class="pt-3">{{form.form.description}}</td>
-                                    <td class="pt-3"><i  class='fas fa-file-medical' (click)="previewForm(form)"  aria-hidden="true"  ></i></td>
+                                  
                                    
                                 </tr>
                     
@@ -125,7 +125,7 @@
             </div>
             <div class="modal-footer">
          
-                <button type="button" class="btn btn-secondary" >Cancel</button>
+               
             </div>
         </div>
     </div>

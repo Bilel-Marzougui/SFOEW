@@ -349,7 +349,7 @@ loginPro(loginFormPro:any){
   this.AuthProfessionnel.loginSPro(data).subscribe(data=>{
     this.datatoken=data
     this.AuthProfessionnel.saveDataPro(this.datatoken.token)
-    this.router.navigate(['/professionnel'])
+    this.router.navigate(['/professionnel/formulaires'])
 
 
   },(err:HttpErrorResponse)=>this.messageError=err.error.error)
@@ -361,7 +361,7 @@ loginPat(loginFormPat:any){
   this.AuthPatient.loginSPat(data).subscribe(data=>{
     this.datatoken=data
     this.AuthPatient.saveDataPat(this.datatoken.token)
-    this.router.navigate(['/patient'])
+    this.router.navigate(['/patient/profil'])
 
 
 

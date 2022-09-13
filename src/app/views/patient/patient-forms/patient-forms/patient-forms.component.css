@@ -9,3 +9,12 @@ table.table>tbody>tr:hover td,
 table.table>tbody>tr:hover th {
   background-color: #bacfe5 !important;
 }
+img {
+  width: 40px;
+  height: 40px
+}
+img.details{
+  width: 30%;
+  height: 30%;
+
+}

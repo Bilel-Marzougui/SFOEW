@@ -4,7 +4,7 @@
             <div class="container" >
           
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search..." (input)="filterItem($event.target.value)"  />
+                  <input type="text" class="form-control" placeholder="Chercher..." (input)="filterItem($event.target.value)"  />
                 </div>
               </div>
         </div>
@@ -100,7 +100,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">état du formulaire</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -121,24 +121,25 @@
                           <span class="sr-only">Loading...</span>
                         </div>
                       </div>
-                  <tr *ngFor="let form of formsCompleted ;index as i">
+                  <tr *ngFor="let form of formsCompleted | paginate: { itemsPerPage: 9, currentPage: y } ;index as i ">
                     <th  scope="row">{{i+1}}</th>
                     <td >{{form.form.title}}</td>
                     <td>{{form.form.created_date.slice(0,10)}}</td>
-                    <td><button (click)="previewForm(form.form._id)">com</button></td>
+                    <td><i class="fa fa-circle-check icon" style="cursor: pointer;" (click)="previewForm(form.form._id)"></i></td>
                   </tr>
-                  <tr *ngFor="let form of formsInCompleted ;index as k">
+                  <tr *ngFor="let form of formsInCompleted | paginate: { itemsPerPage: 9, currentPage: y }  ;index as k">
                     <th  scope="row">{{i+formsCompleted.length}}</th>
                     <td >{{form.form.title}}</td>
                     <td>{{form.form.created_date.slice(0,10)}}</td>
-                    <td>InCompleted</td>
+                    <td> <i class="fa fa-clock" style="color: red;"></i></td>
                   </tr>
                 </tbody>
               </table>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="parent">
+    
+          <pagination-controls class="etat" (pageChange)="y = $event"></pagination-controls>
+      
         </div>
       </div>
     </div>
@@ -150,3 +151,4 @@
     <h1 class="header-title" style="color: red;padding-bottom: 15%;">AUCUN PATIENT  </h1>
   
   </div>
+

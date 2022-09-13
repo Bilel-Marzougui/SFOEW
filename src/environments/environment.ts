@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
   urlBackend:'http://185.104.172.119:3001/',
+=======
+  urlBackend:'http://localhost:3000/',
+>>>>>>> 8ead74c5ba3036ed9028966a3531104a2e4cdb41
 
 };
 
