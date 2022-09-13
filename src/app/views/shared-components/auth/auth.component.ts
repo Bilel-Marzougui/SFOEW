@@ -309,7 +309,7 @@ registerPat(infopat:any) {
 
   console.log("patient form",this.patient)
   this.AuthPatient.registerPatient(this.patient) .subscribe(response=>{
-    // console.log('this is add'+response)
+      console.log('this is add'+response)
     this.snackBar.open(" register successfully " ,"×", {
   
       duration: 5000,
@@ -322,6 +322,7 @@ registerPat(infopat:any) {
     });
   
   },error=>{   
+    console.log('this is add'+error)
     this.snackBar.open(" Ce compte existe" ,"×", {
   
       duration: 5000,

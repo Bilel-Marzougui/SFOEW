@@ -102,7 +102,7 @@ selectedElement: PeriodicElement;
     this.idForm2 = this.router.snapshot.paramMap.get('id');
     this.iddoctor= this.router.snapshot.paramMap.get('iddoctor');
     this.idpatient= this.router.snapshot.paramMap.get('idpatient');
-    /*  console.log(" this.idForm2", this.idForm2,"this.iddoctor",this.iddoctor,"this.idpatient",this.idpatient)  */
+   console.log(" this.idForm2", this.idForm2,"this.iddoctor",this.iddoctor,"this.idpatient",this.idpatient)  
     this.data.currentMessage.subscribe(idForm=>this.idForm =idForm)
      /*   console.log(this.idForm) */
 
@@ -544,7 +544,9 @@ let scoreCalcul =  eval(this.scoreS)
 /* console.log(this.scoreS,'rrrr')
 console.log(scoreCalcul ,'rrrr')  */
 this.scorSend.push(scoreCalcul)
-/* console.log(this.scorSend ,'this.scorSend')  */
+ console.log("user", this.idpatient,
+  "doctor", this.iddoctor,
+  "responses", this.tableReponse,)  
 setTimeout(() => {
   this.PatForms.addRep(  {form: this.idForm2,
     user: this.idpatient,
