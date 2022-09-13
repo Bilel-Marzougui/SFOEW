@@ -197,7 +197,7 @@
                           </div>
                         </mat-form-field>
 
-                        <div class="float-container">
+                  <!--       <div class="float-container">
                           <mat-radio-group aria-label="Select an option">
                             <div class="float-child">
                               <mat-radio-button value="homme" formControlName="gender" class="form-control  "
@@ -216,23 +216,32 @@
                               </div>
                             </div>
                           </mat-radio-group>
-                        </div>
+                        </div> -->
 
-                        <mat-form-field>
+                     <!--    <mat-form-field>
                           <input matInput placeholder="travail" type="text" formControlName="job" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.job.errors }" />
-                          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                        
+                        </mat-form-field> -->
+                        <mat-form-field appearance="fill">
+                          <mat-label>Metier</mat-label>
+                          <mat-select formControlName="job"  [(ngModel)]="foods[0].viewValue">
+                            <mat-option *ngFor="let food of foods" [value]="food.viewValue">
+                              {{food.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                       <!--    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
                             <div *ngIf="f.job.errors.required">travail obligatoire</div>
-                          </div>
+                          </div> -->
                         </mat-form-field>
-
-                        <mat-form-field>
+                      
+                  <!--       <mat-form-field>
                           <input matInput placeholder="ADELI" type="number" formControlName="adeli" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.adeli.errors }" />
                           <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
                             <div *ngIf="f.adeli.errors.required">adeli obligatoire</div>
                           </div>
-                        </mat-form-field>
+                        </mat-form-field> -->
 
 
                         <mat-form-field>
@@ -372,13 +381,13 @@
 
 
 
-                        <mat-form-field>
+                    <!--     <mat-form-field>
                           <input matInput placeholder="SSN" type="number" formControlName="ssn" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && fPat.ssn.errors }" />
                           <div *ngIf="submitted && fPat.ssn.errors" class="invalid-feedback">
                             <div *ngIf="fPat.ssn.errors.required">ssn est obligatoire</div>
                           </div>
-                        </mat-form-field>
+                        </mat-form-field> -->
 
 
 

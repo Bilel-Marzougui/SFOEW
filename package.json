@@ -37,6 +37,7 @@
     "ng2-tel-input": "^2.3.0",
     "ng5-slider": "^1.2.6",
     "ngx-pagination": "^5.1.1",
+    "ngx-toastr": "^13.2.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "uninstall": "0.0.0",

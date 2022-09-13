@@ -47,8 +47,7 @@ import { InterceptorService } from '../app/views/services/loader/interceptor.ser
 import {   MatListModule } from '@angular/material/list';
 import { FormdPrRoutingModule } from './views/professionnel/preview-form-doctor/formd-pr-routing.module';
 import { FormdPrModule } from './views/professionnel/preview-form-doctor/formd-pr.module';
- 
- 
+import { ToastrModule } from 'ngx-toastr';
 
 const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com';
 
@@ -79,6 +78,7 @@ const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleuser
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    ToastrModule.forRoot(),
     ReactiveFormsModule,
     MatSelectModule,
     MatCardModule,

@@ -12,8 +12,12 @@ import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SocialAuthService } from "angularx-social-login";
-import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login"
-
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { ToastrService } from 'ngx-toastr';
+interface Food {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -28,7 +32,26 @@ export class AuthComponent implements OnInit{
   registerFormPat:FormGroup;
   loginFormPro:FormGroup;
   loginFormPat:FormGroup;
-
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Anato.Cyto. Pathologie (37)'},
+    {value: 'pizza-1', viewValue: 'Anesthésiologie-Réanimmation.Chirurgicale (02)'},
+    {value: 'tacos-2', viewValue: 'Cardiologie (03)'},
+    {value: 'tacos-23', viewValue: 'Chir thoracique et cardio-vasculaire (47)'},
+    {value: 'tacos-24', viewValue: 'Chir.maxillo-faciale, stomatologie (45)'},
+    {value: 'tacos-25', viewValue: 'Chir.plast reconstructrice (46)'},
+    {value: 'tacos-26', viewValue: 'Chir.viscérale et digestive (49)'},
+    {value: 'tacos-27', viewValue: 'Chirurgie Dentaire (19)'},
+    {value: 'tacos-28', viewValue: 'Chirurgie Dentaire spécialité O.D.F (36)'},
+    {value: 'tacos-29', viewValue: 'Chirurgie générale (04)'},
+    {value: 'tacos-277', viewValue: 'Chirurgie Infantile (43)'},
+    {value: 'tacos-288', viewValue: 'Chirurgie maxillo-faciale (44)'},
+    {value: 'tacos-299', viewValue: 'Chirurgie orale (69)'},
+    {value: 'tacos-244', viewValue: 'Chirurgie Orthopédique (41)'},
+    {value: 'tacos-255', viewValue: 'Chirurgie vasculaire (48)'},
+    {value: 'tacos-266', viewValue: 'Chirurgien-dentise spécialité C.O. (53)'},
+    {value: 'tacos-211', viewValue: 'Dermato Vénérologie (05)'},
+    {value: 'tacos-222', viewValue: 'Directeur de laboratoire médecin'},
+  ];
     submitted = false;
     public selectedVal="Professionnel";
     public selectedVal2="Professionnel";
@@ -51,6 +74,7 @@ export class AuthComponent implements OnInit{
 
   constructor(
     private authService: SocialAuthService,
+    private toast :ToastrService,
  private snackBar:MatSnackBar,
     private datePipe: DatePipe,
     public dialogRef: MatDialogRef<AuthComponent>,
@@ -123,8 +147,8 @@ export class AuthComponent implements OnInit{
       adeli: ['', Validators.required,Validators.pattern("^[0-9]*$")],
       rpps: ['', Validators.required,Validators.pattern("^[0-9]*$")],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
+      password: ['', [Validators.required,  Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
+      confirmPassword: ['', Validators.required ],
       role: ['2',Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
 
@@ -143,7 +167,7 @@ export class AuthComponent implements OnInit{
     ssn: ['', Validators.required],
     gender: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
+    password: ['', [Validators.required,  Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
     confirmPassword: ['', Validators.required],
     acceptTerms: [false, Validators.requiredTrue]
 }, {
@@ -171,7 +195,7 @@ this.loginFormPat = this.formBuilder.group({
 
 
 onStrengthChanged(strength: number) {
-
+/*   console.log(strength) */
 }
 
 
@@ -227,8 +251,9 @@ registerPro(info:any) {
 
 
   console.log("doctor form",this.doctor)
- this.AuthProfessionnel.registerProf(this.doctor).subscribe(data=>{
-  console.log(data)
+ this.AuthProfessionnel.registerProf(this.doctor)
+ .subscribe(response=>{
+  // console.log('this is add'+response)
   this.snackBar.open(" register successfully " ,"×", {
 
     duration: 5000,
@@ -240,7 +265,19 @@ registerPro(info:any) {
 
   });
 
- })
+},error=>{   
+  this.snackBar.open(" Ce compte existe" ,"×", {
+
+    duration: 5000,
+
+    // here specify the position
+
+    verticalPosition: 'top',
+    panelClass:'success'
+
+  });})
+ 
+
   this.submitted = true;
   // stop here if form is invalid
   if (this.registerFormPro.invalid) {
@@ -248,7 +285,7 @@ registerPro(info:any) {
   }
   // display form values on success
 
-console.log('data is '+this.registerFormPro.value)
+//console.log('data is '+this.registerFormPro.value)
 let data=info.value
 
 }
@@ -271,21 +308,31 @@ registerPat(infopat:any) {
   this.patient.ssn=infopat.value.ssn
 
   console.log("patient form",this.patient)
-  this.AuthPatient.registerPatient(this.patient).subscribe(data=>{
-   console.log(data)
-   this.snackBar.open(" register successfully " ,"×", {
+  this.AuthPatient.registerPatient(this.patient) .subscribe(response=>{
+    // console.log('this is add'+response)
+    this.snackBar.open(" register successfully " ,"×", {
+  
+      duration: 5000,
+  
+      // here specify the position
+  
+      verticalPosition: 'top',
+      panelClass:'success'
+  
+    });
+  
+  },error=>{   
+    this.snackBar.open(" Ce compte existe" ,"×", {
+  
+      duration: 5000,
+  
+      // here specify the position
+  
+      verticalPosition: 'top',
+      panelClass:'success'
+  
+    });})
 
-    duration: 5000,
-
-    // here specify the position
-
-    verticalPosition: 'top',
-    panelClass:'success'
-
-  });
-   this.router.navigate(['/'])
-
-  })
   this.submitted = true;
 
   // stop here if form is invalid
