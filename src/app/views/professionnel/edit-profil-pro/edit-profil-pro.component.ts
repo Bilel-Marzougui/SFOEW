@@ -80,7 +80,7 @@ export class EditProfilProComponent implements OnInit, OnDestroy {
   updatenewPro(f: any) {
     let data = f.value
     this.updateservice.updateprof(this.professionnel._id, data).subscribe(response => {
-      console.log(response)
+    /*   console.log(response) */
       let indexId = this.dataArray.findIndex((obj: any) => obj._id == this.dataProf.id)
 
       this.dataArray[indexId].name = data.name

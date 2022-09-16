@@ -32,7 +32,7 @@
         <tr id="spacing-row">
           <td></td>
         </tr>  
-        <tr class="bg-blue" *ngFor="let prof of profs ">
+        <tr class="bg-blue" *ngFor="let prof of profs | paginate: { itemsPerPage: 6, currentPage: p }">
           <td class="pt-2" >
             <div class="container">
               <div class="row">
@@ -54,30 +54,34 @@
           <td class="pt-3">{{prof.adresse}}</td>
           <td class="pt-3">{{prof.email}}</td>
           <td class="pt-3">{{prof.tel}} </td>
+          <td class="pt-3">
           <div *ngIf="friend; else notfriend">
-            <td class="pt-3">
-              <span (click)="addDoctor(prof._id)" class="fa fa-user-plus pl-3">
+           
+              <span (click)="addDoctor(prof._id)" >
+                <i class="fa fa-user-plus pl-3"></i>
               </span>
 
-            </td>
+          
 
           </div>
-
+        </td>
           <ng-template #notfriend>
             <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
           </ng-template>
 
         </tr>
-        <tr id="spacing-row">
-          <td></td>
-        </tr>
+      
 
-        <tr id="spacing-row">
-          <td></td>
-        </tr>
 
       </tbody>
+
     </table>
+
+  </div>
+  <div class="parent">
+
+    <pagination-controls class="child" (pageChange)="p = $event"></pagination-controls>
+
   </div>
 </div>
 <div *ngIf="added">

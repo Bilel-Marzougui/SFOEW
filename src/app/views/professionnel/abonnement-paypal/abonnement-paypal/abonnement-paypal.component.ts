@@ -162,7 +162,7 @@ pay(){
     this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
       console.log(this.price2)
 
-      console.log(response)
+  /*     console.log(response) */
 
       window.location.href=response.url;
 
@@ -173,7 +173,7 @@ pay(){
   this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
     console.log(this.price1)
 
-    console.log(response)
+    /* console.log(response) */
     window.location.href=response.url;
 
     

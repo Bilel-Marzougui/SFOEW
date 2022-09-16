@@ -35,7 +35,7 @@
 <div *ngIf="tabRep" class="container">
 
 
-    <div class="col-12 col-md-12 col-lg-11 mx-auto">
+    <div class="col-12 col-md-12 col-lg-12 mx-auto">
         <div class="card">
               <div *ngIf="tabRep" class="card-header">
                <h1 class="form-title">{{tabRep.form_title}}</h1>
@@ -49,7 +49,7 @@
 
 
     <div *ngFor="let section of tabRep.responses;let s = index">
-        <div class="col-12 col-md-12 col-xs-12 col-lg-11 mx-auto">
+        <div class="col-12 col-md-12 col-xs-12 col-lg-12 mx-auto">
             <div class="card-section" style="background-color: #ffffffde;"  *ngIf="section.title!=''">
                   <div class="card-header">
                    
@@ -61,12 +61,9 @@
                         <div class="row w-100">
                             
                             <div class="col-lg-12 ">
-        
-                                
-                                
-                                <h2 class="question-title">
-                                   
-                                </h2>    
+                              <h2 class="question-title">
+                                <p class="hint"> {{section.title}} </p>
+                              </h2>  
                             </div>
         
                            
@@ -78,18 +75,18 @@
                             <div *ngIf="section.type == 'Nomber de jours'" class="col-lg-8 col-sm-12" >
                                 <!-- => show simple input -->
                         
-                                <p class="hint"> {{section.title}}</p>
-                                <input class="question-short-input-response" [value]="section.textReponse"  >
+                           <!--      <p class="hint"> {{section.title}}</p> -->
+                                <input class="question-short-input-response" [value]="section.textReponse"  disabled>
                           
                               </div>
                             <div *ngIf="section.type == 'Text court'" class="col-lg-8 col-sm-12">
-                                <p class="hint"> {{section.title}}</p>
-                                <p class="hint"> {{section.textReponse}} </p>
+                              <!-- <p class="hint"> {{section.title}}</p> -->
+                                <p class="hint"> {{section.textReponse}} </p> 
                             </div>
                         
             
                             <div *ngIf="section.type == 'Cases à cocher'" style="width: 100%;" class="col-lg-12 col-sm-12 w-100">
-                                <p class="hint"> {{section.title}} </p>
+                               <!--  <p class="hint"> {{section.title}} </p> -->
                                 <div style="width: 100%;" *ngFor="let op of section.options; let o = index;">
                                   <div class="row">
                                     <div class="col">
@@ -100,7 +97,7 @@
                                       <mat-radio-button class="m-2 w-100" style="width: 100%;" disabled [value]="op.text"  [checked]="op.selected">
                                         <p class="hint"> {{op.text}} </p>
                                     </mat-radio-button>
-                                    <img style="width: 250px;" class="img-thumbnail" [src]="op.image " alt="">
+                                    <img *ngIf="op.image !=''" style="width: 250px;" class="img-thumbnail" [src]="op.image" alt="">
                                 </mat-radio-group>
                                   </div>
                               
@@ -111,14 +108,14 @@
                         </div>
         
                          <div *ngIf="section.type == 'Choix multiples'" style="width: 100%;" class="col-lg-12 col-sm-12 w-100">
-                            <p class="hint"> {{section.title}} </p>
+                          <!--   <p class="hint"> {{section.title}} </p> -->
                             <div style="width: 100%;" *ngFor="let op of section.optioncm; let o = index;">
                               <div class="row">
                                 <div class="col">
                                   <mat-checkbox class="m-2 w-100" style="width: 100%;" disabled [checked]= "op.selected">
                                     <p class="hint">{{op.text}}</p>
                                 </mat-checkbox>
-                              
+                                <img *ngIf="op.image !=''" style="width: 250px;" class="img-thumbnail" [src]="op.image" alt="">
         
                                <!--  <div  *ngIf="section.questions[i].optioncm[o].image.length > 1 " style="width: 100%; margin-left: 44px;margin-top: -16px;">
                                     <img style="width: 250px;" class="img-thumbnail" [src]="section.questions[i].optioncm[o].image " alt="">
@@ -146,7 +143,7 @@
                         </div>
 
                         <div *ngIf="section.type == 'Range Bar'" style="width: 100%;" class="col-lg-12 col-sm-12 w-100">
-                            <p class="hint"> {{section.title}} </p>
+                          <!--   <p class="hint"> {{section.title}} </p> -->
                            <div  >
                                 <div class="row  m-2">
                                     <div  class="col-lg-8 col-sm-12" style="padding-left: 3%;">
@@ -177,7 +174,7 @@
                         </div>
 
                         <div *ngIf="section .type == 'VISUELLE ANALOGIQUE'" style="width: 100%;" class="col-lg-12 col-sm-12 w-100">
-                            <p class="hint"> {{section.title}} </p>
+                         <!--    <p class="hint"> {{section.title}} </p> -->
                           <div class="row  m-2">
                             <div class="col-lg-8 col-sm-12" style="padding-left: 3%;">
                                 <div class="simple-slider">
@@ -208,6 +205,48 @@
         
                    
                         </div>
+
+
+                        <div *ngIf="section .type == 'Grille de cases à cocher 2'" style="width: 100%;"
+                        class="col-lg-12 col-sm-12 w-100">
+                        <table class="table table-borderless">
+                          <thead>
+                 
+                          </thead>
+                          <tbody>
+                         <!--    <tr *ngFor="let question of section.questions[q].grille.options;let o = index">
+                              <th scope="row">{{question.title}}</th>
+                              <td *ngFor="let question of section.questions[q].grille.scoreS;let k = index">
+                                {{o}}{{k}}
+                                <mat-checkbox class=" inp col-md-7 col-lg-7 col-sm-9 col-xs-9 col-9  " (change)="radioChecked(question.score,question,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');
+                                getDataGrilledecasescocher(section.questions[q],$event,q,o,k,s,question)">
+                                </mat-checkbox>
+                              </td>
+        
+                            </tr> -->
+                           <tr *ngFor="let questionq of tabRep.responses[s].optionsSaint.options;let m = index">
+                            <th scope="row">
+                       <br>
+                       <br>
+                       <br>
+                      <h6 style="color: #212529;">  {{questionq.title}}</h6> </th>
+                            <mat-radio-group 
+                            aria-label="Select an option"
+                             >
+         
+                              <td class="col-lg-1" *ngFor="let question of tabRep.responses[s].optionsSaint.scoreS;let k = index" style="padding-bottom: 20px;">
+                               <h6 *ngIf="m==0" style="color: rgb(0, 0, 0);font-size:15px"> {{question.title  }}</h6> <br>
+                               <br *ngIf="m!=0" >
+                               <h6 *ngIf="m!=0" style="color: transparent;font-size:15px;height: 0px;"> {{question.title  }}</h6>
+                               <mat-radio-button class="m-2 w-100" style="width: 100%;" disabled [value]="tabRep.responses[s].scoreOptioncm2[m][k]"  [checked]="tabRep.responses[s].scoreOptioncm2[m][k]">
+                             
+                              </mat-radio-button>
+                              </td>
+                            </mat-radio-group>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                         </div>
             
         
@@ -224,9 +263,9 @@
 
 </div>
 <div class="card-body">
-  <div class="col-sm-3 col-xl-12  text-center">
+  <div *ngFor="let item of tabRep.score" class="col-sm-3 col-xl-12  text-center">
             
-      <div style=" background-color: #ddffdd;"><h1>Score : {{tabRep.score[0]}} </h1></div>
+      <div style=" background-color: #ddffdd;"><h1>Score : {{item}} </h1></div>
 
 </div>
  

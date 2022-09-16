@@ -29,28 +29,21 @@ export class MonFormulaireComponent implements OnInit {
     this.mesgEmpty=false;
  
     this.id = this.authPro.geid()
-    this.formsService.getForms(this.id).subscribe(response=>{
-        // console.log(JSON.stringify(response))
-      this.forms=response
-      this.filtredForms=response
-        /*  console.log((response)) */
-         this.mesgEmpty=true;
+   
 
-
-    })
     this.formsService.getAllForm().subscribe(response=>{
       // console.log(JSON.stringify(response))
 
       this.forms=response
       this.filtredForms=response
-        /*  console.log((response)) */
+       // console.log((response)) 
          this.mesgEmpty=true;
     
 
 
   })
  this.invservice.myContacts(this.id).subscribe(response =>{
-   console.log("response",response)
+ //  console.log("response",response)
   this.contacts=response
 })
   }
@@ -61,10 +54,14 @@ export class MonFormulaireComponent implements OnInit {
     form: '',
 
   }
-  ngOnInit(): void {
+  async ngOnInit() {
+   /*  const res:any = await this.formsService.getForms(this.id).toPromise(); */
+ /* 
+    console.log("this.filtredForms",res)  */
+
     this.PaymentService.checkAchat(this.id).subscribe(checked=>{
 this.checked=checked
-console.log(this.checked)
+//console.log(this.checked)
     })
   }
   affectForm(id:any){
@@ -75,7 +72,7 @@ this.affect.form=this.formId
 // console.log('this is add'+this.affect.doctor)
 // console.log('this is add'+this.affect.form)
 this.formsService.getAffectation(this.id).subscribe((res)=>{
-  console.log('resss',res)
+// console.log('resss',res)
 })
     this.formsService.affectForm(this.id,this.affect).subscribe(response=>{
       // console.log('this is add'+response)
@@ -113,7 +110,7 @@ this.formsService.getAffectation(this.id).subscribe((res)=>{
       // console.log('show')
       this.data.GetId(formId)
 
-      console.log(formId)
+    //  console.log(formId)
     this.router.navigate(['/professionnel/show-forms',formId._id])
 
 

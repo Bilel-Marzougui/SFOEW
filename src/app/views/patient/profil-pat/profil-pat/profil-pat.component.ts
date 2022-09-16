@@ -91,7 +91,7 @@ test={
   
   
         this.updateservice.updateDoctorPhoto(this.id,file).subscribe((response=>{
-          console.log(response)
+      /*     console.log(response) */
         }))
   console.log(result)
          this.urlPhotp= result 

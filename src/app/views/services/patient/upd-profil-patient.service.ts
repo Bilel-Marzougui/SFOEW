@@ -22,7 +22,7 @@ header=new HttpHeaders().set('authorization',this.token)
   updatePatient(id:any,body:any){
 
  console.log(id,body)
- console.log(this.token)
+/*  console.log(this.token) */
  const token=localStorage.getItem('token_Pat')
  const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
@@ -31,9 +31,9 @@ header=new HttpHeaders().set('authorization',this.token)
   }
 
   updPhotoPat(id:any,body:any){
-
+/* 
     console.log(id,body)
-    console.log(this.token)
+    console.log(this.token) */
     const token=localStorage.getItem('token_Pat')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 

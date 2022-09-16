@@ -15,8 +15,8 @@ export class UpdProfilProServiceService {
 
   updateprof(id:any,body:any){
 
- console.log(id,body)
- console.log(this.token)
+/*  console.log(id,body)
+ console.log(this.token) */
     const token=localStorage.getItem('token_Pro')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
@@ -25,8 +25,8 @@ export class UpdProfilProServiceService {
   }
   updPhotoPro(id:any,body:any){
 
-    console.log(id,body)
-    console.log(this.token)
+/*     console.log(id,body)
+    console.log(this.token) */
     const token=localStorage.getItem('token_Pro')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 

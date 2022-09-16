@@ -22,14 +22,14 @@ favoriteSeason:string;
  
       this.form=response
        
-console.log(this.form)
+//console.log(this.form)
  
      })
 
    
    }
    sliderMakeOptions(slider): Options {
-        console.log(slider.dataRange)  
+       /*  console.log(slider.dataRange)   */
         return {
           floor: 10,
           ceil: 100,

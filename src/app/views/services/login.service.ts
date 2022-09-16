@@ -80,7 +80,7 @@ export class LoginService {
   }
 
   saveDataPat(token: any) {
-    console.log(token)
+  /*   console.log(token) */
     let decodeToken = this.helper.decodeToken(token)
     localStorage.setItem('token_Pat', token)
     console.log(decodeToken)

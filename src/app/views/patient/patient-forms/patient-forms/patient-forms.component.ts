@@ -23,6 +23,7 @@ export class PatientFormsComponent implements OnInit {
   filtredprofs:any
   i:1;
   mesgEmpty: boolean=false;
+  p:number;
 
   constructor( private router:Router, private data:FormDataService,public doctorsService: DoctorsService, private authPat:AuthPatientService,private PatForms:PatientFormsService ) {
     this.mesgEmpty=false;

@@ -52,7 +52,7 @@ prof={
     this.updateservice.getProf(this.id).subscribe(response=>
       this.prof = response
       )
-      console.log(this.prof)
+      //console.log(this.prof)
    }
 
   ngOnInit(): void {
@@ -71,9 +71,9 @@ prof={
         formData.append("thumbnail", file);
 
           this.updateservice.updPhotoPro(this.id,formData).subscribe(response=>{
-            console.log(formData)
+       /*      console.log(formData)
             console.log("testtme")
-            console.log(response)
+            console.log(response) */
             this.snackBar.open(" photo updated successfully " ,"×", {
 
               duration: 5000,
@@ -139,7 +139,7 @@ handleFileInput(file: FileList) {
 
 
       this.updateservice.updatePatientPhoto(this.id,file).subscribe((response=>{
-        console.log(response)
+      /*   console.log(response) */
       }))
 console.log(result)
        this.urlPhotp= result 

@@ -12,17 +12,19 @@
 
         <!-- login form -->
         <mat-tab label="S'identifier">
-          <div class="choix">
+          <br>
+          <div class="col-sm-3 col-xl-12  text-center">
             <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style"
               #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
               <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">Professionnel
               </mat-button-toggle>
-              
+             <mat-button-toggle disabled="true" >
+              </mat-button-toggle> 
               <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
             </mat-button-toggle-group>
           </div>
 
-          
+          <br>
 
           <mat-card-content >
             <div class="switch" [ngSwitch]="selectedVal">
@@ -120,18 +122,20 @@
           <mat-card-content class="mat-card-content-reg"  style=" height: 900px;"   >
               <!-- <h5 class="card-header">{{status}}</h5> -->
               <div class="card-body"  style="width: 600px; height:1000px;" >
-                <div class="choix" >
+                <br>
+                <div class="col-sm-3 col-xl-12  text-center">
                   <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style"
                     #group2="matButtonToggleGroup" [value]="selectedVal2" (change)="onValChange2(group2.value)">
                     <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">Professionnel
                     </mat-button-toggle>
-                  
+                    <mat-button-toggle disabled="true" >
+                    </mat-button-toggle> 
                     <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
                   </mat-button-toggle-group>
 
 
                 </div>
-        
+        <br>
                 <div class="switch" [ngSwitch]="selectedVal2"   style=" height: 1700px;" >
 
                   <div class="proReg" *ngSwitchCase="'Professionnel'" style=" height: 1200px;">
@@ -482,4 +486,6 @@
 </mat-dialog-content>
 
 
-
+<!-- <div class="my-overlay" *ngIf="showOverlay">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+</div> -->

@@ -3,6 +3,7 @@ import { InvitaionsService } from '../../../services/professionnel/invitaions.se
 import { AuthProfessionnelService } from '../../../services/professionnel/auth-professionnel.service';
 import{PatientDataService} from '../../../services/shared-data/patient-data.service'
 import { UpdProfilPatientService } from 'src/app/views/services/patient/upd-profil-patient.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-invitations',
@@ -41,13 +42,13 @@ export class InvitationsComponent implements OnInit,OnChanges {
     _id:""
   
   }
-  constructor(private updateservice:UpdProfilPatientService,private invservice:InvitaionsService,private authPro: AuthProfessionnelService ,private PatData:PatientDataService ) {
+  constructor(private updateservice:UpdProfilPatientService,private snackBar:MatSnackBar,private invservice:InvitaionsService,private authPro: AuthProfessionnelService ,private PatData:PatientDataService ) {
     this.id = this.authPro.geid()
 
   
      
     
-      console.log(this.invts)
+    /*  */  /* console.log(this.invts) */
       
    }
 
@@ -59,11 +60,34 @@ export class InvitationsComponent implements OnInit,OnChanges {
       this.filtredInvts=response
       this.mesgEmpty=true;
 
-      console.log( this.invts) 
+    /*   console.log( this.invts)  */
 
     })
   }
+  acceptInvt(body:any){
+    this.invservice.acceptInvts(this.id,body).subscribe(response=>{
+      this.snackBar.open("invite  accepted " ,"×", {
 
+        duration: 5000,
+
+        // here specify the position
+
+        verticalPosition: 'top',
+        panelClass:'success'
+
+      });},error=> this.snackBar.open(" invite  accepted" ,"×", {
+
+        duration: 5000,
+  
+        // here specify the position
+  
+        verticalPosition: 'top',
+        panelClass:'success'
+  
+      })
+      )
+
+  }
 
   ngOnChanges(value) {
     this.filterItem(value)

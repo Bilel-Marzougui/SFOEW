@@ -48,4 +48,6 @@
     -webkit-appearance: none;
     }
 
- 
+    .container {
+      width: 92%;
+    }

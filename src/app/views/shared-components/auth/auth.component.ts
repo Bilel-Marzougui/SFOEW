@@ -7,13 +7,20 @@ import{RegisterService} from '../../services/register.service'
 import{LoginService} from '../../services/login.service'
 import{AuthPatientService} from '../../services/patient/auth-patient.service'
 import{AuthProfessionnelService} from '../../services/professionnel/auth-professionnel.service'
-import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SocialAuthService } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { ToastrService } from 'ngx-toastr';
+import {
+  Router,
+  Event as RouterEvent,
+  NavigationStart,
+  NavigationEnd,
+  NavigationCancel,
+  NavigationError
+} from '@angular/router'
 interface Food {
   value: string;
   viewValue: string;
@@ -64,9 +71,9 @@ export class AuthComponent implements OnInit{
     status:any;
     action:any;
     showDetails: boolean;
-
+    public showOverlay = true;
     hide : boolean = true;
-
+    loading: boolean = false;
     myFunction() {
       this.hide = !this.hide;
     }
@@ -77,14 +84,38 @@ export class AuthComponent implements OnInit{
     private toast :ToastrService,
  private snackBar:MatSnackBar,
     private datePipe: DatePipe,
+ 
     public dialogRef: MatDialogRef<AuthComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogModel,
     private formBuilder: FormBuilder, private logService:LoginService ,
     private regService:RegisterService ,
     private AuthPatient:AuthPatientService ,
     private AuthProfessionnel:AuthProfessionnelService ,
-    private router:Router)  {}
-
+    private router:Router)  {
+      router.events.subscribe((event: RouterEvent) => {
+        this.navigationInterceptor(event)
+      })
+    }
+    navigationInterceptor(event: RouterEvent): void {
+      if (event instanceof NavigationStart) {
+        this.showOverlay = true;
+      }
+      if (event instanceof NavigationEnd) {
+        this.showOverlay = false;
+      }
+  
+      // Set loading state to false in both of the below events to hide the spinner in case a request fails
+      if (event instanceof NavigationCancel) {
+        this.showOverlay = false;
+      }
+      if (event instanceof NavigationError) {
+        this.showOverlay = false;
+      }
+      setTimeout(() => {
+        this.showOverlay = false;
+      }, 5000);
+    }
+  
   doctor={
     photo: 'undefined',
     name: 'haj salah',
@@ -131,8 +162,8 @@ export class AuthComponent implements OnInit{
   ngOnInit() {
 
     
-    console.log(this.selectedVal)
-    console.log(this.selectedVal2)
+  /*   console.log(this.selectedVal)
+    console.log(this.selectedVal2) */
 
     this.registerFormPro = this.formBuilder.group({
 
@@ -224,7 +255,7 @@ public onValChange2(val: any) {
   onConfirm(): void {
     // Close the dialog, return true
     this.dialogRef.close(false);
-    console.log(this.f.value)
+/*     console.log(this.f.value) */
   }
   onDismiss(): void {
     // Close the dialog, return false
@@ -250,7 +281,7 @@ registerPro(info:any) {
   this.doctor.role="2"
 
 
-  console.log("doctor form",this.doctor)
+/*   console.log("doctor form",this.doctor) */
  this.AuthProfessionnel.registerProf(this.doctor)
  .subscribe(response=>{
   // console.log('this is add'+response)
@@ -292,7 +323,7 @@ let data=info.value
 // *********register patient****************//
 
 registerPat(infopat:any) {
-  console.log(" form",infopat)
+/*   console.log(" form",infopat) */
 
   this.patient.name=infopat.value.name
   this.patient.lastname=infopat.value.lastname
@@ -307,9 +338,9 @@ registerPat(infopat:any) {
   this.patient.account_state=true
   this.patient.ssn=infopat.value.ssn
 
-  console.log("patient form",this.patient)
+ /*  console.log("patient form",this.patient) */
   this.AuthPatient.registerPatient(this.patient) .subscribe(response=>{
-      console.log('this is add'+response)
+    /*   console.log('this is add'+response) */
     this.snackBar.open(" register successfully " ,"×", {
   
       duration: 5000,
@@ -322,7 +353,7 @@ registerPat(infopat:any) {
     });
   
   },error=>{   
-    console.log('this is add'+error)
+   /*  console.log('this is add'+error) */
     this.snackBar.open(" Ce compte existe" ,"×", {
   
       duration: 5000,

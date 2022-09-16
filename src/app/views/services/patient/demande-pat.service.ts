@@ -13,7 +13,7 @@ export class DemandePatService {
 
   AddDoctor(body:any){
 
-    console.log(this.token)
+/*     console.log(this.token) */
     const token=localStorage.getItem('token_Pat')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 

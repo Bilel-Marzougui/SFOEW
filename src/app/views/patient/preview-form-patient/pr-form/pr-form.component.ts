@@ -35,7 +35,7 @@ export class PrFormComponent implements OnInit {
     this.PatForms.getRep(this.idPatient,this.idDoctor,this.idForm).subscribe((res)=>{
      
       this.tabRep=res
-    /*    console.log('resss',this.tabRep.responses) */
+       console.log('resss',this.tabRep.responses) 
     })
   }
 

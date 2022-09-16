@@ -12,7 +12,9 @@ mat-slider {
 
 
 
-
+.container {
+  width: 92%;
+}
 
 .slider {
   display: flex;

@@ -23,6 +23,8 @@ export class ListDoctorsComponent implements OnInit {
   obsGet: Subscription;
   obsAdd: Subscription;
   i:1;
+  p:number;
+
 
 
   mesgEmpty: boolean=false;

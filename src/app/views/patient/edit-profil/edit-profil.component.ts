@@ -77,7 +77,7 @@ export class EditProfilComponent implements OnInit, OnDestroy {
   updatenewstudent(f: any) {
     let data = f.value
     this.updateservice.updatePatient(this.dataPatient.id, data).subscribe(response => {
-      console.log(response)
+    /*   console.log(response) */
       let indexId = this.dataArray.findIndex((obj: any) => obj._id == this.dataPatient.id)
 
       this.dataArray[indexId].name = data.name

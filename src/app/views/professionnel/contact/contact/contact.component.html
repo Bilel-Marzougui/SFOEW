@@ -1,5 +1,12 @@
 <div class="content">
+  
     <div class="container">
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a >Professionnel</a></li>
+          <li class="breadcrumb-item"><a >Patients</a></li>
+        </ol>
+      </nav>
         <div class="row">
             <div class="container" >
           
@@ -20,16 +27,17 @@
                     <div class="member-card pt-3 pb-3">
                         <div class="thumb-lg member-thumb mx-auto"><img [src]="contact.patients.photo"
                                 class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                        <div class="">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" style="background-color: rgb(161, 142, 142);" (click)="getpatient(contact)" data-target="#exampleModal">
+                    
+                            <button type="button" class="btn btn-primary" data-toggle="modal" (click)="getpatient(contact)" data-target="#exampleModal">
                                 {{contact.patients.name}} {{contact.patients.lastname}}
                               </button>
-                            <h6 ></h6>
-                        </div>
+                         
+                   
 
-
+                             
 
                         <table>
+                          <br>
                             <tr>
                                 <td> <img src="../../../../../assets/img/email.ico" style="height: 30px;width: 30px;"
                                         alt="">
@@ -39,6 +47,7 @@
                                     <a href = "mailto: {{contact.patients.email}}">{{contact.patients.email}}</a>
                                 </td>
                             </tr>
+                            <br>
                             <tr>
                                 <td>
                                     <img src="../../../../../assets/img/whatsapp.ico" style="height: 30px;width: 30px;"
@@ -121,17 +130,17 @@
                           <span class="sr-only">Loading...</span>
                         </div>
                       </div>
-                  <tr *ngFor="let form of formsCompleted | paginate: { itemsPerPage: 9, currentPage: y } ;index as i ">
+         <!--          <tr *ngFor="let form of formsCompleted | paginate: { itemsPerPage: 7, currentPage: y } ;index as i ">
                     <th  scope="row">{{i+1}}</th>
                     <td >{{form.form.title}}</td>
                     <td>{{form.form.created_date.slice(0,10)}}</td>
                     <td><i class="fa fa-circle-check icon" style="cursor: pointer;" (click)="previewForm(form.form._id)"></i></td>
-                  </tr>
-                  <tr *ngFor="let form of formsInCompleted | paginate: { itemsPerPage: 9, currentPage: y }  ;index as k">
-                    <th  scope="row">{{i+formsCompleted.length}}</th>
+                  </tr> -->
+                  <tr *ngFor="let form of formsInCompleted | paginate: { itemsPerPage: 7, currentPage: y }  ;index as k">
+                    <th  scope="row">{{k}}</th>
                     <td >{{form.form.title}}</td>
                     <td>{{form.form.created_date.slice(0,10)}}</td>
-                    <td> <i class="fa fa-clock" style="color: red;"></i></td>
+                    <td> <i *ngIf="form.filledOn==null" class="fa fa-clock" style="color: red;"></i><i *ngIf="form.filledOn!=null" class="fa fa-circle-check icon" style="cursor: pointer;" (click)="previewForm(form.form._id)"></i></td>
                   </tr>
                 </tbody>
               </table>
