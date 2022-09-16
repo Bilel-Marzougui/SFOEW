@@ -61,9 +61,9 @@ header=new HttpHeaders().set('authorization',this.token)
   
   
         updateDoctorPhoto(id:any, photo:any){
-          console.log('serviceee update')
+     /*      console.log('serviceee update')
   
-        console.log(id,photo)
+        console.log(id,photo) */
         
             return this.http.put(`${this.URL}`+'patient/updatephoto/' +id , photo);
         

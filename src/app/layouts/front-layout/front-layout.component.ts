@@ -70,7 +70,7 @@ export class FrontLayoutComponent implements OnInit, OnDestroy {
 
 
 
-    console.log(this.status, this.whois)
+   /*  console.log(this.status, this.whois) */
   }
   ngOnDestroy() {
 

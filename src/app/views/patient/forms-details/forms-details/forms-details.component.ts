@@ -91,7 +91,7 @@ selectedElement: PeriodicElement;
   //     {value: 9, legend: 'Excellent'}
   //   ]
   // };
-
+  numbers: number[] = [];
   sliderMakeOptions(slider): Options {
   // console.log(slider.dataRange) 
     return {
@@ -108,6 +108,9 @@ selectedElement: PeriodicElement;
    
   };
   constructor(private data:FormDataService, private authPat:AuthPatientService,private snackBar:MatSnackBar,private PatForms:PatientFormsService, private router: ActivatedRoute, private login :LoginService,private route:Router) {
+    for (let index = 0; index < 10000; index++) {
+      this.numbers.push(index);
+    }
     this.data.currentindex.subscribe(index=>this.index =index)
     this.idForm2 = this.router.snapshot.paramMap.get('id');
     this.iddoctor= this.router.snapshot.paramMap.get('iddoctor');
@@ -527,7 +530,7 @@ if(!hi.checked){
 
 
   Nomberdejours(value,event,sections,question,type){
-    console.log(event.target.value)
+  /*   console.log(event.target.value) */
    this.test1=value
    this.test2=event.target.value
    this.test3=sections
@@ -547,7 +550,7 @@ if(!hi.checked){
     if( indexQ == -1){
       this.FormScore.push({text:event.target.value,score:Number(event.target.value)*10,index:x+1,section:sections,indexQuestion:question,type:type})
     }else{
-      console.log(this.test1)
+      /* console.log(this.test1) */
       this.FormScore.map((result)=>{
       
         if(result.type==type){
@@ -641,8 +644,8 @@ calcul(){
    
     for(let fm=0;fm<this.form.formMuti.length;fm++){
      
-     /*  console.log("this.ta1111bleCalculthis.tableCalculthis.tableCalcul",this.tableCalcul)
-      console.log("1111",11111) */
+    /* console.log("this.ta1111bleCalculthis.tableCalculthis.tableCalcul",this.form.formMuti[fm].indexScoreForm)
+      console.log("1111",11111)  */
       for(let k=0;k<this.form.formMuti[fm].indexScoreForm.length;k++){
         if(this.form.formMuti[fm].indexScoreForm[k].type==="index"){
           this.tableCalcul.push({val:'Q '+'('+ this.form.formMuti[fm].indexScoreForm[k].i +',' + this.form.formMuti[fm].indexScoreForm[k].j+')'})
@@ -676,15 +679,15 @@ calcul(){
        }
       }
     })
-/*      console.log( this.form.formMuti[fm]," this.form.formMuti[fm]")
-    console.log(this.scoreS,"this.scoreS") */
+     /*   console.log( this.form.formMuti[fm]," this.form.formMuti[fm]")
+    console.log(this.scoreS,"this.scoreS")  */ 
  /*    console.log(this.tableReponse,"this.tableReponse")
     console.log(this.scoreS,"this.scoreS") */
-    console.log(this.scoreS,"this.scoreS") 
+   /*  console.log(this.scoreS,"this.scoreS")  */
     let scoreCalcul =  eval(this.scoreS) ;
-  /*   console.log(scoreCalcul,"scoreCalcul") */
+    /*  console.log(scoreCalcul,"scoreCalcul")   */
     this.scorSend.push(scoreCalcul) 
-  /*   console.log( this.scorSend," this.scorSend")   */
+ /*      console.log( this.scorSend," this.scorSend")   */ 
     this.tableCalcul=[];
   this.scoreS=""
     }
@@ -700,7 +703,7 @@ calcul(){
     responses: this.tableReponse,
     score:this.scorSend
   }).subscribe((res)=>{
-      console.log("yesssss",res)
+  /*     console.log("yesssss",res) */
       if(res){
         this.route.navigate(['/patient/contacts'])
         this.snackBar.open("Formulaire calculer " ,"×", {

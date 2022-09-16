@@ -63,7 +63,7 @@ export class ListDoctorsComponent implements OnInit {
     this.demande.doctor=idPro
     this.demande.patient=this.idPat
     this.obsAdd= this.DemandeService.AddDoctor(this.demande).subscribe(response=>{
-      console.log("demande response "+response.value)
+    /*   console.log("demande response "+response.value) */
       this.snackBar.open(" invite sended " ,"×", {
 
         duration: 5000,

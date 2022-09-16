@@ -14,7 +14,11 @@ export class ShowFormsComponent implements OnInit {
 form:any
 idForm2:any;
 favoriteSeason:string;
+numbers: number[] = [];
   constructor(private PatForms:PatientFormsService,private data:FormDataService, private router: ActivatedRoute,) {
+    for (let index = 0; index < 10000; index++) {
+      this.numbers.push(index);
+    }
     this.idForm2 = this.router.snapshot.paramMap.get('id');
      
     this.PatForms.getFormsDoctById(this.idForm2).subscribe(response=>{

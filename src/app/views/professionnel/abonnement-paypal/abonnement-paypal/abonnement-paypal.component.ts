@@ -25,17 +25,17 @@ id:any
     this.PaymentService.monthlyPrice().subscribe(payment=>{
       this.monthly=payment
       this.price1 =this.monthly[0].prix
-      console.log(this.monthly)
-      console.log(this.price1)
+    /*   console.log(this.monthly)
+      console.log(this.price1) */
 
     })
     this.PaymentService.yearlyPrice().subscribe(yearly=>{
-      console.log(yearly)
+    /*   console.log(yearly) */
 
       this.yearly=yearly
       this.price2 =this.yearly[0].prix
-      console.log(this.yearly)
-      console.log(this.price2)
+/*       console.log(this.yearly)
+      console.log(this.price2) */
 
     })
 
@@ -151,16 +151,16 @@ payment1={
     this.toggle = !this.toggle;
     this.status = this.toggle ? 'mensuel' : 'annuel';
 
-    console.log(this.status)
+  /*   console.log(this.status) */
 
 }
 pay(){
-  console.log(this.id)
+/*   console.log(this.id) */
  if(this.status=="annuel"){
 
-  console.log(this.payment2)
+/*   console.log(this.payment2) */
     this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
-      console.log(this.price2)
+  /*     console.log(this.price2) */
 
   /*     console.log(response) */
 
@@ -171,7 +171,7 @@ pay(){
  }
  else if(this.status=="mensuel"){
   this.PaymentService.pay(this.id,this.payment1).subscribe(response=>{
-    console.log(this.price1)
+/*     console.log(this.price1) */
 
     /* console.log(response) */
     window.location.href=response.url;

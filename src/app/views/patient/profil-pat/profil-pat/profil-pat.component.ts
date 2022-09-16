@@ -79,10 +79,10 @@ test={
       this.updateservice.uploadImage(this.imageUrl).subscribe((result)=>{
   
        
-        console.log(result)
+    /*     console.log(result) */
 
         this.url =result
-        console.log("result",result)
+     /*    console.log("result",result) */
         const imageBlob = this.url;
   
     const file = new FormData();
@@ -93,7 +93,7 @@ test={
         this.updateservice.updateDoctorPhoto(this.id,file).subscribe((response=>{
       /*     console.log(response) */
         }))
-  console.log(result)
+/*   console.log(result) */
          this.urlPhotp= result 
          this.test.photo=this.urlPhotp
        /*  console.log("reee", result) */

@@ -53,9 +53,9 @@ export class UpdProfilProServiceService {
 
 
       updatePatientPhoto(id:any, photo:any){
-        console.log('serviceee update')
+/*         console.log('serviceee update')
 
-      console.log(id,photo)
+      console.log(id,photo) */
       
           return this.http.put('http://localhost:3000/doctor/updatephoto/' +id , photo);
       

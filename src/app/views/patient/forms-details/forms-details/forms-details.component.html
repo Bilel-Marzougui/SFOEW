@@ -1,39 +1,11 @@
-<div class="card-material">
-  <!-- <div class="content">
-    <div fxLayout="row wrap">
-      <div fxFlex="25%" *ngFor="let num of [1,2,3,4,5,6,7]">
-        <mat-card class="mat-elevation-z4" >
-          <mat-card-header>
-            <mat-card-title>Mountains {{num}}</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="./../assets/images/mountains.jpg">
-          <mat-card-content>
-            <p>
-              The Himalayas is a mountain range in Asia.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </div>
-    </div> -->
 
-
-
-  <!-- *ngFor cannot read property of undefined so we need to check form not empty -->
   <div *ngIf="form" class="container">
-
-
+    
+    
     <div class="col-12 col-md-12 col-lg-11 mx-auto">
       <div class="card">
         <div *ngIf="form" class="card-header">
           <h1 class="form-title">{{form.title}}</h1>
-          <p class="fdescr">{{form.description}}</p>
-
-
         </div>
 
       </div>
@@ -41,6 +13,66 @@
 
     <!-- boucel for =>enter to section items -->
     <div *ngFor="let section of form.sections;let s = index">
+    
+    </div>
+
+
+    <br>
+  </div>
+<ul class="list" *ngIf="form" >
+  <cdk-virtual-scroll-viewport  style="height: 800px" itemSize="90" >
+    <div class="card-material">
+      <!-- <div class="content">
+        <div fxLayout="row wrap">
+          <div fxFlex="25%" *ngFor="let num of [1,2,3,4,5,6,7]">
+            <mat-card class="mat-elevation-z4" >
+              <mat-card-header>
+                <mat-card-title>Mountains {{num}}</mat-card-title>
+              </mat-card-header>
+              <img mat-card-image src="./../assets/images/mountains.jpg">
+              <mat-card-content>
+                <p>
+                  The Himalayas is a mountain range in Asia.
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+        </div> -->
+    
+    
+    
+      <!-- *ngFor cannot read property of undefined so we need to check form not empty -->
+     <div *ngIf="form" class="container">
+    
+    
+        <div class="col-12 col-md-12 col-lg-11 mx-auto">
+          <div class="card">
+            <div *ngIf="form" class="card-header">
+              <h1 class="form-title">Desc</h1>
+              <p class="fdescr">{{form.description}}</p>
+    
+    
+            </div>
+    
+          </div>
+        </div>
+    
+        <!-- boucel for =>enter to section items -->
+        <div *ngFor="let section of form.sections;let s = index">
+        
+        </div>
+    
+    
+        <br>
+      </div> 
+    
+    </div>
+    <ng-container *cdkVirtualFor="let section of form.sections;let s = index">
       <div>
         <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title}} {{s}} kkk
         </h3>
@@ -338,18 +370,16 @@
         </div>
       </div>
 
-    </div>
-
+    </ng-container>
     <div class="buttonContainer">
       <button (click)="calcul()"  type="button" class="btn btn-primary vertical-center" style="float: centre;">confirm</button>
     </div>
     <br>
     <br>
     <br>
-    <br>
-  </div>
+  </cdk-virtual-scroll-viewport>
+</ul>
 
-</div>
   <div class="my-overlay" *ngIf="showOverlay">
   <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
 </div>  

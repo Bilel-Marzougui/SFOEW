@@ -74,7 +74,7 @@ export class EditProfilProComponent implements OnInit, OnDestroy {
     this.dataProf.rpps = rpps
     this.dataProf.id = id
 
-    console.log(this.dataProf)
+/*     console.log(this.dataProf) */
 
   }
   updatenewPro(f: any) {
@@ -122,7 +122,7 @@ export class EditProfilProComponent implements OnInit, OnDestroy {
 
   updProfil(f: any) {
 
-    console.log(" form", f)
+   /*  console.log(" form", f) */
     let data = f.value
     this.updateservice.updateprof(this.id, data).subscribe(response => {
       location.reload();

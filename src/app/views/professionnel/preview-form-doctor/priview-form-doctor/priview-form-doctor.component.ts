@@ -13,7 +13,11 @@ export class PriviewFormDoctorComponent implements OnInit {
   idPatient:any;
   tabRep :any;
   favoriteSeason: string;
+  numbers: number[] = [];
   constructor( private router: ActivatedRoute,private PatForms:PatientFormsService) {
+    for (let index = 0; index < 10000; index++) {
+      this.numbers.push(index);
+    }
     this.idForm=this.router.snapshot.paramMap.get('id');
     this.idDoctor=this.router.snapshot.paramMap.get('iddoctor');
     this.idPatient=this.router.snapshot.paramMap.get('idpatient');
@@ -34,7 +38,7 @@ export class PriviewFormDoctorComponent implements OnInit {
     this.PatForms.getRepdoctor(this.idPatient,this.idDoctor,this.idForm).subscribe((res)=>{
      
       this.tabRep=res
-       console.log('resss',this.tabRep)   
+   /*     console.log('resss',this.tabRep)   */ 
     })
   }
 

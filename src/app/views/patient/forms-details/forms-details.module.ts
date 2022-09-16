@@ -7,7 +7,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { Ng5SliderModule } from 'ng5-slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
 @NgModule({
   declarations: [FormsDetailsComponent],
   imports: [
@@ -16,7 +16,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatRadioModule,
     MatSelectModule,
     Ng5SliderModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ScrollingModule
   ]
 })
 export class FormsDetailsModule { }

@@ -70,7 +70,7 @@ export class EditProfilComponent implements OnInit, OnDestroy {
     this.dataPatient.photo = photo
     this.dataPatient.archived = archived
     this.dataPatient.id = id
-    console.log(this.dataPatient)
+/*     console.log(this.dataPatient) */
 
   }
 
@@ -100,7 +100,7 @@ export class EditProfilComponent implements OnInit, OnDestroy {
 
 
     }, (err: HttpErrorResponse) => {
-      console.log(err.message)
+    /*   console.log(err.message) */
 
     })
   }

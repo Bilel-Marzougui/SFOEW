@@ -130,7 +130,7 @@ handleFileInput(file: FileList) {
      
 
       this.url =result
-      console.log("result",result)
+/*       console.log("result",result) */
       const imageBlob = this.url;
 
   const file = new FormData();
@@ -141,7 +141,7 @@ handleFileInput(file: FileList) {
       this.updateservice.updatePatientPhoto(this.id,file).subscribe((response=>{
       /*   console.log(response) */
       }))
-console.log(result)
+/* console.log(result) */
        this.urlPhotp= result 
        this.prof.photo=this.urlPhotp
      /*  console.log("reee", result) */

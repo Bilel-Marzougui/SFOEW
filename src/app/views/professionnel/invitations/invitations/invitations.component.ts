@@ -99,12 +99,12 @@ export class InvitationsComponent implements OnInit,OnChanges {
         
       )
     })
-console.log( this.invts) 
+/* console.log( this.invts) */ 
  }
   inv(){
     if (this.invts.status== false) {
       this.invt=this.invts
-      console.log(this.invt)
+  /*     console.log(this.invt) */
       }
       else if (this.invts.status==true){
  this.contacts=this.invts
@@ -122,11 +122,11 @@ onMouseEnter(event: any): void {
   
 }
 details(i){
-  console.log(i)
+ /*  console.log(i) */
   this.index=i
   this.pat=(this.invts[i].patient)
-  console.log(this.pat)
-console.log(this.pat.name)
+/*   console.log(this.pat)
+console.log(this.pat.name) */
     
 }
 

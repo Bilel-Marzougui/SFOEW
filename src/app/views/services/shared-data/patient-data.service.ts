@@ -25,8 +25,8 @@ currentindex = this.IndexSource.asObservable();
   }
   GetId(PatID:any){
     this.messageSource.next(PatID)
-    console.log('here is service')
-    console.log(PatID)
+  /*   console.log('here is service')
+    console.log(PatID) */
 
   }
 }

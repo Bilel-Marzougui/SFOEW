@@ -48,8 +48,10 @@
     </div>
 
 
-    <div *ngFor="let section of tabRep.responses;let s = index">
-        <div class="col-12 col-md-12 col-xs-12 col-lg-12 mx-auto">
+    <ul class="list">
+      <cdk-virtual-scroll-viewport  style="height: 700px" itemSize="90" >
+        <ng-container *cdkVirtualFor="let section of tabRep.responses;let s = index">
+          <div class="col-12 col-md-12 col-xs-12 col-lg-12 mx-auto">
             <div class="card-section" style="background-color: #ffffffde;"  *ngIf="section.title!=''">
                   <div class="card-header">
                    
@@ -140,7 +142,7 @@
                        
         
                         </div>
-
+    
                         <div *ngIf="section.type == 'Range Bar'" style="width: 100%;" class="col-lg-12 col-sm-12 w-100">
                          <!--    <p class="hint"> {{section.title}} </p> -->
                            <div  >
@@ -173,7 +175,7 @@
                         </div>
                         <div *ngIf="section.type == 'Nomber de jours'" class="col-lg-8 col-sm-12" >
                             <!-- => show simple input -->
-  
+    
                          <!--    <p class="hint"> {{section.title}}</p> -->
                             <input class="question-short-input-response" [value]="section.textReponse" disabled >
                       
@@ -200,7 +202,7 @@
             
                               </div>
         
- 
+    
                             </div> 
         
                        
@@ -261,8 +263,14 @@
             </div>
         </div>
       
-
-    </div>
+    
+    
+    
+      </div>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+    </ul>
+   
 
    
 </div>
