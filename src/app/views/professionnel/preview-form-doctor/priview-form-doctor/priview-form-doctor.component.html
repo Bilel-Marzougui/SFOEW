@@ -268,9 +268,17 @@
       </ng-container>
     </cdk-virtual-scroll-viewport>
   </ul>
-  <div *ngFor="let item of tabRep.score" class="col-sm-3 col-xl-12  text-center">
+  <div *ngFor="let item of tabRep.score;let q = index;" class="col-sm-3 col-xl-12  text-center">
               
-    <div style=" background-color: #ddffdd;"><h1>Score : {{item.toFixed(2)}} </h1></div>
+    <div style=" background-color: #ddffdd;"  >  <div class="row">
+      <div class="col col-lg-2">
+        <h6>Score : {{item.toFixed(2)}} </h6>
+      </div>
+      <div class="col col-lg-12">
+        <h6 *ngIf="tabScore[q]">{{tabScore[q].formulCalcul}}</h6>
+      </div>
+   
+    </div> </div>
   
   </div>
 </div>

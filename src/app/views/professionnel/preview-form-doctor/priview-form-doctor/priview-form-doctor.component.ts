@@ -12,6 +12,7 @@ export class PriviewFormDoctorComponent implements OnInit {
   idDoctor:any;
   idPatient:any;
   tabRep :any;
+  tabScore:any;
   favoriteSeason: string;
   numbers: number[] = [];
   constructor( private router: ActivatedRoute,private PatForms:PatientFormsService) {
@@ -40,6 +41,14 @@ export class PriviewFormDoctorComponent implements OnInit {
       this.tabRep=res
    /*     console.log('resss',this.tabRep)   */ 
     })
+    this.PatForms.getFormsDoctById(this.idForm).subscribe(response=>{
+    
+ 
+     this.tabScore=response.formMuti
+       
+ console.log(this.tabScore)
+ 
+     })
   }
 
 }

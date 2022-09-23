@@ -18,7 +18,10 @@ export class AuthPatientService {
   registerPatient(body:any){
     return this.http.post(`${this.URL}`+'patient',body)
   }
-
+  emailIsExist(body:any){
+ 
+    return this.http.post(`${this.URL}`+'patient/isExist',body)
+  }
 
     // *****************start login Service**************************************//
 

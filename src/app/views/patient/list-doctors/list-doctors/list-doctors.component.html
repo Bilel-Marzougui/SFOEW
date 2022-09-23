@@ -32,7 +32,9 @@
         <tr id="spacing-row">
           <td></td>
         </tr>  
+
         <tr class="bg-blue" *ngFor="let prof of profs | paginate: { itemsPerPage: 6, currentPage: p }">
+ 
           <td class="pt-2" >
             <div class="container">
               <div class="row">
@@ -47,7 +49,7 @@
               
               </div>
             </div>
-            <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
+
           
        
           </td>
@@ -58,7 +60,7 @@
           <div *ngIf="friend; else notfriend">
            
               <span (click)="addDoctor(prof._id)" >
-                <i class="fa fa-user-plus pl-3"></i>
+                <i class="fa fa-user-plus pl-3" ></i>
               </span>
 
           

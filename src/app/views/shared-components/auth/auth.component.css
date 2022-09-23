@@ -32,7 +32,9 @@
   background-size: cover;
 
 }
-
+.swal-wide{
+  width:100% !important;
+}
 
 mat-card-content {
   width:100%;

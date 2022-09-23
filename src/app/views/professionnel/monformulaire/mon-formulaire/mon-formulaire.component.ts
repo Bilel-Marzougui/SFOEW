@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormDataService } from '../../../services/shared-data/form-data.service';
 import{PaymentService} from '../../../services/Payment/payment.service'
+import { PatientFormsService } from 'src/app/views/services/patient/patient-forms.service';
 @Component({
   selector: 'app-mon-formulaire',
   templateUrl: './mon-formulaire.component.html',
@@ -25,7 +26,8 @@ export class MonFormulaireComponent implements OnInit {
   item:"test"
   mesgEmpty: boolean=false;
 
-  constructor( private PaymentService:PaymentService,private data:FormDataService,private router:Router,private snackBar:MatSnackBar,private invservice:InvitaionsService,private formsService:FormsService,private authPro: AuthProfessionnelService) { 
+  constructor( private PaymentService:PaymentService,private data:FormDataService,private PatForms:PatientFormsService,
+    private router:Router,private snackBar:MatSnackBar,private invservice:InvitaionsService,private formsService:FormsService,private authPro: AuthProfessionnelService) { 
     this.mesgEmpty=false;
  
     this.id = this.authPro.geid()
@@ -131,5 +133,6 @@ this.formsService.getAffectation(this.id).subscribe((res)=>{
       window.location.reload();
 
     }
+
    
 }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit,NgZone } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogModel, AuthComponent } from '../../views/shared-components/auth/auth.component';
 import { AuthProfessionnelService } from '../../views/services/professionnel/auth-professionnel.service'
@@ -13,16 +13,25 @@ export class FrontLayoutComponent implements OnInit, OnDestroy {
 
   status = false
   whois: boolean
-
+  guser
 
   token: any = localStorage.getItem('token_Pro')
   tokenPat: any = localStorage.getItem('token_Pat')
-  constructor(private authPro: AuthProfessionnelService, public dialog: MatDialog) {
-    this.isLoggidIn()
+  constructor(private authPro: AuthProfessionnelService, public dialog: MatDialog,  ngZone :NgZone,) {
+    this.isLoggidIn();
+    window['onSignIn']= user => ngZone.run(
+      () =>{
+        this.afterSignUp(user)
+      }
+)
   }
   ngOnInit(): void {
 
   }
+  afterSignUp(googleUser){
+    this.guser=googleUser;
+    console.log(this.guser)
+     }
   openDialog() {
     const dialogConfig = new MatDialogConfig();
 

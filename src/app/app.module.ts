@@ -50,7 +50,10 @@ import { FormdPrModule } from './views/professionnel/preview-form-doctor/formd-p
 import { ToastrModule } from 'ngx-toastr';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com';
-
+const googleLoginOptions = {
+  scope: 'profile email',
+  plugin_name:'login' //you can use any name here
+}; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -138,10 +141,16 @@ const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleuser
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com'
+              '338766570747-9ci8df39dn8h1n0nve8qpl1imoaqok6r.apps.googleusercontent.com', 
+               googleLoginOptions
             )
           },
-
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              '473356701343037'
+            )
+          }
         ],
         onError: (err) => {
           console.error(err);

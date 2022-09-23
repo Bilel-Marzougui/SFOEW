@@ -242,15 +242,17 @@ if(indexQ===-1){
    }
 
    getDataVisuelle(rep,type,q,o,event,s){
-  /*   console.log(rep) */
+    
     let  indexQ = this.tableReponse.findIndex(x => 
       x.id===s+''+q
     );  
     if(indexQ===-1)
     this.tableReponse.push({title :rep.title,type: rep.type,options:rep.options,textReponse:'event.target.value',id:s+''+q,optioncm:rep.optioncm,score:Number(event.target.value),scoreOptionRangeBarQuestion:rep.dataRange,
     scoreOptionRangeBar:0,scoreOptioncm2:rep.grille,minRange:"0", optionsSaint:null});
-    else
-    this.tableReponse[indexQ].textReponse=event.target.value 
+    else{
+    this.tableReponse[indexQ].textReponse=event.target.value;
+    this.tableReponse[indexQ].score=event.target.value 
+  }
   /*   console.log(type,q,o,event.target.value,s) */
    }
    getDataTextCourt(rep,event,s,q){
@@ -643,9 +645,6 @@ calcul(){
   }) */
    
     for(let fm=0;fm<this.form.formMuti.length;fm++){
-     
-    /* console.log("this.ta1111bleCalculthis.tableCalculthis.tableCalcul",this.form.formMuti[fm].indexScoreForm)
-      console.log("1111",11111)  */
       for(let k=0;k<this.form.formMuti[fm].indexScoreForm.length;k++){
         if(this.form.formMuti[fm].indexScoreForm[k].type==="index"){
           this.tableCalcul.push({val:'Q '+'('+ this.form.formMuti[fm].indexScoreForm[k].i +',' + this.form.formMuti[fm].indexScoreForm[k].j+')'})
@@ -660,7 +659,6 @@ calcul(){
           this.tableCalcul.push({val:this.form.formMuti[fm].indexScoreForm[k].desc})
         }
       }
-     /*  console.log("this.tableCalculthis.tableCalculthis.tableCalcul",this.tableCalcul) */
     this.tableCalcul .map((result)=>{
       if(result.val[0]=='Q'){
         var indexC = this.FormScore.findIndex(s => s.type === result.val);
@@ -687,7 +685,7 @@ calcul(){
     let scoreCalcul =  eval(this.scoreS) ;
     /*  console.log(scoreCalcul,"scoreCalcul")   */
     this.scorSend.push(scoreCalcul) 
- /*      console.log( this.scorSend," this.scorSend")   */ 
+ 
     this.tableCalcul=[];
   this.scoreS=""
     }
@@ -703,7 +701,7 @@ calcul(){
     responses: this.tableReponse,
     score:this.scorSend
   }).subscribe((res)=>{
-  /*     console.log("yesssss",res) */
+ 
       if(res){
         this.route.navigate(['/patient/contacts'])
         this.snackBar.open("Formulaire calculer " ,"×", {
@@ -720,7 +718,12 @@ calcul(){
         location.reload()
       }
     })
-}, 4000);      
+}, 4000); 
+
+
+setTimeout(() => {
+   location.reload() 
+}, 6000);     
 /* console.log(this.FormScore,this.tableCalcul,this.tableReponse) */
 }
 Range(value,score,sections,question,type,data){

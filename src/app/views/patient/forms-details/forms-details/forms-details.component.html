@@ -74,7 +74,7 @@
     </div>
     <ng-container *cdkVirtualFor="let section of form.sections;let s = index">
       <div>
-        <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title}} {{s}} kkk
+        <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title}} N° {{s}} 
         </h3>
       </div>
       <!-- boucel for =>enter to questions items -->
@@ -180,11 +180,12 @@
                 <div class="row  m-2">
                   <div class="col-lg-8 col-sm-12" style="padding-left: 3%;">
                     <div class="simple-slider">
-
+                      <h1 *ngIf="tableReponse[q]">Score : {{tableReponse[q].score}} </h1>
+                
                       <div class="row">
                         <!-- <img style="width: 10%;height: 10%;" class="img-thumbnail" src="assets/img/placeholder.png" alt=""> -->
                         <div class='container23'style="width: 600px" >
-                        
+                       
                         <img  class="img-thumbnail" src="../../../../../assets/Douleurgraph1.png" alt="">
                         <input type="range" min="0" max="10" (change)="VISUELLE($event,s ,'Q '+'('+ s +',' + q+')','visuelleanalogique');getDataVisuelle(section.questions[q],'VISUELLE ANALOGIQUE',q,o,$event,s)" value="5" class="slider" name='slider' id="slider">
                         

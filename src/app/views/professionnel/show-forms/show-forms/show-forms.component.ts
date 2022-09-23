@@ -3,6 +3,10 @@ import { PatientFormsService } from 'src/app/views/services/patient/patient-form
 import { FormDataService } from 'src/app/views/services/shared-data/form-data.service';
 import { Options } from 'ng5-slider';
 import { ActivatedRoute } from '@angular/router';
+ 
+
+// your-app.scss
+
 
 @Component({
   selector: 'app-show-forms',
@@ -16,6 +20,7 @@ idForm2:any;
 favoriteSeason:string;
 numbers: number[] = [];
   constructor(private PatForms:PatientFormsService,private data:FormDataService, private router: ActivatedRoute,) {
+ 
     for (let index = 0; index < 10000; index++) {
       this.numbers.push(index);
     }

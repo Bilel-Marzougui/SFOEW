@@ -140,7 +140,7 @@
 
                   <div class="proReg" *ngSwitchCase="'Professionnel'" style=" height: 1200px;">
 
-                    <form class="ex1" [formGroup]="registerFormPro" (ngSubmit)="registerPro(registerFormPro)" style=" height: 1200px;">
+                    <form class="ex1" [formGroup]="registerFormPro" (ngSubmit)="registerPro(registerFormPro,2)" style=" height: 1200px;">
                       <div class="form-row" style=" height: auto;">
                         <!-- <h1 >Professionnel</h1> -->
 
@@ -319,7 +319,7 @@
 
 
                   <div class="patReg" *ngSwitchCase="'Patient'" style=" height: 1200px;">
-                    <form class="ex1" [formGroup]="registerFormPat" (ngSubmit)="registerPat(registerFormPat)" style=" height: 1200px;">
+                    <form class="ex1" [formGroup]="registerFormPat" (ngSubmit)="registerPat(registerFormPat,2)" style=" height: 1200px;">
                       <div class="form-row">
                         <!-- <h1 >Patient</h1> -->
                         <mat-form-field>

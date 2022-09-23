@@ -19,7 +19,9 @@ export class AuthProfessionnelService {
   registerProf(body:any){
     return this.http.post(`${this.URL}`+'doctor/',body)
   }
-
+  emailIsExist(body:any){
+    return this.http.post(`${this.URL}`+'doctor/isExist',body)
+  }
   loginSPro(body: any) {
     return this.http.post(`${this.URL}`+'doctor/login', body)
 

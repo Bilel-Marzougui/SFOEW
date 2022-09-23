@@ -168,7 +168,7 @@
                   </div>
                 </div>
                 <tr class="bg-blue"
-                  *ngFor="let contact of contacts | paginate: { itemsPerPage: 4, currentPage: p2 } ;index as i  ">
+                  *ngFor="let contact of contacts | paginate: { itemsPerPage: 4, currentPage: p2 } ;index as j  ">
                  
                   <td class="pt-2">
                     <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
@@ -176,7 +176,7 @@
                     {{contact.patients.name}} {{contact.patients.lastname}}
                   </td>
                   <td class="pt-3">{{contact.patients.email}}</td>
-                  <td><i class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"
+                  <td><i  class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"
                       (click)="affectForm(contact.patients._id)"></i></td>
 
                 </tr>
