@@ -21,7 +21,7 @@ export class FrontLayoutComponent implements OnInit, OnDestroy {
 
 
   ]
-  languageSelect:any;
+  languageSelect= 'fr';
   token: any = localStorage.getItem('token_Pro')
   tokenPat: any = localStorage.getItem('token_Pat')
   constructor(private authPro: AuthProfessionnelService, public dialog: MatDialog,  ngZone :NgZone,public translationService: TranslationService) {

@@ -178,16 +178,16 @@
                           
                                 <table class="table">
                                  
-                                  <tbody>
+                             <!--      <tbody *ngIf="invts">
                                     <tr *ngFor="let invt of invts ;let i = index"  >
                                 
-                                      <td>      <img *ngIf="!invt.patient.photo" class="img-profile rounded-circle rotation2" src="../../../assets/img/avatar.jpg">
-                                         <img *ngIf=" invt.patient.photo" class="img-profile rounded-circle rotation2" [src]="invt.patient.photo"></td>
-                                      <td>    <span class="font-weight-bold">{{invt.patient.name}}   {{invt.patient.lastname}}   </span></td>
+                                      <td>      <img *ngIf="invt.doctor.photo==''" class="img-profile rounded-circle rotation2" src="../../../assets/img/avatar.jpg">
+                                         <img *ngIf=" invt.doctor.photo" class="img-profile rounded-circle rotation2" [src]="invt.patient.photo"></td>
+                                      <td>    <span class="font-weight-bold">{{invt.doctor.name}}   {{invt.doctor.lastname}}   </span></td>
                                       <td>     <i class="fa-sharp fa-solid fa-xmark"  aria-hidden="true" (click)="removetInvt(invt._id)"></i></td>
                                     </tr>
                              
-                                  </tbody>
+                                  </tbody> -->
                                 </table>
                      
                            
