@@ -7,6 +7,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PriviewFormDoctorComponent } from './priview-form-doctor/priview-form-doctor.component';
 import { FormdPrRoutingModule } from './formd-pr-routing.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {TranslateModule} from '@ngx-translate/core';
 @NgModule({
   declarations: [PriviewFormDoctorComponent],
   imports: [
@@ -16,7 +17,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     Ng5SliderModule,
     MatCheckboxModule,
     FormdPrRoutingModule,
-    ScrollingModule
+    ScrollingModule,
+    TranslateModule
   ]
 })
 export class FormdPrModule { }

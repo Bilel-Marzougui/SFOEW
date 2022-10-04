@@ -30,8 +30,7 @@ numbers: number[] = [];
     
  
       this.form=response
-       
-//console.log(this.form)
+ 
  
      })
 

@@ -1,123 +1,200 @@
-<div class="container rounded mt-5 bg-white p-md-5">
+
 
   
-  <div class="form-group">
-    <div class="h2 font-weight-bold">Liste des docteurs</div>
+<!-- <div  *ngIf="profs==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
+  <h1 class="header-title" style="color: transparent;padding-bottom: 15%;font-size: 0px;">A</h1>
+  <h1 class="header-title" style="color: red;padding-bottom: 15%;">AUCUN DOCTEUR </h1>
 
-  </div>
-  <div class="container" >
-      
+</div> -->
+<div class="container">
+  <div class="main-body">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+      <ol class="breadcrumb">
+
+        <li class="breadcrumb-item"><a >Invitations</a></li>
+      </ol>
+    </nav>
+    <!-- /Breadcrumb -->
     <div class="container" >
-      
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Chercher..." (input)="filterItem($event.target.value)"  />
-        </div>
-      </div>
-  </div>
-  <div class="table-responsive">
-
-    <table class="table">
-
-      <thead>
-        <tr>
-          <th scope="col">Nom et prénom </th>
-          <th scope="col">Adresse</th>
-          <th scope="col">E-mail</th>
-          <th scope="col">Télèphone</th>
-          <th scope="col">Invitation</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        <tr id="spacing-row">
-          <td></td>
-        </tr>  
-
-        <tr class="bg-blue" *ngFor="let prof of profs | paginate: { itemsPerPage: 6, currentPage: p }">
- 
-          <td class="pt-2" >
-            <div class="container">
-              <div class="row">
-                <div class="col-md-auto">
-                  <img *ngIf="prof.photo !=''" class="img-profile rounded-circle" [src]="prof.photo">
-                  <img *ngIf="prof.photo ==''"  class="img-profile rounded-circle" src="../../../assets/img/avat.jpg">
-                </div>
-                <div class="col-md-auto">
-                  <div class="pl-lg-5 pl-md-3 pl-1 name" data-toggle="modal" data-target="#exampleModal"
-                   >{{prof.name}} {{prof.lastname}} </div>
-                </div>
-              
-              </div>
-            </div>
-
           
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="{{ 'LISTPATIENT.SEARCH' | translate }}..." (input)="filterItem($event.target.value)" />
+      </div>
+    </div>
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+     
+
        
-          </td>
-          <td class="pt-3">{{prof.adresse}}</td>
-          <td class="pt-3">{{prof.email}}</td>
-          <td class="pt-3">{{prof.tel}} </td>
-          <td class="pt-3">
-          <div *ngIf="friend; else notfriend">
-           
-              <span (click)="addDoctor(prof._id)" >
-                <i class="fa fa-user-plus pl-3" ></i>
-              </span>
-
-          
-
-          </div>
-        </td>
-          <ng-template #notfriend>
-            <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
-          </ng-template>
-
-        </tr>
+      
       
 
+      </div>
 
-      </tbody>
+ 
 
-    </table>
+      <div class="container" *ngFor="let invt of invts ;let i =index ">
 
-  </div>
-  <div class="parent">
+        <ul class="list-group" *ngIf="invt.status == false">
 
-    <pagination-controls class="child" (pageChange)="p = $event"></pagination-controls>
+
+          <table>
+            <tr style="width: 100%;" class="list-group-item">
+              <td style="width: 100%;">
+                <div class="list-group " style="width: 100%;">
+                  <li style="width: 100%;">
+                    <img [src]="invt.doctor.photo" alt="" style="width: 50px; height: 50px;">
+                    <i style="margin-left: 150px;" (click)="getIdPat(invt.patient._id)">{{invt.doctor.name}}
+                      {{invt.doctor.lastname}}</i>
+
+                  </li>
+
+                </div>
+              </td>
+              <td>
+                <div class="list-group " style="width: 100%;">
+                  <li class="list-group" style="width: 100%;">
+                    <button type="button" (click)="details(i)" class="btn btn-primary btn-sm" data-toggle="modal"
+                      data-target=".bd-example-modal-lg">
+
+                      {{ 'INVIT.DETAIL' | translate }}
+                    </button>
+
+                  </li>
+                </div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-success btn-sm"  (click)="acceptInvt(invt._id)">
+                  {{ 'INVIT.ACCEPT' | translate }}
+                </button>
+
+              </td>
+            </tr>
+          </table>
+
+
+
+        </ul>
+
+      </div>
+
+
+    </div>
 
   </div>
 </div>
-<div *ngIf="added">
-  <div class="alert alert-primary" role="alert">
-    A simple primary alert—check it out!
-  </div>
-</div>
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+      <div class="container">
+        <div class="main-body">
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+           <!--    <li class="breadcrumb-item"><a>Patient</a></li>
+              <li class="breadcrumb-item"><a>Profile
+                </a></li> -->
+              <li class="breadcrumb-item active" aria-current="page"> {{ 'INVIT.DETAIL' | translate }}</li>
+            </ol>
+          </nav>
+
+
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <div class="profile-img"> <img style="height: 200px; width:200px;" [src]="pat.photo" alt="" />
+
+
+                    </div>
+                    <div class="mt-3">
+
+                      <h4> {{pat.name}} {{pat.lastname}}</h4>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">{{ 'PROFILE.NAME' | translate }}</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.name}} {{pat.lastname}}
+
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">{{ 'PROFILE.EMAIL' | translate }}</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.email}}
+                    </div>
+                  </div>
+                 
+
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">{{ 'PROFILE.TELE' | translate }}</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.tel}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">{{ 'PROFILE.BRITHDATE' | translate }}</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.birthday}}
+                    </div>
+                  </div>
+                  <hr>
+             
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">{{ 'PROFILE.ADRESS' | translate }}</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{pat.adresse}}
+                    </div>
+                  </div>
+                  <hr>
+
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
-
-  
-<div  *ngIf="profs==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
+<div  *ngIf="invts==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
   <h1 class="header-title" style="color: transparent;padding-bottom: 15%;font-size: 0px;">A</h1>
-  <h1 class="header-title" style="color: red;padding-bottom: 15%;">AUCUN DOCTEUR </h1>
+  <h1 class="header-title" style="color: red;padding-bottom: 15%;">  {{ 'AUCUN.AUCUNN' | translate }} </h1>
 
 </div>

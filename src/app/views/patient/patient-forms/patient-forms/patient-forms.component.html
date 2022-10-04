@@ -2,7 +2,7 @@
 
   
     <div class="form-group">
-        <div class="h2 font-weight-bold">Liste des contacts</div>
+        <div class="h2 font-weight-bold">{{ 'LISTCONTACT.LISTPATIENT' | translate }}</div>
   
     </div>
     <div class="container" >
@@ -10,7 +10,7 @@
       <div class="container" >
         
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Chercher..." (input)="filterItem($event.target.value)"  />
+            <input type="text" class="form-control" placeholder="{{ 'LISTCONTACT.SEARCH' | translate }}..." (input)="filterItem($event.target.value)"  />
           </div>
         </div>
     </div>
@@ -25,11 +25,11 @@
   
           <thead>
             <tr>
-                <th scope="col" >Nom et prénom </th>
-                <th scope="col">Adresse</th>
-                <th scope="col">E-mail</th>
-                <th scope="col">Télèphone</th>
-                <th scope="col">Etat Formulaire</th>
+                <th scope="col" >{{ 'PROFILE.NAME' | translate }}</th>
+                <th scope="col">{{ 'PROFILE.ADRESS' | translate }}</th>
+                <th scope="col">{{ 'PROFILE.EMAIL' | translate }}</th>
+                <th scope="col">{{ 'PROFILE.TELE' | translate }}</th>
+                <th scope="col">{{ 'LISTCONTACT.STATUSFORMS' | translate }}</th>
 
             </tr>
         </thead>
@@ -60,15 +60,15 @@ aria-hidden="true">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button>
-            <h5 class="modal-title" id="exampleModalLabel">Formulaires affecter par {{prof.doctors.lastname}}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">{{ 'AFFECTFORMS.AFFECTBY' | translate }} {{prof.doctors.lastname}}</h5>
 
             <div class="container rounded mt-2 bg-white p-md-2">
                 <div class="table-responsive">
                     <table class="table ">
                         <thead>
                             <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Description</th>
+                                <th scope="col">{{ 'AFFECTFORMS.TITLE' | translate }}</th>
+                                <th scope="col">{{ 'AFFECTFORMS.DESC' | translate }}</th>
                  
                 
                             </tr>
@@ -102,15 +102,15 @@ aria-hidden="true">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-            <h5 class="modal-title" id="exampleModalLabel">Formulaires remplis par {{prof.doctors.lastname}}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">{{ 'AFFECTFORMS.FORMSREM' | translate }} {{prof.doctors.lastname}}</h5>
 
             <div class="container rounded mt-2 bg-white p-md-2">
                 <div class="table-responsive">
                     <table class="table ">
                         <thead>
                             <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Description</th>
+                                <th scope="col">{{ 'AFFECTFORMS.TITLE' | translate }}</th>
+                                <th scope="col">{{ 'AFFECTFORMS.DESC' | translate }}</th>
                           
                 
                             </tr>
@@ -158,6 +158,6 @@ aria-hidden="true">
   
   <div  *ngIf="profs==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
     <h1 class="header-title" style="color: transparent;padding-bottom: 15%;font-size: 0px;">A</h1>
-    <h1 class="header-title" style="color: red;padding-bottom: 15%;">AUCUN CONTACT  </h1>
+    <h1 class="header-title" style="color: red;padding-bottom: 15%;">{{ 'AFFECTFORMS.AUCUNN' | translate }}  </h1>
   
   </div>

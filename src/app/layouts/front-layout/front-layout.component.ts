@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit,NgZone } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogModel, AuthComponent } from '../../views/shared-components/auth/auth.component';
 import { AuthProfessionnelService } from '../../views/services/professionnel/auth-professionnel.service'
-
+import {TranslationService} from '../../translation.service';
 @Component({
   selector: 'app-front-layout',
   templateUrl: './front-layout.component.html',
@@ -13,12 +13,20 @@ export class FrontLayoutComponent implements OnInit, OnDestroy {
 
   status = false
   whois: boolean
-  guser
+  guser;
+  currentLang = 'fr';
+  languages=[
+    {key :'fr',displayValue:'Français'},
+    {key :'en',displayValue:'English'},
 
+
+  ]
+  languageSelect:any;
   token: any = localStorage.getItem('token_Pro')
   tokenPat: any = localStorage.getItem('token_Pat')
-  constructor(private authPro: AuthProfessionnelService, public dialog: MatDialog,  ngZone :NgZone,) {
+  constructor(private authPro: AuthProfessionnelService, public dialog: MatDialog,  ngZone :NgZone,public translationService: TranslationService) {
     this.isLoggidIn();
+    this.languageSelect=localStorage.getItem('langauage')
     window['onSignIn']= user => ngZone.run(
       () =>{
         this.afterSignUp(user)
@@ -27,6 +35,10 @@ export class FrontLayoutComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
 
+  }
+  onLangChange(currentLang: string) {
+    localStorage.setItem('langauage',currentLang)
+    this.translationService.useLang(currentLang);
   }
   afterSignUp(googleUser){
     this.guser=googleUser;

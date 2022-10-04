@@ -6,7 +6,15 @@
       <a href="mailto:contact@example.com">scores@example.com</a>
       <!-- <i class="bi bi-phone"></i> +216 xxx xxx xxx -->
     </div>
+
     <div class="d-none d-lg-flex social-links align-items-center">
+      <div>
+        <label>
+          <select name='langChoose' #langChoose [(ngModel)]='languageSelect'  (change)="onLangChange(langChoose.value)">
+            <option *ngFor="let lang of languages" [value]="lang.key"  >{{lang.displayValue}}</option>
+          </select>
+        </label>
+      </div>
       <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
       <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
       <!-- <a href="#" class="instagram"><i class="bi bi-instagram"></i></a> -->
@@ -24,9 +32,9 @@
 
     <nav  class="navbar order-last order-lg-0">
       <ul>
-        <li><a class="nav-link scrollto active" routerLink="/">Accueil</a></li>
-        <li><a class="nav-link scrollto" routerLink="about">À propos</a></li>
-        <li><a class="nav-link scrollto" routerLink="contact">contact</a></li>
+        <li><a class="nav-link scrollto active" routerLink="/">{{ 'HOMES.HOME' | translate }}</a></li>
+        <li><a class="nav-link scrollto" routerLink="about">{{ 'HOMES.APROP' | translate }}</a></li>
+        <li><a class="nav-link scrollto" routerLink="contact">{{ 'HOMES.CONTACT' | translate }}</a></li>
 
         <!-- <li class="dropdown">
             <a href="#"
@@ -47,10 +55,10 @@
     
     <ng-template #Unlog>
       <div class="login-button" *ngIf="whois ;else PtientUer">
-        <a routerLink="./professionnel" class="appointment-btn scrollto">espace professionnel</a>
+        <a routerLink="./professionnel/profil" class="appointment-btn scrollto">{{ 'HOMES.ESPACEPRO' | translate }}</a>
       </div>
       <ng-template #PtientUer>
-        <a routerLink="./patient" class="appointment-btn scrollto">espace patient</a>
+        <a routerLink="./patient/profil" class="appointment-btn scrollto">{{ 'HOMES.ESPACEPATIENT' | translate }}</a>
 
       </ng-template>
 

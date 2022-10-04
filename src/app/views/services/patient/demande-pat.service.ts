@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,  HttpEvent,  HttpHandler,  HttpHeaders, HttpParams, HttpRequest  } from '@angular/common/http';
 import { environment } from '../../../../../src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,27 @@ export class DemandePatService {
 
      }
 
+     AddPatient(body:any): Observable<any>{
+
+          /*  console.log(body)   */
+          const token=localStorage.getItem('token_Pro')
+          const headers=new HttpHeaders().set('authorization','Bearer '+token)
+      
+      
+             return this.http.post<any>(`${this.URL}`+'invitation/adddemande',body,{headers:headers});
+      
+           }
+
+           getStatusPatient(body:any){
+
+      
+           const token=localStorage.getItem('token_Pro')
+           const headers=new HttpHeaders().set('authorization','Bearer '+token)
+       
+       
+              return this.http.post<any>(`${this.URL}`+'invitation/getmystatus',body,{headers:headers});
+       
+            }
      getMyDoctor(id:any){
 
       /*     console.log(this.token) */

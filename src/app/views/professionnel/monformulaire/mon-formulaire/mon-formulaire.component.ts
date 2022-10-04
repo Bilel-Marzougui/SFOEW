@@ -44,8 +44,8 @@ export class MonFormulaireComponent implements OnInit {
 
 
   })
- this.invservice.myContacts(this.id).subscribe(response =>{
- //  console.log("response",response)
+ this.invservice.myContactsPatient(this.id).subscribe(response =>{
+  // console.log("response",response)
   this.contacts=response
 })
   }
@@ -87,8 +87,8 @@ this.formsService.getAffectation(this.id).subscribe((res)=>{
         verticalPosition: 'top',
         panelClass:'success'
     
-      });
-
+      })
+   
   },error=> this.snackBar.open(" form affection failed " ,"×", {
 
     duration: 5000,

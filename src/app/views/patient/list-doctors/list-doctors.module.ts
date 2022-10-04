@@ -6,7 +6,7 @@ import { ListDoctorsComponent } from './list-doctors/list-doctors.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import {TranslateModule} from '@ngx-translate/core';
 @NgModule({
   declarations: [ListDoctorsComponent],
   imports: [
@@ -14,7 +14,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ListDoctorsRoutingModule,
     FormsModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    TranslateModule
   ]
 })
 export class ListDoctorsModule { }

@@ -4,8 +4,7 @@
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="main-breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">Professionnel</li>
-        <li class="breadcrumb-item " aria-current="page">Profile</li>
+        <li class="breadcrumb-item " aria-current="page">{{ 'PROFILE.PROFIL' | translate }}</li>
       </ol>
     </nav>
     <!-- /Breadcrumb -->
@@ -18,7 +17,7 @@
               <div class="profile-img"> <img style="height: 300px; width: 300px;"
                   [src]="prof.photo"
                   alt="" />
-                  <div class="file btn btn-lg btn-primary"> Changer Photo <input type="file" name="file" (change)="handleFileInput($event.target.files)" #fileUpload/> </div>
+                  <div class="file btn btn-lg btn-primary"> {{ 'PROFILE.PHOTOPROFIL' | translate }}<input type="file" name="file" (change)="handleFileInput($event.target.files)" #fileUpload/> </div>
                  
                   <!-- <div class="file btn btn-lg btn-primary"> Changer   <input #fileInput (change)="handleFileInput($event.target.files)"  style="display: none;" type="file" id="upt"> </div> -->
 
@@ -72,7 +71,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Nom et prénom</h6>
+                <h6 class="mb-0">{{ 'PROFILE.NAME' | translate }}</h6>
               </div>
               <div class="col-sm-9 text-secondary">
                 {{prof.name}} {{prof.lastname}}
@@ -82,7 +81,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Email</h6>
+                <h6 class="mb-0">{{ 'PROFILE.EMAIL' | translate }}</h6>
               </div>
               <div class="col-sm-9 text-secondary">
                 {{prof.email}} </div>
@@ -90,7 +89,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Télèphone</h6>
+                <h6 class="mb-0">{{ 'PROFILE.TELE' | translate }}</h6>
               </div>
               <div class="col-sm-9 text-secondary">
                 {{prof.tel}} </div>
@@ -98,7 +97,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Date de naissance</h6>
+                <h6 class="mb-0">{{ 'PROFILE.BRITHDATE' | translate }}</h6>
               </div>
               <div class="col-sm-9 text-secondary">
                 {{this.prof.birthday}} </div>
@@ -130,7 +129,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Adresse</h6>
+                <h6 class="mb-0">{{ 'PROFILE.ADRESS' | translate }}</h6>
               </div>
               <div class="col-sm-9 text-secondary">
                 {{this.prof.adresse}} </div>
@@ -138,7 +137,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-12">
-                <a (click)="openDialog()" class="btn btn-info ">Modifier</a>
+                <a (click)="openDialog()" class="btn btn-info ">{{ 'PROFILE.UPDATE' | translate }}</a>
               </div>
             </div>
           </div>

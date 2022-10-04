@@ -6,7 +6,7 @@
       <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
 
         <!-- login form -->
-        <mat-tab label="Modifier profil">
+        <mat-tab label="{{ 'PROFILE.UPDATEPROFILE' | translate }}">
           <div class="choix">
 
           </div>
@@ -26,7 +26,7 @@
                       <!-- firstName validation start here -->
                       <div class="form-group">
 
-                        <label for="exampleFormControlInput1">name</label>
+                        <label for="exampleFormControlInput1">{{ 'LISTPATIENT.NAME' | translate }}</label>
                         <input type="text" class="form-control" placeholder="name" [(ngModel)]="dataProf.name"
                           required name="name" #name="ngModel" ngModel minlength="2" maxlength="20">
                       </div>
@@ -40,7 +40,7 @@
 
                       <!-- lastName validation start here -->
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">lastname</label>
+                        <label for="exampleFormControlInput1">{{ 'LISTPATIENT.PRENOM' | translate }}</label>
                         <input type="text" class="form-control" placeholder="lastname"
                           [(ngModel)]="dataProf.lastname" required name="lastname" #lastname="ngModel" minlength="2"
                           maxlength="20" ngModel>
@@ -56,7 +56,7 @@
                       <!-- Email validation start here -->
 
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">email</label>
+                        <label for="exampleFormControlInput1">{{ 'PROFILE.EMAIL' | translate }}</label>
                         <input type="email" class="form-control" placeholder="email" [(ngModel)]="dataProf.email"
                           email required name="email" #email="ngModel" ngModel>
                       </div>
@@ -71,7 +71,7 @@
 
                       <!-- age validation start here -->
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">adeli</label>
+                        <label for="exampleFormControlInput1">Adeli</label>
                         <input type="number" class="form-control" placeholder="adeli" [(ngModel)]="dataProf.adeli"
                           required name="adeli" #adeli="ngModel" ngModel>
                       </div>
@@ -81,7 +81,7 @@
                       <!-- age validation end here -->
 
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">rpps</label>
+                        <label for="exampleFormControlInput1">Rpps</label>
                         <input type="number" class="form-control" placeholder="rpps" [(ngModel)]="dataProf.rpps"
                           required name="rpps" #rpps="ngModel" ngModel>
                       </div>
@@ -90,7 +90,7 @@
                       </div>
                       <!-- Phone validation start here -->
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">fax</label>
+                        <label for="exampleFormControlInput1">Fax</label>
                         <input type="number" class="form-control" placeholder="fax" [(ngModel)]="dataProf.fax"
                           required name="ssn" #fax="ngModel" ngModel>
                       </div>
@@ -100,7 +100,7 @@
 
 
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">tel</label>
+                        <label for="exampleFormControlInput1">{{ 'PROFILE.TELE' | translate }}</label>
                         <input type="number" class="form-control" placeholder="tel" [(ngModel)]="dataProf.tel"
                           required name="tel" #tel="ngModel" ngModel>
                       </div>
@@ -109,7 +109,7 @@
                       </div>
                       <!-- Phone validation end here -->
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">Address</label>
+                        <label for="exampleFormControlInput1">{{ 'PROFILE.ADRESS' | translate }}</label>
                         <input type="text" class="form-control" placeholder="adresse" [(ngModel)]="dataProf.adresse"
                           required name="adresse" #adresse="ngModel" ngModel>
                       </div>
@@ -122,7 +122,7 @@
                       </div>
                       <div class="container">
                         <div class="center">
-                      <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Modifier profil</button>
+                      <button class="btn btn-primary" type="submit" [disabled]="f.invalid">{{ 'PROFILE.UPDATEPROFILE' | translate }}</button>
                     </div>
                   </div>
                     </form>

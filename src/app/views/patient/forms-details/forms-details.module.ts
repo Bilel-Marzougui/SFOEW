@@ -8,6 +8,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { Ng5SliderModule } from 'ng5-slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {TranslateModule} from '@ngx-translate/core';
 @NgModule({
   declarations: [FormsDetailsComponent],
   imports: [
@@ -17,7 +18,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatSelectModule,
     Ng5SliderModule,
     MatCheckboxModule,
-    ScrollingModule
+    ScrollingModule,
+    TranslateModule
   ]
 })
 export class FormsDetailsModule { }

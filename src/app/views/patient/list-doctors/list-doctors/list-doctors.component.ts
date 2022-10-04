@@ -5,6 +5,7 @@ import { DemandePatService } from 'src/app/views/services/patient/demande-pat.se
 import { AuthPatientService } from 'src/app/views/services/patient/auth-patient.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-list-doctors',
   templateUrl: './list-doctors.component.html',
@@ -24,10 +25,27 @@ export class ListDoctorsComponent implements OnInit {
   obsAdd: Subscription;
   i:1;
   p:number;
-
-
-
+  invts:any
   mesgEmpty: boolean=false;
+  index:any;
+  pat={
+    name: 'hanen',
+    lastname: 'yassin',
+    birthday: '12/12/2015',
+    adresse: 'jj',
+    tel: '+33333333333333',
+    email: 'yassin1@gmail.com',
+ 
+ 
+    gender: 'homme',
+    photo: '',
+ 
+    added_date: '2022-05-26T09:50:18.419+00:00',
+    _id:""
+ 
+  
+  }
+ 
   constructor(private snackBar:MatSnackBar,public doctorsService: DoctorsService, private authPat: AuthPatientService, private DemandeService: DemandePatService) {
     this.idPat = this.authPat.geid()
  this.obsGet=   this.doctorsService.getDoctors().subscribe(response =>{
@@ -35,7 +53,8 @@ export class ListDoctorsComponent implements OnInit {
 
   
       this.profs = response
-      this.filtredprofs= response
+  //    this.filtredprofs= response
+      
       this.mesgEmpty=true;
     }
 
@@ -44,14 +63,21 @@ export class ListDoctorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.doctorsService.getInvts(this.idPat).subscribe((response)=>{
+ 
+      this.mesgEmpty=false;
+      this.invts = response
+ 
+      this.filtredprofs=response
+      this.mesgEmpty=true;
+    })
   }
 
   filterItem(value) {
-    this.profs = this.filtredprofs.filter(i => {
+    this.invts = this.filtredprofs.filter(i => {
       return (
-        i.name.toLowerCase().includes(value.toLowerCase()) ||
-        i.lastname.toLowerCase().includes(value.toLowerCase()) 
+        i.doctor.name.toLowerCase().includes(value.toLowerCase()) ||
+        i.doctor.lastname.toLowerCase().includes(value.toLowerCase()) 
 
       )
     })
@@ -89,8 +115,61 @@ export class ListDoctorsComponent implements OnInit {
 
 
   }
+  details(i){
+    /*  console.log(i) */
+     this.index=i
+     this.pat=(this.invts[i].doctor)
+     /*  console.log(this.pat) */
   
+       
+   }
+   acceptInvt(body:any){
 
+
+
+      this.doctorsService.acceptInvts(this.idPat,body).subscribe(response=>{
+        console.log(response)
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'success',
+          title: 'Invitation acceptée'
+        })
+        var indexC = this.invts.findIndex(s => s._id === body);
+
+    this.invts.splice (indexC, 1);
+    },error=>{
+console.log(error)
+      const Toast2 = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast2.fire({
+        icon: 'error',
+        title: 'invitation non acceptée'
+      })
+    }
+      )   
+
+  }
   getId(profDetails:any){
    /*  console.log(profDetails) */
 

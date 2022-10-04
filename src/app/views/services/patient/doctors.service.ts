@@ -13,8 +13,17 @@ export class DoctorsService {
   header=new HttpHeaders().set('authorization',this.authToken)
   constructor(private http:HttpClient) { }
 
+  getInvts(id:any){
+    const token=localStorage.getItem('token_Pat')
+    const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
-
+    return this.http.get<any>(`${this.URL}`+'invitation/getdemande/'+id,{headers: headers})   }
+    
+    acceptInvts(id:any ,body:any){
+      const token=localStorage.getItem('token_Pat')
+      const headers=new HttpHeaders().set('authorization','Bearer '+token)
+  
+      return this.http.put<any>(`${this.URL}`+'invitation/updatedemande/'+body,id,{headers: headers})   }
   getDoctors(){
     const token=localStorage.getItem('token_Pat')
  const headers=new HttpHeaders().set('authorization','Bearer '+token)
@@ -27,4 +36,11 @@ export class DoctorsService {
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
     return this.http.get<any>(`${this.URL}`+'demande/getmydoctor/'+id,{headers: headers})   }
+
+    myContactsDoctor(id:any){
+      const token=localStorage.getItem('token_Pat')
+      const headers=new HttpHeaders().set('authorization','Bearer '+token)
+  
+      return this.http.get<any>(`${this.URL}`+'invitation/getmydoctor/'+id,{headers: headers})   }
 }
+

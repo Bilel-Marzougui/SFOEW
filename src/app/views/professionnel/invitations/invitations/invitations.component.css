@@ -37,3 +37,35 @@
     border: none;
     font-weight: 600
   }
+  table{
+    color: rgb(65, 64, 64);
+}
+.modal-dialog {
+    max-width: 900px;
+    height: 500px;
+}
+table.table>tbody>tr:hover td,
+table.table>tbody>tr:hover th {
+  background-color: #ffffff !important;
+}
+img {
+  width: 40px;
+  height: 40px
+}
+img.details{
+  width: 30%;
+  height: 30%;
+
+}
+.parent {
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+i:hover{
+  cursor: pointer;
+color: #FF4500;
+
+}

@@ -246,7 +246,7 @@ get flogPat() { return this.loginFormPat.controls; }
 
 public onValChange(val: any) {
   this.selectedVal = val;
-   console.log(this.selectedVal)
+/*    console.log(this.selectedVal) */
   this.status=(this.action+this.selectedVal)
 
 
@@ -272,7 +272,7 @@ public onValChange2(val: any) {
 // *********register professionnel****************//
 
 registerPro(info:any,type) {
-  console.log('this is add',info)
+/*   console.log('this is add',info) */
   if(type==1){
     this.AuthProfessionnel.registerProf(info)
     .subscribe(response=>{
@@ -362,17 +362,6 @@ registerPat(infopat:any,type) {
 if(type==1){
   console.log(" form",infopat) 
   this.AuthPatient.registerPatient(infopat) .subscribe((response)=>{
-    /*    this.snackBar.open(" Inscription réussie " ,"×", {
-     
-         duration: 5000,
-    
-     
-         verticalPosition: 'top',
-         panelClass:'success'
-     
-       }); */
-   /*     console.log(response) */
- 
        Swal.fire({
          position: 'center',
          icon: 'success',
@@ -487,11 +476,11 @@ loginPro(loginFormPro:any){
 
 // *********login patient****************//
 loginPat(loginFormPat:any){
-  console.log(loginFormPat.value)
+/*   console.log(loginFormPat.value) */
   let data=loginFormPat.value
   this.AuthPatient.loginSPat(data).subscribe(data=>{
     this.datatoken=data
-    console.log(data)
+/*     console.log(data) */
     this.AuthPatient.saveDataPat(this.datatoken.token)
     this.router.navigate(['/patient/profil'])
 
@@ -507,10 +496,22 @@ onReset() {
   this.registerFormPat.reset();
 
 }
+registreLoginGmail(data:any){
+/*   console.log("yyyy",data) */
+  this.AuthPatient.loginSPat(data).subscribe(data=>{
+    this.datatoken=data
+  /*   console.log(data) */
+    this.AuthPatient.saveDataPat(this.datatoken.token)
+    this.router.navigate(['/patient/profil'])
+
+
+
+  },(err:HttpErrorResponse)=>this.messageError=err.error.error)
+}
 signInWithGoogle(): void {
  
   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((response)=>{
-    console.log("resss",response)
+   /*  console.log("resss",response) */
     this.patientRegistreGmailE=response.email;
     this.patientRegistreGmailP=response.photoUrl;
     this.patientRegistreGmailF=response.firstName;
@@ -527,17 +528,18 @@ signInWithGoogle(): void {
               let objLogin = {
                 email:  this.patientRegistreGmailE, password: 'azerty+*'
               }
-              console.log('nnnnnnnnnnn',objLogin)
+         
               this.AuthPatient.loginSPat(objLogin).subscribe(data=>{
                 this.datatoken=data
-                console.log(data)
+        /*         console.log(data) */
                 this.AuthPatient.saveDataPat(this.datatoken.token)
                 this.router.navigate(['/patient/profil'])
             
             
             
               },(err:HttpErrorResponse)=>this.messageError=err.error.error)
-             
+        /*       console.log('nnnnnnnnnnn',objLogin) */
+   
             }
        
        })
@@ -557,7 +559,7 @@ signInWithGoogle(): void {
                 
                 
                   },(err:HttpErrorResponse)=>this.messageError=err.error.error)
-                   console.log('nnnnnnnnnnn')
+                /*    console.log('nnnnnnnnnnn') */
                  }
             
             })
@@ -575,10 +577,10 @@ signOut(): void {
 
 
 async swal(){
-  console.log(this.selectedVal)
-  if(this.selectedVal=='Patient')
+/*   console.log(this.selectedVal) */
+  if(this.selectedVal=='Patient' || this.selectedVal2=='Patient' )
   Swal.fire({
-    title: 'Login Form',
+    title: 'Register Patient',
     width: '50%',
     html: `<form style="width:98%">
     <div class="form-row" >
@@ -610,7 +612,7 @@ async swal(){
  
  
   </form>`,
-    confirmButtonText: 'Sign in',
+    confirmButtonText: 'Register',
     focusConfirm: false,
     preConfirm: () => {
       this.patientRegistreGmailDB = Swal.getPopup().querySelector('#DB');
@@ -641,16 +643,9 @@ async swal(){
       let objLogin = {
         email:  this.patientRegistreGmailE, password: 'azerty+*'
       }
-      console.log('nnnnnnnnnnn',objLogin)
-      this.AuthPatient.loginSPat(objLogin).subscribe(data=>{
-        this.datatoken=data
-        console.log(data)
-        this.AuthPatient.saveDataPat(this.datatoken.token)
-        this.router.navigate(['/patient/profil'])
-    
-    
-    
-      },(err:HttpErrorResponse)=>this.messageError=err.error.error)
+      this.registreLoginGmail(objLogin)
+     /*  console.log('nnnnnnnnnnn',objLogin) */
+
     
   }
   /*   Swal.fire(`
@@ -666,7 +661,7 @@ async swal(){
   })
   else 
   Swal.fire({
-    title: 'Login Form',
+    title: 'Register Doctor',
     width: '50%',
     html: `<form style="width:98%">
     <div class="form-row" >
@@ -706,7 +701,7 @@ async swal(){
  
  
   </form>`,
-    confirmButtonText: 'Sign in',
+    confirmButtonText: 'Register',
     focusConfirm: false,
     preConfirm: () => {
       this.patientRegistreGmailDB = Swal.getPopup().querySelector('#DB');
@@ -740,15 +735,15 @@ async swal(){
       this.doctor.adeli=""
       this.doctor.rpps=result.value.R
       this.doctor.role="2"
-      console.log(this.doctor)
+    /*   console.log(this.doctor) */
       this.registerPro(this.doctor,1)
       let objLogin = {
         email:  this.patientRegistreGmailE, password: 'azerty+*'
       }
-      console.log('nnnnnnnnnnn',objLogin)
+      /* console.log('nnnnnnnnnnn',objLogin) */
       this.AuthProfessionnel.loginSPro(objLogin).subscribe(data=>{
         this.datatoken=data
-        console.log(data)
+      /*   console.log(data) */
         this.AuthPatient.saveDataPat(this.datatoken.token)
         this.router.navigate(['/patient/profil'])
     

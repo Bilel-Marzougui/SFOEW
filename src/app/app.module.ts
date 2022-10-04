@@ -49,11 +49,16 @@ import { FormdPrRoutingModule } from './views/professionnel/preview-form-doctor/
 import { FormdPrModule } from './views/professionnel/preview-form-doctor/formd-pr.module';
 import { ToastrModule } from 'ngx-toastr';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+const CLIENT_ID = '338766570747-9ci8df39dn8h1n0nve8qpl1imoaqok6r.apps.googleusercontent.com';
 const googleLoginOptions = {
   scope: 'profile email',
   plugin_name:'login' //you can use any name here
 }; 
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,8 +116,13 @@ const googleLoginOptions = {
     MatProgressBarModule,
     FormdPrRoutingModule,
     FormdPrModule,
-
- 
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
     
 
 

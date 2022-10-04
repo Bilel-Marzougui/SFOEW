@@ -25,6 +25,7 @@
     "@angular/router": "~10.0.14",
     "@auth0/angular-jwt": "^5.0.2",
     "@material/radio": "^14.0.0",
+    "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^7.0.0",
     "@sweetalert2/theme-dark": "^5.0.12",
     "@sweetalert2/themes": "^5.0.12",

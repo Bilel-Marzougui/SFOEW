@@ -9,7 +9,7 @@
               <div class="sidebar-brand-icon rotate-n-15">
                   <i><img src="../../../assets//img/logo.png" alt=""></i>
               </div>
-              <div class="sidebar-brand-text mx-3">Espace Patient </div>
+              <div class="sidebar-brand-text mx-3">{{ 'HOMES.ESPACEPATIENT' | translate }} </div>
           </a>
 
           <!-- Divider -->
@@ -33,7 +33,7 @@
               <a class="nav-link collapsed" routerLink="profil" data-toggle="collapse" data-target="#collapseTwo"
                   aria-expanded="true" aria-controls="collapseTwo">
                   <i class="fas fa-fw fa-cog"></i>
-                  <span>Mon compte</span>
+                  <span>{{ 'SIDEMENU.MC' | translate }}</span>
               </a>
 
           </li>
@@ -68,7 +68,7 @@
               <a class="nav-link collapsed" routerLink="listDoctors" data-toggle="collapse" data-target="#collapsePages"
                   aria-expanded="true" aria-controls="collapsePages">
                   <i class="fas fa-fw fa-folder"></i>
-                  <span>Liste des docteurs</span>
+                  <span>{{ 'SIDEMENU.LI' | translate }}</span>
               </a>
               <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                   <div class="bg-white py-2 collapse-inner rounded">
@@ -87,7 +87,7 @@
             <a class="nav-link collapsed" routerLink="contacts" data-toggle="collapse" data-target="#collapsePages"
                 aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>contacts</span>
+                <span>{{ 'SIDEMENU.CO' | translate }}</span>
             </a>
         
         </li>
@@ -108,7 +108,7 @@
           <li class="nav-item">
             <a class="nav-link" href="tables.html" (click)="logout()">
               <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                <span>Déconnexion</span></a>
+                <span>{{ 'SIDEMENU.DEC' | translate }}</span></a>
         </li>
           <!-- Sidebar Toggler (Sidebar) -->
           <!-- <div class="text-center d-none d-md-inline">
@@ -158,7 +158,46 @@
 
                   <!-- Topbar Navbar -->
                   <ul class="navbar-nav ml-auto" >
+                    <li class="nav-item dropdown no-arrow mx-1"  >
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-plus fa-4xx"></i>
+                            <!-- Counter - Alerts -->
+                            <span class="badge badge-danger badge-counter">{{numberInvts()}}+</span>
+                        </a>
+                        <!-- Dropdown - Alerts -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="alertsDropdown" >
+                            <h6 class="dropdown-header" style="background-color: #3e4676;border-color: #3e4676;">
+                                Invitations
+                            </h6>
+                 
+                     
+                      
+                              
+                          
+                                <table class="table">
+                                 
+                                  <tbody>
+                                    <tr *ngFor="let invt of invts ;let i = index"  >
+                                
+                                      <td>      <img *ngIf="!invt.patient.photo" class="img-profile rounded-circle rotation2" src="../../../assets/img/avatar.jpg">
+                                         <img *ngIf=" invt.patient.photo" class="img-profile rounded-circle rotation2" [src]="invt.patient.photo"></td>
+                                      <td>    <span class="font-weight-bold">{{invt.patient.name}}   {{invt.patient.lastname}}   </span></td>
+                                      <td>     <i class="fa-sharp fa-solid fa-xmark"  aria-hidden="true" (click)="removetInvt(invt._id)"></i></td>
+                                    </tr>
+                             
+                                  </tbody>
+                                </table>
+                     
+                           
 
+                  
+                      
+
+                            <a class="dropdown-item text-center small text-gray-500" routerLink="Invitations">{{ 'SIDEMENU.LI' | translate }}</a>
+                        </div>
+                    </li>
                       <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                       <li class="nav-item dropdown no-arrow d-sm-none">
                           <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -295,7 +334,13 @@
                               <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                           </div>
                       </li> -->
-
+                      <div>
+                        <label>
+                          <select name='langChoose' #langChoose [(ngModel)]='languageSelect'  (change)="onLangChange(langChoose.value)">
+                            <option *ngFor="let lang of languages" [value]="lang.key"  >{{lang.displayValue}}</option>
+                          </select>
+                        </label>
+                      </div>
                       <div class="topbar-divider d-none d-sm-block"></div>
 
                       <!-- Nav Item - User Information -->
@@ -304,8 +349,9 @@
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{dataPatient.name}} {{dataPatient.lastname}}</span>
                         <div class="rotation">
-                          <img class="img-profile rounded-circle"
+                          <img *ngIf="dataPatient.photo !=''" class="img-profile rounded-circle"
                           [src]="dataPatient.photo">
+                          <img *ngIf="dataPatient.photo==''" class="img-profile rounded-circle rotation2" src="../../../assets/img/avat.jpg">
 
                         </div>
                         
@@ -328,7 +374,7 @@
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item"  (click)="logout()" href="#" data-toggle="modal" data-target="#logoutModal">
                                   <i  class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                  Logout
+                                  {{ 'SIDEMENU.DEC' | translate }}
                               </a>
                           </div>
                       </li>

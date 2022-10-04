@@ -20,6 +20,17 @@
     <br>
   </div>
 <ul class="list" *ngIf="form" >
+  <div class="col-12 col-md-12 col-lg-11 mx-auto">
+    <div class="card">
+      <div *ngIf="form" class="card-header">
+        <h1 class="form-title">{{ 'AFFECTFORMS.DESC' | translate }}</h1>
+        <p class="fdescr">{{form.description}}</p>
+
+
+      </div>
+
+    </div>
+  </div>
   <cdk-virtual-scroll-viewport  style="height: 800px" itemSize="90" >
     <div class="card-material">
       <!-- <div class="content">
@@ -50,17 +61,7 @@
      <div *ngIf="form" class="container">
     
     
-        <div class="col-12 col-md-12 col-lg-11 mx-auto">
-          <div class="card">
-            <div *ngIf="form" class="card-header">
-              <h1 class="form-title">Desc</h1>
-              <p class="fdescr">{{form.description}}</p>
-    
-    
-            </div>
-    
-          </div>
-        </div>
+   
     
         <!-- boucel for =>enter to section items -->
         <div *ngFor="let section of form.sections;let s = index">
@@ -74,7 +75,7 @@
     </div>
     <ng-container *cdkVirtualFor="let section of form.sections;let s = index">
       <div>
-        <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title}} N° {{s}} 
+        <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title.slice(0,30)}} N° {{s}} 
         </h3>
       </div>
       <!-- boucel for =>enter to questions items -->
