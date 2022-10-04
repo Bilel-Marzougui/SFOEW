@@ -41,6 +41,8 @@ export class EditProfilProComponent implements OnInit, OnDestroy {
 
 
   }
+
+  
   constructor(private snackBar:MatSnackBar,private formBuilder: FormBuilder, public updateservice: UpdProfilProServiceService, private router: Router,
     public dialogRef: MatDialogRef<EditProfilProComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogModel, public authPro: AuthProfessionnelService) {
