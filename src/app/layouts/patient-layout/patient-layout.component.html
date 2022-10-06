@@ -178,16 +178,16 @@
                           
                                 <table class="table">
                                  
-                             <!--      <tbody *ngIf="invts">
+                                <tbody *ngIf="invts">
                                     <tr *ngFor="let invt of invts ;let i = index"  >
                                 
-                                      <td>      <img *ngIf="invt.doctor.photo==''" class="img-profile rounded-circle rotation2" src="../../../assets/img/avatar.jpg">
-                                         <img *ngIf=" invt.doctor.photo" class="img-profile rounded-circle rotation2" [src]="invt.patient.photo"></td>
+                                      <td>      
+                                         <img *ngIf="invt.doctor.photo" class="img-profile rounded-circle rotation2" [src]="invt.doctor.photo"></td>
                                       <td>    <span class="font-weight-bold">{{invt.doctor.name}}   {{invt.doctor.lastname}}   </span></td>
                                       <td>     <i class="fa-sharp fa-solid fa-xmark"  aria-hidden="true" (click)="removetInvt(invt._id)"></i></td>
                                     </tr>
                              
-                                  </tbody> -->
+                                  </tbody>  
                                 </table>
                      
                            
@@ -195,7 +195,7 @@
                   
                       
 
-                            <a class="dropdown-item text-center small text-gray-500" routerLink="Invitations">{{ 'SIDEMENU.LI' | translate }}</a>
+                            <a class="dropdown-item text-center small text-gray-500" routerLink="listDoctors">{{ 'SIDEMENU.LI' | translate }}</a>
                         </div>
                     </li>
                       <!-- Nav Item - Search Dropdown (Visible Only XS) -->

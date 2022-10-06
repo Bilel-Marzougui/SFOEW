@@ -60,13 +60,16 @@ export class ProfessionnelLayoutComponent implements OnInit {
     
     this.id=this.authPro.geid()
     this.professionnel=this.authPro.getUsername()
-
+    this.invservice.getInvt(this.id).subscribe()
      this.updateservice.getProf(this.id).subscribe(response=>
       this.dataProf = response)
  /*      this.invservice.getInvts(this.id).subscribe(response =>
         this.invts = response,
         )  */ 
-        this.languageSelect=localStorage.getItem('langauage')
+        if(localStorage.getItem('langauage')==null){
+          this.languageSelect='fr'
+        }else{
+          this.languageSelect=localStorage.getItem('langauage')}
       
 console.log( this.languageSelect)
   }

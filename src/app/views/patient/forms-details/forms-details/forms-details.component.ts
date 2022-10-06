@@ -389,7 +389,7 @@ for(let j=0;j<rep.grille.options.length;j++){
     }  */
   }
   getaData(question,m,k,s,q,data){
-    console.log(data.grille) 
+  /*   console.log(data.grille)  */
    /*  console.log(m,k) */
   /*   console.log(question.options)
     console.log(question.scoreS) */
@@ -568,48 +568,6 @@ if(!hi.checked){
     
     }
   }
-
-  // Range(value,event,sections,question,type){
- 
- 
- 
- 
- 
-  //    let x =0
-  //    if(this.FormScore.length===1&&this.FormScore[0]==0){
-  //      this.FormScore= []
-  //    }
-  //    let  indexQ = this.FormScore.findIndex(x => 
-  //      x.type===type
-  //    );
-  //    if( indexQ == -1){
-  //      this.FormScore.push({text:event,score:value,index:x+1,section:sections,indexQuestion:question,type:type})
-  //    }else{
-  //      this.FormScore.map((result)=>{
-       
-  //        if(result.type==type){
-  //          result.text=value.text
-  //          result.score=value.score
-  //          result.section=value.sections
-  //          result.indexQuestion=question
-  //          result.type=type
-  //        }
-  //      })
-    
-     
-  //    }
-  //  }
-cc(){
-
-
- /*  console.log("valu"+this.test1)
-  console.log(this.test2)
-  console.log("sect"+this.test3)
-  console.log("ques"+this.test4)
-  console.log("type"+this.test5) */
-
- 
-}
 scorSend=[];
 calcul(){
   this.disabledConfirme=true;
@@ -617,33 +575,6 @@ calcul(){
   this.route.events.subscribe((event: RouterEvent) => {
     this.navigationInterceptor(event)
   })
- /*  this.route.navigate(['/patient/contacts'])
-  this.snackBar.open("Form calcule" ,"×", {
-
-    duration: 5000,
-
- 
-
-    verticalPosition: 'top',
-    panelClass:'success'
-
-  }) */
-/*   console.log(( this.idForm2)) */
-  /*    this.PatForms.addRep(  {form: this.idForm2,
-  user: this.idpatient,
-  doctor: this.iddoctor,
-  responses: this.tableReponse
-}).subscribe((res)=>{
-    console.log("ressdddddddddddddddddds",res)
-    if(res){
- 
-    }
-  })  */ 
-/*    console.log("FormScore",this.FormScore,"tableReponse",this.tableReponse)
-    this.FormScore.map((res)=>{
-  
-  }) */
-   
     for(let fm=0;fm<this.form.formMuti.length;fm++){
       for(let k=0;k<this.form.formMuti[fm].indexScoreForm.length;k++){
         if(this.form.formMuti[fm].indexScoreForm[k].type==="index"){
@@ -681,10 +612,10 @@ calcul(){
     console.log(this.scoreS,"this.scoreS")  */ 
  /*    console.log(this.tableReponse,"this.tableReponse")
     console.log(this.scoreS,"this.scoreS") */
-     console.log(this.scoreS,"this.scoreS")  
-    let scoreCalcul =  eval(this.scoreS) ;
+   /*   console.log(this.scoreS,"this.scoreS")   */
+    let scoreCalcul =  eval(this.scoreS) ; 
     /*  console.log(scoreCalcul,"scoreCalcul")   */
-    this.scorSend.push(scoreCalcul) 
+    this.scorSend.push(scoreCalcul)  
  
     this.tableCalcul=[];
   this.scoreS=""
@@ -719,10 +650,10 @@ calcul(){
       }
     })
 }, 4000); 
-
+ 
 
 setTimeout(() => {
-   location.reload() 
+  location.reload() 
 }, 6000);     
 /* console.log(this.FormScore,this.tableCalcul,this.tableReponse) */
 }

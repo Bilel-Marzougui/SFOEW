@@ -155,7 +155,7 @@ console.log(this.pat.name) */
     
 }
 addPatient(id:any,index:any){
-//console.log(id,localStorage.getItem('id_Pro'),index);
+console.log(id,localStorage.getItem('id_Pro'),index);
  
   let obj ={
  
@@ -186,7 +186,7 @@ if(res._id){
  
    this.listPatient.splice (indexE, 1);  
    this.invservice.getListEnvoi(this.id).subscribe((res)=>{
-console.log(res)
+
   })
 }else{
   const Toast = Swal.mixin({

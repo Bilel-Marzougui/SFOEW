@@ -32,7 +32,7 @@ export class PatientFormsComponent implements OnInit {
 
    this.doctorsService.myContactsDoctor(this.id).subscribe(response =>{
 
-    console.log(response)     
+/*     console.log(response)    */  
     this.profs = response
     this.filtredprofs=response
     this.mesgEmpty=true;
@@ -75,7 +75,7 @@ export class PatientFormsComponent implements OnInit {
   
       this.idDocter=DocID;
       this.PatForms.getForms(this.id,DocID).subscribe(response=>{
-         console.log(response)  
+      /*    console.log(response)   */
       this.forms=response.incompleted;
       this.formsCompleted=response.completed
     })

@@ -63,6 +63,7 @@ export class ListDoctorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+ 
     this.doctorsService.getInvts(this.idPat).subscribe((response)=>{
  
       this.mesgEmpty=false;
@@ -128,7 +129,7 @@ export class ListDoctorsComponent implements OnInit {
 
 
       this.doctorsService.acceptInvts(this.idPat,body).subscribe(response=>{
-        console.log(response)
+       /*  console.log(response) */
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',

@@ -26,7 +26,10 @@ export class FrontLayoutComponent implements OnInit, OnDestroy {
   tokenPat: any = localStorage.getItem('token_Pat')
   constructor(private authPro: AuthProfessionnelService, public dialog: MatDialog,  ngZone :NgZone,public translationService: TranslationService) {
     this.isLoggidIn();
-    this.languageSelect=localStorage.getItem('langauage')
+  if(localStorage.getItem('langauage')==null){
+    this.languageSelect='fr'
+  }else{
+    this.languageSelect=localStorage.getItem('langauage')}
     window['onSignIn']= user => ngZone.run(
       () =>{
         this.afterSignUp(user)

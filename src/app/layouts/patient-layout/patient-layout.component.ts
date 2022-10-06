@@ -53,16 +53,24 @@ invts:any;
      this.dataPatient.photo=response.photo;
       
       this.dataPatient = response}))
-      this.languageSelect=localStorage.getItem('langauage')
+      if(localStorage.getItem('langauage')==null){
+        this.languageSelect='fr'
+      }else{
+        this.languageSelect=localStorage.getItem('langauage')}
   }
 
   ngOnInit(): void {
     this.fullname=this.authPat.getUsername();
-    this.doctorsService.getInvts(this.id).subscribe((response)=>{
- console.log(response,11)
- this.invts=response
-  
+    this.doctorsService.refreshNeeded$.subscribe((res)=>{
+      this.listInvit()
     })
+  }
+  listInvit(){
+    this.doctorsService.getInvts(this.id).subscribe((response)=>{
+      this.invts=response
+/*        console.log(response) */
+         })
+    
   }
   onLangChange(currentLang: string) {
     localStorage.setItem('langauage',currentLang)
