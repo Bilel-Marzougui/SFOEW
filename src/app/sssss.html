@@ -1,385 +1,319 @@
-<div class="card-material">
-    <!-- <div class="content">
-      <div fxLayout="row wrap">
-        <div fxFlex="25%" *ngFor="let num of [1,2,3,4,5,6,7]">
-          <mat-card class="mat-elevation-z4" >
-            <mat-card-header>
-              <mat-card-title>Mountains {{num}}</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="./../assets/images/mountains.jpg">
-            <mat-card-content>
-              <p>
-                The Himalayas is a mountain range in Asia.
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>LIKE</button>
-              <button mat-button>SHARE</button>
-            </mat-card-actions>
-          </mat-card>
-        </div>
-      </div>
-      </div> -->
-  
-  
-  {{item}}
-  sss
-    <!-- *ngFor cannot read property of undefined so we need to check form not empty -->
-    <div *ngIf="form" class="container">
-  
-  
-      <div class="col-12 col-md-12 col-lg-11 mx-auto">
-        <div class="card">
-          <div *ngIf="form" class="card-header">
-            <h1 class="form-title">{{form.title}}</h1>
-            <p class="fdescr">{{form.description}}</p>
-  
-  
-          </div>
-  
-        </div>
-      </div>
-  
-      <!-- boucel for =>enter to section items -->
-      <div *ngFor="let section of form.sections;let s = index">
-        <div>
-          <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title}}
-          </h3>
-        </div>
-        <!-- boucel for =>enter to questions items -->
-  
-        <div *ngFor="let question of section.questions; let q = index;" class="col-sm-12 col-md-12 col-lg-11 mx-auto">
-          <div class="card quesiton-look">
-  
-  
-            <div class="row card-body col-12">
-  
-              <div class="row w-100">
-  
-                <div class="col-lg-12 ">
-  
-  
-  
-                  <h2 class="question-title">
-                    {{section.questions[q].title}}
-                  </h2>
-                </div>
-  
-  
-  
+
+            <div class="container rounded mt-5 bg-white p-md-5">
+    
+              
+              <div class="container">
+                  <div class="form-group">
+                      <div class="h2 font-weight-bold">Liste des contacts</div>
+              
+                    </div>
+                    <div class="container" >
+                        
+                      <div class="container" >
+                        
+                          <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Chercher..." (input)="filterItem($event.target.value)"  />
+                          </div>
+                        </div>
+                    </div>
+              
+                    <div class="table-responsive">
+              
+                  <table class="table ">
+                      <div *ngIf="!profs" class="text-center">
+                          <div class="spinner-border text-secondary" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>
+                        </div>
+                      <thead>
+                          <tr>
+                              <th scope="col" >Nom et prénom </th>
+                              <th scope="col">Adresse</th>
+                              <th scope="col">E-mail</th>
+                              <th scope="col">Télèphone</th>
+                              <th scope="col">Etat Formulaire</th>
+              
+                          </tr>
+                      </thead>
+                  
+                      <tr *ngFor="let prof of profs ;index as i">
+                      
+                              <td class="pt-3">{{prof.doctors.name}} {{prof.doctors.lastname}}</td>
+                              <td class="pt-3">{{prof.doctors.adresse}}</td>
+                              <td class="pt-3">{{prof.doctors.email}}</td>
+                              <td class="pt-3" >{{prof.doctors.tel}}  </td>
+                              <td><i  class='fas fa-file-medical' class="fa-sharp fa-solid fa-check-to-slot" (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal"   style="padding-right: 10px;cursor: pointer;" data-target="#exampleModal"></i>
+                                  <i  class='fas fa-file-medical' (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" style="cursor: pointer;" data-target="#exampleModalCompleted"></i>
+                              </td>
+                        
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                         
+                          <div class="modal-body">
+                              
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                              <h5 class="modal-title" id="exampleModalLabel">Formulaires affecter par {{prof.doctors.lastname}}</h5>
+              
+                              <div class="container rounded mt-2 bg-white p-md-2">
+                                  <div class="table-responsive">
+                                      <table class="table ">
+                                          <thead>
+                                              <tr>
+                                                  <th scope="col">Title</th>
+                                                  <th scope="col">Description</th>
+                                   
+                                  
+                                              </tr>
+                                          </thead>
+                                          
+                                          <tbody *ngFor="let form of forms ;index as i" style="cursor: pointer;">
+                                              <tr>
+                                                  <td  data-dismiss="modal" (click)="openFormDetails(form.form._id,prof)" class="pt-3">{{form.form.title}}</td>
+                                                  <td class="pt-3">{{form.form.description}}</td>
+              
+                                                 
+                                              </tr>
+                                  
+                                          </tbody>
+                                      </table>
+                                  </div>
+                              </div>
+              
+                          </div>
+                       
+                      </div>
+                  </div>
               </div>
-  
-  
-              <div class="row w-100 mt-1">
-                <!-- condition If =>testing about question type -->
-  
-                <div *ngIf="section.questions[q].type == 'Text court'" class="col-lg-8 col-sm-12">
-                  <!-- => show simple input -->
-  
-                  <input class="question-short-input-response" [(ngModel)]="textcourt" (change)="TextCourt(section.questions[q].score,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getDataTextCourt(section.questions[q],$event,s,q)">
-                </div>
-  
-                <div *ngIf="section.questions[q].type == 'Nomber de jours'" class="col-lg-8 col-sm-12" >
-                  <!-- => show simple input -->
-  
-                  <input class="question-short-input-response" [(ngModel)]="Nomberdej" value="nb jours" (change)="Nomberdejours(section.questions[q].score,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataTextCour(section.questions[q].options[o],section.questions[q],q,o,$event,s)">
-                <button (click)="cc()">test</button>
-                </div>
-  
-                <!-- condition If =>testing about question type -->
-  
-                <div *ngIf="section.questions[q].type == 'Choix multiples'" style="width: 100%;"
-                  class="col-lg-12 col-sm-12 w-100">
-                  <!-- boucel for =>enter to checkbox options -->
-                   <button (click)="expression()">bbb</button>
-                  <div style="width: 100%;" *ngFor="let op of section.questions[q].optioncm; let o = index;">
-                    <div class="row">
-                      <div class="col">
-                        <!-- => show checkbox input -->
-  
-                        <mat-checkbox class="m-2 w-100" style="width: 100%;" (change)="radioChange(section.questions[q].optioncm[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataCaseChoix(section.questions[q].options[o],section.questions[q],q,o,$event,s)">
-                          <h1 class="textt">{{section.questions[q].optioncm[o].text}}</h1>
-                        </mat-checkbox>
-  
-  
-                      </div>
-  
-  
-                    </div>
-  
-                  </div>
-  
-  
-  
-                </div>
-                <!-- condition If =>testing about question type -->
-  
-                <div *ngIf="section.questions[q].type == 'Range Bar'" style="width: 100%;"
-                  class="col-lg-12 col-sm-12 w-100">
-                  <!-- boucel for =>enter to Range options -->
-  
-                  <div *ngFor="let op of section.questions[q].options; let o = index;">
-                    <div class="row  m-2">
-                      <div class="col-lg-8 col-sm-12" style="padding-left: 3%;">
-                        <!--  =>show range bar slider -->
-  
-                        <div class="simple-slider">
-  
-                          <ng5-slider   [options]="sliderMakeOptions(section.questions[q])"   (valueChange)="Range(section.questions[q].dataRange[o].legend,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataRangeBar(section.questions[q],section.questions[q].dataRange,q,o,$event,s)"></ng5-slider> 
-  
-                        </div>
-  
-  
-                      </div>
-  
-  
-  
-                    </div>
-  
-  
-                  </div>
-  
-  
-  
-                </div>
-                <!-- condition If =>testing about question type -->
-  
-                <div *ngIf="section.questions[q].type == 'VISUELLE ANALOGIQUE'" style="width: 100%;"
-                  class="col-lg-12 col-sm-12 w-100">
-  
-                  <div class="row  m-2">
-                    <div class="col-lg-8 col-sm-12" style="padding-left: 3%;">
-                      <div class="simple-slider">
-  
-                        <div class="row">
-                          <!-- <img style="width: 10%;height: 10%;" class="img-thumbnail" src="assets/img/placeholder.png" alt=""> -->
-                          <div class='container23'style="width: 600px" >
+              <!-- Modal Completed-->
+              <div class="modal fade" id="exampleModalCompleted" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
                           
-                          <img  class="img-thumbnail" src="../../../../../assets/Douleurgraph1.png" alt="">
-                          <input type="range" min="0" max="10" (change)="VISUELLE($event,s ,'Q '+'('+ s +',' + q+')','visuelleanalogique');getDataVisuelle(section.questions[q],'VISUELLE ANALOGIQUE',q,o,$event,s)" value="50" class="slider" name='slider' id="slider">
-                          
+                          <div class="modal-body">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              <h5 class="modal-title" id="exampleModalLabel">Formulaires remplis par {{prof.doctors.lastname}}</h5>
+              
+                              <div class="container rounded mt-2 bg-white p-md-2">
+                                  <div class="table-responsive">
+                                      <table class="table ">
+                                          <thead>
+                                              <tr>
+                                                  <th scope="col">Title</th>
+                                                  <th scope="col">Description</th>
+                                            
+                                  
+                                              </tr>
+                                          </thead>
+                                          <tbody (click)="previewForm(form)"  *ngFor="let form of formsCompleted ;index as i" style="cursor: pointer;">
+                                              <tr>
+                                                  <td  data-dismiss="modal"  class="pt-3">{{form.form.title}}</td>
+                                                  <td class="pt-3">{{form.form.description}}</td>
+                                                
+                                                 
+                                              </tr>
+                                  
+                                          </tbody>
+                                      </table>
+                                  </div>
+                              </div>
+              
                           </div>
-                          <!-- <img style="width: 10%;height: 10%;" class="img-thumbnail" src="assets/img/placeholder.png" alt=""> -->
-                        </div>
-  
-                      </div>
-  
-  
-                    </div>
-  
-  
-  
-  
-  
-  
-                  </div>
-  
-  
-  
-  
-  
-  
-                </div>
-                <!-- condition If =>testing about question type -->
-  
-                <div *ngIf="section.questions[q].type == 'Grille de cases à cocher'" style="width: 100%;"
-                  class="col-lg-12 col-sm-12 w-100">
-                  <!-- boucel for =>enter to questions options -->
-  
-                  <div *ngFor="let op of section.questions[q].optionsSaint; let o = index;">
-                    <div class="row  m-2">
-  
-  
-                      <div class="container">
-                        <div class="row">
-  
-  
-                          <!-- show question e -->
-  
-                          {{op.text}}:
-                          <div class="col">
-                            <!-- show options for every question -->
-  
-                            <div class="form-check">
-  
-                              <div class="form-check form-check-inline">
-                                <input input class="form-check-input" type="radio" ngmodel="check1">
-                              </div>
-  
-                              <div class="form-check form-check-inline">
-                                <input input class="form-check-input" type="radio" ngmodel="check2">
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input input class="form-check-input" type="radio" ngmodel="check3">
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input input class="form-check-input" type="radio" ngmodel="check4">
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input input class="form-check-input" type="radio" ngmodel="check5">
-                              </div>
-                            </div>
-  
-  
+                          <div class="modal-footer">
+                       
+                             
                           </div>
-  
-                        </div>
                       </div>
-  
-  
-  
-  
-  
-  
-                    </div>
-                    <!-- condition If =>testing about question type -->
-  
-  
                   </div>
-  
-  
-  
+              </div>
+              </tr>
+                  </table>
+              </div>
+              
+              </div>
+              </div>
+              
+              <div  *ngIf="profs==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
+                  <h1 class="header-title" style="color: transparent;padding-bottom: 15%;font-size: 0px;">A</h1>
+                  <h1 class="header-title" style="color: red;padding-bottom: 15%;">AUCUN CONTACT  </h1>
+                
                 </div>
-                <div *ngIf="section.questions[q].type == 'Cases à cocher'" style="width: 100%;"
-                  class="col-lg-12 col-sm-12 w-100">
-  
-                  <div style="width: 100%;" >
-                    <div class="row">
-                      <div class="col">
-                        <mat-radio-group 
-                        aria-labelledby="example-radio-group-label"
-                        class="example-radio-group"
-                        [(ngModel)]="favoriteSeason">
-                        <mat-radio-button *ngFor="let op of section.questions[q].options; let o = index;" class="m-2 w-100" style="width: 100%;" [value]="op.text" (change)="caseCoher(section.questions[q].options[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataCaseCoher(section.questions[q].options[o],section.questions[q],q,o,s)">
-                          <h1 *ngIf="section.questions[q].options[o].text.length > 0" class="textt">
-                            {{section.questions[q].options[o].text}}</h1>
-                        </mat-radio-button>
-  
-                      </mat-radio-group>
-                      </div>
-                  <!--     <div class="row">
-                        <label id="example-radio-group-label">Pick your favorite season</label>
-                        <mat-radio-group
-                          aria-labelledby="example-radio-group-label"
-                          class="example-radio-group"
-                          [(ngModel)]="favoriteSeason">
-                          <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
-                            {{season}}
-                          </mat-radio-button>
-                        </mat-radio-group>
-                        <div>Your favorite season is: {{favoriteSeason}}</div>
-    
-                        <div class="col-2">
-    
-                        </div>
-    
-                      </div> -->
-                      <div class="col-2">
-  
-                      </div>
-  
-                    </div>
-  
-  
-  
-                  </div>
-  
-  
-                </div>
-  
-                <div *ngIf="section.questions[q].type == 'Grille de cases à cocher 2'" style="width: 100%;"
-                  class="col-lg-12 col-sm-12 w-100">
+              
+
+
+                <div *ngIf="section .type == 'Grille de cases à cocher 2'" style="width: 100%;"
+                class="col-lg-12 col-sm-12 w-100">
+                <table class="table table-borderless">
+                  <thead>
          
-              <table class="table table-borderless">
+                  </thead>
+                  <tbody>
+                 <!--    <tr *ngFor="let question of section.questions[q].grille.options;let o = index">
+                      <th scope="row">{{question.title}}</th>
+                      <td *ngFor="let question of section.questions[q].grille.scoreS;let k = index">
+                        {{o}}{{k}}
+                        <mat-checkbox class=" inp col-md-7 col-lg-7 col-sm-9 col-xs-9 col-9  " (change)="radioChecked(question.score,question,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');
+                        getDataGrilledecasescocher(section.questions[q],$event,q,o,k,s,question)">
+                        </mat-checkbox>
+                      </td>
+
+                    </tr> -->
+                   <tr *ngFor="let questionq of tabRep.responses[0].optionsSaint.options;let m = index">
+                    <th scope="row">
+               <br>
+               <br>
+               <br>
+                    hh</th>
+                    <mat-radio-group 
+                    aria-label="Select an option"
+                     >
+ 
+                      <td class="col-lg-1" *ngFor="let question of tabRep.responses[0].optionsSaint.scoreS;let k = index" style="padding-bottom: 20px;">
+                        {{tabRep.responses[0].scoreOptioncm2[m][k]}}
+                        <mat-radio-button class="m-2 w-100" style="width: 100%;" disabled [value]="tabRep.responses[0].scoreOptioncm2[m][k]"  [checked]="tabRep.responses[0].scoreOptioncm2[m][k]">
+                     
+                      </mat-radio-button>
+
+                      </td>
+                    </mat-radio-group>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              
+              
+
+
+
+
+
+
+
+
+              // liste doctors
+
+              <div class="container rounded mt-5 bg-white p-md-5">
+
+  
+                <div class="form-group">
+                  <div class="h2 font-weight-bold">Liste des docteurs</div>
+              
+                </div>
+                <div class="container" >
+                    
+                  <div class="container" >
+                    
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Chercher..." (input)="filterItem($event.target.value)"  />
+                      </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+              
+                  <table class="table">
+              
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                     <th *ngFor="let question of section.questions[q].grille.scoreS" scope="col">{{question.title}} ||
-                          {{question.score}}</th> 
+                        <th scope="col">Nom et prénom </th>
+                        <th scope="col">Adresse</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Télèphone</th>
+                        <th scope="col">Invitation</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let question of section.questions[q].grille.options;let m = index">
-            
-                        <td *ngFor="let question of section.questions[q].grille.scoreS;let k = index">
-                          <mat-radio-button value="k+m" name="escalationTeam">{{k+m}} {{question.title}}</mat-radio-button>
-                        </td>
-                      </tr>
-  
-                    </tbody>
-                  </table> 
-               <!--    <div class="container" *ngFor="let questionss of section.questions[q].grille.options;let m = index" style="padding:20px ;">
-                    <div class="row">
-                      <div class="col-sm">
-                        <h6>{{questionss.title}} </h6>
-                      </div>
-                      <div class="col-sm" *ngFor="let question of section.questions[q].grille.scoreS;let k = index">
-                        <mat-radio-group aria-label="Select an option">
-                          <mat-radio-button   value="question[k].score" (change)="radioChecked(question.score,question,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');
-                          getDataGrilledecasescocher(section.questions[q],$event,q,o,k,s,question)">  {{k}}{{m}}</mat-radio-button>
-                   
-                        </mat-radio-group>
-                      </div>
-                    </div>
-                
-                
-                  
-                  </div> -->
-            
-          <!--         <div class="container">
-                    <div class="row">
-                      <div class="col-sm" *ngFor="let question of section.questions[q].grille.options">
-                        <h6>{{question.title}} </h6>
-                        <mat-radio-group 
-                        aria-label="Select an option">
-                        <mat-radio-button   *ngFor="let question of section.questions[q].grille.scoreS;let k = index"  [value]="question.score" class=" inp col-md-7 col-lg-7 col-sm-9 col-xs-9 col-9  " (change)="radioChecked(question.score,question,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');
-                        getDataGrilledecasescocher(section.questions[q],$event,q,o,k,s,question)">
+              
+                      <tr id="spacing-row">
+                        <td></td>
+                      </tr>  
+              
+                      <tr class="bg-blue" *ngFor="let prof of profs | paginate: { itemsPerPage: 6, currentPage: p }">
+               
+                        <td class="pt-2" >
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-md-auto">
+                                <img *ngIf="prof.photo !=''" class="img-profile rounded-circle" [src]="prof.photo">
+                                <img *ngIf="prof.photo ==''"  class="img-profile rounded-circle" src="../../../assets/img/avat.jpg">
+                              </div>
+                              <div class="col-md-auto">
+                                <div class="pl-lg-5 pl-md-3 pl-1 name" data-toggle="modal" data-target="#exampleModal"
+                                 >{{prof.name}} {{prof.lastname}} </div>
+                              </div>
+                            
+                            </div>
+                          </div>
+              
                         
-                        </mat-radio-button> 
-  
-                      </mat-radio-group>  
-                      </div>
+                     
+                        </td>
+                        <td class="pt-3">{{prof.adresse}}</td>
+                        <td class="pt-3">{{prof.email}}</td>
+                        <td class="pt-3">{{prof.tel}} </td>
+                        <td class="pt-3">
+                        <div *ngIf="friend; else notfriend">
+                         
+                            <span (click)="addDoctor(prof._id)" >
+                              <i class="fa fa-user-plus pl-3" ></i>
+                            </span>
+              
+                        
+              
+                        </div>
+                      </td>
+                        <ng-template #notfriend>
+                          <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
+                        </ng-template>
+              
+                      </tr>
+                    
+              
+              
+                    </tbody>
+              
+                  </table>
+              
+                </div>
+                <div class="parent">
+              
+                  <pagination-controls class="child" (pageChange)="p = $event"></pagination-controls>
+              
+                </div>
+              </div>
+              <div *ngIf="added">
+                <div class="alert alert-primary" role="alert">
+                  A simple primary alert—check it out!
+                </div>
+              </div>
+              
+              <!-- Modal -->
+              <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+              
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                   </div>
-                </div> -->
-  
-  
-  
-  
-  
-  
-  
-  
-  
-              </div>
-  
-  
-            </div>
-  
-  
-  
-          </div>
-        </div>
-  
-      </div>
-  
-      <div class="buttonContainer">
-        <button (click)="calcul()"  type="button" class="btn btn-primary vertical-center" style="float: centre;">confirm</button>
-      </div>
-      <br>
-      <br>
-      <br>
-      <br>
-    </div>
-  
-  </div>
-  <!-- <mat-list role="list">
-      <mat-list-item role="listitem" *ngFor="let x of [0,1,2]; let i = index">
-          <mat-radio-button color="primary" [checked]="i == defaultSelected" [value]="i" (change)="selection = $event.value">
-              Item {{x}}
-          </mat-radio-button>
-      </mat-list-item>
-  </mat-list>
-  <mat-card style="margin-top: 1rem">
-      Currently selected: {{selection}}
-  </mat-card> -->
+                </div>
+              </div> -->
+              

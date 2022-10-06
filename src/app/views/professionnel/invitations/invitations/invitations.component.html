@@ -1,27 +1,122 @@
-<div class="container">
+<div class="container rounded mt-5 bg-white p-md-5">
+
+  
+  <div class="form-group">
+    <div class="h2 font-weight-bold">{{ 'LISTPATIENT.LISTPATIENT' | translate }}</div>
+
+  </div>
+  <div class="container" >
+      
+    <div class="container" >
+      
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="{{ 'LISTPATIENT.SEARCH' | translate }}..." (input)="filterItem($event.target.value)"  />
+        </div>
+      </div>
+  </div>
+  <div class="table-responsive">
+
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th scope="col">{{ 'PROFILE.NAME' | translate }} </th>
+          <th scope="col">{{ 'PROFILE.ADRESS' | translate }}</th>
+          <th scope="col">{{ 'PROFILE.EMAIL' | translate }}</th>
+          <th scope="col">{{ 'PROFILE.TELE' | translate }}</th>
+          <th scope="col">Invitation</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr id="spacing-row">
+          <td></td>
+        </tr>  
+          <tr class="bg-blue" *ngFor="let prof of listPatient | paginate: { itemsPerPage: 5, currentPage: p }; let o = index">
+          <td class="pt-2" >
+            <div class="container">
+              <div class="row">
+                <div class="col-md-auto">
+                  <img *ngIf="prof.photo !='' && prof.photo != 'default.png'" class="img-profile rounded-circle" [src]="prof.photo">
+                  <img *ngIf="prof.photo =='' || prof.photo == 'default.png'"  class="img-profile rounded-circle" src="../../../assets/img/avat.jpg">
+                  
+                </div>
+                <div class="col-md-auto">
+                  <div class="pl-lg-5 pl-md-3 pl-1 name" data-toggle="modal" data-target="#exampleModal"
+                   >{{prof.name}} {{prof.lastname}}   </div>
+                </div>
+              
+              </div>
+            </div>
+
+          
+       
+          </td>
+          <td class="pt-3">{{prof.adresse}}</td>
+          <td class="pt-3">{{prof.email}}</td>
+          <td class="pt-3">{{prof.tel}} </td>
+          <td class="pt-3">
+          <div >
+           
+              <span (click)="addPatient(prof._id,o)" >
+                <i  class="fa fa-user-plus pl-3" ></i>
+              </span>
+
+          
+
+          </div>
+        </td>
+          <ng-template #notfriend>
+            <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
+          </ng-template>
+
+        </tr>
+      
+
+
+      </tbody>
+
+    </table>
+
+  </div>
+    <div class="parent">
+
+    <pagination-controls class="child" (pageChange)="p = $event;getPage($event)"></pagination-controls>
+
+  </div> 
+</div>
+
+
+
+
+<!-- <div class="container">
   <div class="main-body">
 
-    <!-- Breadcrumb -->
+ 
     <nav aria-label="breadcrumb" class="main-breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a >Professionnel</a></li>
         <li class="breadcrumb-item"><a >Invitations</a></li>
       </ol>
     </nav>
-    <!-- /Breadcrumb -->
-
-    <div class="row gutters-sm">
-   
-      <div class="container" >
+ 
+    <div class="container" >
           
-        <div class="container" >
-          
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Chercher..." (input)="filterItem($event.target.value)" />
-            </div>
-          </div>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Chercher..." (input)="filterItem($event.target.value)" />
       </div>
-      <li class="list-group-item active container">Invitations</li>
+    </div>
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+     
+
+       
+      
+      
+
+      </div>
+
+ 
 
       <div class="container" *ngFor="let invt of invts ;let i =index ">
 
@@ -44,27 +139,20 @@
               <td>
                 <div class="list-group " style="width: 100%;">
                   <li class="list-group" style="width: 100%;">
-                    <!-- <button type="button" (click)="details(i)" class="btn btn-primary btn-sm" data-toggle="modal"
+                    <button type="button" (click)="details(i)" class="btn btn-primary btn-sm" data-toggle="modal"
                       data-target=".bd-example-modal-lg">
 
                       détails
-                    </button> -->
-
-                    <button class="button" (click)="details(i)"  data-toggle="modal">
-                      <span class="text">détails</span>
-                      <i class="fa fa-id-card icon"></i>                    </button>
+                    </button>
 
                   </li>
                 </div>
               </td>
               <td>
-                <!-- <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-success btn-sm"  (click)="acceptInvt(invt._id)">
                   accepter
-                </button> -->
-<button class="button">
-  <span class="text">accepter</span>
-<i class="ri-check-line icon"></i>
-</button>
+                </button>
+
               </td>
             </tr>
           </table>
@@ -79,7 +167,7 @@
     </div>
 
   </div>
-</div>
+</div> -->
 <!-- tessssssssssst -->
 
 <!-- Button trigger modal -->
@@ -156,7 +244,7 @@
                       {{pat.email}}
                     </div>
                   </div>
-                  <hr>
+                 
 
                   <hr>
                   <div class="row">
@@ -177,14 +265,7 @@
                     </div>
                   </div>
                   <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Ssn</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{pat.ssn}}
-                    </div>
-                  </div>
+           
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
@@ -211,8 +292,8 @@
 </div>
 
 <!-- Small modal -->
-<div  *ngIf="invts==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
+<!-- <div  *ngIf="invts==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
   <h1 class="header-title" style="color: transparent;padding-bottom: 15%;font-size: 0px;">A</h1>
   <h1 class="header-title" style="color: red;padding-bottom: 15%;">AUCUN INVITATION  </h1>
 
-</div>
+</div> -->

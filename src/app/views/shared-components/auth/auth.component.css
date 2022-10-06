@@ -32,7 +32,9 @@
   background-size: cover;
 
 }
-
+.swal-wide{
+  width:100% !important;
+}
 
 mat-card-content {
   width:100%;
@@ -57,7 +59,24 @@ mat-card-content {
   margin: 20px auto;
   background-color: #FF4500 ;
 }
-
+.green-snackbar {
+  background: rgb(65, 252, 134);
+  color: white;
+}
+.green-snackbar button {
+  background-color: rgb(65, 252, 134);
+  color: white;
+  border: none;
+}
+.red-snackbar {
+  background: #F44336;
+  color: white;
+}
+.red-snackbar button {
+  background-color: #F44336;
+  color: white !important;
+  border: none;
+}
 mat-button-toggle-group {
   /* display: flex;
   margin-left: 120px;
@@ -176,4 +195,23 @@ border-radius: 60px;
 .choix{
   margin-top: 20px;
 
+}
+.my-overlay {
+  left: 0 !important;
+  top: 0 !important;
+  z-index: 10000 !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: fixed !important;
+  background-color: rgba(255, 255, 255, 0.252) !important;
+  cursor: pointer !important;
+  visibility: visible !important;
+  transition: visibility 0s, opacity 0.4s linear !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: wait !important;
+}
+.my-overlay i.fa.fa-spinner.fa-spin, .spinner-big {
+  font-size: 100px !important;
 }

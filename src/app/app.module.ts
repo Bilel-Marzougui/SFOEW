@@ -47,11 +47,18 @@ import { InterceptorService } from '../app/views/services/loader/interceptor.ser
 import {   MatListModule } from '@angular/material/list';
 import { FormdPrRoutingModule } from './views/professionnel/preview-form-doctor/formd-pr-routing.module';
 import { FormdPrModule } from './views/professionnel/preview-form-doctor/formd-pr.module';
- 
- 
-
-const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com';
-
+import { ToastrModule } from 'ngx-toastr';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+const CLIENT_ID = '338766570747-9ci8df39dn8h1n0nve8qpl1imoaqok6r.apps.googleusercontent.com';
+const googleLoginOptions = {
+  scope: 'profile email',
+  plugin_name:'login' //you can use any name here
+}; 
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,9 +86,11 @@ const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleuser
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    ToastrModule.forRoot(),
     ReactiveFormsModule,
     MatSelectModule,
     MatCardModule,
+    ScrollingModule,
     MatTabsModule,
     MatCheckboxModule,
     MatIconModule,
@@ -107,8 +116,13 @@ const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleuser
     MatProgressBarModule,
     FormdPrRoutingModule,
     FormdPrModule,
-
- 
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
     
 
 
@@ -137,10 +151,16 @@ const CLIENT_ID = '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleuser
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '749769172340-8ph7a2m8m9c9jmtbf39g070m8b4h0jsu.apps.googleusercontent.com'
+              '338766570747-9ci8df39dn8h1n0nve8qpl1imoaqok6r.apps.googleusercontent.com', 
+               googleLoginOptions
             )
           },
-
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              '473356701343037'
+            )
+          }
         ],
         onError: (err) => {
           console.error(err);

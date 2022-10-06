@@ -1,10 +1,16 @@
 <div class="content">
+  
     <div class="container">
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a >Patients</a></li>
+        </ol>
+      </nav>
         <div class="row">
             <div class="container" >
           
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Chercher..." (input)="filterItem($event.target.value)"  />
+                  <input type="text" class="form-control" placeholder="{{ 'LISTPATIENT.SEARCH' | translate }}..." (input)="filterItem($event.target.value)"  />
                 </div>
               </div>
         </div>
@@ -18,18 +24,21 @@
             <div class="col-lg-3" *ngFor="let contact of contacts | paginate: { itemsPerPage: 8, currentPage: p } ">
                 <div class="text-center card-box">
                     <div class="member-card pt-3 pb-3">
-                        <div class="thumb-lg member-thumb mx-auto"><img [src]="contact.patients.photo"
+                        <div class="thumb-lg member-thumb mx-auto"><img *ngIf="contact.patients.photo!=''" [src]="contact.patients.photo"
+                                class="rounded-circle img-thumbnail" alt="profile-image">
+                                <img *ngIf="contact.patients.photo==''" src="../../../../../assets/img/avat.jpg"
                                 class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                        <div class="">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" style="background-color: rgb(161, 142, 142);" (click)="getpatient(contact)" data-target="#exampleModal">
+                     
+                            <button type="button" class="btn btn-primary" data-toggle="modal" style="background: #3e4676;border-color:#3e4676;" (click)="getpatient(contact)" data-target="#exampleModal">
                                 {{contact.patients.name}} {{contact.patients.lastname}}
                               </button>
-                            <h6 ></h6>
-                        </div>
+                         
+                   
 
-
+                             
 
                         <table>
+                          <br>
                             <tr>
                                 <td> <img src="../../../../../assets/img/email.ico" style="height: 30px;width: 30px;"
                                         alt="">
@@ -39,6 +48,7 @@
                                     <a href = "mailto: {{contact.patients.email}}">{{contact.patients.email}}</a>
                                 </td>
                             </tr>
+                            <br>
                             <tr>
                                 <td>
                                     <img src="../../../../../assets/img/whatsapp.ico" style="height: 30px;width: 30px;"
@@ -100,7 +110,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">état du formulaire</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{ 'LISTPATIENT.STATUSFORMS' | translate }}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -110,9 +120,9 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Date Création</th>
-                    <th scope="col">Etat</th>
+                    <th scope="col">{{ 'LISTPATIENT.NAME' | translate }}</th>
+                    <th scope="col">{{ 'LISTPATIENT.DATECREATED' | translate }}</th>
+                    <th scope="col">{{ 'LISTPATIENT.ETAT' | translate }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -121,17 +131,17 @@
                           <span class="sr-only">Loading...</span>
                         </div>
                       </div>
-                  <tr *ngFor="let form of formsCompleted | paginate: { itemsPerPage: 9, currentPage: y } ;index as i ">
+         <!--          <tr *ngFor="let form of formsCompleted | paginate: { itemsPerPage: 7, currentPage: y } ;index as i ">
                     <th  scope="row">{{i+1}}</th>
                     <td >{{form.form.title}}</td>
                     <td>{{form.form.created_date.slice(0,10)}}</td>
                     <td><i class="fa fa-circle-check icon" style="cursor: pointer;" (click)="previewForm(form.form._id)"></i></td>
-                  </tr>
-                  <tr *ngFor="let form of formsInCompleted | paginate: { itemsPerPage: 9, currentPage: y }  ;index as k">
-                    <th  scope="row">{{i+formsCompleted.length}}</th>
+                  </tr> -->
+                  <tr *ngFor="let form of formsInCompleted | paginate: { itemsPerPage: 7, currentPage: y }  ;index as k">
+                    <th  scope="row">{{k}}</th>
                     <td >{{form.form.title}}</td>
                     <td>{{form.form.created_date.slice(0,10)}}</td>
-                    <td> <i class="fa fa-clock" style="color: red;"></i></td>
+                    <td> <i *ngIf="form.filledOn==null" class="fa fa-clock" style="color: red;"></i><i *ngIf="form.filledOn!=null" class="fa fa-circle-check icon" style="cursor: pointer;" (click)="previewForm(form.form._id)"></i></td>
                   </tr>
                 </tbody>
               </table>
@@ -148,7 +158,7 @@
 
   <div  *ngIf="contacts==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
     <h1 class="header-title" style="color: transparent;padding-bottom: 15%;font-size: 0px;">A</h1>
-    <h1 class="header-title" style="color: red;padding-bottom: 15%;">AUCUN PATIENT  </h1>
+    <h1 class="header-title" style="color: red;padding-bottom: 15%;">{{ 'LISTPATIENT.AUCUNN' | translate }} </h1>
   
   </div>
 

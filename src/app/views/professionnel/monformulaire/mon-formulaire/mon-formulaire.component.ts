@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormDataService } from '../../../services/shared-data/form-data.service';
 import{PaymentService} from '../../../services/Payment/payment.service'
+import { PatientFormsService } from 'src/app/views/services/patient/patient-forms.service';
 @Component({
   selector: 'app-mon-formulaire',
   templateUrl: './mon-formulaire.component.html',
@@ -25,32 +26,26 @@ export class MonFormulaireComponent implements OnInit {
   item:"test"
   mesgEmpty: boolean=false;
 
-  constructor( private PaymentService:PaymentService,private data:FormDataService,private router:Router,private snackBar:MatSnackBar,private invservice:InvitaionsService,private formsService:FormsService,private authPro: AuthProfessionnelService) { 
+  constructor( private PaymentService:PaymentService,private data:FormDataService,private PatForms:PatientFormsService,
+    private router:Router,private snackBar:MatSnackBar,private invservice:InvitaionsService,private formsService:FormsService,private authPro: AuthProfessionnelService) { 
     this.mesgEmpty=false;
  
     this.id = this.authPro.geid()
-    this.formsService.getForms(this.id).subscribe(response=>{
-        // console.log(JSON.stringify(response))
-      this.forms=response
-      this.filtredForms=response
-        /*  console.log((response)) */
-         this.mesgEmpty=true;
+   
 
-
-    })
     this.formsService.getAllForm().subscribe(response=>{
       // console.log(JSON.stringify(response))
 
       this.forms=response
       this.filtredForms=response
-        /*  console.log((response)) */
+       // console.log((response)) 
          this.mesgEmpty=true;
     
 
 
   })
- this.invservice.myContacts(this.id).subscribe(response =>{
-   console.log("response",response)
+ this.invservice.myContactsPatient(this.id).subscribe(response =>{
+  // console.log("response",response)
   this.contacts=response
 })
   }
@@ -61,10 +56,14 @@ export class MonFormulaireComponent implements OnInit {
     form: '',
 
   }
-  ngOnInit(): void {
+  async ngOnInit() {
+   /*  const res:any = await this.formsService.getForms(this.id).toPromise(); */
+ /* 
+    console.log("this.filtredForms",res)  */
+
     this.PaymentService.checkAchat(this.id).subscribe(checked=>{
 this.checked=checked
-console.log(this.checked)
+//console.log(this.checked)
     })
   }
   affectForm(id:any){
@@ -75,7 +74,7 @@ this.affect.form=this.formId
 // console.log('this is add'+this.affect.doctor)
 // console.log('this is add'+this.affect.form)
 this.formsService.getAffectation(this.id).subscribe((res)=>{
-  console.log('resss',res)
+// console.log('resss',res)
 })
     this.formsService.affectForm(this.id,this.affect).subscribe(response=>{
       // console.log('this is add'+response)
@@ -88,8 +87,8 @@ this.formsService.getAffectation(this.id).subscribe((res)=>{
         verticalPosition: 'top',
         panelClass:'success'
     
-      });
-
+      })
+   
   },error=> this.snackBar.open(" form affection failed " ,"×", {
 
     duration: 5000,
@@ -113,7 +112,7 @@ this.formsService.getAffectation(this.id).subscribe((res)=>{
       // console.log('show')
       this.data.GetId(formId)
 
-      console.log(formId)
+    //  console.log(formId)
     this.router.navigate(['/professionnel/show-forms',formId._id])
 
 
@@ -134,5 +133,6 @@ this.formsService.getAffectation(this.id).subscribe((res)=>{
       window.location.reload();
 
     }
+
    
 }

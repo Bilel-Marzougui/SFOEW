@@ -15,8 +15,8 @@ export class UpdProfilProServiceService {
 
   updateprof(id:any,body:any){
 
- console.log(id,body)
- console.log(this.token)
+/*  console.log(id,body)
+ console.log(this.token) */
     const token=localStorage.getItem('token_Pro')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
@@ -25,8 +25,8 @@ export class UpdProfilProServiceService {
   }
   updPhotoPro(id:any,body:any){
 
-    console.log(id,body)
-    console.log(this.token)
+/*     console.log(id,body)
+    console.log(this.token) */
     const token=localStorage.getItem('token_Pro')
     const headers=new HttpHeaders().set('authorization','Bearer '+token)
 
@@ -53,9 +53,9 @@ export class UpdProfilProServiceService {
 
 
       updatePatientPhoto(id:any, photo:any){
-        console.log('serviceee update')
+/*         console.log('serviceee update')
 
-      console.log(id,photo)
+      console.log(id,photo) */
       
           return this.http.put('http://localhost:3000/doctor/updatephoto/' +id , photo);
       

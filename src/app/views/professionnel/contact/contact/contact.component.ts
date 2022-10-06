@@ -23,10 +23,8 @@ export class ContactComponent implements OnInit {
   constructor(private invservice:InvitaionsService,private authPro: AuthProfessionnelService,private PatForms:PatientFormsService,private router:Router,) { 
     this.id = this.authPro.geid()
 
-    this.invservice.myContacts(this.id).subscribe(response =>{
-      this.mesgEmpty=false;
-
-      console.log(response)
+    this.invservice.myContactsPatient(this.id).subscribe(response =>{
+      this.mesgEmpty=false; 
       this.contacts=response
       this.filtredContacts=response
       this.mesgEmpty=true;
@@ -60,14 +58,15 @@ export class ContactComponent implements OnInit {
   })
   } */
   getpatient(patient:any){
-        console.log(patient.patients._id)
+     /*    console.log(patient.patients._id) */
         this.idPatient=patient.patients._id;
         this.PatForms.getFormsDoctor(patient.patients._id,this.id).subscribe(response=>{
-        console.log(response)
-        this.formsInCompleted=response.incompleted;
-        this.formsCompleted=response.completed
-
-        })
+      /*   console.log(response) */
+        this.formsInCompleted=response.completed.concat(response.incompleted);
+   /*      this.formsCompleted=response.completed */
+      
+  /*       console.log( this.formsInCompleted) */
+        }) 
   }
   async previewForm (form:any){
    

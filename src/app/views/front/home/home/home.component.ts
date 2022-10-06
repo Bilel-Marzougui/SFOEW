@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.urlVideo=url
     this.dataUrlD=this.urlVideo.dataUrlD
     this.dataUrlP=this.urlVideo.dataUrlP
-    console.log(this.urlVideo)
+/*     console.log(this.urlVideo) */
   })
   }
 

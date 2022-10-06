@@ -23,15 +23,16 @@ export class PatientFormsComponent implements OnInit {
   filtredprofs:any
   i:1;
   mesgEmpty: boolean=false;
+  p:number;
 
   constructor( private router:Router, private data:FormDataService,public doctorsService: DoctorsService, private authPat:AuthPatientService,private PatForms:PatientFormsService ) {
     this.mesgEmpty=false;
 
     this.id = this.authPat.geid()
 
-   this.doctorsService.myContacts(this.id).subscribe(response =>{
+   this.doctorsService.myContactsDoctor(this.id).subscribe(response =>{
 
-    /* console.log(response)  */     
+/*     console.log(response)    */  
     this.profs = response
     this.filtredprofs=response
     this.mesgEmpty=true;
@@ -56,9 +57,8 @@ export class PatientFormsComponent implements OnInit {
   }
 
   DoctorId(DocId:any){
-    this.ProfId=DocId
-
-
+ 
+      this.ProfId=DocId
   }
 
   filterItem(value) {
@@ -71,23 +71,26 @@ export class PatientFormsComponent implements OnInit {
     })
  }
 
-  GetForms(DocID){
-    this.idDocter=DocID;
-    this.PatForms.getForms(this.id,DocID).subscribe(response=>{
-     /*  console.log(response) */
-    this.forms=response.incompleted;
-    this.formsCompleted=response.completed
+  GetForms(DocID:any){
+  
+      this.idDocter=DocID;
+      this.PatForms.getForms(this.id,DocID).subscribe(response=>{
+      /*    console.log(response)   */
+      this.forms=response.incompleted;
+      this.formsCompleted=response.completed
+    })
+
    /*  console.log(response) */
 
 
 
-  })
+
   }
 
   openFormDetails(idF:any,idd){
-    console.log(idF,idd,this.id)
+   /*  console.log(idd) */
   this.idForm=idF
-    this.router.navigate(['patient/forms-details',idF,idd,this.id])
+    this.router.navigate(['patient/forms-details',idF,this.idDocter,this.id])
     this.data.GetId(idF) 
     
   }

@@ -1,144 +1,163 @@
+<div class="container rounded mt-5 bg-white p-md-5">
 
-                
-              
-<div class="container">
+  
     <div class="form-group">
-        <div class="h2 font-weight-bold" style="color: #153d77;">Liste des contacts</div>
-
-      </div>
+        <div class="h2 font-weight-bold">{{ 'LISTCONTACT.LISTPATIENT' | translate }}</div>
+  
+    </div>
+    <div class="container" >
+        
       <div class="container" >
-          
-        <div class="container" >
-          
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Chercher..." (input)="filterItem($event.target.value)"  />
-            </div>
+        
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="{{ 'LISTCONTACT.SEARCH' | translate }}..." (input)="filterItem($event.target.value)"  />
           </div>
-      </div>
-    <table class="table ">
+        </div>
+    </div>
+    <div class="table-responsive">
+  
+      <table class="table">
         <div *ngIf="!profs" class="text-center">
             <div class="spinner-border text-secondary" role="status">
               <span class="sr-only">Loading...</span>
             </div>
           </div>
-        <thead>
+  
+          <thead>
             <tr>
-                <th scope="col" >Nom et prénom </th>
-                <th scope="col">Adresse</th>
-                <th scope="col">E-mail</th>
-                <th scope="col">Télèphone</th>
-                <th scope="col">Etat Formulaire</th>
+                <th scope="col" >{{ 'PROFILE.NAME' | translate }}</th>
+                <th scope="col">{{ 'PROFILE.ADRESS' | translate }}</th>
+                <th scope="col">{{ 'PROFILE.EMAIL' | translate }}</th>
+                <th scope="col">{{ 'PROFILE.TELE' | translate }}</th>
+                <th scope="col">{{ 'LISTCONTACT.STATUSFORMS' | translate }}</th>
 
             </tr>
         </thead>
-    
-        <tbody *ngFor="let prof of profs ;index as i">
-            <tr>
-                <td class="pt-3">{{prof.doctors.name}} {{prof.doctors.lastname}}</td>
-                <td class="pt-3">{{prof.doctors.adresse}}</td>
-                <td class="pt-3">{{prof.doctors.email}}</td>
-                <td class="pt-3" >{{prof.doctors.tel}}  </td>
-                <td><i  class='fas fa-file-medical' class="fa-sharp fa-solid fa-check-to-slot" (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal"   style="padding-right: 10px;cursor: pointer;" data-target="#exampleModal"></i>
-                    <i  class='fas fa-file-medical' (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" style="cursor: pointer;" data-target="#exampleModalCompleted"></i>
-                </td>
-            </tr>
+        <tbody>
+  
+          <tr id="spacing-row">
+            <td></td>
+          </tr>  
+          <tr *ngFor="let prof of profs | paginate: { itemsPerPage: 6, currentPage: p } ;index as i">
+                      
+            <td class="pt-3">{{prof.doctors.name}} {{prof.doctors.lastname}}</td>
+            <td class="pt-3">{{prof.doctors.adresse}}</td>
+            <td class="pt-3">{{prof.doctors.email}}</td>
+            <td class="pt-3" >{{prof.doctors.tel}}  </td>
+            <td><i  class='fas fa-file-medical' class="fa-sharp fa-solid fa-check-to-slot" (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal"   style="padding-right: 10px;cursor: pointer;" data-target="#exampleModal"></i>
+                <i  class='fas fa-file-medical' (click)="GetForms(prof.doctors._id)" aria-hidden="true" data-toggle="modal" style="cursor: pointer;" data-target="#exampleModalCompleted"></i>
+            </td>
+      
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-           
-            <div class="modal-body">
-                
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+       
+        <div class="modal-body">
+            
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-                <h5 class="modal-title" id="exampleModalLabel">Formulaires affecter par {{prof.doctors.lastname}}</h5>
+<span aria-hidden="true">&times;</span>
+</button>
+            <h5 class="modal-title" id="exampleModalLabel">{{ 'AFFECTFORMS.AFFECTBY' | translate }} {{prof.doctors.lastname}}</h5>
 
-                <div class="container rounded mt-2 bg-white p-md-2">
-                    <div class="table-responsive">
-                        <table class="table ">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Description</th>
-                     
-                    
-                                </tr>
-                            </thead>
-                            
-                            <tbody *ngFor="let form of forms ;index as i" style="cursor: pointer;">
-                                <tr>
-                                    <td  data-dismiss="modal" (click)="openFormDetails(form.form._id,prof.doctors._id)" class="pt-3">{{form.form.title}}</td>
-                                    <td class="pt-3">{{form.form.description}}</td>
+            <div class="container rounded mt-2 bg-white p-md-2">
+                <div class="table-responsive">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{ 'AFFECTFORMS.TITLE' | translate }}</th>
+                                <th scope="col">{{ 'AFFECTFORMS.DESC' | translate }}</th>
+                 
+                
+                            </tr>
+                        </thead>
+                        
+                        <tbody *ngFor="let form of forms  ;index as i" style="cursor: pointer;">
+                            <tr>
+                                <td  data-dismiss="modal" (click)="openFormDetails(form.form._id,prof)" class="pt-3">{{form.form.title}}</td>
+                                <td class="pt-3">{{form.form.description}}</td>
 
-                                   
-                                </tr>
-                    
-                            </tbody>
-                        </table>
-                    </div>
+                               
+                            </tr>
+                
+                        </tbody>
+                    </table>
                 </div>
-
             </div>
-         
+
         </div>
+     
     </div>
+</div>
 </div>
 <!-- Modal Completed-->
 <div class="modal fade" id="exampleModalCompleted" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                <h5 class="modal-title" id="exampleModalLabel">Formulaires remplis par {{prof.doctors.lastname}}</h5>
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        
+        <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            <h5 class="modal-title" id="exampleModalLabel">{{ 'AFFECTFORMS.FORMSREM' | translate }} {{prof.doctors.lastname}}</h5>
 
-                <div class="container rounded mt-2 bg-white p-md-2">
-                    <div class="table-responsive">
-                        <table class="table ">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Description</th>
+            <div class="container rounded mt-2 bg-white p-md-2">
+                <div class="table-responsive">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{ 'AFFECTFORMS.TITLE' | translate }}</th>
+                                <th scope="col">{{ 'AFFECTFORMS.DESC' | translate }}</th>
+                          
+                
+                            </tr>
+                        </thead>
+                        <tbody (click)="previewForm(form)"  *ngFor="let form of formsCompleted ;index as i" style="cursor: pointer;">
+                            <tr>
+                                <td  data-dismiss="modal"  class="pt-3">{{form.form.title}}</td>
+                                <td class="pt-3">{{form.form.description}}</td>
                               
-                    
-                                </tr>
-                            </thead>
-                            <tbody (click)="previewForm(form)"  *ngFor="let form of formsCompleted ;index as i" style="cursor: pointer;">
-                                <tr>
-                                    <td  data-dismiss="modal"  class="pt-3">{{form.form.title}}</td>
-                                    <td class="pt-3">{{form.form.description}}</td>
-                                  
-                                   
-                                </tr>
-                    
-                            </tbody>
-                        </table>
-                    </div>
+                               
+                            </tr>
+                
+                        </tbody>
+                    </table>
                 </div>
+            </div>
 
-            </div>
-            <div class="modal-footer">
-         
-               
-            </div>
+        </div>
+        <div class="modal-footer">
+     
+           
         </div>
     </div>
 </div>
-        </tbody>
-    </table>
 </div>
-
-<div  *ngIf="profs==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
-    <h1 class="header-title" style="color: transparent;padding-bottom: 15%;font-size: 0px;">A</h1>
-    <h1 class="header-title" style="color: red;padding-bottom: 15%;">AUCUN CONTACT  </h1>
+</tr>
+        
   
+  
+        </tbody>
+  
+      </table>
+     
+    </div>
+
   </div>
 
+  
 
+  <div class="parent">
 
+    <pagination-controls class="child" (pageChange)="p = $event"></pagination-controls>
+
+  </div>
+  
+  <div  *ngIf="profs==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
+    <h1 class="header-title" style="color: transparent;padding-bottom: 15%;font-size: 0px;">A</h1>
+    <h1 class="header-title" style="color: red;padding-bottom: 15%;">{{ 'AFFECTFORMS.AUCUNN' | translate }}  </h1>
+  
+  </div>

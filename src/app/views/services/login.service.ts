@@ -31,7 +31,7 @@ export class LoginService {
     localStorage.setItem('role', decodeToken.subject.role)
     localStorage.setItem('name_Pro', decodeToken.subject.name)
 
-    console.log(decodeToken)
+  /*   console.log(decodeToken) */
   }
 
   getNamePro() {
@@ -80,10 +80,10 @@ export class LoginService {
   }
 
   saveDataPat(token: any) {
-    console.log(token)
+  /*   console.log(token) */
     let decodeToken = this.helper.decodeToken(token)
     localStorage.setItem('token_Pat', token)
-    console.log(decodeToken)
+  /*   console.log(decodeToken) */
   }
 
 

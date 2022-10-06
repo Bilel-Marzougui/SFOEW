@@ -1,39 +1,11 @@
-<div class="card-material">
-  <!-- <div class="content">
-    <div fxLayout="row wrap">
-      <div fxFlex="25%" *ngFor="let num of [1,2,3,4,5,6,7]">
-        <mat-card class="mat-elevation-z4" >
-          <mat-card-header>
-            <mat-card-title>Mountains {{num}}</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="./../assets/images/mountains.jpg">
-          <mat-card-content>
-            <p>
-              The Himalayas is a mountain range in Asia.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </div>
-    </div> -->
 
-
-
-  <!-- *ngFor cannot read property of undefined so we need to check form not empty -->
   <div *ngIf="form" class="container">
-
-
+    
+    
     <div class="col-12 col-md-12 col-lg-11 mx-auto">
       <div class="card">
         <div *ngIf="form" class="card-header">
           <h1 class="form-title">{{form.title}}</h1>
-          <p class="fdescr">{{form.description}}</p>
-
-
         </div>
 
       </div>
@@ -41,8 +13,69 @@
 
     <!-- boucel for =>enter to section items -->
     <div *ngFor="let section of form.sections;let s = index">
+    
+    </div>
+
+
+    <br>
+  </div>
+<ul class="list" *ngIf="form" >
+  <div class="col-12 col-md-12 col-lg-11 mx-auto">
+    <div class="card">
+      <div *ngIf="form" class="card-header">
+        <h1 class="form-title">{{ 'AFFECTFORMS.DESC' | translate }}</h1>
+        <p class="fdescr">{{form.description}}</p>
+
+
+      </div>
+
+    </div>
+  </div>
+  <cdk-virtual-scroll-viewport  style="height: 800px" itemSize="90" >
+    <div class="card-material">
+      <!-- <div class="content">
+        <div fxLayout="row wrap">
+          <div fxFlex="25%" *ngFor="let num of [1,2,3,4,5,6,7]">
+            <mat-card class="mat-elevation-z4" >
+              <mat-card-header>
+                <mat-card-title>Mountains {{num}}</mat-card-title>
+              </mat-card-header>
+              <img mat-card-image src="./../assets/images/mountains.jpg">
+              <mat-card-content>
+                <p>
+                  The Himalayas is a mountain range in Asia.
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+        </div> -->
+    
+    
+    
+      <!-- *ngFor cannot read property of undefined so we need to check form not empty -->
+     <div *ngIf="form" class="container">
+    
+    
+   
+    
+        <!-- boucel for =>enter to section items -->
+        <div *ngFor="let section of form.sections;let s = index">
+        
+        </div>
+    
+    
+        <br>
+      </div> 
+    
+    </div>
+    <ng-container *cdkVirtualFor="let section of form.sections;let s = index">
       <div>
-        <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title}} {{s}}
+        <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title.slice(0,30)}} N° {{s}} 
         </h3>
       </div>
       <!-- boucel for =>enter to questions items -->
@@ -81,7 +114,7 @@
               <div *ngIf="section.questions[q].type == 'Nomber de jours'" class="col-lg-8 col-sm-12" >
                 <!-- => show simple input -->
 
-                <input class="question-short-input-response" [(ngModel)]="Nomberdej" value="nb jours" (change)="Nomberdejours(section.questions[q].score,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataTextCour(section.questions[q].options[o],section.questions[q],q,o,$event,s)">
+                <input class="question-short-input-response" type="number" [(ngModel)]="Nomberdej" placeholder="nb jours" (change)="Nomberdejours(section.questions[q].score,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataTextCour(section.questions[q].options[o],section.questions[q],q,o,$event,s)">
               <button (click)="cc()">test</button>
               </div>
 
@@ -90,7 +123,7 @@
               <div *ngIf="section.questions[q].type == 'Choix multiples'" style="width: 100%;"
                 class="col-lg-12 col-sm-12 w-100">
                 <!-- boucel for =>enter to checkbox options -->
-                 <button (click)="expression()">bbb</button>
+ 
                 <div style="width: 100%;" *ngFor="let op of section.questions[q].optioncm; let o = index;">
                   <div class="row">
                     <div class="col">
@@ -99,7 +132,7 @@
                       <mat-checkbox class="m-2 w-100" style="width: 100%;" (change)="radioChange(section.questions[q].optioncm[o],$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataCaseChoix(section.questions[q].options[o],section.questions[q],q,o,$event,s)">
                         <h1 class="textt">{{section.questions[q].optioncm[o].text}}</h1>
                       </mat-checkbox>
-
+                      <img *ngIf="section.questions[q].optioncm[o].image != ''" style="width: 250px;" class="img-thumbnail" [src]="section.questions[q].optioncm[o].image" alt="">
 
                     </div>
 
@@ -121,10 +154,9 @@
                   <div class="row  m-2">
                     <div class="col-lg-8 col-sm-12" style="padding-left: 3%;">
                       <!--  =>show range bar slider -->
-
                       <div class="simple-slider">
 
-                        <ng5-slider   [options]="sliderMakeOptions(section.questions[q])"   (valueChange)="Range(section.questions[q].dataRange[o].legend,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')');getdataRangeBar(section.questions[q],section.questions[q].dataRange,q,o,$event,s)"></ng5-slider> 
+                        <ng5-slider   [options]="sliderMakeOptions(section.questions[q])" (valueChange)="Range(section.questions[q].dataRange[o].legend,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')',section.questions[q].dataRange[o]);"   (userChange)="getdataRangeBar(section.questions[q],section.questions[q].dataRange,q,o,$event,s)"></ng5-slider> 
 
                       </div>
 
@@ -149,13 +181,14 @@
                 <div class="row  m-2">
                   <div class="col-lg-8 col-sm-12" style="padding-left: 3%;">
                     <div class="simple-slider">
-
+                      <h1 *ngIf="tableReponse[q]">Score : {{tableReponse[q].score}} </h1>
+                
                       <div class="row">
                         <!-- <img style="width: 10%;height: 10%;" class="img-thumbnail" src="assets/img/placeholder.png" alt=""> -->
                         <div class='container23'style="width: 600px" >
-                        
+                       
                         <img  class="img-thumbnail" src="../../../../../assets/Douleurgraph1.png" alt="">
-                        <input type="range" min="0" max="10" (change)="VISUELLE($event,s ,'Q '+'('+ s +',' + q+')','visuelleanalogique');getDataVisuelle(section.questions[q],'VISUELLE ANALOGIQUE',q,o,$event,s)" value="50" class="slider" name='slider' id="slider">
+                        <input type="range" min="0" max="10" (change)="VISUELLE($event,s ,'Q '+'('+ s +',' + q+')','visuelleanalogique');getDataVisuelle(section.questions[q],'VISUELLE ANALOGIQUE',q,o,$event,s)" value="5" class="slider" name='slider' id="slider">
                         
                         </div>
                         <!-- <img style="width: 10%;height: 10%;" class="img-thumbnail" src="assets/img/placeholder.png" alt=""> -->
@@ -253,11 +286,11 @@
                           <h1 *ngIf="section.questions[q].options[o].text.length > 0" class="textt">
                             {{section.questions[q].options[o].text}}</h1>
                             <div   style="width: 100%; margin-left: 44px;margin-top: -16px;">
-                              <img style="width: 250px;" class="img-thumbnail" [src]="section.questions[q].options[o].image" alt="">
+                              <img *ngIf="section.questions[q].options[o].image != ''"  style="width: 250px;" class="img-thumbnail" [src]="section.questions[q].options[o].image" alt="">
                       
                           </div>
                         </mat-radio-button>
-  
+                     
                       </mat-radio-group>
                       </div>
                   <!--     <div class="row">
@@ -321,7 +354,7 @@
                        <h6 *ngIf="m==0" style="color: rgb(0, 0, 0);font-size:15px"> {{question.title  }}</h6> <br>
                        <br *ngIf="m!=0" >
                        <h6 *ngIf="m!=0" style="color: transparent;font-size:15px;height: 0px;"> {{question.title  }}</h6>
-                        <mat-radio-button   [value]="question.title" name="questionq.title" style="padding: 10%;" (click)="radioCheckedButton(question.score,question,$event,s ,'question'+o +','+s+','+q,'Q '+'('+ s +',' + q+')')"> </mat-radio-button>
+                        <mat-radio-button   [value]="question.title" name="questionq.title" style="padding: 10%;" (click)="radioCheckedButton(question.score,question,$event,s ,'question'+m +','+s+','+q,'Q '+'('+ s +',' + q+')');getaData(section.questions[q].grille,m,k,s,q,section.questions[q])"> </mat-radio-button>
                       </td>
                     </mat-radio-group>
                     </tr>
@@ -339,17 +372,18 @@
         </div>
       </div>
 
-    </div>
-
+    </ng-container>
     <div class="buttonContainer">
-      <button (click)="calcul()"  type="button" class="btn btn-primary vertical-center" style="float: centre;" [disabled]="disabledConfirme">confirm</button>
+      <button (click)="calcul()"  type="button" class="btn btn-primary vertical-center" style="float: centre;">confirm</button>
     </div>
     <br>
     <br>
     <br>
-    <br>
-  </div>
+  </cdk-virtual-scroll-viewport>
+</ul>
 
-</div>
+  <div class="my-overlay" *ngIf="showOverlay">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+</div>  
 
 

@@ -6,7 +6,7 @@
       <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
 
         <!-- login form -->
-        <mat-tab label="Modifier profil">
+        <mat-tab label="{{ 'PROFILE.UPDATEPROFILE' | translate }} ">
           <div class="choix">
 
           </div>
@@ -26,7 +26,7 @@
                       <!-- firstName validation start here -->
                       <div class="form-group">
 
-                        <label for="exampleFormControlInput1">name</label>
+                        <label for="exampleFormControlInput1">{{ 'LISTPATIENT.NAME' | translate }}</label>
                         <input type="text" class="form-control" placeholder="name" [(ngModel)]="dataPatient.name"
                           required name="name" #name="ngModel" ngModel minlength="2" maxlength="20">
                       </div>
@@ -40,7 +40,7 @@
 
                       <!-- lastName validation start here -->
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">lastname</label>
+                        <label for="exampleFormControlInput1">{{ 'LISTPATIENT.PRENOM' | translate }}</label>
                         <input type="text" class="form-control" placeholder="lastname"
                           [(ngModel)]="dataPatient.lastname" required name="lastname" #lastname="ngModel" minlength="2"
                           maxlength="20" ngModel>
@@ -56,7 +56,7 @@
                       <!-- Email validation start here -->
 
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">email</label>
+                        <label for="exampleFormControlInput1">{{ 'PROFILE.EMAIL' | translate }}</label>
                         <input type="email" class="form-control" placeholder="email" [(ngModel)]="dataPatient.email"
                           email required name="email" #email="ngModel" ngModel>
                       </div>
@@ -71,7 +71,7 @@
 
                       <!-- age validation start here -->
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">ssn</label>
+                        <label for="exampleFormControlInput1">sn</label>
                         <input type="number" class="form-control" placeholder="ssn" [(ngModel)]="dataPatient.ssn"
                           required name="ssn" #ssn="ngModel" ngModel>
                       </div>
@@ -84,7 +84,7 @@
                       <!-- Phone validation start here -->
 
                       <div class="form-group">
-                        <label for="exampleFormControlInput1">tel</label>
+                        <label for="exampleFormControlInput1">{{ 'PROFILE.TELE' | translate }}</label>
                         <input type="number" class="form-control" placeholder="tel" [(ngModel)]="dataPatient.tel"
                           required name="tel" #tel="ngModel" ngModel>
                       </div>
@@ -98,7 +98,7 @@
                       </div>
                       <div class="container">
                         <div class="center">
-                      <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Modifier profil</button>
+                      <button class="btn btn-primary" type="submit" [disabled]="f.invalid">{{ 'PROFILE.UPDATEPROFILE' | translate }}</button>
                     </div>
                   </div>
                     </form>

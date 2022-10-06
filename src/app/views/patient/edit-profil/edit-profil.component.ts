@@ -10,7 +10,7 @@ import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-edit-profil',
   templateUrl: './edit-profil.component.html',
@@ -70,14 +70,14 @@ export class EditProfilComponent implements OnInit, OnDestroy {
     this.dataPatient.photo = photo
     this.dataPatient.archived = archived
     this.dataPatient.id = id
-    console.log(this.dataPatient)
+/*     console.log(this.dataPatient) */
 
   }
 
   updatenewstudent(f: any) {
     let data = f.value
     this.updateservice.updatePatient(this.dataPatient.id, data).subscribe(response => {
-      console.log(response)
+    /*   console.log(response) */
       let indexId = this.dataArray.findIndex((obj: any) => obj._id == this.dataPatient.id)
 
       this.dataArray[indexId].name = data.name
@@ -100,7 +100,7 @@ export class EditProfilComponent implements OnInit, OnDestroy {
 
 
     }, (err: HttpErrorResponse) => {
-      console.log(err.message)
+    /*   console.log(err.message) */
 
     })
   }
@@ -112,27 +112,33 @@ export class EditProfilComponent implements OnInit, OnDestroy {
     let data = f.value
     this.obsUpd = this.updateservice.updatePatient(this.id, data).subscribe(response => {
       location.reload();
-      this.snackBar.open(" profile updated successfully " ,"×", {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'profile updated successfully ',
+        showConfirmButton: false,
+        timer: 1500
+      }) 
+/*       this.snackBar.open(" profile updated successfully " ,"×", {
 
         duration: 5000,
 
-        // here specify the position
+     
 
         verticalPosition: 'top',
         panelClass:'success'
 
-      });
+      }); */
 
-    },error=> this.snackBar.open(" profile not updated " ,"×", {
-
-      duration: 5000,
-
-      // here specify the position
-
-      verticalPosition: 'top',
-      panelClass:'error'
-
-    }))
+    },error=> 
+    Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'profile updated successfully ',
+      showConfirmButton: false,
+      timer: 1500
+    }) 
+    )
 
   }
   exit() {

@@ -12,17 +12,19 @@
 
         <!-- login form -->
         <mat-tab label="S'identifier">
-          <div class="choix">
+          <br>
+          <div class="col-sm-3 col-xl-12  text-center">
             <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style"
               #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
               <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">Professionnel
               </mat-button-toggle>
-              
+             <mat-button-toggle disabled="true" >
+              </mat-button-toggle> 
               <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
             </mat-button-toggle-group>
           </div>
 
-          
+          <br>
 
           <mat-card-content >
             <div class="switch" [ngSwitch]="selectedVal">
@@ -55,7 +57,7 @@
                       Sign In
                     </button> <br>
                     <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
-                      Login with Google
+                      Connexion avec Google
                     </button>
                </div>
                <mat-checkbox>Remember Me!</mat-checkbox>
@@ -95,7 +97,7 @@
                       Sign In
                     </button> <br>
                     <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
-                      Login with Google
+                      Connexion avec Google
                     </button>
                </div>
                <mat-checkbox>Remember Me!</mat-checkbox>
@@ -120,23 +122,25 @@
           <mat-card-content class="mat-card-content-reg"  style=" height: 900px;"   >
               <!-- <h5 class="card-header">{{status}}</h5> -->
               <div class="card-body"  style="width: 600px; height:1000px;" >
-                <div class="choix" >
+                <br>
+                <div class="col-sm-3 col-xl-12  text-center">
                   <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style"
                     #group2="matButtonToggleGroup" [value]="selectedVal2" (change)="onValChange2(group2.value)">
                     <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">Professionnel
                     </mat-button-toggle>
-                  
+                    <mat-button-toggle disabled="true" >
+                    </mat-button-toggle> 
                     <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
                   </mat-button-toggle-group>
 
 
                 </div>
-        
+        <br>
                 <div class="switch" [ngSwitch]="selectedVal2"   style=" height: 1700px;" >
 
                   <div class="proReg" *ngSwitchCase="'Professionnel'" style=" height: 1200px;">
 
-                    <form class="ex1" [formGroup]="registerFormPro" (ngSubmit)="registerPro(registerFormPro)" style=" height: 1200px;">
+                    <form class="ex1" [formGroup]="registerFormPro" (ngSubmit)="registerPro(registerFormPro,2)" style=" height: 1200px;">
                       <div class="form-row" style=" height: auto;">
                         <!-- <h1 >Professionnel</h1> -->
 
@@ -200,7 +204,7 @@
                           </div>
                         </mat-form-field>
 
-                        <div class="float-container">
+                  <!--       <div class="float-container">
                           <mat-radio-group aria-label="Select an option">
                             <div class="float-child">
                               <mat-radio-button value="homme" formControlName="gender" class="form-control  "
@@ -219,23 +223,32 @@
                               </div>
                             </div>
                           </mat-radio-group>
-                        </div>
+                        </div> -->
 
-                        <mat-form-field>
+                     <!--    <mat-form-field>
                           <input matInput placeholder="travail" type="text" formControlName="job" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.job.errors }" />
-                          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                        
+                        </mat-form-field> -->
+                        <mat-form-field appearance="fill">
+                          <mat-label>Metier</mat-label>
+                          <mat-select formControlName="job"  [(ngModel)]="foods[0].viewValue">
+                            <mat-option *ngFor="let food of foods" [value]="food.viewValue">
+                              {{food.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                       <!--    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
                             <div *ngIf="f.job.errors.required">travail obligatoire</div>
-                          </div>
+                          </div> -->
                         </mat-form-field>
-
-                        <mat-form-field>
+                      
+                  <!--       <mat-form-field>
                           <input matInput placeholder="ADELI" type="number" formControlName="adeli" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.adeli.errors }" />
                           <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
                             <div *ngIf="f.adeli.errors.required">adeli obligatoire</div>
                           </div>
-                        </mat-form-field>
+                        </mat-form-field> -->
 
 
                         <mat-form-field>
@@ -299,14 +312,17 @@
                       </div>
                       <div class="text-center">
                         <button class="btn btn-primary mr-1" type="submit">Register</button>
-                        <button class="btn btn-secondary" type="reset" (click)="onReset()">Annuler</button>
+                     
+                    <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
+                      Connexion avec Google
+                    </button>
                       </div>
                     </form>
                   </div>
 
 
                   <div class="patReg" *ngSwitchCase="'Patient'" style=" height: 1200px;">
-                    <form class="ex1" [formGroup]="registerFormPat" (ngSubmit)="registerPat(registerFormPat)" style=" height: 1200px;">
+                    <form class="ex1" [formGroup]="registerFormPat" (ngSubmit)="registerPat(registerFormPat,2)" style=" height: 1200px;">
                       <div class="form-row">
                         <!-- <h1 >Patient</h1> -->
                         <mat-form-field>
@@ -375,13 +391,13 @@
 
 
 
-                        <mat-form-field>
+                    <!--     <mat-form-field>
                           <input matInput placeholder="SSN" type="number" formControlName="ssn" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && fPat.ssn.errors }" />
                           <div *ngIf="submitted && fPat.ssn.errors" class="invalid-feedback">
                             <div *ngIf="fPat.ssn.errors.required">ssn est obligatoire</div>
                           </div>
-                        </mat-form-field>
+                        </mat-form-field> -->
 
 
 
@@ -441,7 +457,9 @@
                       </div>
                       <div class="text-center">
                         <button class="btn btn-primary mr-1" type="submit">Register</button>
-                        <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                        <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
+                          Connexion avec Google
+                        </button>
                       </div>
                     </form>
 
@@ -473,4 +491,6 @@
 </mat-dialog-content>
 
 
-
+<!-- <div class="my-overlay" *ngIf="showOverlay">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+</div> -->
