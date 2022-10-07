@@ -261,7 +261,7 @@
                         <h1 *ngIf="section.questions[q].options[o].text.length > 0" class="textt">
                           {{section.questions[q].options[o].text}}</h1>
                           <div   style="width: 100%; margin-left: 44px;margin-top: -16px;">
-                            <img *ngIf="section.questions[q].options[o].image != ''" style="width: 250px;" class="img-thumbnail" [src]="section.questions[q].options[o].image" alt="">
+                            <img *ngIf="section.questions[q].options[o].image != ''" style="width: 150px;" class="img-thumbnail" [src]="section.questions[q].options[o].image" alt="">
                     
                         </div>
                       </mat-radio-button>
@@ -342,6 +342,30 @@
   
           </div>
         </div></li>
+        <div class="col-12 col-md-12 col-lg-11 mx-auto">
+          <div class="card">
+            <div class="card-body">
+           <!--    <div class="card-header">
+                <h1 class="form-title"> Bibliographie </h1>
+              </div> -->
+          
+              <div class="row"  *ngFor="let message of form.messages;let m = index">
+             
+                <div class="col-lg-8">
+                 <!--  <input type="text" [(ngModel)]="message.message" class="form-control question-short-text-response w-100"
+                    placeholder="message"> -->
+                    <h6 class="form-title6">     Bibliographie {{m}} :  </h6> 
+                  <p>
+                {{message.message}}
+                  </p>
+                </div>
+           
+              </div>
+       
+           
+            </div>
+          </div>
+        </div>
       </ng-container>
     </cdk-virtual-scroll-viewport>
   </ul>

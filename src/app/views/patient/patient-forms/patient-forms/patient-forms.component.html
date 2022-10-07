@@ -152,7 +152,8 @@ aria-hidden="true">
 
   <div class="parent">
 
-    <pagination-controls class="child" (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls  previousLabel="{{ 'PAGINATION.PR' | translate }}"
+    nextLabel="{{ 'PAGINATION.NEXT' | translate }}" class="child" (pageChange)="p = $event"></pagination-controls>
 
   </div>
   

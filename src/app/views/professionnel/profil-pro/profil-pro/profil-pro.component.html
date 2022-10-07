@@ -81,10 +81,18 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">{{ 'PROFILE.EMAIL' | translate }}</h6>
+                <h6 class="mb-0">{{ 'PROFILE.BRITHDATE' | translate }}</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                {{prof.email}} </div>
+                {{this.prof.birthday}} </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">{{ 'PROFILE.ADRESS' | translate }}</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{this.prof.adresse}} </div>
             </div>
             <hr>
             <div class="row">
@@ -97,19 +105,12 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">{{ 'PROFILE.BRITHDATE' | translate }}</h6>
+                <h6 class="mb-0">{{ 'PROFILE.EMAIL' | translate }}</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                {{this.prof.birthday}} </div>
+                {{prof.email}} </div>
             </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <h6 class="mb-0">Adeli</h6>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                {{this.prof.adeli}} </div>
-            </div>
+       
             <hr>
             <div class="row">
               <div class="col-sm-3">
@@ -118,6 +119,8 @@
               <div class="col-sm-9 text-secondary">
                 {{this.prof.fax}} </div>
             </div>
+         
+          
             <hr>
             <div class="row">
               <div class="col-sm-3">
@@ -129,10 +132,10 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">{{ 'PROFILE.ADRESS' | translate }}</h6>
+                <h6 class="mb-0">Adeli</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                {{this.prof.adresse}} </div>
+                {{this.prof.adeli}} </div>
             </div>
             <hr>
             <div class="row">

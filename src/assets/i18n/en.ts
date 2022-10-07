@@ -19,7 +19,7 @@ export const locale = {
             TELE:"Phone",
             PROF:"Professionnel",
             PAT:"Patient",
-            PROFIL:"Profile",
+            PROFIL:"My profile",
             BRITHDATE:"Birth date",
             ADRESS:"Adress",
             UPDATE:"Edit",
@@ -35,7 +35,8 @@ export const locale = {
             PRENOM:"Last name",
             DATECREATED:"Date created",
             ETAT:"Status",
-            AUCUNN:"NO PATIENTS"
+            AUCUNN:"NO PATIENTS",
+            PATIENT:"My patients",
         },
         FORMS:{
             FORMS:"Forms",
@@ -51,13 +52,16 @@ export const locale = {
             PHRASE:"WELCOME TO THE SCORES APP",
             PHRASE1:"Our team is here to help you",
             START:"START",
+            INFO:"More information",
+            CONT:"Contact us"
         },
         AUCUN :{
             AUCUNN:"NO INVITATION"
         },
         INVIT:{
             DETAIL:"Detail",
-            ACCEPT:"Accept"
+            ACCEPT:"Accept",
+            INVIT:"My Invitations"
         },
         LISTCONTACT:{
             LISTPATIENT:"List of contacts",
@@ -83,6 +87,49 @@ export const locale = {
             TITLE:"Title",
             DESC:"Description",
             AUCUNN:"AUCUNE CONTACT"
+        },
+        CONTACT :{
+            LOCATION:"Adress",
+            EMAIL:"Email",
+            TELE:"Phone",
+            YN:"Name and LastName",
+            YE:"Email",
+            SB:"Subject",
+            MES:"Message",
+            CONT:"CONTACT US AT",
+            SEND:"Send Message"
+        },
+        AUTH:{
+            IDENTIFIER:"Identify / Register",
+            IDENTIFIER2:"Identify",
+            INSCRIRE :"Register",
+            EMAIL :"Email",
+            MOTDEPASS:"Password",
+            SIGNIN:"Sign In",
+            CG:"Connection with Gouugle",
+            RM:"",
+            NOM:"Name",
+            PRENOM:"Last Name",
+            DATEN:"Date of birth",
+            TELE:"",
+            ADDRESS:"",
+            METIER:"Trade",
+            CFM:"Confirm the password ",
+            ACCEPTT:"Accept Terms & Conditions",
+            PROF:"Professional  ",
+            PAT:"Patient "
+        },
+        P:{
+            MC:"GETTING TO KNOW US",
+          PH1:"Application Scores and Scientifically Referenced Self-Assessment Scales for Health Professionals ",
+          PH2:"Our company has developed with a cohort of expert patients and practitioners a connected self-assessment medical device to meet your expectations. We offer a modular application that adapts to your practice, which involves your patient in the management and evolution of his care. ",
+          PH3:"The results are available instantly, an analysis possible from the season by the patient(s) for a more rapid follow-up of his treatment"
+        },
+        PAGINATION:{
+            PR:"Previous",
+            NEXT:"Next"
         }
-    }
+    }     
+
+    
 }

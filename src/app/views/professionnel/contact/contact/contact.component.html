@@ -3,7 +3,7 @@
     <div class="container">
       <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a >Patients</a></li>
+          <li class="breadcrumb-item"><a >{{ 'LISTPATIENT.PATIENT' | translate }}</a></li>
         </ol>
       </nav>
         <div class="row">
@@ -95,7 +95,8 @@
         <!-- end row -->
         <div class="parent">
     
-            <pagination-controls class="child" (pageChange)="p = $event"></pagination-controls>
+            <pagination-controls  previousLabel="{{ 'PAGINATION.PR' | translate }}"
+            nextLabel="{{ 'PAGINATION.NEXT' | translate }}" class="child" (pageChange)="p = $event"></pagination-controls>
         
           </div>
         <!-- end row -->
@@ -148,7 +149,8 @@
         </div>
         <div class="parent">
     
-          <pagination-controls class="etat" (pageChange)="y = $event"></pagination-controls>
+          <pagination-controls  previousLabel="{{ 'PAGINATION.PR' | translate }}"
+          nextLabel="{{ 'PAGINATION.NEXT' | translate }}" class="etat" (pageChange)="y = $event"></pagination-controls>
       
         </div>
       </div>
@@ -158,7 +160,7 @@
 
   <div  *ngIf="contacts==0" class="text-center mt-5" style="width: 100%;height: 100%;padding-bottom: 15%;">   
     <h1 class="header-title" style="color: transparent;padding-bottom: 15%;font-size: 0px;">A</h1>
-    <h1 class="header-title" style="color: red;padding-bottom: 15%;">{{ 'LISTPATIENT.AUCUNN' | translate }} </h1>
+    <h1 class="header-title" style="color: red;padding-bottom: 15%;">{{ 'FORMS.AUCUNN' | translate }} </h1>
   
   </div>
 

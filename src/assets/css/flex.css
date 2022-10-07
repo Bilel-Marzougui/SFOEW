@@ -192,6 +192,14 @@ border-radius: 60px;
     color: #093b84;
     border: 0px;
   }
+  .form-title6 {
+    width: 100%;
+  
+    font-weight: 500;
+    padding: 4px;
+    color: #093b84;
+    border: 0px;
+  }
   textarea {
     line-height: 1;
     /*  display: none; */

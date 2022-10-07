@@ -81,7 +81,8 @@
   </div>
     <div class="parent">
 
-    <pagination-controls class="child" (pageChange)="p = $event;getPage($event)"></pagination-controls>
+    <pagination-controls  previousLabel="{{ 'PAGINATION.PR' | translate }}"
+    nextLabel="{{ 'PAGINATION.NEXT' | translate }}" class="child" (pageChange)="p = $event;getPage($event)"></pagination-controls>
 
   </div> 
 </div>

@@ -20,18 +20,19 @@
     <br>
   </div>
 <ul class="list" *ngIf="form" >
-  <div class="col-12 col-md-12 col-lg-11 mx-auto">
-    <div class="card">
-      <div *ngIf="form" class="card-header">
-        <h1 class="form-title">{{ 'AFFECTFORMS.DESC' | translate }}</h1>
-        <p class="fdescr">{{form.description}}</p>
 
-
-      </div>
-
-    </div>
-  </div>
   <cdk-virtual-scroll-viewport  style="height: 800px" itemSize="90" >
+    <div class="col-12 col-md-12 col-lg-11 mx-auto">
+      <div class="card">
+        <div *ngIf="form" class="card-header">
+          <h1 class="form-title">{{ 'AFFECTFORMS.DESC' | translate }}</h1>
+          <p class="fdescr">{{form.description}}</p>
+  
+  
+        </div>
+  
+      </div>
+    </div>
     <div class="card-material">
       <!-- <div class="content">
         <div fxLayout="row wrap">

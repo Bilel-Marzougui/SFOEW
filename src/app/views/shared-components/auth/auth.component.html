@@ -11,16 +11,16 @@
       <mat-tab-group mat-stretch-tabs class="example-stretched-tabs" >
 
         <!-- login form -->
-        <mat-tab label="S'identifier">
+        <mat-tab label="{{ 'AUTH.IDENTIFIER2' | translate }}">
           <br>
           <div class="col-sm-3 col-xl-12  text-center">
             <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style"
               #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
-              <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">Professionnel
+              <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">{{ 'AUTH.PROF' | translate }}
               </mat-button-toggle>
              <mat-button-toggle disabled="true" >
               </mat-button-toggle> 
-              <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
+              <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> {{ 'AUTH.PAT' | translate }}</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
 
@@ -43,7 +43,7 @@
                   </mat-form-field>
 
                   <mat-form-field>
-                    <input matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'"
+                    <input matInput placeholder="{{ 'AUTH.MOTDEPASS' | translate }}" [type]="hide ? 'password' : 'text'"
                       formControlName="password" class="form-control"
                       [ngClass]="{ 'is-invalid': submitted && flogPro.password.errors }">
                     <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -54,10 +54,10 @@
                   <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
                   
                     <button mat-raised-button color="primary" class="login-button" type="submit" style="width:40% ;">
-                      Sign In
+                      {{ 'AUTH.SIGNIN' | translate }}
                     </button> <br>
                     <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
-                      Connexion avec Google
+                      {{ 'AUTH.CG' | translate }}
                     </button>
                </div>
                <mat-checkbox>Remember Me!</mat-checkbox>
@@ -83,7 +83,7 @@
                   </mat-form-field>
 
                   <mat-form-field>
-                    <input matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'"
+                    <input matInput placeholder="{{ 'AUTH.MOTDEPASS' | translate }}" [type]="hide ? 'password' : 'text'"
                       formControlName="password" class="form-control"
                       [ngClass]="{ 'is-invalid': submitted && flogPat.password.errors }">
                     <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -94,10 +94,10 @@
                   <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
                   
                     <button mat-raised-button color="primary" class="login-button" type="submit" style="width:40% ;">
-                      Sign In
+                      {{ 'AUTH.SIGNIN' | translate }}
                     </button> <br>
                     <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
-                      Connexion avec Google
+                      {{ 'AUTH.CG' | translate }}
                     </button>
                </div>
                <mat-checkbox>Remember Me!</mat-checkbox>
@@ -118,7 +118,7 @@
         <!-- register form -->
         <!-- <div class="register-page"> -->
 
-        <mat-tab label="S'inscrire"  style=" height:900px;" >
+        <mat-tab label="{{ 'AUTH.INSCRIRE' | translate }}"  style=" height:900px;" >
           <mat-card-content class="mat-card-content-reg"  style=" height: 900px;"   >
               <!-- <h5 class="card-header">{{status}}</h5> -->
               <div class="card-body"  style="width: 600px; height:1000px;" >
@@ -126,11 +126,11 @@
                 <div class="col-sm-3 col-xl-12  text-center">
                   <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style"
                     #group2="matButtonToggleGroup" [value]="selectedVal2" (change)="onValChange2(group2.value)">
-                    <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">Professionnel
+                    <mat-button-toggle value="Professionnel" (click)="onReset()" class="pro">{{ 'AUTH.PROF' | translate }}
                     </mat-button-toggle>
                     <mat-button-toggle disabled="true" >
                     </mat-button-toggle> 
-                    <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> Patient </mat-button-toggle>
+                    <mat-button-toggle value="Patient" (click)="onReset()" class="pat"> {{ 'AUTH.PAT' | translate }} </mat-button-toggle>
                   </mat-button-toggle-group>
 
 
@@ -145,14 +145,14 @@
                         <!-- <h1 >Professionnel</h1> -->
 
                         <mat-form-field>
-                          <input matInput placeholder="Nom" type="text" formControlName="name" class="form-control"
+                          <input matInput placeholder="{{ 'AUTH.NOM' | translate }}" type="text" formControlName="name" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
                           <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
                             <div *ngIf="f.name.errors.required"> Nom obligatoire</div>
                           </div>
                         </mat-form-field>
                         <mat-form-field>
-                          <input matInput placeholder="Prénom" type="text" formControlName="lastname"
+                          <input matInput placeholder="{{ 'AUTH.PRENOM' | translate }}" type="text" formControlName="lastname"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
                           <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
                             <div *ngIf="f.lastname.errors.required">Prénom est obligatoire</div>
@@ -160,7 +160,7 @@
                         </mat-form-field>
 
                         <mat-form-field appearance="fill">
-                          <mat-label>Date de naissance</mat-label>
+                          <mat-label>{{ 'AUTH.DATEN' | translate }}</mat-label>
                           <input matInput [matDatepicker]="basicDatepicker" formControlName="birthday"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && f.birthday.errors }">
                           <div *ngIf="submitted && f.birthday.errors" class="invalid-feedback">
@@ -183,7 +183,7 @@
 
 
                         <mat-form-field>
-                          <input matInput placeholder="Adresse" type="text" formControlName="adresse"
+                          <input matInput placeholder="{{ 'AUTH.ADRESS' | translate }}" type="text" formControlName="adresse"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }" />
                           <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
                             <div *ngIf="f.adresse.errors.required">adresse est obligatoire</div>
@@ -231,7 +231,7 @@
                         
                         </mat-form-field> -->
                         <mat-form-field appearance="fill">
-                          <mat-label>Metier</mat-label>
+                          <mat-label>{{ 'AUTH.METIER' | translate }}</mat-label>
                           <mat-select formControlName="job"  [(ngModel)]="foods[0].viewValue">
                             <mat-option *ngFor="let food of foods" [value]="food.viewValue">
                               {{food.viewValue}}
@@ -261,7 +261,7 @@
 
                       </div>
                       <mat-form-field>
-                        <input matInput placeholder="Email" type="text" formControlName="email" class="form-control"
+                        <input matInput placeholder="{{ 'AUTH.EMAIL' | translate }}" type="text" formControlName="email" class="form-control"
                           [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                           <div *ngIf="f.email.errors.required">Email is obligatoire</div>
@@ -271,7 +271,7 @@
                       <div class="form-row">
 
                         <mat-form-field>
-                          <input #password matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'"
+                          <input #password matInput placeholder="{{ 'AUTH.MOTDEPASS' | translate }}" [type]="hide ? 'password' : 'text'"
                             formControlName="password" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                           <mat-hint align="end" aria-live="polite">
@@ -293,7 +293,7 @@
                         </mat-form-field>
 
                         <mat-form-field>
-                          <input matInput placeholder="Confirmer le Mot de passe" [type]="hide ? 'password' : 'text'"
+                          <input matInput placeholder="{{ 'AUTH.CFM' | translate }}" [type]="hide ? 'password' : 'text'"
                             formControlName="confirmPassword" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
                           <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
@@ -306,15 +306,15 @@
                       <div class="form-group form-check">
                         <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
                           [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
-                        <label for="acceptTerms" class="form-check-label">Accepter Terms & Conditions</label>
+                        <label for="acceptTerms" class="form-check-label">{{ 'AUTH.ACCEPTT' | translate }}</label>
                         <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accepter Ts & Cs is
                           obligatoire</div>
                       </div>
                       <div class="text-center">
-                        <button class="btn btn-primary mr-1" type="submit">Register</button>
+                        <button class="btn btn-primary mr-1" type="submit">{{ 'AUTH.INSCRIRE' | translate }}</button>
                      
                     <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
-                      Connexion avec Google
+                      {{ 'AUTH.CG' | translate }}
                     </button>
                       </div>
                     </form>
@@ -326,14 +326,14 @@
                       <div class="form-row">
                         <!-- <h1 >Patient</h1> -->
                         <mat-form-field>
-                          <input matInput placeholder="Nom" type="text" formControlName="name" class="form-control"
+                          <input matInput placeholder="{{ 'AUTH.NOM' | translate }}" type="text" formControlName="name" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && fPat.name.errors }" />
                           <div *ngIf="submitted && fPat.name.errors" class="invalid-feedback">
                             <div *ngIf="fPat.name.errors.required">Nom est obligatoire </div>
                           </div>
                         </mat-form-field>
                         <mat-form-field>
-                          <input matInput placeholder="Prénom" type="text" formControlName="lastname"
+                          <input matInput placeholder="{{ 'AUTH.PRENOM' | translate }}" type="text" formControlName="lastname"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.lastname.errors }" />
                           <div *ngIf="submitted && fPat.lastname.errors" class="invalid-feedback">
                             <div *ngIf="fPat.lastname.errors.required">Prénom est obligatoire </div>
@@ -341,7 +341,7 @@
                         </mat-form-field>
 
                         <mat-form-field appearance="fill">
-                          <mat-label>date de naissance</mat-label>
+                          <mat-label>{{ 'AUTH.DATEN' | translate }}</mat-label>
                           <input matInput [matDatepicker]="picker" formControlName="birthday" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && fPat.birthday.errors }">
                           <div *ngIf="submitted && fPat.birthday.errors" class="invalid-feedback">
@@ -353,7 +353,7 @@
                         </mat-form-field>
 
                         <mat-form-field>
-                          <input matInput placeholder="Tel" type="number" formControlName="tel" class="form-control"
+                          <input matInput placeholder="{{ 'AUTH.TELE' | translate }}" type="number" formControlName="tel" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && fPat.tel.errors }" />
                           <div *ngIf="submitted && fPat.tel.errors" class="invalid-feedback">
                             <div *ngIf="fPat.tel.errors.required">tel est obligatoire</div>
@@ -361,7 +361,7 @@
                         </mat-form-field>
 
                         <mat-form-field>
-                          <input matInput placeholder="Adresse" type="text" formControlName="adresse"
+                          <input matInput placeholder="{{ 'AUTH.ADRESS' | translate }}" type="text" formControlName="adresse"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.adresse.errors }" />
                           <div *ngIf="submitted && fPat.adresse.errors" class="invalid-feedback">
                             <div *ngIf="fPat.adresse.errors.required">Adresse est obligatoire</div>
@@ -403,7 +403,7 @@
 
                       </div>
                       <mat-form-field>
-                        <input matInput placeholder="Email" type="text" formControlName="email" class="form-control"
+                        <input matInput placeholder="email" type="text" formControlName="email" class="form-control"
                           [ngClass]="{ 'is-invalid': submitted && fPat.email.errors }" />
                         <div *ngIf="submitted && fPat.email.errors" class="invalid-feedback">
                           <div *ngIf="fPat.email.errors.required">Email est obligatoire</div>
@@ -415,7 +415,7 @@
 
 
                         <mat-form-field>
-                          <input #password matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text'"
+                          <input #password matInput placeholder="{{ 'AUTH.MOTDEPASS' | translate }}" [type]="hide ? 'password' : 'text'"
                             formControlName="password" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && fPat.password.errors }" />
                           <mat-hint align="end" aria-live="polite">
@@ -437,7 +437,7 @@
                         </mat-form-field>
 
                         <mat-form-field>
-                          <input matInput placeholder="Confirmer le Mot de passe" [type]="hide ? 'password' : 'text'"
+                          <input matInput placeholder="{{ 'AUTH.CFM' | translate }}" [type]="hide ? 'password' : 'text'"
                             formControlName="confirmPassword" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && fPat.confirmPassword.errors }" />
 
@@ -451,14 +451,14 @@
                       <div class="form-group form-check">
                         <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
                           [ngClass]="{ 'is-invalid': submitted && fPat.acceptTerms.errors }" />
-                        <label for="acceptTerms" class="form-check-label">Accepter les Termes & Conditions</label>
+                        <label for="acceptTerms" class="form-check-label">{{ 'AUTH.ACCEPTT' | translate }}</label>
                         <div *ngIf="submitted && fPat.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is
                           required</div>
                       </div>
                       <div class="text-center">
-                        <button class="btn btn-primary mr-1" type="submit">Register</button>
+                        <button class="btn btn-primary mr-1" type="submit">{{ 'AUTH.INSCRIRE' | translate }}</button>
                         <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
-                          Connexion avec Google
+                          {{ 'AUTH.CG' | translate }}
                         </button>
                       </div>
                     </form>
