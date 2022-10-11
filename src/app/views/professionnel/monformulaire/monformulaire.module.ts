@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {TranslateModule} from '@ngx-translate/core';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [MonFormulaireComponent],
   imports: [
@@ -25,7 +26,8 @@ import {TranslateModule} from '@ngx-translate/core';
     MatToolbarModule,
     MatButtonModule,
     NgxPaginationModule,
-    TranslateModule
+    TranslateModule,
+    MatTooltipModule
     
   ]
 })

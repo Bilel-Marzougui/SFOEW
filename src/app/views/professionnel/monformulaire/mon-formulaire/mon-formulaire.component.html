@@ -82,7 +82,7 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-  <div  *ngFor="let form of forms | paginate: { itemsPerPage: 12, currentPage: p } " class="col-lg-2"
+  <div  *ngFor="let form of forms | paginate: { itemsPerPage: 12, currentPage: p , id: 'p' } " class="col-lg-2"
     style="margin-bottom: 20px">
 
     <div class="card" style="height: 100%; ">
@@ -127,7 +127,7 @@
   <div class="parent">
 
     <pagination-controls    previousLabel="{{ 'PAGINATION.PR' | translate }}"
-    nextLabel="{{ 'PAGINATION.NEXT' | translate }}" class="child" (pageChange)="p = $event"></pagination-controls>
+    nextLabel="{{ 'PAGINATION.NEXT' | translate }}" class="child" (pageChange)="p = $event" id="p"></pagination-controls>
 
   </div>
 
@@ -169,7 +169,7 @@
                   </div>
                 </div>
                 <tr class="bg-blue"
-                  *ngFor="let contact of contacts | paginate: { itemsPerPage: 4, currentPage: p2 } ;index as j  ">
+                  *ngFor="let contact of contacts | paginate: { itemsPerPage: 4, currentPage: p2 , id: 'p2'} ;index as j  ">
                  
                   <td class="pt-2">
                     <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
@@ -190,7 +190,7 @@
         </div>
         <div class="parent">
         <pagination-controls   previousLabel="{{ 'PAGINATION.PR' | translate }}"
-        nextLabel="{{ 'PAGINATION.NEXT' | translate }}" class="child" (pageChange)="p2 = $event"></pagination-controls>
+        nextLabel="{{ 'PAGINATION.NEXT' | translate }}" class="child" (pageChange)="p2 = $event" id="p2"></pagination-controls>
       </div>
       </div>
       <!-- <pagination-controls class="child" (pageChange)="p2 = $event"></pagination-controls> -->

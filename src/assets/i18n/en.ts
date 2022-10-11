@@ -123,7 +123,7 @@ export const locale = {
             MC:"GETTING TO KNOW US",
           PH1:"Application Scores and Scientifically Referenced Self-Assessment Scales for Health Professionals ",
           PH2:"Our company has developed with a cohort of expert patients and practitioners a connected self-assessment medical device to meet your expectations. We offer a modular application that adapts to your practice, which involves your patient in the management and evolution of his care. ",
-          PH3:"The results are available instantly, an analysis possible from the season by the patient(s) for a more rapid follow-up of his treatment"
+          PH3:"The results are available instantly, an analysis possible from the season by the patient(s) for a more rapid follow-up of his treatment ."
         },
         PAGINATION:{
             PR:"Previous",

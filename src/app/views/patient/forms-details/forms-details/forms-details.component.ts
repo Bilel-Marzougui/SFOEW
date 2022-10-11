@@ -654,7 +654,7 @@ calcul(){
 
 setTimeout(() => {
   location.reload() 
-}, 6000);     
+}, 12000);     
 /* console.log(this.FormScore,this.tableCalcul,this.tableReponse) */
 }
 Range(value,score,sections,question,type,data){

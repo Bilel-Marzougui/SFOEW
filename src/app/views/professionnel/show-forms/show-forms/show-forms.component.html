@@ -304,9 +304,10 @@
                   <table class="table table-borderless">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th *ngFor="let question of section.questions[q].grille.scoreS" scope="col">{{question.title}} ||
-                          {{question.score}}</th>
+                        <th scope="col"></th>
+                      <!--   <th *ngFor="let question of section.questions[q].grille.scoreS" scope="col">{{question.title}} ||
+                          {{question.score}}</th> -->
+                          <th *ngFor="let question of section.questions[q].grille.scoreS" scope="col">{{question.title}} </th>
   
                       </tr>
                     </thead>
@@ -348,13 +349,13 @@
            <!--    <div class="card-header">
                 <h1 class="form-title"> Bibliographie </h1>
               </div> -->
-          
+              <h1 class="form-title6">     Bibliographie :  </h1> 
               <div class="row"  *ngFor="let message of form.messages;let m = index">
              
                 <div class="col-lg-8">
                  <!--  <input type="text" [(ngModel)]="message.message" class="form-control question-short-text-response w-100"
                     placeholder="message"> -->
-                    <h6 class="form-title6">     Bibliographie {{m}} :  </h6> 
+                 
                   <p>
                 {{message.message}}
                   </p>

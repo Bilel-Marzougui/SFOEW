@@ -48,7 +48,7 @@ export const locale = {
         HOMES:{
             HOME:"Accueil",
             APROP:"À propos de nous",
-            CONTACT:"Nous Contacter",
+            CONTACT:"Nous contacter",
             ESPACEPRO:"Espace professionnel",
             ESPACEPATIENT:"Espace patient",
             PHRASE:"BIENVENUE DANS L'APPLICATION SCORES",
@@ -123,9 +123,9 @@ export const locale = {
         },
         P:{
             MC:"MIEUX NOUS CONNAITRE",
-          PH1:"Application Scores et d'Échelles d'auto-évaluation référencés scientifiqument pour les professionnels de santé ",
+          PH1:"Application de Scores et d'Échelles d'auto-évaluation référencés scientifiqument pour les professionnels de santé ",
           PH2:"Notre société a développé avec une cohorte de patients experts et de praticiens un dispositif médical d'auto-évaluation connecté pour répondre à vos attentes. Nous vous proposons une application modulable qui s'adapte à votre pratique, qui implique votre patient dans la prise en charge et l'évolution de ses soins. ",
-          PH3:"Les résultats sont disponibles instantanément, une analyse possible dès la saise par le (la) patient(e) pour un suivi plus rapide etprécis de son traitement"
+          PH3:"Les résultats sont disponibles instantanément, une analyse possible dès la saise par le (la) patient(e) pour un suivi plus rapide espace de son traitement ."
         },
         PAGINATION:{
             PR:"Retour",

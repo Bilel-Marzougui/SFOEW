@@ -23,13 +23,29 @@ export class MonFormulaireComponent implements OnInit {
   filtredForms:any
   nb=1
   i=1;
-  item:"test"
+  item:"test";
+  config: any;
+  collection = { count: 230, data: [] };
+
+  configCustomPagination: any;
+  collectionCustomPagination = { count: 30, data: [] };
   mesgEmpty: boolean=false;
 
   constructor( private PaymentService:PaymentService,private data:FormDataService,private PatForms:PatientFormsService,
     private router:Router,private snackBar:MatSnackBar,private invservice:InvitaionsService,private formsService:FormsService,private authPro: AuthProfessionnelService) { 
     this.mesgEmpty=false;
- 
+    this.config = {
+      id: 'basicPaginate',
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: 150
+    };
+    this.configCustomPagination = {
+      id: 'customPaginate',
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: 20
+    };
     this.id = this.authPro.geid()
    
 
@@ -38,12 +54,42 @@ export class MonFormulaireComponent implements OnInit {
 
       this.forms=response
       this.filtredForms=response
-       // console.log((response)) 
+       console.log((response.length)) 
          this.mesgEmpty=true;
     
 
 
   })
+/*   for (var i = 0; i < this.collection.count; i++) {
+    this.collection.data.push(
+      {
+        id: i + 1,
+        value: "Collection value " + (i + 1)
+      }
+    );
+  } */
+/*   this.collectionCustomPagination = this.collection;
+  for (var i = 0; i < this.collection.count; i++) {
+    this.collection.data.push(
+      {
+        id: i + 1,
+        value: "Collection value " + (i + 1)
+      }
+    );
+  }
+  this.collectionCustomPagination = this.collection; */
+  this.config = {
+    id: 'basicPaginate',
+    itemsPerPage: 5,
+    currentPage: 1,
+    totalItems: this.collection.count
+  };
+  this.configCustomPagination = {
+    id: 'customPaginate',
+    itemsPerPage: 5,
+    currentPage: 1,
+    totalItems: this.collectionCustomPagination.count
+  };
  this.invservice.myContactsPatient(this.id).subscribe(response =>{
   // console.log("response",response)
   this.contacts=response
@@ -55,6 +101,25 @@ export class MonFormulaireComponent implements OnInit {
     user: '',
     form: '',
 
+  }
+  public maxSize: number = 7;
+  public directionLinks: boolean = true;
+  public autoHide: boolean = false;
+  public responsive: boolean = true;
+  public labels: any = {
+    previousLabel: '<--',
+    nextLabel: '-->',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+  };
+
+  pageChanged(event) {
+    this.config.currentPage = event;
+  }
+
+  onPageChange(event) {
+    this.configCustomPagination.currentPage = event;
   }
   async ngOnInit() {
    /*  const res:any = await this.formsService.getForms(this.id).toPromise(); */
