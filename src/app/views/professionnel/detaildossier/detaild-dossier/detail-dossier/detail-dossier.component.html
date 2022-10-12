@@ -62,7 +62,7 @@
             <tr *ngFor="let f of allForms | paginate: { itemsPerPage: 5, currentPage: p , id: 'p' } ; let i = index">
                 <ng-container *ngIf="f" >
                   <td>{{i}}</td>
-                  <td> <span style="cursor: pointer;"  [routerLink]="['/admin/forms/detail' , f._id]"> {{f?.title}} </span>  </td>
+                  <td> <span style="cursor: pointer;"  [routerLink]="['/professionnel/show-forms/' , f._id]"> {{f?.title}} </span>  </td>
                  
                 
                   <td>{{f?.created_date | date}}</td>

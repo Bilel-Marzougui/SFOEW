@@ -351,3 +351,96 @@
      METIER:"Métier",
      CFM:"Confirmer le mot de passe ",
      "ACCEPTT":"Accepter Terms & Conditions"
+
+
+
+
+
+
+
+payoallllllllllllllllllllllllllllllllllllllllllllllllllllllll
+
+     <div class="container">
+      <div class="row m-0">
+          
+          <div class="col-md-7 col-12">
+              <div class="row">
+                  <div class="col-12 mb-4">
+                      <div class="row box-right" *ngFor="let year of yearly ; let i = index" (click)="enableDisableRule()"
+                          [ngClass]="{'green' : !toggle, 'white': toggle}">
+                          <div class="col-md-8 ps-0 ">
+                              <p class="ps-3 textmuted fw-bold h6 mb-0">{{yearly[i].title}}</p>
+                              <p class="h3 fw-bold d-flex"> <span
+                                      class="textmuted pe-1 h6 align-text-top mt-1"></span>{{yearly[i].prix}}
+                                  {{yearly[i].currency}} </p>
+                              <!-- <p class="ms-3 px-2 bg-green">+10% since last month</p> -->
+                          </div>
+                          <!-- <div class="col-md-4">
+                              <p class="fw-bold mb-3"><span class="fas fa-dollar-sign pe-1"></span>1254 <span
+                                      class="textmuted">.50</span> </p>
+                              <p class="p-org"><span class="fas fa-circle pe-2"></span>On drafts</p>
+                              <p class="fw-bold"><span class="fas fa-dollar-sign pe-1"></span>00<span
+                                      class="textmuted">.00</span></p>
+                          </div>          -->
+                          <p class="p-blue"> <span></span>{{yearly[i].desc}}</p>
+  
+                      </div>
+                      <div class="row box-right" *ngFor="let month of monthly ; let i = index"
+                          (click)="enableDisableRule()" [ngClass]="{'green' : toggle, 'white': !toggle}">
+                          <div class="col-md-8 ps-0 ">
+                              <p class="ps-3 textmuted fw-bold h6 mb-0">{{monthly[i].title}}</p>
+                              <p class="h3 fw-bold d-flex"> <span
+                                      class="textmuted pe-1 h6 align-text-top mt-1"></span>{{monthly[i].prix}}
+                                  {{monthly[i].currency}} </p>
+                              <!-- <p class="ms-3 px-2 bg-green">+10% since last month</p> -->
+                          </div>
+                          <!-- <div class="col-md-4">
+                              <p class="fw-bold mb-3"><span class="fas fa-dollar-sign pe-1"></span>1254 <span
+                                      class="textmuted">.50</span> </p>
+                              <p class="p-org"><span class="fas fa-circle pe-2"></span>On drafts</p>
+                              <p class="fw-bold"><span class="fas fa-dollar-sign pe-1"></span>00<span
+                                      class="textmuted">.00</span></p>
+                          </div>          -->
+                          <p class="p-blue"> <span></span>{{monthly[i].desc}}</p>
+  
+                      </div>
+  
+                  </div>
+  
+                  <div class="col-12 px-0">
+                      <div class="box-right">
+                          <img src="https://i.imgur.com/yK7EDD1.png" width="80" > <br>
+  
+                          <!-- <div class="d-flex mb-2">
+                              <p class="fw-bold">Create new invoice</p>
+                              <p class="ms-auto textmuted"><span class="fas fa-times"></span></p>
+                          </div>
+                          <div class="d-flex mb-2">
+                              <p class="h7">#AL2545</p>
+                              <p class="ms-auto bg btn btn-primary p-blue h8"><span class="far fa-clone pe-2"></span>COPY
+                                  PAYMENT LINK </p>
+                          </div>
+                          <div class="row">
+                              <div class="col-12 mb-2">
+                                  <p class="textmuted h8">Project / Description</p> <input class="form-control"
+                                      type="text" placeholder="Legal Consulting">
+                              </div>
+                              <div class="col-6">
+                                  <p class="textmuted h8">Issused on</p> <input class="form-control" type="text"
+                                      placeholder="Oct 25, 2020">
+                              </div>
+                              <div class="col-6">
+                                  <p class="textmuted h8">Due on</p> <input class="form-control" type="text"
+                                      placeholder="Oct 25, 2020">
+                              </div>
+                          </div> -->
+                         
+                          <div class="btn btn-primary d-block h8" style="width: 50% ; margin-top: 20px;" (click)="pay()">payer : abonnement {{status}} 
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+         
+      </div>
+  </div>

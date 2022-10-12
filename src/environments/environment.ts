@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  urlBackend:'http://127.0.0.1:3000/',
+  urlBackend:'http://185.104.172.119:3000/',
 
 };
 
