@@ -51,6 +51,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+ 
 const CLIENT_ID = '338766570747-9ci8df39dn8h1n0nve8qpl1imoaqok6r.apps.googleusercontent.com';
 const googleLoginOptions = {
   scope: 'profile email',
@@ -85,6 +86,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+ 
     MatRippleModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,

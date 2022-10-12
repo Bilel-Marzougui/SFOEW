@@ -10,7 +10,8 @@ import {TranslateService} from '@ngx-translate/core';
 export class UpdProfilPatientService {
 URL=environment.urlBackend
 _uploadImage:any
-
+private url = this.URL+ 'dossier/';
+private urlForms = this.URL+ 'inside/';
 token:any=localStorage.getItem('token_Pat')
 
 header=new HttpHeaders().set('authorization',this.token)
@@ -55,7 +56,20 @@ changeLang(lang){
       const headers=new HttpHeaders().set('authorization','Bearer '+token)
 /*       console.log(headers) */
       return this.http.get<any>(`${this.URL}`+'patient/'+id,{headers: headers})   }
-
+      getAlldossier(){
+        const token=localStorage.getItem('token_Pro')
+    
+      const headers=new HttpHeaders().set('authorization','Bearer '+token)
+        return this.http.get<any>(`${this.url}`,{headers: headers}) 
+      }
+      getdossierById(id: any){
+        console.log(id)
+        const token=localStorage.getItem('token_Pro')
+    
+        const headers=new HttpHeaders().set('authorization','Bearer '+token)
+        return this.http.get<any>(`${this.urlForms}`+'getmyform/'+id,{headers: headers}) 
+    
+      }
       getAllPatient(){
         const token=localStorage.getItem('token_Pro')
         const headers=new HttpHeaders().set('authorization','Bearer '+token)

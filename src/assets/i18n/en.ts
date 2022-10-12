@@ -40,6 +40,8 @@ export const locale = {
         },
         FORMS:{
             FORMS:"Forms",
+            DO:"Folders",
+            LISTPATIENT:"List of forms",
             VIEWFORMS:"View the form",
             AFFECTFORM:"Affect a form"
         },
@@ -79,7 +81,8 @@ export const locale = {
          MF:"My forms",
          DEC:"Disconnection",
          LI:"Invitation List",
-         CO:"Contacts"  
+         CO:"Contacts"   ,
+         DO:"Folders"
         },
         AFFECTFORMS:{
             AFFECTBY:"Form affect by ",

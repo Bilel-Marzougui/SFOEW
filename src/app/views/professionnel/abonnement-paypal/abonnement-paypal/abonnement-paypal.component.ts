@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthProfessionnelService } from 'src/app/views/services/professionnel/auth-professionnel.service';
-import{PaymentService} from '../../../services/Payment/payment.service'
+import{PaymentService} from '../../../services/Payment/payment.service';
+import { UpdProfilPatientService } from 'src/app/views/services/patient/upd-profil-patient.service';
 @Component({
   selector: 'app-abonnement-paypal',
   templateUrl: './abonnement-paypal.component.html',
@@ -14,14 +15,32 @@ toggle :boolean;
 status = ''; 
 price2=0
 price1=0
-id:any
-
-  constructor( public  authPrp:AuthProfessionnelService,private PaymentService:PaymentService) { 
+id:any;
+p:number;
+dossiers=[];
+page:number=1;
+totalLength:any;
+allDossier:any;
+allDosssier=[];
+listIdAffection;
+spinerLoading:boolean=true;
+  constructor(private _patient:UpdProfilPatientService, public  authPrp:AuthProfessionnelService,private PaymentService:PaymentService) { 
     this.id=this.authPrp.geid()
 
   }
 
   ngOnInit(): void {
+    this._patient.getAlldossier().subscribe((res)=>{
+      let i=0;
+
+       res.map((result)=>{
+        if(result.status)
+        i=i+1 
+        else
+        this.allDosssier.push(result)
+      })  
+      this.dossiers = res;
+        })
     this.PaymentService.monthlyPrice().subscribe(payment=>{
       this.monthly=payment
       this.price1 =this.monthly[0].prix
@@ -182,5 +201,39 @@ pay(){
  }
 
 }
+openModal(id) {
+  
+ 
+}
+filterItem(value) {
+  this.allDosssier = this.dossiers.filter(p => {
+    return (
+      p.name.toLowerCase().includes(value.toLowerCase()) ||
+      p.name.toLowerCase().includes(value.toLowerCase()) ||
+      p.name.toLowerCase().includes(value)
+    )
+  }) 
+}
+getIdDossier(id){
+/*     console.log(id)
+  this._dossierData.getMyForm(id).subscribe(
+    res=>{
+console.log("cc",res) 
 
+
+},
+err=>{
+
+}
+);
+  this._dossierData.getdossierById(id).subscribe(
+    res=>{
+   console.log(res)
+    
+    },
+    err=>{
+    
+    }
+    ); */
+}
 }

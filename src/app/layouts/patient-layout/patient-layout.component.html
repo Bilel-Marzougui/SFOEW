@@ -9,7 +9,7 @@
               <div class="sidebar-brand-icon rotate-n-15">
                   <i><img src="../../../assets//img/logo.png" alt=""></i>
               </div>
-              <div class="sidebar-brand-text mx-3">{{ 'HOMES.ESPACEPATIENT' | translate }} </div>
+              <div class="sidebar-brand-text mx-3" style="font-weight: bold;font-size: 90%;">{{ 'HOMES.ESPACEPATIENT' | translate }} </div>
           </a>
 
           <!-- Divider -->
@@ -33,7 +33,7 @@
               <a class="nav-link collapsed" routerLink="profil" data-toggle="collapse" data-target="#collapseTwo"
                   aria-expanded="true" aria-controls="collapseTwo">
                   <i class="fas fa-fw fa-cog"></i>
-                  <span>{{ 'SIDEMENU.MC' | translate }}</span>
+                  <span style="font-weight: bold;font-size: 90%;">{{ 'SIDEMENU.MC' | translate }}</span>
               </a>
 
           </li>
@@ -68,7 +68,7 @@
               <a class="nav-link collapsed" routerLink="listDoctors" data-toggle="collapse" data-target="#collapsePages"
                   aria-expanded="true" aria-controls="collapsePages">
                   <i class="fas fa-fw fa-folder"></i>
-                  <span>{{ 'SIDEMENU.LI' | translate }}</span>
+                  <span style="font-weight: bold;font-size: 90%;">{{ 'SIDEMENU.LI' | translate }}</span>
               </a>
               <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                   <div class="bg-white py-2 collapse-inner rounded">
@@ -87,7 +87,7 @@
             <a class="nav-link collapsed" routerLink="contacts" data-toggle="collapse" data-target="#collapsePages"
                 aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>{{ 'SIDEMENU.CO' | translate }}</span>
+                <span style="font-weight: bold;font-size: 90%;">{{ 'SIDEMENU.CO' | translate }}</span>
             </a>
         
         </li>
@@ -106,9 +106,9 @@
           <!-- Divider -->
           <hr class="sidebar-divider d-none d-md-block">
           <li class="nav-item">
-            <a class="nav-link" href="tables.html" (click)="logout()">
+            <a class="nav-link" href="/" (click)="logout()">
               <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                <span>{{ 'SIDEMENU.DEC' | translate }}</span></a>
+                <span style="font-weight: bold;font-size: 90%;cursor: pointer;">{{ 'SIDEMENU.DEC' | translate }}</span></a>
         </li>
           <!-- Sidebar Toggler (Sidebar) -->
           <!-- <div class="text-center d-none d-md-inline">
@@ -336,18 +336,19 @@
                       </li> -->
                       <div>
                         <label>
-                          <select name='langChoose' #langChoose [(ngModel)]='languageSelect'  (change)="onLangChange(langChoose.value)">
-                            <option *ngFor="let lang of languages" [value]="lang.key"  >{{lang.displayValue}}</option>
+                          <select name='langChoose' #langChoose [(ngModel)]='languageSelect' style="font-weight: bold;font-size: 110%;width: 190%;" (change)="onLangChange(langChoose.value)">
+                            <option *ngFor="let lang of languages" [value]="lang.key"  style="font-weight: bold;font-size: 110%;">{{lang.displayValue}}</option>
                           </select>
                         </label>
                       </div>
+                      <div style="height: 0px;color:transparent">dddddddddd</div>
                       <div class="topbar-divider d-none d-sm-block"></div>
 
                       <!-- Nav Item - User Information -->
                       <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{dataPatient.name}} {{dataPatient.lastname}}</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="font-weight: bold;font-size: 110%;">{{dataPatient.name}} {{dataPatient.lastname}}</span>
                         <div class="rotation">
                           <img *ngIf="dataPatient.photo !=''" class="img-profile rounded-circle"
                           [src]="dataPatient.photo">
@@ -373,7 +374,7 @@
                               </a> -->
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item"  (click)="logout()" href="#" data-toggle="modal" data-target="#logoutModal">
-                                  <i  class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                  <i style="font-weight: bold;font-size: 90%;cursor: pointer;"  class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                   {{ 'SIDEMENU.DEC' | translate }}
                               </a>
                           </div>

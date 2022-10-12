@@ -632,19 +632,34 @@ calcul(){
     responses: this.tableReponse,
     score:this.scorSend
   }).subscribe((res)=>{
- 
+    console.log('this is add', )
       if(res){
-        this.route.navigate(['/patient/contacts'])
-        this.snackBar.open("Formulaire calculer " ,"×", {
-      
-          duration: 5000,
-      
-       
-      
-          verticalPosition: 'top',
-          panelClass:'success'
-      
-        })
+        if(localStorage.getItem("langauage")=='fr'){
+          this.route.navigate(['/patient/contacts'])
+          this.snackBar.open("Bon travail ! formulaire complèt" ,"×", {
+        
+            duration: 5000,
+        
+         
+        
+            verticalPosition: 'top',
+            panelClass:'success'
+        
+          })
+        }else{
+          this.route.navigate(['/patient/contacts'])
+          this.snackBar.open("Good work! form completed" ,"×", {
+        
+            duration: 5000,
+        
+         
+        
+            verticalPosition: 'top',
+            panelClass:'success'
+        
+          })
+        }
+  
       }else{
         location.reload()
       }

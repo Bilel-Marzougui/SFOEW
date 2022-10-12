@@ -46,7 +46,7 @@ export class PriviewFormDoctorComponent implements OnInit {
  
      this.tabScore=response.formMuti
        
- console.log(this.tabScore)
+ //console.log(this.tabScore)
  
      })
   }

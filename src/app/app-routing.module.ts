@@ -29,7 +29,9 @@ const routes: Routes = [
     {path:'contact',loadChildren:()=>import('./views/professionnel/contact/contact.module').then(m=>m.ContactModule)},
     {path:'formulaires',loadChildren:()=>import('./views/professionnel/monformulaire/monformulaire.module').then(m=>m.MonformulaireModule)},
     {path:'show-forms/:id',loadChildren:()=>import('./views/professionnel/show-forms/show-forms.module').then(m=>m.ShowFormsModule)},
-    {path:'Abonnement',loadChildren:()=>import('./views/professionnel/abonnement-paypal/abonnement-paypal.module').then(m=>m.AbonnementPaypalModule)},
+    {path:'listedossier',loadChildren:()=>import('./views/professionnel/abonnement-paypal/abonnement-paypal.module').then(m=>m.AbonnementPaypalModule)},
+    {path:'dossier',loadChildren:()=>import('./views/professionnel/dossier/dossier-forms/dossier-forms.module').then(m=>m.DossierFormsModule)},
+    {path:'detaildossier/:id',loadChildren:()=>import('./views/professionnel/detaildossier/detaild-dossier/details-modules.module').then(m=>m.DetailsModulesModule)},
     {path:'preview-details/:id/:iddoctor/:idpatient',loadChildren:()=>import('./views/professionnel/preview-form-doctor/formd-pr.module').then(m=>m.FormdPrModule)},
 
   ]},

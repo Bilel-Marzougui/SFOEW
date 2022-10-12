@@ -40,6 +40,8 @@ export const locale = {
         },
         FORMS:{
             FORMS:"Les Formulaires",
+            DO:"Les dossier",
+            LISTPATIENT:"Liste des Formulaire",
             VIEWFORMS:"Afficher le formulaire",
             AFFECTFORM:"Affecter le formulaire",
              AUCUNN:"AUCUN PATIENT"
@@ -81,7 +83,8 @@ export const locale = {
          MF:"Mes formulaires",
          DEC:"Déconnexion",
          LI:"Liste des invitations",
-         CO:"Contacts"  
+         CO:"Contacts"  ,
+         DO:"Dossier"
         },
         AFFECTFORMS:{
             AFFECTBY:"Formulaire affecter par ",

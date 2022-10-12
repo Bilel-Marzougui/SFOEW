@@ -3,7 +3,7 @@
     <div class="container">
       <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a >{{ 'LISTPATIENT.PATIENT' | translate }}</a></li>
+          <li class="breadcrumb-item"><a style="font-weight: bold;font-size: 90%;">{{ 'LISTPATIENT.PATIENT' | translate }}</a></li>
         </ol>
       </nav>
         <div class="row">
@@ -24,9 +24,11 @@
             <div class="col-lg-3" *ngFor="let contact of contacts | paginate: { itemsPerPage: 8, currentPage: p } ">
                 <div class="text-center card-box">
                     <div class="member-card pt-3 pb-3">
-                        <div class="thumb-lg member-thumb mx-auto"><img *ngIf="contact.patients.photo!=''" [src]="contact.patients.photo"
-                                class="rounded-circle img-thumbnail" alt="profile-image">
+                        <div class="thumb-lg member-thumb mx-auto"><img *ngIf="contact.patients.photo!=''&&contact.patients.photo !='default.png'" [src]="contact.patients.photo"
+                                class="rounded-circle img-thumbnail" alt="profile-image" style="height: 100%;width:100%">
                                 <img *ngIf="contact.patients.photo==''" src="../../../../../assets/img/avat.jpg"
+                                class="rounded-circle img-thumbnail" alt="profile-image">
+                                <img *ngIf="contact.patients.photo =='default.png'" src="../../../../../assets/img/avat.jpg"
                                 class="rounded-circle img-thumbnail" alt="profile-image"></div>
                      
                             <button type="button" class="btn btn-primary" data-toggle="modal" style="background: #3e4676;border-color:#3e4676;" (click)="getpatient(contact)" data-target="#exampleModal">

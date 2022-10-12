@@ -78,6 +78,7 @@ export class InvitationsComponent implements OnInit,OnChanges {
   }, 1000); */
    
   }
+
   geAllPatients(){
   
     this._patient.getAllPatient().subscribe((res)=>{
@@ -155,7 +156,7 @@ console.log(this.pat.name) */
     
 }
 addPatient(id:any,index:any){
-console.log(id,localStorage.getItem('id_Pro'),index);
+/* console.log(id,localStorage.getItem('id_Pro'),index); */
  
   let obj ={
  

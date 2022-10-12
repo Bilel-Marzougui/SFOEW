@@ -21,7 +21,6 @@ export class AppComponent {
     if(localStorage.getItem('langauage')==null){
       localStorage.setItem('langauage',this.currentLang)
     }
-    console.log(localStorage.getItem('langauage'))
     this.translationService.addTranslation(englishLang, frlaLang,arlaLang);
     this.lang =  localStorage.getItem('langauage')
     let htmlTag = this.document.getElementsByTagName("html")[0] as HTMLHtmlElement;

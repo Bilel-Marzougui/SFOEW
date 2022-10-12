@@ -28,7 +28,6 @@ export class ContactComponent implements OnInit {
       this.contacts=response
       this.filtredContacts=response
       this.mesgEmpty=true;
-
     }
      
       )

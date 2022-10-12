@@ -1,0 +1,163 @@
+<div class="content">
+  
+    <div class="container">
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a style="font-weight: bold;font-size: 90%;">{{ 'FORMS.FORMS' | translate }}</a></li>
+        </ol>
+      </nav>
+        <div class="row">
+            <div class="container" >
+          
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="{{ 'LISTPATIENT.SEARCH' | translate }}..." (input)="filterItem($event.target.value)"  />
+                </div>
+              </div>
+        </div>
+        <!-- end row -->
+    
+        <!-- end row -->
+
+        <!-- end row -->
+
+        <!-- end row -->
+     
+        <!-- end row -->
+    </div>
+    <!-- container -->
+</div>
+
+<div class="container rounded mt-5 bg-white p-md-5">
+
+  
+    <div class="form-group">
+      <div class="h2 font-weight-bold">{{ 'FORMS.LISTPATIENT' | translate }}</div>
+  
+    </div>
+    <div class="container" >
+        
+       
+    </div>
+ 
+    <div class="card-body">
+
+        <table class="table">
+    
+          <thead>
+            <tr>
+                <th> </th>
+                <th>titre</th>
+               
+            
+                <th>date de création</th>
+               
+                <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+    
+            <tr id="spacing-row">
+              <td></td>
+            </tr>  
+            <tr *ngFor="let f of allForms | paginate: { itemsPerPage: 5, currentPage: p , id: 'p' } ; let i = index">
+                <ng-container *ngIf="f" >
+                  <td>{{i}}</td>
+                  <td> <span style="cursor: pointer;"  [routerLink]="['/admin/forms/detail' , f._id]"> {{f?.title}} </span>  </td>
+                 
+                
+                  <td>{{f?.created_date | date}}</td>
+
+
+              
+                  <td class="table-action row">
+                    
+                    <span>  <i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"
+                        (click)="getFormId(f._id)"  ></i></span>
+                     
+                
+                  </td>
+                </ng-container>
+              </tr>
+          
+    
+    
+          </tbody>
+    
+        </table>
+    
+      </div>
+        <div class="parent">
+  
+      <pagination-controls  previousLabel="{{ 'PAGINATION.PR' | translate }}"
+      nextLabel="{{ 'PAGINATION.NEXT' | translate }}" class="child" (pageChange)="p = $event" id="p"></pagination-controls>
+  
+    </div>  
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ 'FORMS.LISTPATIENT' | translate }} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    
+      <div class="modal-body">
+        
+        <div class="container rounded mt-5 bg-white p-md-5">
+       
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">{{ 'PROFILE.NAME' | translate }}</th>
+                  <th scope="col">{{ 'PROFILE.ADRESS' | translate }}</th>
+                  <th scope="col">{{ 'PROFILE.SEND' | translate }}</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <div  class="d-flex justify-content-center" >
+                  <div *ngIf="!contacts" class="spinner-border text-secondary" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <tr class="bg-blue"
+                  *ngFor="let contact of contacts | paginate: { itemsPerPage: 5, currentPage: p2 , id: 'p2' } ; ;index as j  ">
+                 
+                  <td class="pt-2">
+                    <!-- <img src={{prof.photo}} class="rounded-circle" alt=""> -->
+                    <!-- <img class="img-profile rounded-circle" src="../../../assets/img/avat.jpg"> -->
+                    {{contact.patients.name}} {{contact.patients.lastname}}
+                  </td>
+                  <td class="pt-3">{{contact.patients.email}}</td>
+                  <td><i  class="fa fa-paper-plane" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"
+                      (click)="affectForm(contact.patients._id)"></i></td>
+
+                </tr>
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="parent">
+            <div class="modal-footer">
+
+                <pagination-controls  previousLabel="{{ 'PAGINATION.PR' | translate }}"
+              nextLabel="{{ 'PAGINATION.NEXT' | translate }}" class="child" (pageChange)="p2 = $event" id="p2"></pagination-controls>
+        
+              </div> 
+      </div>
+      </div>
+      <!-- <pagination-controls class="child" (pageChange)="p2 = $event"></pagination-controls> -->
+      
+      
+    </div>
+
+  </div>
+
+</div>

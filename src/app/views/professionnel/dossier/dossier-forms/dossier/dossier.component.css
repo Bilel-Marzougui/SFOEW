@@ -1,0 +1,71 @@
+.card1{
+    position: relative;
+ 
+    margin-left: 28%;
+}
+.box{
+
+	width: 300px;
+
+	height: 50px;
+
+	background-color: white;
+
+	border-radius: 3px;
+
+	display: flex;
+
+	align-items: center;
+
+	padding: 20px;
+
+}
+
+.box > i {
+
+	font-size: 20px;
+
+	color: #777;
+
+}
+
+.box > input{
+
+	flex: 1;
+  width: 200px;
+	height: 40px;
+background-color: transparent;
+	border: none;
+
+	outline: none;
+
+	font-size: 15px;
+
+	padding-left: 10px;
+
+
+}
+.card-header{
+    position: absolute;
+    top: 13%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 62px;
+    width: 300px;
+
+
+}
+
+h3{
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+    background: #153d77;
+}
+/* .spinner-border {
+    width: 10px; 
+    height: 10px;
+} */

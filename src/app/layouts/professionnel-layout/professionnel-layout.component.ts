@@ -71,7 +71,7 @@ export class ProfessionnelLayoutComponent implements OnInit {
         }else{
           this.languageSelect=localStorage.getItem('langauage')}
       
-console.log( this.languageSelect)
+ 
   }
 
   ngOnInit(): void {
