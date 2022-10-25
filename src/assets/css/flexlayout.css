@@ -140,7 +140,7 @@ div.displayed {
   
   
   
-  @media (max-width: 992px) {
+  @media (max-width: 600px) {
     .wrap-login100 {
       padding: 177px 90px 33px 85px;
     }
@@ -154,7 +154,7 @@ div.displayed {
     }
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 570px) {
     .wrap-login100 {
       padding: 100px 80px 33px 80px;
     }

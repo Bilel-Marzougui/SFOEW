@@ -1,4 +1,6 @@
-import { Component, Inject, OnInit,NgZone } from '@angular/core';
+import { Component, Inject, OnInit,NgZone ,  ElementRef,
+  VERSION,
+  ViewChild, } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {Validators} from '@angular/forms';
@@ -20,7 +22,9 @@ import {
   NavigationEnd,
   NavigationCancel,
   NavigationError
-} from '@angular/router'
+} from '@angular/router';
+import SignaturePad from "signature_pad";
+import { Observable }    from 'rxjs/Observable';
 interface Food {
   value: string;
   viewValue: string;
@@ -34,7 +38,8 @@ import Swal from 'sweetalert2'
 })
 export class AuthComponent implements OnInit{
   // user!:SocialUser;
-
+  @ViewChild("canvas", { static: true }) canvas: ElementRef;
+  sig: SignaturePad;
   messageError:any;
   registerFormPro: FormGroup;
   registerFormPat:FormGroup;
@@ -59,6 +64,64 @@ export class AuthComponent implements OnInit{
     {value: 'tacos-266', viewValue: 'Chirurgien-dentise spécialité C.O. (53)'},
     {value: 'tacos-211', viewValue: 'Dermato Vénérologie (05)'},
     {value: 'tacos-222', viewValue: 'Directeur de laboratoire médecin'},
+
+    {value: 'steak-0', viewValue: 'Endocrinologie, métabolisme (42)'},
+    {value: 'pizza-1', viewValue: 'Fournisseurs Artisan : titre 1, titre 2 chap (61)'},
+    {value: 'tacos-2', viewValue: 'Fournisseurs Association : titre 1, titre 2 (62)'},
+    {value: 'tacos-23', viewValue: 'Fournisseur Optique médical : titre 2, cha (64)'},
+    {value: 'tacos-24', viewValue: 'Fournisseurs Orthèses : titre 2, chapitre 1 (63)'},
+    {value: 'tacos-25', viewValue: 'Fournisseurs Ortho prothèses : titre 2, chap (68)'},
+    {value: 'tacos-26', viewValue: 'Fournisseurs Podo-orthèses : titre 2, chapit (67)'},
+    {value: 'tacos-27', viewValue: 'Fournisseurs Prothèses oculaires et facials (66)'},
+    {value: 'tacos-28', viewValue: 'Chirurgie Dentaire spécialité O.D.F (36)'},
+    {value: 'tacos-29', viewValue: 'Fournisseurs Société : titre 1, titre 2 chap (60)'},
+    {value: 'tacos-277', viewValue: 'Gastro-entérologie et Hépatologie (08)'},
+    {value: 'tacos-288', viewValue: 'Génétique médicale (78)'},
+    {value: 'tacos-299', viewValue: 'Gériatrie (34)'},
+    {value: 'tacos-244', viewValue: 'Gynécologie médicale (70)'},
+    {value: 'tacos-255', viewValue: 'Gynécologie Obstétrique (07)'},
+    {value: 'tacos-266', viewValue: 'Gynécologie obstétrique et médicale (79)'},
+    {value: 'tacos-211', viewValue: 'Hématologie (71)'},
+    {value: 'tacos-222', viewValue: 'Infirmier (e) (24)'},
+
+    {value: 'steak-0', viewValue: 'LABM et de cyto-phatologie (40)'},
+    {value: 'pizza-1', viewValue: 'LABM polyvalent (39)'},
+    {value: 'tacos-2', viewValue: 'Laboratoire d analyses médicales (30)'},
+    {value: 'tacos-23', viewValue: 'Masseur-kinésithérapeute (26)'},
+    {value: 'tacos-24', viewValue: 'Médecine Générale (01)'},
+    {value: 'tacos-25', viewValue: 'Médecine interne (09)'},
+    {value: 'tacos-26', viewValue: 'Médecine nucléaire (72) |'},
+    {value: 'tacos-27', viewValue: 'Néphrologie (35)'},
+    {value: 'tacos-28', viewValue: 'Neuro-chirurgie (10)'},
+    {value: 'tacos-29', viewValue: 'Neurologie (32)'},
+    {value: 'tacos-277', viewValue: 'Neuropsychiatrie (17)'},
+    {value: 'tacos-288', viewValue: 'Obstétrique (77)'},
+    {value: 'tacos-299', viewValue: 'Oncologie médicale (73)'},
+    {value: 'tacos-244', viewValue: 'Oncologie radiothérapique (74)'},
+    {value: 'tacos-255', viewValue: 'Ophtalmologie (15)'},
+    {value: 'tacos-266', viewValue: 'Orthophoniste (28)'},
+    {value: 'tacos-211', viewValue: 'Orthoptiste (29)'},
+
+    {value: 'steak-0', viewValue: 'Oto-rhino-laryngologie (11)'},
+    {value: 'pizza-1', viewValue: 'Pédiatrie (12)'},
+    {value: 'tacos-2', viewValue: 'Pédicure-podologue (27)'},
+    {value: 'tacos-23', viewValue: 'Pharmacien (50)'},
+    {value: 'tacos-24', viewValue: 'Pharmacien mutualiste (51)'},
+    {value: 'tacos-25', viewValue: 'Pneumologie (13)'},
+    {value: 'tacos-26', viewValue: 'Psychiatrie (33)'},
+    {value: 'tacos-27', viewValue: 'Psychiatrie de l enfant et de l adolescence (75)'},
+    {value: 'tacos-28', viewValue: 'Radiologie (06)'},
+    {value: 'tacos-29', viewValue: 'Radiothérapie (76)'},
+    {value: 'tacos-277', viewValue: 'Réanimation médicale (20)'},
+    {value: 'tacos-288', viewValue: 'Rééducation Réadaptent Fonctionnel (31)'},
+    {value: 'tacos-299', viewValue: 'Rhumatologie (14)'},
+    {value: 'tacos-244', viewValue: 'Sage-femme (21)'},
+    {value: 'tacos-255', viewValue: 'Santé publique et médecine sociale (80)'},
+    {value: 'tacos-266', viewValue: 'Spécialiste en médecine générale avec diplôme (22)'},
+    {value: 'tacos-211', viewValue: 'Spécialiste en médecine générale reconnu par (23)'},
+
+    {value: 'tacos-266', viewValue: 'Somatologie (18)'},
+    {value: 'tacos-211', viewValue: 'Urologie (16)'},
   ];
     submitted = false;
     public selectedVal="Professionnel";
@@ -110,7 +173,11 @@ export class AuthComponent implements OnInit{
           photo: '',
           account_state: true,
           archived: false,
-          added_date: '2022-05-26T09:50:18.419+00:00'
+          added_date: '2022-05-26T09:50:18.419+00:00',
+          consontement:"consontement",
+          mailConfirmation:true,
+          weight:'+33333333333333',
+          size:'+33333333333333'
     
       }
 
@@ -171,7 +238,8 @@ guser;
     
   /*   console.log(this.selectedVal)
     console.log(this.selectedVal2) */
-
+    let emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+ 
     this.registerFormPro = this.formBuilder.group({
 
       name: ['', Validators.required],
@@ -184,9 +252,9 @@ guser;
       job: ['', Validators.required],
       adeli: ['', Validators.required,Validators.pattern("^[0-9]*$")],
       rpps: ['', Validators.required,Validators.pattern("^[0-9]*$")],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required,  Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
-      confirmPassword: ['', Validators.required ],
+      email: ['', [Validators.required, Validators.pattern(emailregex)], this.checkInUseEmail],
+      password: ['', [Validators.required,  this.checkPassword]],
+      confirmPassword:  ['',[ Validators.required  , this.checkPassword]],
       role: ['2',Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
 
@@ -194,7 +262,7 @@ guser;
       validator: MustMatch('password', 'confirmPassword')
   });
 
-
+ 
   this.registerFormPat = this.formBuilder.group({
 
     name: ['', Validators.required],
@@ -204,10 +272,14 @@ guser;
     adresse: ['', Validators.required],
     ssn: ['', Validators.required],
     gender: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required,  Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
-    confirmPassword: ['', Validators.required],
-    acceptTerms: [false, Validators.requiredTrue]
+    email: ['', [Validators.required, Validators.pattern(emailregex)], this.checkInUseEmail],
+    password: ['', [Validators.required,   this.checkPassword]],
+    confirmPassword: ['',[ Validators.required  , this.checkPassword]],
+    acceptTerms: [false, Validators.requiredTrue],
+    consontement: [false, Validators.requiredTrue],
+    mailConfirmation: [false, Validators.requiredTrue],
+    weight: [false, Validators.required],
+    size: [false, Validators.required],
 }, {
     validator: MustMatch('password', 'confirmPassword')
 });
@@ -227,11 +299,42 @@ this.loginFormPat = this.formBuilder.group({
 
 
 
-
+this.sig = new SignaturePad(this.canvas.nativeElement);
 
 }
+points = [];
+signatureImage;
+image=""
+showImage(data) {
+  this.image=data
+  this.signatureImage = data;
+}
+getErrorEmail() {
+  return this.registerFormPat.get('email').hasError('required') ? 'Field is required' :
+    this.registerFormPat.get('email').hasError('pattern') ? 'Not a valid emailaddress' :
+      this.registerFormPat.get('email').hasError('alreadyInUse') ? 'This emailaddress is already in use' : '';
+}
+getErrorPassword() {
+  return this.registerFormPat.get('password').hasError('required') ? 'Field is required (at least eight characters, one uppercase letter and one number)' :
+    this.registerFormPat.get('password').hasError('requirements') ? 'Password needs to be at least eight characters, one uppercase letter and one number' : '';
+}
 
-
+checkPassword(control) {
+  let enteredPassword = control.value
+  let passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
+  return (!passwordCheck.test(enteredPassword) && enteredPassword) ? { 'requirements': true } : null;
+}
+checkInUseEmail(control) {
+  // mimic http database access
+  let db = ['tony@gmail.com'];
+  return new Observable(observer => {
+    setTimeout(() => {
+      let result = (db.indexOf(control.value) !== -1) ? { 'alreadyInUse': true } : null;
+      observer.next(result);
+      observer.complete();
+    }, 4000)
+  })
+}
 onStrengthChanged(strength: number) {
 /*   console.log(strength) */
 }
@@ -360,7 +463,7 @@ let data=info.value}
 registerPat(infopat:any,type) {
   
 if(type==1){
-  console.log(" form",infopat) 
+   console.log(" form",infopat)   
   this.AuthPatient.registerPatient(infopat) .subscribe((response)=>{
        Swal.fire({
          position: 'center',
@@ -397,19 +500,21 @@ if(type==1){
          return;
      }
 }else{
-  this.patient.name=infopat.value.name
-  this.patient.lastname=infopat.value.lastname
-  this.patient.email=infopat.value.email
+  console.log(infopat.value)
+  this.patient.name=infopat.value.name;
+  this.patient.lastname=infopat.value.lastname;
+  this.patient.email=infopat.value.email;
   this.patient.birthday=this.datePipe.transform(infopat.value.birthday, 'yyyy-MM-dd');
-  this.patient.adresse=infopat.value.adresse
-  this.patient.tel=infopat.value.tel
-  this.patient.password=infopat.value.password
+  this.patient.adresse=infopat.value.adresse;
+  this.patient.tel=infopat.value.tel;
+  this.patient.password=infopat.value.password;
   this.patient.added_date=this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
-  this.patient.gender=infopat.value.gender
-  this.patient.archived=false
-  this.patient.account_state=true
-  this.patient.ssn=infopat.value.ssn
-
+  this.patient.gender=infopat.value.gender;
+  this.patient.archived=false;
+  this.patient.account_state=true;
+  this.patient.ssn=infopat.value.ssn;
+  this.patient.weight=infopat.value.weight;
+  this.patient.size=infopat.value.size;
  /*  console.log("patient form",this.patient) */
   this.AuthPatient.registerPatient(this.patient) .subscribe((response)=>{
  /*    this.snackBar.open(" Inscription réussie " ,"×", {

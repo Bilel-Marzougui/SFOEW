@@ -37,6 +37,8 @@ export class EditProfilComponent implements OnInit, OnDestroy {
     archived: '',
     account_state: '',
     added_date: '',
+    size:0,
+    weight:0
 
   }
   messageSuccess = ''

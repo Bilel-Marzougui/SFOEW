@@ -84,60 +84,62 @@
   </div>
   <div  *ngFor="let form of forms | paginate: { itemsPerPage: 12, currentPage: p , id: 'p' } " class="col-lg-2"
     style="margin-bottom: 20px">
+<div   >
+  <div class="card" style="height: 100%; ">
+    <mat-select class=" form-control"
+    [(value)]="form.title"
+ 
+     [placeholder]="form.nameAff2[0].Aff1=='Aucune dossier' ? 'Aucun dossier':form.nameAff2[0].Aff1">
+  <mat-option
 
-    <div class="card" style="height: 100%; ">
-      <mat-select class=" form-control"
-      [(value)]="form.title"
-   
-       [placeholder]="form.nameAff2[0].Aff1=='Aucune dossier' ? 'Aucun dossier':form.nameAff2[0].Aff1">
-    <mat-option
+  *ngFor="let item of form.nameAff"
+  [value]="form.nameAff2[0].Aff1=='Aucune dossier' ? 'Aucun dossier':form.nameAff2[0].Aff1"
+  >
+
+ 
   
-    *ngFor="let item of form.nameAff"
-    [value]="form.nameAff2[0].Aff1=='Aucune dossier' ? 'Aucun dossier':form.nameAff2[0].Aff1"
-    >
+  <label  > {{item.Aff1}}</label>
+  </mat-option>
   
-   
-    
-    <label  > {{item.Aff1}}</label>
-    </mat-option>
-    
-  </mat-select>
-      <div class="card-header" matTooltip="{{form.title}}" matTooltipPosition="above">
-        <h3 class="card-title mb-0">{{form.title}}</h3>
-        <i class='fa fa-file-medical fa-4x ' style="width: 80px;   margin-left: 40%; float:left;"></i>
-      </div>
-      <div class="card-content">
-        <div class="yass">
-
-        </div>
-        <div class="row mt-1" style="margin-left: 1px;padding-bottom: 5px; float:left;" *ngIf="nb=='1'; else notchecked">
-
-          <span> {{ 'FORMS.VIEWFORMS' | translate }} <i class="fa fa-eye fa-2x" (click)="showForm(form)"></i></span>
-
-          <br>
-          <hr style="width: 50%;">
-
-          <span> {{ 'FORMS.AFFECTFORM' | translate }}<i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"
-              (click)="getFormId(form._id)"></i></span>
-
-              <ng-template notchecked>
-                <span> Afficher la forme <i class="fa fa-eye fa-2x" ></i></span>
-      
-                <br>
-                <hr style="width: 50%;">
-      
-                <span> affect form <i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"
-                   ></i></span>
-            </ng-template>
-        </div>
-       
-      </div>
-      <div class="card-footer">
-     <!--    <i class="fa fa-clock"></i>
-        <span> {{form.created_date}} </span> -->
-      </div>
-
+</mat-select>
+    <div class="card-header" matTooltip="{{form.title}}" matTooltipPosition="above">
+      <h3 class="card-title mb-0">{{form.title}}</h3>
+      <i class='fa fa-file-medical fa-4x ' style="width: 80px;   margin-left: 40%; float:left;"></i>
     </div>
+    <div class="card-content">
+      <div class="yass">
+
+      </div>
+      <div class="row mt-1" style="margin-left: 1px;padding-bottom: 5px; float:left;" *ngIf="nb=='1'; else notchecked">
+
+        <span> {{ 'FORMS.VIEWFORMS' | translate }} <i class="fa fa-eye fa-2x" (click)="showForm(form)"></i></span>
+
+        <br>
+        <hr style="width: 50%;">
+
+        <span> {{ 'FORMS.AFFECTFORM' | translate }}<i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"
+            (click)="getFormId(form._id)"></i></span>
+
+            <ng-template notchecked>
+              <span> Afficher la forme <i class="fa fa-eye fa-2x" ></i></span>
+    
+              <br>
+              <hr style="width: 50%;">
+    
+              <span> affect form <i class=" fa fa-paper-plane fa-2x" data-toggle="modal" data-target="#exampleModal"
+                 ></i></span>
+          </ng-template>
+      </div>
+     
+    </div>
+    <div class="card-footer">
+   <!--    <i class="fa fa-clock"></i>
+      <span> {{form.created_date}} </span> -->
+    </div>
+
+  </div>
+</div>
+    
 
   </div>
   <div class="parent">

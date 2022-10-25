@@ -60,7 +60,7 @@
                       {{ 'AUTH.CG' | translate }}
                     </button>
                </div>
-               <mat-checkbox>Remember Me!</mat-checkbox>
+               <mat-checkbox>  {{ 'AUTH.RM' | translate }}</mat-checkbox>
 
               
               
@@ -100,7 +100,7 @@
                       {{ 'AUTH.CG' | translate }}
                     </button>
                </div>
-               <mat-checkbox>Remember Me!</mat-checkbox>
+               <mat-checkbox>{{ 'AUTH.RM' | translate }}</mat-checkbox>
 
                   <!-- <button mat-raised-button class="login-button">
                 Login with Google
@@ -183,7 +183,7 @@
 
 
                         <mat-form-field>
-                          <input matInput placeholder="{{ 'AUTH.ADRESS' | translate }}" type="text" formControlName="adresse"
+                          <input matInput placeholder="{{ 'AUTH.ADDRESS' | translate }}" type="text" formControlName="adresse"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }" />
                           <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
                             <div *ngIf="f.adresse.errors.required">adresse est obligatoire</div>
@@ -263,10 +263,9 @@
                       <mat-form-field>
                         <input matInput placeholder="{{ 'AUTH.EMAIL' | translate }}" type="text" formControlName="email" class="form-control"
                           [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                          <div *ngIf="f.email.errors.required">Email is obligatoire</div>
-                          <div *ngIf="f.email.errors.email">Email invalide</div>
-                        </div>
+                          <mat-error *ngIf="!registerFormPro.controls['email'].valid && registerFormPro.controls['email'].touched">
+                            {{ getErrorEmail() }}
+                          </mat-error>
                       </mat-form-field>
                       <div class="form-row">
 
@@ -279,12 +278,9 @@
                           </mat-hint>
                           <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}
                           </mat-icon>
-
-                          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">Mot de passe est obligatoire</div>
-                            <div *ngIf="f.password.errors.minlength">
-                              Le mot de passe doit être au moins de 6 caractères</div>
-                          </div>
+                          <mat-error *ngIf="!registerFormPro.controls['password'].valid && registerFormPro.controls['password'].touched">
+                            {{ getErrorPassword() }}
+                          </mat-error>
 
                           <mat-password-strength #passwordComponent (onStrengthChanged)="onStrengthChanged($event)"
                             [password]="password.value">
@@ -296,11 +292,9 @@
                           <input matInput placeholder="{{ 'AUTH.CFM' | translate }}" [type]="hide ? 'password' : 'text'"
                             formControlName="confirmPassword" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
-                          <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                            <div *ngIf="f.confirmPassword.errors.required">Confirmation du Mot de passe est obligatoire
-                            </div>
-                            <div *ngIf="f.confirmPassword.errors.mustMatch">Mot de passe incorrect</div>
-                          </div>
+                            <mat-error *ngIf="registerFormPro.controls['confirmPassword'].value==registerFormPro.controls['password'].value">
+                              {{ getErrorPassword() }}
+                            </mat-error>
                         </mat-form-field>
                       </div>
                       <div class="form-group form-check">
@@ -359,9 +353,8 @@
                             <div *ngIf="fPat.tel.errors.required">tel est obligatoire</div>
                           </div>
                         </mat-form-field>
-
                         <mat-form-field>
-                          <input matInput placeholder="{{ 'AUTH.ADRESS' | translate }}" type="text" formControlName="adresse"
+                          <input matInput placeholder="{{ 'AUTH.ADDRESS' | translate }}" type="text" formControlName="adresse"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && fPat.adresse.errors }" />
                           <div *ngIf="submitted && fPat.adresse.errors" class="invalid-feedback">
                             <div *ngIf="fPat.adresse.errors.required">Adresse est obligatoire</div>
@@ -403,12 +396,32 @@
 
                       </div>
                       <mat-form-field>
+                        <input matInput placeholder="{{ 'AUTH.TELE' | translate }}" type="number" formControlName="tel" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && fPat.tel.errors }" />
+                        <div *ngIf="submitted && fPat.tel.errors" class="invalid-feedback">
+                          <div *ngIf="fPat.tel.errors.required">tel est obligatoire</div>
+                        </div>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="{{ 'AUTH.POID' | translate }}" type="number" formControlName="weight" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && fPat.weight.errors }" />
+                        <div *ngIf="submitted && fPat.weight.errors" class="invalid-feedback">
+                          <div *ngIf="fPat.weight.errors.required">weight est obligatoire</div>
+                        </div>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="{{ 'AUTH.SIZE' | translate }}" type="number" formControlName="size" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && fPat.size.errors }" />
+                          <mat-error *ngIf="!registerFormPat.controls['size'].valid && registerFormPat.controls['size'].touched">
+                            {{ getErrorEmail() }}
+                          </mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
                         <input matInput placeholder="email" type="text" formControlName="email" class="form-control"
                           [ngClass]="{ 'is-invalid': submitted && fPat.email.errors }" />
-                        <div *ngIf="submitted && fPat.email.errors" class="invalid-feedback">
-                          <div *ngIf="fPat.email.errors.required">Email est obligatoire</div>
-                          <div *ngIf="fPat.email.errors.email">Email invalide</div>
-                        </div>
+                          <mat-error *ngIf="!registerFormPat.controls['email'].valid && registerFormPat.controls['email'].touched">
+                            {{ getErrorEmail() }}
+                          </mat-error>
                       </mat-form-field>
 
                       <div class="form-row">
@@ -424,11 +437,9 @@
                           <mat-icon (click)="myFunction()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}
                           </mat-icon>
 
-                          <div *ngIf="submitted && fPat.password.errors" class="invalid-feedback">
-                            <div *ngIf="fPat.password.errors.required">Mot de passe est obligatoire</div>
-                            <div *ngIf="fPat.password.errors.minlength">
-                              Le mot de passe doit être au moins de 6 caractères</div>
-                          </div>
+                          <mat-error *ngIf="!registerFormPat.controls['password'].valid && registerFormPat.controls['password'].touched">
+                            {{ getErrorPassword() }}
+                          </mat-error>
 
                           <mat-password-strength #passwordComponent (onStrengthChanged)="onStrengthChanged($event)"
                             [password]="password.value">
@@ -437,33 +448,42 @@
                         </mat-form-field>
 
                         <mat-form-field>
-                          <input matInput placeholder="{{ 'AUTH.CFM' | translate }}" [type]="hide ? 'password' : 'text'"
+                          <input  matInput placeholder="{{ 'AUTH.CFM' | translate }}" [type]="hide ? 'password' : 'text'"
                             formControlName="confirmPassword" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && fPat.confirmPassword.errors }" />
-
-                          <div *ngIf="submitted && fPat.confirmPassword.errors" class="invalid-feedback">
-                            <div *ngIf="fPat.confirmPassword.errors.required">Confirmation du mot de passe obligatoire
-                            </div>
-                            <div *ngIf="fPat.confirmPassword.errors.mustMatch">Mot de passe est invalide</div>
-                          </div>
+                          
+                            <mat-error *ngIf="registerFormPat.controls['confirmPassword'].value==registerFormPat.controls['password'].value">
+                              {{ getErrorPassword() }}
+                            </mat-error>
+                         
                         </mat-form-field>
+                        <ng-signature-pad
+                        doneButtonText="Show Image"
+                        format="base64"
+                        (done)="showImage($event)">
+                      </ng-signature-pad>
+                      
+                      
+                      <img [src]="signatureImage" *ngIf="signatureImage" />
+                      
+                      {{image}}
                       </div>
                       <div class="form-group form-check">
-                        <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
+                      <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
                           [ngClass]="{ 'is-invalid': submitted && fPat.acceptTerms.errors }" />
                         <label for="acceptTerms" class="form-check-label">{{ 'AUTH.ACCEPTT' | translate }}</label>
                         <div *ngIf="submitted && fPat.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is
                           required</div>
                       </div>
-                      <div class="text-center">
-                        <button class="btn btn-primary mr-1" type="submit">{{ 'AUTH.INSCRIRE' | translate }}</button>
-                        <button mat-raised-button color="primary" (click)="signInWithGoogle()" type="submit" style="margin-right: 10px">
+                      <div class="text-center"> 
+                        <button class="btn btn-primary mr-1" type="submit" >{{ 'AUTH.INSCRIRE' | translate }}</button>
+                        <button mat-raised-button color="primary" (click)="signInWithGoogle()"  type="submit" style="margin-right: 10px">
                           {{ 'AUTH.CG' | translate }}
                         </button>
                       </div>
                     </form>
 
-
+                
                   </div>
                 </div>
 

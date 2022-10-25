@@ -48,9 +48,18 @@
       
       
         </div>
-        <li>       <div>
-          <h3 class="section-title" style="color:#093b84  ; font-size: 25px;"> section : {{section.title.slice(0,30)}} {{s}}
-          </h3>
+        <li>       <div class="card" >
+          <div *ngIf="section.title.length>0|| section.description.length>0"  class="card-header">
+            <br> 
+            <h3 *ngIf="section.title.length!=0"  class="section-title" style="color:#093b84  ; font-size: 25px;">  {{section.title.slice(0,30)}}  
+            </h3>
+            <h1 *ngIf="section.description.length!=0" class="form-title6">     Description  :  </h1> 
+            <p class="fdescr">
+              {{section.description}}
+            </p>
+          </div>
+         
+        
         </div>
         <!-- boucel for =>enter to questions items -->
   
@@ -69,6 +78,7 @@
                   <h2 class="question-title">
                     {{section.questions[q].title}}
                   </h2>
+                
                 </div>
   
   
@@ -136,7 +146,7 @@
   
                       </div>
   
-  
+                      <br><br><br><br><br>
                     </div>
   
   
@@ -343,31 +353,32 @@
   
           </div>
         </div></li>
-        <div class="col-12 col-md-12 col-lg-11 mx-auto">
-          <div class="card">
-            <div class="card-body">
-           <!--    <div class="card-header">
-                <h1 class="form-title"> Bibliographie </h1>
-              </div> -->
-              <h1 class="form-title6">     Bibliographie :  </h1> 
-              <div class="row"  *ngFor="let message of form.messages;let m = index">
-             
-                <div class="col-lg-8">
-                 <!--  <input type="text" [(ngModel)]="message.message" class="form-control question-short-text-response w-100"
-                    placeholder="message"> -->
-                 
-                  <p>
-                {{message.message}}
-                  </p>
-                </div>
+
+      </ng-container>
+      <div class="col-12 col-md-12 col-lg-12 mx-auto">
+        <div class="card">
+          <div class="card-body">
+         <!--    <div class="card-header">
+              <h1 class="form-title"> Bibliographie </h1>
+            </div> -->
+            <h1 class="form-title6">     Bibliographie :  </h1> 
+            <div class="row"  *ngFor="let message of form.messages;let m = index">
            
+              <div class="col-lg-8">
+               <!--  <input type="text" [(ngModel)]="message.message" class="form-control question-short-text-response w-100"
+                  placeholder="message"> -->
+               
+                <p>
+              {{message.message}}
+                </p>
               </div>
-       
-           
+         
             </div>
+     
+         
           </div>
         </div>
-      </ng-container>
+      </div>
     </cdk-virtual-scroll-viewport>
   </ul>
   

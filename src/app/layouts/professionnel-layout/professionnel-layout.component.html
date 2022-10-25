@@ -97,6 +97,14 @@
             </a>
          
         </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" routerLink="addpatient" data-toggle="collapse" data-target="#collapseUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fa fa-align-left" aria-hidden="true"></i>
+                <span style="font-weight: bold;font-size: 90%;">Ajouter Patient</span>
+            </a>
+         
+        </li>
   <!--       <li class="nav-item">
             <a class="nav-link collapsed" routerLink="Abonnement" data-toggle="collapse" data-target="#collapseUtilities"
                 aria-expanded="true" aria-controls="collapseUtilities">
@@ -209,7 +217,8 @@
                                         <td>      <img *ngIf="!invt.patient.photo" class="img-profile rounded-circle rotation2" src="../../../assets/img/avatar.jpg">
                                            <img *ngIf=" invt.patient.photo" class="img-profile rounded-circle rotation2" [src]="invt.patient.photo"></td>
                                         <td>    <span class="font-weight-bold">{{invt.patient.name}}   {{invt.patient.lastname}}   </span></td>
-                                        <td>     <i class="fa-sharp fa-solid fa-xmark"  aria-hidden="true" (click)="removetInvt(invt._id)"></i></td>
+                                        <td>     <i class="fa-sharp fa-solid fa-xmark"  aria-hidden="true" (click)="removetInvt(invt._id)"
+                                            ></i></td>
                                       </tr>
                                
                                     </tbody>

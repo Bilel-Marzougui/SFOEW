@@ -198,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #ED9D0B;
   color: #fff;
 }
-@media (max-width: 768px) {
+@media (max-width: 570px) {
   .appointment-btn {
     margin: 0 15px 0 0;
     padding: 6px 18px;
@@ -405,7 +405,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 90vh;
-  background: url("../img/hero-bg.jpg") top center;
+  background: url("../img/ac33.jpg") top center;
   background-size: cover;
   margin-bottom: -200px;
 }
@@ -447,7 +447,7 @@ h1, h2, h3, h4, h5, h6 {
     background-attachment: fixed;
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 600px) {
   #hero {
     margin-bottom: 0;
     height: 100vh;
@@ -528,7 +528,7 @@ section {
   min-height: 40px;
   margin-top: 120px;
 }
-@media (max-width: 992px) {
+@media (max-width: 600px) {
   .breadcrumbs {
     margin-top: 100px;
   }
@@ -538,7 +538,7 @@ section {
   font-weight: 300;
   margin: 0;
 }
-@media (max-width: 992px) {
+@media (max-width: 600px) {
   .breadcrumbs h2 {
     margin: 0 0 10px 0;
   }
@@ -560,7 +560,7 @@ section {
   color: #6c757d;
   content: "/";
 }
-@media (max-width: 768px) {
+@media (max-width: 570px) {
   .breadcrumbs .d-flex {
     display: block !important;
   }
@@ -1011,7 +1011,7 @@ section {
 .departments .details p:last-child {
   margin-bottom: 0;
 }
-@media (max-width: 992px) {
+@media (max-width: 600px) {
   .departments .nav-link {
     border: 0;
     padding: 15px;

@@ -36,7 +36,7 @@ export class AuthProfessionnelService {
     localStorage.setItem('role', decodeToken.subject.role)
     localStorage.setItem('id_Pro', decodeToken.subject._id)
 
-    console.log(decodeToken)
+  /*   console.log(decodeToken) */
   }
   geid(){
     let id =localStorage.getItem('id_Pro')

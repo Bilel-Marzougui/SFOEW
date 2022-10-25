@@ -40,7 +40,7 @@ export const locale = {
         },
         FORMS:{
             FORMS:"Les Formulaires",
-            DO:"Les dossier",
+            DO:"Les dossiers",
             LISTPATIENT:"Liste des Formulaire",
             VIEWFORMS:"Afficher le formulaire",
             AFFECTFORM:"Affecter le formulaire",
@@ -84,7 +84,7 @@ export const locale = {
          DEC:"Déconnexion",
          LI:"Liste des invitations",
          CO:"Contacts"  ,
-         DO:"Dossier"
+         DO:"Dossiers"
         },
         AFFECTFORMS:{
             AFFECTBY:"Formulaire affecter par ",
@@ -112,17 +112,20 @@ export const locale = {
             MOTDEPASS:"Mot de passe",
             SIGNIN:"Connecter",
             CG:"Connexion avec Gouugle",
-            RM:"",
+            RM:"Se souvenir de moi !",
             NOM:"Nom",
             PRENOM:"Prénom",
             DATEN:"Date de naissance",
             TELE:"Téléphone",
-            ADDRESS:"",
+            ADDRESS:"Adresse",
             METIER:"Métier",
             CFM:"Confirmer le mot de passe ",
             ACCEPTT:"Accepter Terms & Conditions",
             PROF:"Professionnel ",
-            PAT:"Patient "
+            PAT:"Patient ",
+            POID:"Poids",
+            SIZE:"Taille",
+            IMC:"IMC",
         },
         P:{
             MC:"MIEUX NOUS CONNAITRE",

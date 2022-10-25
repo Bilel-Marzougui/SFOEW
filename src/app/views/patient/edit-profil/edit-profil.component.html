@@ -91,6 +91,22 @@
                       <div class="alert alert-danger" *ngIf="tel.errors?.required && tel.touched">
                         tel is required
                       </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">{{ 'AUTH.SIZE' | translate }}</label>
+                        <input type="number" class="form-control" placeholder="size" [(ngModel)]="dataPatient.size"
+                          required name="size" #size="ngModel" ngModel>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="size.errors?.required && size.touched">
+                        tel is required
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">{{ 'AUTH.POID' | translate }}</label>
+                        <input type="number" class="form-control" placeholder="weight" [(ngModel)]="dataPatient.weight"
+                          required name="weight" #weight="ngModel" ngModel>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="weight.errors?.required && weight.touched">
+                        tel is required
+                      </div>
                       <!-- Phone validation end here -->
 
                       <div class="alert alert-success" *ngIf="messageSuccess">

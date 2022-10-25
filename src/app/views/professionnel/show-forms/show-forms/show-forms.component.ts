@@ -28,7 +28,7 @@ numbers: number[] = [];
      
     this.PatForms.getFormsDoctById(this.idForm2).subscribe(response=>{
     
- 
+ console.log(response)
       this.form=response
  
  

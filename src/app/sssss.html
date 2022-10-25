@@ -444,3 +444,14 @@ payoallllllllllllllllllllllllllllllllllllllllllllllllllllllll
          
       </div>
   </div>
+
+
+
+
+  response.map((res)=>{
+  
+    if(res.nameAff2[0].Aff1!='Aucune dossier'){
+      this.forms.push(res)
+      this.filtredForms.push(res)
+    }
+  })

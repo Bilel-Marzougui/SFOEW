@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject  } from '@angular/core';
+import { Component, OnInit,Inject,ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Professionnel } from 'src/app/views/interfaces/professionnel.interface';
 import { AuthProfessionnelService } from 'src/app/views/services/professionnel/auth-professionnel.service';
@@ -11,13 +11,17 @@ import { UpdProfilPatientService } from 'src/app/views/services/patient/upd-prof
 import {TranslateService} from '@ngx-translate/core';
 import {TranslationService} from '../../translation.service';
 import { DOCUMENT } from "@angular/common";
+import { MatSidenav } from '@angular/material/sidenav';
+import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
   selector: 'app-professionnel-layout',
   templateUrl: './professionnel-layout.component.html',
-  styleUrls: ['./professionnel-layout.component.css']
+  styleUrls: ['./professionnel-layout.component.scss']
 })
 export class ProfessionnelLayoutComponent implements OnInit {
   [x: string]: any;
+  @ViewChild(MatSidenav) 
+  sidenav! :MatSidenav
   professionnel:Professionnel
   updPatient:Professionnel
   submitted = false;
@@ -55,7 +59,7 @@ export class ProfessionnelLayoutComponent implements OnInit {
 
 
   ]
-  constructor( public loaderService: LoaderService,private snackBar:MatSnackBar,private invservice:InvitaionsService,private router:Router,@Inject(DOCUMENT) private document: Document,
+  constructor( private observer: BreakpointObserver,public loaderService: LoaderService,private snackBar:MatSnackBar,private invservice:InvitaionsService,private router:Router,@Inject(DOCUMENT) private document: Document,
     private _patient:UpdProfilPatientService,private updateservice:UpdProfilProServiceService, private authPro:AuthProfessionnelService,public translationService: TranslationService) {
     
     this.id=this.authPro.geid()
@@ -79,6 +83,26 @@ export class ProfessionnelLayoutComponent implements OnInit {
       this.listInvit()
     })
 
+  }
+  sideBarOpen = true;
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+ /*  ngAfterViewInit(): void {
+  
+    this.observer.observe(['(max-width:800px)']).subscribe((res)=>{
+      if(res.matches){
+        this.sidenav.mode ='over';
+        this.sidenav.close();
+      }else{
+        this.sidenav.mode='side';
+        this.sidenav.open()
+      }
+    })
+  } */
+  sideMenu(){
+    console.log(123)
   }
   onLangChange(currentLang: string) {
     let htmlTag = this.document.getElementsByTagName("html")[0] as HTMLHtmlElement;
@@ -111,6 +135,7 @@ export class ProfessionnelLayoutComponent implements OnInit {
   }
 
   removetInvt(body:any){
+    console.log(body)
      this.invservice.removeInvts(body).subscribe((res)=>{
      
       if(res){

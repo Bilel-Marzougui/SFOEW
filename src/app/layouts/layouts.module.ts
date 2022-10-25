@@ -12,8 +12,16 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { HeaderComponent } from './header/header.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 @NgModule({
-  declarations: [FrontLayoutComponent, PatientLayoutComponent, ProfessionnelLayoutComponent],
+  declarations: [FrontLayoutComponent, PatientLayoutComponent, ProfessionnelLayoutComponent, HeaderComponent, SidenavComponent],
   imports: [
     CommonModule,
     LayoutsRoutingModule,
@@ -23,8 +31,13 @@ import {MatSelectModule} from '@angular/material/select';
     TranslateModule,
     FormsModule,
     MatInputModule,
-    MatSelectModule
-
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatListModule
   ]
 })
 export class LayoutsModule { }

@@ -21,7 +21,7 @@
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
-            <div class="col-lg-3" *ngFor="let contact of contacts | paginate: { itemsPerPage: 8, currentPage: p } ">
+            <div class="col-lg-4" *ngFor="let contact of contacts | paginate: { itemsPerPage: 8, currentPage: p } ">
                 <div class="text-center card-box">
                     <div class="member-card pt-3 pb-3">
                         <div class="thumb-lg member-thumb mx-auto"><img *ngIf="contact.patients.photo!=''&&contact.patients.photo !='default.png'" [src]="contact.patients.photo"
@@ -61,8 +61,24 @@
 
                                 </td>
                             </tr>
+                            <br>
+                            <tr>
+                                <td>
+                      
+                                </td>
+                                <td style="background-color: rgba(208, 216, 224, 0.329); width: 100%;">
+                          <h4>{{ 'AUTH.POID' | translate }}:  {{contact.patients.weight}} , {{ 'AUTH.SIZE' | translate }}:  {{contact.patients.size}} 
+                          </h4>      
+                          <h4>
+                            {{ 'AUTH.IMC' | translate }}={{(contact.patients.weight /((contact.patients.size/100)*(contact.patients.size/100))).toFixed(2)}}
+                          </h4>
+                          <h5 *ngIf="(contact.patients.weight /((contact.patients.size/100)*(contact.patients.size/100)))<18">Insuffisance pondérale</h5>
+                          <h5 *ngIf="18<(contact.patients.weight /((contact.patients.size/100)*(contact.patients.size/100)))<24">Poids normal</h5>
+                        <!--   <h5 *ngIf="25<(contact.patients.weight /((contact.patients.size/100)*(contact.patients.size/100)))<29">Surpoids</h5> -->
+                          <h5 *ngIf="(contact.patients.weight /((contact.patients.size/100)*(contact.patients.size/100)))>30">Obésité</h5>
+                                </td>
+                            </tr>
                         </table>
-
 
                         <!-- <div class="mt-">
                             <div class="row">

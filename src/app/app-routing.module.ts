@@ -33,7 +33,7 @@ const routes: Routes = [
     {path:'dossier',loadChildren:()=>import('./views/professionnel/dossier/dossier-forms/dossier-forms.module').then(m=>m.DossierFormsModule)},
     {path:'detaildossier/:id',loadChildren:()=>import('./views/professionnel/detaildossier/detaild-dossier/details-modules.module').then(m=>m.DetailsModulesModule)},
     {path:'preview-details/:id/:iddoctor/:idpatient',loadChildren:()=>import('./views/professionnel/preview-form-doctor/formd-pr.module').then(m=>m.FormdPrModule)},
-
+    {path:'addpatient',loadChildren:()=>import('./views/professionnel/addpatient/addpatient.module').then(m=>m.AddpatientModule)},
   ]},
   
   //******************* patient-paths****************************//

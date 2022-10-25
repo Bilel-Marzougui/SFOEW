@@ -10,7 +10,7 @@ import { PatientFormsService } from 'src/app/views/services/patient/patient-form
 @Component({
   selector: 'app-mon-formulaire',
   templateUrl: './mon-formulaire.component.html',
-  styleUrls: ['./mon-formulaire.component.css']
+  styleUrls: ['./mon-formulaire.component.scss']
 })
 export class MonFormulaireComponent implements OnInit {
   id: any;
@@ -51,10 +51,10 @@ export class MonFormulaireComponent implements OnInit {
 
     this.formsService.getAllForm().subscribe(response=>{
       // console.log(JSON.stringify(response))
-
+  
       this.forms=response
       this.filtredForms=response
-/*      console.log((response))  */  
+          
          this.mesgEmpty=true;
     
 

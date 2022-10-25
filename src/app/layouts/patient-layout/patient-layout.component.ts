@@ -68,7 +68,7 @@ invts:any;
   listInvit(){
     this.doctorsService.getInvts(this.id).subscribe((response)=>{
       this.invts=response
-/*        console.log(response) */
+      /*   console.log(response)   */
          })
     
   }
