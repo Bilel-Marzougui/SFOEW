@@ -114,7 +114,7 @@ export const locale = {
             NOM:"Name",
             PRENOM:"Last Name",
             DATEN:"Date of birth",
-            TELE:"",
+            TELE:"Phone Number",
             ADDRESS:"Adress",
             METIER:"Trade",
             CFM:"Confirm the password ",

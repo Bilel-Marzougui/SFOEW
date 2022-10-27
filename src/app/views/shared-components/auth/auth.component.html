@@ -347,10 +347,10 @@
                         </mat-form-field>
 
                         <mat-form-field>
-                          <input matInput placeholder="{{ 'AUTH.TELE' | translate }}" type="number" formControlName="tel" class="form-control"
-                            [ngClass]="{ 'is-invalid': submitted && fPat.tel.errors }" />
-                          <div *ngIf="submitted && fPat.tel.errors" class="invalid-feedback">
-                            <div *ngIf="fPat.tel.errors.required">tel est obligatoire</div>
+                          <input matInput placeholder="Ssn" type="number" formControlName="ssn" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && fPat.ssn.errors }" />
+                          <div *ngIf="submitted && fPat.ssn.errors" class="invalid-feedback">
+                            <div *ngIf="fPat.ssn.errors.required">tel est obligatoire</div>
                           </div>
                         </mat-form-field>
                         <mat-form-field>
@@ -457,7 +457,7 @@
                             </mat-error>
                          
                         </mat-form-field>
-                        <ng-signature-pad
+                    <!--     <ng-signature-pad
                         doneButtonText="Show Image"
                         format="base64"
                         (done)="showImage($event)">
@@ -466,7 +466,7 @@
                       
                       <img [src]="signatureImage" *ngIf="signatureImage" />
                       
-                      {{image}}
+                      {{image}} -->
                       </div>
                       <div class="form-group form-check">
                       <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
