@@ -18,7 +18,10 @@ export class AuthPatientService {
   registerPatient(body:any){
     return this.http.post(`${this.URL}`+'patient',body)
   }
-
+  emailIsExist(body:any){
+ 
+    return this.http.post(`${this.URL}`+'patient/isExist',body)
+  }
 
     // *****************start login Service**************************************//
 
@@ -29,7 +32,7 @@ export class AuthPatientService {
     }
 
     saveDataPat(token: any) {
-      console.log(token)
+ /*      console.log(token) */
       let decodeToken = this.helper.decodeToken(token)
       localStorage.setItem('token_Pat', token)
       localStorage.setItem('name', decodeToken.subject.name)

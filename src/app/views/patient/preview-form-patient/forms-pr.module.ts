@@ -8,7 +8,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { Ng5SliderModule } from 'ng5-slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PreviewFormComponent } from './preview-form/preview-form.component';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
 @NgModule({
   declarations: [PrFormComponent,PreviewFormComponent],
   imports: [
@@ -17,7 +17,8 @@ import { PreviewFormComponent } from './preview-form/preview-form.component';
     MatRadioModule,
     MatSelectModule,
     Ng5SliderModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ScrollingModule
   ]
 })
 export class FormsPrModule { }

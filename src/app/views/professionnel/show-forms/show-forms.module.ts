@@ -7,6 +7,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { Ng5SliderModule } from 'ng5-slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ToastrModule } from 'ngx-toastr';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [ShowFormsComponent],
@@ -16,7 +18,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatRadioModule,
     MatSelectModule,
     Ng5SliderModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ToastrModule.forRoot(),
+    ScrollingModule
   ]
 })
 export class ShowFormsModule { }

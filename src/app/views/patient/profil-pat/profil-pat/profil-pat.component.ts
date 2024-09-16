@@ -28,32 +28,15 @@ url : any;
   
   imageUrl: any;
   urlPhotp:any
-test={
-
-  name: 'hanen',
-  lastname: 'yassin',
-  birthday: '12/12/2015',
-  adresse: 'jj',
-  tel: '+33333333333333',
-  email: 'yassin1@gmail.com',
-  password: 'yyyyyy',
-  ssn: '77',
-  gender: 'homme',
-  photo: '',
-  account_state: true,
-  archived: false,
-  added_date: '2022-05-26T09:50:18.419+00:00',
-  _id:""
-
-}
+test:any
   constructor(private snackBar:MatSnackBar,public  updateservice:UpdProfilPatientService ,public  authPat:AuthPatientService,public dialog: MatDialog) {
 
       this.id=this.authPat.geid()
 
-    this.updateservice.getPatient(this.id).subscribe(response=>
+    this.updateservice.getPatient(this.id).subscribe((response)=>{
       this.test = response
-      )
-
+      console.log(response)
+    })
 
     }
 
@@ -79,10 +62,10 @@ test={
       this.updateservice.uploadImage(this.imageUrl).subscribe((result)=>{
   
        
-        console.log(result)
+    /*     console.log(result) */
 
         this.url =result
-        console.log("result",result)
+     /*    console.log("result",result) */
         const imageBlob = this.url;
   
     const file = new FormData();
@@ -91,9 +74,9 @@ test={
   
   
         this.updateservice.updateDoctorPhoto(this.id,file).subscribe((response=>{
-          console.log(response)
+      /*     console.log(response) */
         }))
-  console.log(result)
+/*   console.log(result) */
          this.urlPhotp= result 
          this.test.photo=this.urlPhotp
        /*  console.log("reee", result) */

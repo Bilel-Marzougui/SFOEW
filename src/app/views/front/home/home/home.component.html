@@ -1,17 +1,7 @@
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center ">
-  <div class="container">
 
-
-
-
-
-    <h1>Bienvenue dans l'application Scores</h1>
-    <h2>Notre équipe est là pour vous aider</h2>
-    <a href="#about" class="btn-get-started scrollto">Commencer</a>
-  </div>
-</section><!-- End Hero -->
-
+<br><br><br><br>
+<img   src="../../../assets/img/ac4.jpg"
+ style="height: 750px;width: 100%;" alt="First slide">
 <!-- ======= Counts Section ======= -->
 <section id="counts" class="counts">
 
@@ -23,7 +13,7 @@
 
 
         <mat-tab-group dynamicHeight mat-align-tabs="center">
-          <mat-tab label="Professionnel">
+          <mat-tab label="{{ 'PROFILE.PROF' | translate }}">
             <div class="example-small-box mat-elevation-z4">
               <div class="container">
 
@@ -36,8 +26,17 @@
                         <!-- <video class="img-fluid" autoplay loop muted>
                           <source src="https://www.youtube.com/embed/NKX-dg3eIYY" />
                         </video> -->
-                        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/EFrjlPcQMq8" frameborder="0" allowfullscreen></iframe>
-
+                        <iframe width="100%" height="500px"  [src]="urlSafe" frameborder="0" allowfullscreen></iframe>
+                        <youtube-player
+                        [videoId]="videoDoc.url"
+                        suggestedQuality="highres"
+                        [height]="150"
+                        [width]="180"
+                        [startSeconds]="4"
+                        [endSeconds]="300"
+                        audio='true'
+                      >
+                      </youtube-player>
                         <div class="carousel-caption d-none d-md-block">
                           <h5>{{videoDoc.title}}</h5>
                           <p>{{videoDoc.desc}}</p>
@@ -45,12 +44,12 @@
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        <span class="visually-hidden">Précédent</span>
                       </button>
                       <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                        <span class="visually-hidden">Suivant</span>
                       </button>
                       </div>
            
@@ -76,7 +75,7 @@
                         <!-- <video class="img-fluid" autoplay loop muted>
                           <source src="https://www.youtube.com/embed/NKX-dg3eIYY" />
                         </video> -->
-                        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/EFrjlPcQMq8" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="100%" height="500px" [src]="urlSafeP" frameborder="0" allowfullscreen></iframe>
 
                         <div class="carousel-caption d-none d-md-block">
                           <h5>{{videoPat.title}}</h5>
@@ -274,7 +273,7 @@
 </section>End Services Section -->
 
 <!-- ======= Appointment Section ======= -->
-<!-- <section id="appointment" class="appointment section-bg">
+<!--  <section id="appointment" class="appointment section-bg">
   <div class="container">
 
     <div class="section-title">
@@ -339,21 +338,45 @@
       <div class="text-center"><button type="submit">Make an Appointment</button></div>
     </form>
   </div>
-</section> -->
+</section>   -->
 <!-- End Appointment Section -->
 
 <!-- ======= Departments Section ======= -->
 <section id="departments" class="departments">
   <div class="container">
+   
+   
+        <div class="contact-info d-flex align-items-center">
+         <!--  <i class="bi bi-envelope"></i>
+          <a href="mailto:contact@example.com">scores@example.com</a> -->
+          <!-- <i class="bi bi-phone"></i> +216 xxx xxx xxx -->
+        </div>
+    
 
+   
     <div class="section-title">
-      <h2>Departments</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in
-        iste officiis commodi quidem hic quas.</p>
+      <img    src="../../../assets/img/rgbd.JPG">  
+      <br><br>
+      <h2>{{ 'HOMES.CONT' | translate }}</h2>
+      <p style="font-weight: bold;font-size: 110%;"> 
+          <a href="#" class="instagram"><i class="bi bi-envelope-fill fa-lg"></i></a> : contact@stimed.fr
+ 
+          <a href="#" class="instagram"><i class="bi bi-phone-fill fa-lg" style="padding-left: 12px;"></i></a>  : +33(0)380801954
+          <a href="#" class="instagram"><i class="bi bi-pin-map-fill fa-lg" style="padding-left: 12px;"></i></a> : 2, route départementale 974, 21190 Meursault, France
+          
+          <a href="https://www.facebook.com/profile.php?id=100063058550130" class="instagram"><i class="bi bi-facebook fa-lg" style="padding-left: 12px;"></i></a> 
+
+          <a href="https://www.instagram.com/stimed_france/" class="instagram"><i class="bi bi-instagram fa-lg" style="padding-left: 12px;"></i></a> 
+
+          <a href="https://www.linkedin.com/company/stimed/" class="instagram"><i class="bi bi-linkedin fa-lg" style="padding-left: 12px;"></i></a> 
+          <br>
+          <img    src="../../../assets/img/qrcode.JPG">
+      
+        
+      </p>
     </div>
 
-    <div class="row gy-4">
+   <!--  <div class="row gy-4">
       <div class="col-lg-3">
         <ul class="nav nav-tabs flex-column">
           <li class="nav-item">
@@ -451,7 +474,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </section>

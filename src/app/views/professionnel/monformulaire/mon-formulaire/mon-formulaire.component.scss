@@ -15,7 +15,11 @@
 .fa-file-medical:hover {
   color: #FF4500;
 }
-
+::ng-deep .tooltip {
+  background-color: red;
+  color: blue;
+  font-size: 20px;
+}
 .page-container {
   width: 100%;
 }

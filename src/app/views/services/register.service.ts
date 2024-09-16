@@ -12,7 +12,7 @@ export class RegisterService {
 
   registerProf(body:any){
     return this.http.post('http://38.242.195.210:3000/doctor/',body)
-    console.log('service called')
+/*     console.log('service called') */
 
   }
 

@@ -19,7 +19,9 @@ export class AuthProfessionnelService {
   registerProf(body:any){
     return this.http.post(`${this.URL}`+'doctor/',body)
   }
-
+  emailIsExist(body:any){
+    return this.http.post(`${this.URL}`+'doctor/isExist',body)
+  }
   loginSPro(body: any) {
     return this.http.post(`${this.URL}`+'doctor/login', body)
 
@@ -34,7 +36,7 @@ export class AuthProfessionnelService {
     localStorage.setItem('role', decodeToken.subject.role)
     localStorage.setItem('id_Pro', decodeToken.subject._id)
 
-    console.log(decodeToken)
+  /*   console.log(decodeToken) */
   }
   geid(){
     let id =localStorage.getItem('id_Pro')

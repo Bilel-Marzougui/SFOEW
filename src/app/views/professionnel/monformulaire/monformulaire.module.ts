@@ -11,7 +11,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import {TranslateModule} from '@ngx-translate/core';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [MonFormulaireComponent],
   imports: [
@@ -24,7 +25,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatGridListModule,
     MatToolbarModule,
     MatButtonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    TranslateModule,
+    MatTooltipModule
     
   ]
 })

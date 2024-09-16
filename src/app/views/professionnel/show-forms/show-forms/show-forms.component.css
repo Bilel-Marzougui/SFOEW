@@ -100,3 +100,25 @@
       .mat-radio-button ~ .mat-radio-button {
         margin-left: 16px;
       }
+    
+  body {
+    font-family: 'Segoe UI', Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-image: url("https://res.cloudinary.com/med-in-outlook/image/upload/v1660637198/Douleurgraph2_hevgyr.png");
+    background-color: #507ce8;
+    color: #fff;
+    overflow: hidden;
+}
+
+ul {
+    max-width: 1500px;
+    color: #333;
+    list-style: none;
+    margin: 50px auto;
+    padding: 10px;
+}
+
+
+
+.center {
+    text-align: center;
+}

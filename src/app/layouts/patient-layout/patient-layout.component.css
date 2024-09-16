@@ -28,3 +28,6 @@ img{
         
         z-index: 99;
     }
+    .navbar{
+        background-color: red;
+    }
